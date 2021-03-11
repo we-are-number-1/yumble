@@ -2,12 +2,22 @@ import express from 'express';
 import http from 'http';
 import path from 'path';
 import socketio from 'socket.io';
+import mongoose from 'mongoose';
 
 const app = express();
 const server = http.createServer(app);
 const io = socketio(server);
 
 require('dotenv').config();
+
+const mongo_uri = process.env.ATLAS_URI;
+mongoose.connect(mongo_uri, { useNewUrlParser: true, useUnifiedTopology: true }, (err) => {
+  if (err) {
+    throw err;
+  } else {
+    console.log(`Successfully connected to MongoDB Atlas.`);
+  }
+});
 
 const PORT = process.env.PORT || 3001;
 
