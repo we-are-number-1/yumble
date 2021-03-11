@@ -20,5 +20,6 @@ module.exports = {
   'rules': {
     // suppress errors for missing 'import React' in files
     'react/react-in-jsx-scope': 'off',
+    'linebreak-style': 0,
   },
 };
