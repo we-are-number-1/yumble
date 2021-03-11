@@ -1,6 +1,10 @@
 import logo from './logo.svg';
 import './App.css';
 
+/**
+ * Main entry point for the application
+ * @return {Object} React component
+*/
 function App() {
   return (
     <div className="App">
