@@ -1,19 +1,5 @@
 import {Game} from './models/Game';
 
-let games = null;
-
-/**
- * Singleton pattern Games class.
- * Returns a games object if it exists else creates the object and returns it.
- * @return {Games} games
- */
-export function getGames() {
-  if (!games) {
-    games = new Games();
-  }
-  return games;
-}
-
 /**
   * This class stores a list of all active games in session
   */
@@ -55,4 +41,4 @@ export class Games {
   }
 }
 
-
+export default new Games();

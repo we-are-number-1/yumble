@@ -3,12 +3,11 @@ import http from 'http';
 import path from 'path';
 import socketio from 'socket.io';
 import mongoose from 'mongoose';
-import {getGames} from './domain/Games';
+import games from './domain/Games';
 
 const app = express();
 const server = http.createServer(app);
 const io = socketio(server);
-const games = getGames();
 
 require('dotenv').config();
 
