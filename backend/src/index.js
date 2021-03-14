@@ -53,6 +53,8 @@ io.on('connection', (socket) => {
   },
   }, null);
   SocketEvents.joinRoom(socket);
+  SocketEvents.disconnect(socket, io);
+  SocketEvents.joinRoom(socket, io);
 });
 
 server.listen(PORT, () => {

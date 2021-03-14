@@ -3,7 +3,8 @@
  * @param {*} socket
  */
 export function newUser(socket) {
-  socket.on('new_user', ({users}) => {
+  socket.on('new_user', ({username}) => {
     // Set users of lobby.
+    console.log(username);
   });
 }
