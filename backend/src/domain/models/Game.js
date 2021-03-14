@@ -22,15 +22,15 @@ export class Game {
    *                      has passed
    */
   nextRound(callback) {
-    round++;
-    if (round == swipeDeck.length) {
+    this.round++;
+    if (this.round == this.swipeDeck.length) {
       endGame();
     }
     setTimeout(
         callback,
-        roundInterval*1000,
-        Date.now() + roundInterval*1000,
-        swipeDeck[round],
+        this.roundInterval*1000,
+        Date.now() + this.roundInterval*1000,
+        this.swipeDeck[round],
     );
   }
 
