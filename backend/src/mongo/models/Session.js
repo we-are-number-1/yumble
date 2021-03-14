@@ -1,8 +1,8 @@
 import mongoose from 'mongoose';
-import {UserSchema} from './User';
+import {userSchema} from './User';
 
 // TODO: Add Restaurants, votes and preferences to model
-const SessionSchema = mongoose.Schema({
+const sessionSchema = mongoose.Schema({
   isFinished: {
     type: Boolean,
     default: false,
@@ -12,9 +12,9 @@ const SessionSchema = mongoose.Schema({
     required: true,
   },
   users: {
-    type: [UserSchema],
+    type: [userSchema],
     default: [],
   },
 });
 
-export default mongoose.model('Session', SessionSchema);
+export default mongoose.model('Session', sessionSchema);

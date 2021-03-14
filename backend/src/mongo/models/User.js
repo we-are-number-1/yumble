@@ -1,10 +1,10 @@
 import mongoose from 'mongoose';
 
-export const UserSchema = mongoose.Schema({
+export const userSchema = mongoose.Schema({
   name: {
     type: String,
     required: true,
   },
 });
 
-export default mongoose.model('User', UserSchema);
+export default mongoose.model('User', userSchema);
