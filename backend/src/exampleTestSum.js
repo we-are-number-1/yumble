@@ -1,4 +1,9 @@
-function sum(a, b) {
-    return a + b;
+/**
+ * Example method
+ * @param {*} a
+ * @param {*} b
+ * @return {*}
+ */
+export function sum(a, b) {
+  return a + b;
 }
-module.exports = sum;
