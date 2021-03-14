@@ -13,5 +13,6 @@ module.exports = {
   'ignorePatterns': ['**/dist/*.js', '**/node_modules/**/*.js'],
   'rules': {
     'linebreak-style': 0,
+    'new-cap': 0,
   },
 };
