@@ -1,7 +1,13 @@
 # How To Contribute [WIP]
 
 # Everything below here needs to be updated & made more comprehensive
+
 ## Repository Information
+
+### Issues/Tickets and pull request schema 
+* All changes to the repo or any additions to the linked wiki must be documented using an Issue ticket
+* Tickets, pull requests all follow the same schema. 
+* Refer to the [Yumble Wiki]: https://github.com/we-are-number-1/yumble/wiki/Ticket-&-Commit-Schema for futher details on the schema yumble will be using
 
 ### Developer Environment
 * Node 15.x
