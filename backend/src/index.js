@@ -5,8 +5,8 @@ import socketio from 'socket.io';
 import mongoose from 'mongoose';
 
 // Routes
-import sessionsRouteAPI from '../routes/sessions';
-import usersRouteAPI from '../routes/users';
+import sessionsRouteAPI from './routes/sessions';
+import usersRouteAPI from './routes/users';
 
 const app = express();
 const server = http.createServer(app);
