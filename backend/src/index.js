@@ -3,6 +3,7 @@ import http from 'http';
 import path from 'path';
 import socketio from 'socket.io';
 import mongoose from 'mongoose';
+import * as SocketEvents from './sockets';
 
 const app = express();
 const server = http.createServer(app);
@@ -44,6 +45,7 @@ io.on('connection', (socket) => {
   socket.on('disconnect', () => {
     console.log('user disconnected with id:', socket.id);
   });
+  SocketEvents.joinRoom(socket);
 });
 
 server.listen(PORT, () => {
