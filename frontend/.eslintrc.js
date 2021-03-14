@@ -17,6 +17,7 @@ module.exports = {
   'plugins': [
     'react',
   ],
+  'ignorePatterns': ['**/build/**/*.js', '**/node_modules/**/*.js'],
   'rules': {
     // suppress errors for missing 'import React' in files
     'react/react-in-jsx-scope': 'off',

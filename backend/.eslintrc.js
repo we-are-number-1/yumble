@@ -10,7 +10,7 @@ module.exports = {
     'ecmaVersion': 12,
     'sourceType': 'module',
   },
-  'ignorePatterns': ['**/dist/*.js'],
+  'ignorePatterns': ['**/dist/*.js', '**/node_modules/**/*.js'],
   'rules': {
     'linebreak-style': 0,
   },
