@@ -1,10 +1,14 @@
 import React from 'react';
 
+/**
+ *
+ * @return {*}
+ */
 function LobbyPage() {
-    return (
-        <>
-        </>
-    )
+  return (
+    <>
+    </>
+  );
 }
 
 export default LobbyPage;

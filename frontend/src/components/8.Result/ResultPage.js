@@ -1,10 +1,14 @@
 import React from 'react';
 
+/**
+ *
+ * @return {*}
+ */
 function ResultPage() {
-    return (
-        <>
-        </>
-    )
+  return (
+    <>
+    </>
+  );
 }
 
 export default ResultPage;

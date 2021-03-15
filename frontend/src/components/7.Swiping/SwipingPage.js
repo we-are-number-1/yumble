@@ -1,10 +1,14 @@
 import React from 'react';
 
+/**
+ *
+ * @return {*}
+ */
 function SwipingPage() {
-    return (
-        <>
-        </>
-    )
+  return (
+    <>
+    </>
+  );
 }
 
 export default SwipingPage;

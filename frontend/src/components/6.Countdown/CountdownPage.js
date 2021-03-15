@@ -1,10 +1,14 @@
 import React from 'react';
 
+/**
+ *
+ * @return {*}
+ */
 function CountdownPage() {
-    return (
-        <>
-        </>
-    )
+  return (
+    <>
+    </>
+  );
 }
 
 export default CountdownPage;
