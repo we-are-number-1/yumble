@@ -2,16 +2,17 @@ import {Link} from 'react-router-dom';
 import React, {useState} from 'react';
 import Help from '../Common/Help';
 import '../Common/Help.css';
-import styled from 'styled-components';
+import UserInput from '../Common/UserInput';
+// import styled from 'styled-components';
 
-const UserInput = styled.input`
-  outline: none;
-  width: 80vw;
-  border-radius: 20px;
-  border: 4px solid #000000;
-  font-size: 4vw;
-  margin: 1vw;
-`;
+// const UserInput = styled.input`
+//   outline: none;
+//   width: 80vw;
+//   border-radius: 20px;
+//   border: 4px solid #000000;
+//   font-size: 4vw;
+//   margin: 1vw;
+// `;
 
 /**
  *
@@ -28,6 +29,8 @@ function Preferences() {
           Select your Preferences
         </h1>
         <div style={{marginBottom: '20%'}}>
+          {/* <input className={style.input} placeholder="e.g P6aPE"
+              fontSize={3} type="text"></input> */}
           <UserInput
             input
             type="text"
