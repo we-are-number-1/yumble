@@ -1,7 +1,5 @@
 import logo from './logo.svg';
 import './App.css';
-import * as Sockets from './sockets';
-import {useEffect} from 'react';
 
 /**
  * Main entry point for the application
