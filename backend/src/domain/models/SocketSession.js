@@ -1,9 +1,8 @@
-
 /**
  * This class is responsible for all information regarding a
  * single session or lobby
  */
-export class session {
+export class SocketSession {
   /**
      * @param {*} sessionId, Unique identifier for a session
      * @param {*} host, socket for the host of the session
