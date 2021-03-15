@@ -52,7 +52,6 @@ io.on('connection', (socket) => {
     roundInterval: 30000,
   },
   }, null);
-  SocketEvents.joinRoom(socket);
   SocketEvents.disconnect(socket, io);
   SocketEvents.joinRoom(socket, io);
 });
