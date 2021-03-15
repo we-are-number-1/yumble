@@ -3,10 +3,7 @@ import http from 'http';
 import path from 'path';
 import socketio from 'socket.io';
 import mongoose from 'mongoose';
-<<<<<<< HEAD
 import games from './domain/Games';
-=======
->>>>>>> b601e5a00f642116d14df5e63e2107ac6930d35a
 import * as SocketEvents from './sockets';
 
 const app = express();
@@ -46,7 +43,6 @@ if (process.env.NODE_ENV == 'production') {
 
 io.on('connection', (socket) => {
   console.log('a user connected with id:', socket.id);
-<<<<<<< HEAD
   socket.on('disconnect', () => {
     console.log('user disconnected with id:', socket.id);
   });
@@ -57,8 +53,6 @@ io.on('connection', (socket) => {
   },
   }, null);
   SocketEvents.joinRoom(socket);
-=======
->>>>>>> b601e5a00f642116d14df5e63e2107ac6930d35a
   SocketEvents.disconnect(socket, io);
   SocketEvents.joinRoom(socket, io);
 });
