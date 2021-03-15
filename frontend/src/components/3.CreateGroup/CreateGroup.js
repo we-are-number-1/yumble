@@ -2,6 +2,7 @@ import {Link} from 'react-router-dom';
 import React, {useState} from 'react';
 import Help from '../Common/Help';
 import '../Common/Help.css';
+import styles from './CreateGroup.module.css';
 // import styled from 'styled-components';
 
 /**
@@ -32,7 +33,7 @@ function CreateGroup() {
       <div className="MakeCentre">
         <div className="GroupCode_Box">
           Your group code is...
-          <div style={{padding: '1vw'}}>{makeid()}</div>
+          <div className={styles.spacing}>{makeid()}</div>
           <Link to="Preferences">
             <button className="GoButton">Go</button>
           </Link>
