@@ -3,6 +3,7 @@ import React, {useState} from 'react';
 import Help from '../Common/Help';
 import '../Common/Help.css';
 import UserInput from '../Common/UserInput';
+import style from './Preferences.module.css';
 // import styled from 'styled-components';
 
 // const UserInput = styled.input`
@@ -25,10 +26,10 @@ function Preferences() {
     <>
       <h1 className="Title">yumble</h1>
       <div className="MakeCentre">
-        <h1 className="Title" style={{marginBottom: '35%'}}>
+        <h1 className={style.largeMargin}>
           Select your Preferences
         </h1>
-        <div style={{marginBottom: '20%'}}>
+        <div className={style.smallMargin}>
           {/* <input className={style.input} placeholder="e.g P6aPE"
               fontSize={3} type="text"></input> */}
           <UserInput
@@ -39,7 +40,7 @@ function Preferences() {
           ></UserInput>
         </div>
 
-        <button className="GoButton" style={{}}>
+        <button className="GoButton">
           Go
         </button>
         <Link to="/">
