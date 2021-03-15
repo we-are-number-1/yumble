@@ -19,20 +19,20 @@ app.use(express.json());
 
 // API
 app.use('/sessions', sessionsRouteAPI);
-app.use('/preferences', sessionsRouteAPI);
-app.use('/results', sessionsRouteAPI);
+app.use('/preferences', preferencesRouteAPI);
+app.use('/results', resultsRouteAPI);
 
 const mongoUri = process.env.ATLAS_URI;
 mongoose.connect(
-  mongoUri,
-  { useNewUrlParser: true, useUnifiedTopology: true },
-  (err) => {
-    if (err) {
-      throw err;
-    } else {
-      console.log(`Successfully connected to MongoDB Atlas.`);
-    }
-  }
+    mongoUri,
+    {useNewUrlParser: true, useUnifiedTopology: true},
+    (err) => {
+      if (err) {
+        throw err;
+      } else {
+        console.log(`Successfully connected to MongoDB Atlas.`);
+      }
+    },
 );
 
 const PORT = process.env.PORT || 3001;
@@ -55,14 +55,14 @@ io.on('connection', (socket) => {
 
   // This is just so eslint does not throw error
   games.newGame(
-    io,
-    {
-      sessionId: 1234,
-      preferences: {
-        roundInterval: 30000,
+      io,
+      {
+        sessionId: 1234,
+        preferences: {
+          roundInterval: 30000,
+        },
       },
-    },
-    null
+      null,
   );
 });
 

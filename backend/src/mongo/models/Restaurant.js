@@ -1,5 +1,4 @@
 import mongoose from 'mongoose';
-import { userSchema } from './User';
 
 export const restaurantSchema = mongoose.Schema({
   name: {
