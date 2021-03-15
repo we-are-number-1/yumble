@@ -11,6 +11,7 @@ export function joinRoom(socket, io) {
       game.session.host = socket;
     }
     game.session.addUser(socket, name);
-    io.to(roomid).emit('new_user', {users: game.session.users});
+    socket.join(gameid);
+    io.to(gameid).emit('new_user', {users: game.session.users});
   });
 }
