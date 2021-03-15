@@ -1,5 +1,5 @@
 /**
- * Functino for when a new user joins a room.
+ * Function for when a new user joins a room.
  * @param {*} socket
  * @param {*} cb call back function
  */
