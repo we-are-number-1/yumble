@@ -3,6 +3,7 @@ import http from 'http';
 import path from 'path';
 import socketio from 'socket.io';
 import mongoose from 'mongoose';
+import games from './domain/Games';
 
 const app = express();
 const server = http.createServer(app);
@@ -44,6 +45,12 @@ io.on('connection', (socket) => {
   socket.on('disconnect', () => {
     console.log('user disconnected with id:', socket.id);
   });
+
+  // This is just so eslint does not throw error
+  games.newGame(io, {sessionId: 1234, preferences: {
+    roundInterval: 30000,
+  },
+  }, null);
 });
 
 server.listen(PORT, () => {
