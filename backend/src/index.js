@@ -4,6 +4,7 @@ import path from 'path';
 import socketio from 'socket.io';
 import mongoose from 'mongoose';
 import games from './domain/Games';
+import * as SocketEvents from './sockets';
 
 const app = express();
 const server = http.createServer(app);
@@ -51,6 +52,7 @@ io.on('connection', (socket) => {
     roundInterval: 30000,
   },
   }, null);
+  SocketEvents.joinRoom(socket);
 });
 
 server.listen(PORT, () => {
