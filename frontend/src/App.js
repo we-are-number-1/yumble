@@ -8,13 +8,6 @@ import {useEffect} from 'react';
  * @return {Object} React component
 */
 function App() {
-  useEffect(() => {
-    const socket = Sockets.getSocketClient();
-    socket.emit('join_room', {roomid: 'test', username: 'test2'});
-    Sockets.newUser(socket, (username) => {
-      console.log(username);
-    });
-  }, []);
   return (
     <div className="App">
       <header className="App-header">
