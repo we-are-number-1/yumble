@@ -1,28 +1,27 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
+import StartPage from './components/1.Landing/StartPage';
+import CreateGroup from './components/3.CreateGroup/CreateGroup';
+import JoinGroup from './components/2.Joining/JoinGroup';
+import Preferences from './components/4.Preferences/Preferences';
+import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 
 /**
- * Main entry point for the application
- * @return {Object} React component
-*/
+ *
+ * @return {*}
+ */
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="BackGroundImage">
+        <Switch>
+          <Route path="/" exact component={StartPage} />
+          <Route path="/CreateGroup" component={CreateGroup} />
+          <Route path="/JoinGroup" component={JoinGroup} />
+          <Route path="/Preferences" component={Preferences} />
+        </Switch>
+      </div>
+    </Router>
   );
 }
 

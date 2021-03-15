@@ -36,3 +36,165 @@
     transform: rotate(360deg);
   }
 }
+
+/* need to refactor below */
+
+
+/* Common */
+.Title {
+  position: absolute;
+  color: white;
+  font-family: Comic Sans MS;
+  margin: 1vw;
+  font-size: 3.5vw;
+}
+
+.BackGroundImage {
+  background-image: url("https://wallpaperaccess.com/full/679983.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+}
+
+.HelpButton {
+  outline: none;
+  font-family: Comic Sans MS;
+  font-size: 2vw;
+  border-radius: 30px;
+  border-color: black;
+  border-width: 5px;
+  cursor: pointer;
+  padding: 0.5vw 1vw 0.5vw 1vw;
+  position: absolute;
+  bottom: 0;
+  align-self: flex-end;
+  right: 0;
+  margin: 1vw;
+}
+
+.HelpButton:hover {
+  background: silver;
+}
+
+.CloseButton {
+  outline: none;
+  font-family: Comic Sans MS;
+  font-size: 1vw;
+  border-radius: 30px;
+  border-color: black;
+  border-width: 5px;
+  cursor: pointer;
+  position: absolute;
+  bottom: 0;
+  align-self: flex-end;
+  right: 0;
+  margin: 1vw;
+}
+
+.CloseButton:hover {
+  background: silver;
+}
+
+.BackButton {
+  outline: none;
+  font-family: Comic Sans MS;
+  font-size: 2vw;
+  border-radius: 30px;
+  border-color: black;
+  background-color: rgb(236, 69, 69);
+  border-width: 5px;
+  cursor: pointer;
+  padding: 0.5vw 2vw 0.5vw 2vw;
+  position: absolute;
+  bottom: 0;
+  align-self: flex-end;
+  left: 0;
+  margin: 1vw;
+}
+
+.BackButton:hover {
+  background: white;
+}
+
+.MakeCentre {
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Unique */
+
+/* StartPage */
+.StartTitle {
+  color: white;
+  font-family: Comic Sans MS;
+  font-size: 8vw;
+  margin: 0;
+}
+
+.CreateGroup_btn {
+  cursor: pointer;
+  outline: none;
+  font-family: Comic Sans MS;
+  font-size: 3vw;
+  border-radius: 30px;
+  border-color: black;
+  border-width: 5px;
+  padding: 1vw 3vw 1vw 3vw;
+  margin-bottom: 1vw;
+  margin-top: 2vw;
+}
+.CreateGroup_btn:hover {
+  background: silver;
+}
+
+.JoinGroup_btn {
+  cursor: pointer;
+  outline: none;
+  font-family: Comic Sans MS;
+  font-size: 3vw;
+  border-radius: 30px;
+  border-color: black;
+  border-width: 5px;
+  padding: 1vw 4.7vw 1vw 4.7vw;
+}
+.JoinGroup_btn:hover {
+  background: silver;
+}
+
+/* CreateGroup */
+.GroupCode_Box {
+  outline: none;
+  border: 4px solid #000000;
+  background-color: white;
+  height: 15vw;
+  width: 30vw;
+  text-align: center;
+  font-family: Comic Sans MS;
+  border-radius: 30px;
+  padding: 2vw;
+  font-size: 3vw;
+}
+
+.GoButton {
+  cursor: pointer;
+  outline: none;
+  font-family: Comic Sans MS;
+  font-size: 2vw;
+  border-radius: 30px;
+  border-color: black;
+  border-width: 5px;
+  padding: 0vw 3vw 0vw 3vw;
+  background-color: rgb(35, 164, 224);
+}
+
+.GoButton:hover {
+  background: cyan;
+}
+
+
