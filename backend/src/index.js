@@ -56,7 +56,6 @@ io.on('connection', (socket) => {
 
   SocketEvents.disconnect(socket, io);
   SocketEvents.joinRoom(socket, io);
-  
   // This is just so eslint does not throw error
   games.newGame(
       io,
