@@ -14,29 +14,31 @@ function Preferences() {
 
   return (
     <>
-      <h1 className="Title">yumble</h1>
-      <div className="MakeCentre">
-        <h1 className={style.largeMargin}>
-          Select your Preferences
-        </h1>
+      <h1 className='Title'>yumble</h1>
+      <div className='MakeCentre'>
+        <h1 className={style.largeMargin}>Select your Preferences</h1>
         <div className={style.smallMargin}>
           <UserInput
             input
-            type="text"
-            inputType="preferences"
-            placeholder="Enter your location"
+            type='text'
+            inputType='preferences'
+            placeholder='Enter your location'
             fontSize={3}
           ></UserInput>
         </div>
 
-        <button className="GoButton">
-          Go
-        </button>
-        <Link to="/">
-          <button className="BackButton">Back</button>
+        <button className='GoButton'>Go</button>
+        <Link to='/'>
+          <button className='SmallBtn' id='BackButton'>
+            Back
+          </button>
         </Link>
 
-        <button onClick={() => setButtonPopup(true)} className="HelpButton">
+        <button
+          onClick={() => setButtonPopup(true)}
+          className='SmallBtn'
+          id='HelpButton'
+        >
           help?
         </button>
         <Help trigger={ButtonPopup} setTrigger={setButtonPopup}>

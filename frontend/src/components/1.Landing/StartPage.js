@@ -12,18 +12,26 @@ function StartPage() {
 
   return (
     <>
-      <div className="MakeCentre">
-        <h1 className="StartTitle">yumble</h1>
+      <div className='MakeCentre'>
+        <h1 className='StartTitle'>yumble</h1>
 
-        <Link to="/CreateGroup">
-          <button className="Btn" id="CreateGroup_btn">Create group</button>
+        <Link to='/CreateGroup'>
+          <button className='BigBtn' id='CreateGroup_btn'>
+            Create group
+          </button>
         </Link>
-        <Link to="/JoinGroup">
-          <button className="Btn" id="JoinGroup_btn">Join group</button>
+        <Link to='/JoinGroup'>
+          <button className='BigBtn' id='JoinGroup_btn'>
+            Join group
+          </button>
         </Link>
       </div>
 
-      <button onClick={() => setButtonPopup(true)} className="HelpButton">
+      <button
+        onClick={() => setButtonPopup(true)}
+        className='SmallBtn'
+        id='HelpButton'
+      >
         help?
       </button>
       <Help trigger={ButtonPopup} setTrigger={setButtonPopup}>

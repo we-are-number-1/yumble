@@ -13,29 +13,35 @@ function GroupCode() {
 
   return (
     <>
-      <h1 className="Title">yumble</h1>
-      <div className="MakeCentre">
-        <div className="GroupCode_Box">
+      <h1 className='Title'>yumble</h1>
+      <div className='MakeCentre'>
+        <div className='GroupCode_Box'>
           Enter group code
           <div>
             <UserInput
               input
-              type="text"
-              inputType="joinGroup"
-              placeholder="e.g P6aPE"
+              type='text'
+              inputType='joinGroup'
+              placeholder='e.g P6aPE'
               fontSize={3}
             ></UserInput>
           </div>
-          <Link to="Preferences">
-            <button className="GoButton">Go</button>
+          <Link to='Preferences'>
+            <button className='GoButton'>Go</button>
           </Link>
         </div>
       </div>
-      <Link to="/">
-        <button className="BackButton">Back</button>
+      <Link to='/'>
+        <button className='SmallBtn' id='BackButton'>
+          Back
+        </button>
       </Link>
 
-      <button onClick={() => setButtonPopup(true)} className="HelpButton">
+      <button
+        onClick={() => setButtonPopup(true)}
+        className='SmallBtn'
+        id='HelpButton'
+      >
         help?
       </button>
       <Help trigger={ButtonPopup} setTrigger={setButtonPopup}>
