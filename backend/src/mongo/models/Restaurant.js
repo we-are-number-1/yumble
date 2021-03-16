@@ -11,4 +11,3 @@ export const restaurantSchema = mongoose.Schema({
   },
 });
 
-

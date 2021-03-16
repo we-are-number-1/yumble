@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 import {restaurantSchema} from './Restaurant';
 
 const resultSchema = mongoose.Schema({
-  sessionId: {
+  sessionID: {
     type: String,
     required: true,
   },

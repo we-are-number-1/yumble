@@ -5,7 +5,7 @@ const router = express.Router();
 // Post: Creating a result object in the result collection
 router.post('/', async (req, res) => {
   const result = new Result({
-    sessionId: req.body.sessionId, result: req.body.result,
+    sessionID: req.body.sessionID, result: req.body.result,
   });
 
   try {
