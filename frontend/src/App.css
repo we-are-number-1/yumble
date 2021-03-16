@@ -142,7 +142,7 @@
 #GoogleMaps_btn {
   background-color: #59D47C;
   width: 350px;
-  font-size: 2vw;
+  font-size: 18pt;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -178,3 +178,21 @@
 .GoButton:hover {
   background: cyan;
 }
+
+/* Results Page */
+.ResultTitle {
+  -webkit-text-stroke: 4px black;
+  color: white;
+  font-family: Comic Sans MS;
+  margin: 1vw;
+  font-size: 50pt;
+}
+ .ResultCenter {
+  height: 80vh;
+  width: 80vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* margin: 0px 150px; */
+ }
