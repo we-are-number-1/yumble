@@ -1,5 +1,5 @@
 import {Link} from 'react-router-dom';
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import Help from '../Common/Help';
 import '../Common/Help.css';
 import styles from './CreateGroup.module.css';
@@ -25,6 +25,9 @@ function makeid() {
  * @return {*}
  */
 function CreateGroup() {
+  useEffect(() => {
+    document.title = 'Create a group';
+  }, []);
   const [ButtonPopup, setButtonPopup] = useState(false);
 
   return (
