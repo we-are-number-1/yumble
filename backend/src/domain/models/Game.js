@@ -23,14 +23,22 @@ export class Game {
    */
   nextRound(callback) {
     this.round++;
-    if (this.round == this.swipeDeck.length) {
+    if (this.round === this.swipeDeck.length) {
       endGame();
+      return;
     }
+
+    this.io.to(this.session.sessionId).emit(
+      'next_round',
+      {
+        nextRoundStartTime: Date.now() + this.roundInterval*1000,
+        currentRound: round
+      }
+    );
+
     setTimeout(
-        callback,
+        nextRound(),
         this.roundInterval*1000,
-        Date.now() + this.roundInterval*1000,
-        this.swipeDeck[round],
     );
   }
 
@@ -43,4 +51,3 @@ export class Game {
     });
   }
 }
-
