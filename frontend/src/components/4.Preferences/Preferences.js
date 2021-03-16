@@ -1,5 +1,5 @@
 import {Link} from 'react-router-dom';
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import Help from '../Common/Help';
 import '../Common/Help.css';
 import UserInput from '../Common/UserInput';
@@ -10,6 +10,10 @@ import style from './Preferences.module.css';
  * @return {*}
  */
 function Preferences() {
+  useEffect(() => {
+    document.title = 'Choose game settings';
+  }, []);
+
   const [ButtonPopup, setButtonPopup] = useState(false);
 
   return (

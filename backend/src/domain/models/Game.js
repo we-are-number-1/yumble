@@ -35,12 +35,9 @@ export class Game {
   }
 
   /**
-   * This disconnects the client side user from the lobby
+   * This emits an end_game event to all users in the session
    */
   endGame() {
-    this.session.users.forEach((e) => {
-      e.socket.disconnect(true);
-    });
+    this.io.to(this.session.sessionId).emit('end_game');
   }
 }
-

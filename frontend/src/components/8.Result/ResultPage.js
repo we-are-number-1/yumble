@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 
 import Help from '../Common/Help';
 import '../Common/Help.css';
@@ -12,6 +12,9 @@ import Icon from '../Common/MapsPinpoint';
 function ResultPage() {
   const [ButtonPopup, setButtonPopup] = useState(false);
   const [MapPopup, setMapPopup] = useState(false);
+  useEffect(() => {
+    document.title = 'Time to go eat!';
+  }, []);
 
   return (
     <>
