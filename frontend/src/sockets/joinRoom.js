@@ -1,7 +1,7 @@
 /**
  * Emits a join_room even to backend sockets
  * @param {*} socket
- * @param {*} gameid
+ * @param {*} sessionId
  * @param {*} name
  */
 export function joinRoom(socket, sessionId, name) {
