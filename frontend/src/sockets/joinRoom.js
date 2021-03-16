@@ -4,6 +4,6 @@
  * @param {*} gameid
  * @param {*} name
  */
-export function joinRoom(socket, gameid, name) {
-  socket.emit('join_room', {gameid, name});
+export function joinRoom(socket, sessionId, name) {
+  socket.emit('join_room', {sessionId, name});
 }

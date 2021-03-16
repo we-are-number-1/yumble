@@ -5,7 +5,7 @@ import games from '../domain/Games';
  * @param {*} socket
  */
 export function start(socket) {
-  socket.on('start', ({gameId}) => {
-    games.getGame(gameId).nextRound();
+  socket.on('start', ({sessionId}) => {
+    games.getGame(sessionId).nextRound();
   });
 }

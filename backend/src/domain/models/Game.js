@@ -21,7 +21,7 @@ export class Game {
    * @param {*} callback, this function is called after the round interval
    *                      has passed
    */
-  nextRound(callback) {
+  nextRound() {
     this.round++;
     if (this.round === this.swipeDeck.length) {
       endGame();
