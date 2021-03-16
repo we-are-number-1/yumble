@@ -4,6 +4,7 @@ import path from 'path';
 import socketio from 'socket.io';
 import mongoose from 'mongoose';
 import games from './domain/Games';
+import * as SocketEvents from './sockets';
 
 // Routes
 import sessionsRouteAPI from './routes/sessions';
@@ -53,6 +54,8 @@ io.on('connection', (socket) => {
     console.log('user disconnected with id:', socket.id);
   });
 
+  SocketEvents.disconnect(socket, io);
+  SocketEvents.joinRoom(socket, io);
   // This is just so eslint does not throw error
   games.newGame(
       io,
