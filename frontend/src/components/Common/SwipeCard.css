@@ -1,0 +1,12 @@
+.swipeCard{
+    outline: none;
+    border: 4px solid #000000;
+    background-color: white;
+    height: 15vw;
+    width: 30vw;
+    text-align: center;
+    font-family: Comic Sans MS;
+    border-radius: 30px;
+    padding: 2vw;
+    font-size: 3vw;
+  }

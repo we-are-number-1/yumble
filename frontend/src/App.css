@@ -204,3 +204,46 @@
   margin: 1vw;
   font-size: 50pt;
 }
+/* Swiping page */
+
+.TimeCounter {
+  color: white;
+  font-family: Comic Sans MS;
+  font-size: 4vw;
+  margin: 50;
+}
+
+.SwipeCard{
+  outline: none;
+  border: 4px solid #000000;
+  background-color: white;
+  height: 35vw;
+  width: 20vw;
+  text-align: left;
+  font-family: Comic Sans MS;
+  border-radius: 30px;
+  padding: 2vw;
+  padding-right: 2.5vw; 
+  font-size: 3vw;
+}
+
+.CardImage{
+  border: 4px solid #000000;
+  height: 20vw; 
+  width: 20vw; 
+  border-radius: 30px;
+}
+
+#grid {
+  padding-top: 2vw;
+  width: 20vw;
+  display: grid;
+  grid-template-areas: "a a b";
+  gap: 2px;
+  grid-auto-rows: 50px;
+}
+
+#grid > div {
+  background-color: lime;
+  }
+

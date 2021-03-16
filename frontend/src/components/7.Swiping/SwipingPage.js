@@ -18,14 +18,24 @@ function SwipingPage() {
 
   return (
     <>
-      <p>Swiping</p>
-      <button
-        onClick={() => hitDummyEndpoint()}
-        className='SmallBtn'
-        id='HelpButton'
-      >
-        test endpoint
-      </button>
+      <h1 className='Title'> yumble</h1>
+      <div className='MakeCentre'>
+        <h1 className='TimeCounter'> Remaining time: s </h1>
+        <div className="SwipeCard">
+          <div className="CardImage"></div>
+          {/* Name */}
+          {/* <div><h5>Hi</h5></div> */}
+          <div id="grid">
+            <div id="item1">hello </div>
+            <div id="item2">hi </div>
+            <div id="item3">how</div>
+            <div id="item4">are </div>
+            <div id="item5">you</div>
+
+          </div>
+
+        </div>
+      </div>
     </>
   );
 }
