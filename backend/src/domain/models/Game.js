@@ -29,11 +29,11 @@ export class Game {
     }
 
     this.io.to(this.session.sessionId).emit(
-      'next_round',
-      {
-        nextRoundStartTime: Date.now() + this.roundInterval*1000,
-        currentRound: round
-      }
+        'next_round',
+        {
+          nextRoundStartTime: Date.now() + this.roundInterval*1000,
+          currentRound: round,
+        },
     );
 
     setTimeout(
