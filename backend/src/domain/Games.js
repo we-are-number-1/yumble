@@ -33,11 +33,11 @@ export class Games {
     * @param {*} swipeDeck, list of restaurants
     */
   newGame(io, session, swipeDeck) {
-    this.activeGames[session.sessionId] = new Game(
+    this.activeGames.set(session.sessionId, new Game(
         io,
         session,
         swipeDeck,
-    );
+    ));
   }
 }
 

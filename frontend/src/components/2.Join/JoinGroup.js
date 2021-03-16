@@ -1,5 +1,5 @@
 import {Link} from 'react-router-dom';
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import Help from '../Common/Help';
 import '../Common/Help.css';
 import UserInput from '../Common/UserInput';
@@ -9,6 +9,9 @@ import UserInput from '../Common/UserInput';
  * @return {*}
  */
 function GroupCode() {
+  useEffect(() => {
+    document.title = 'Enter group code';
+  }, []);
   const [ButtonPopup, setButtonPopup] = useState(false);
 
   return (
