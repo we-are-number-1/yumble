@@ -1,5 +1,8 @@
 import React, {useEffect} from 'react';
 import axios from 'axios';
+import React, {useState} from 'react';
+import Help from '../Common/Help';
+import '../Common/Help.css';
 
 /**
  *
@@ -19,23 +22,35 @@ function SwipingPage() {
   return (
     <>
       <h1 className='Title'> yumble</h1>
+      <h1 className='TimeCounter'> Remaining time: 21s </h1>
       <div className='MakeCentre'>
-        <h1 className='TimeCounter'> Remaining time: s </h1>
+        <button className='YesOrNoButton' id='YesButton'>Keen!</button>
+        <button className='YesOrNoButton' id='NoButton'>Nope!</button>
         <div className="SwipeCard">
           <div className="CardImage"></div>
-          {/* Name */}
-          {/* <div><h5>Hi</h5></div> */}
-          <div id="grid">
-            <div id="item1">hello </div>
-            <div id="item2">hi </div>
-            <div id="item3">how</div>
-            <div id="item4">are </div>
-            <div id="item5">you</div>
-
           </div>
-
+          {/* <button className='SmallBtn' id='DetailsButton'>
+            View more detail
+          </button> */}
         </div>
+        <button className='BigBtn'>View on google maps</button>
       </div>
+      <button
+        onClick={() => setButtonPopup(true)}
+        className='SmallBtn'
+        id='HelpButton'
+      >
+        help?
+      </button>
+      <Help trigger={ButtonPopup} setTrigger={setButtonPopup}>
+        <text>
+          - Press yes if you are keen to potentially visit this restaurant
+          otherwise press no.
+          <br></br>
+          - View this restaurant on the map by clicking the green button
+          below the card.
+        </text>
+      </Help>
     </>
   );
 }
