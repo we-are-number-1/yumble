@@ -10,4 +10,3 @@ export const restaurantSchema = mongoose.Schema({
     default: 0,
   },
 });
-
