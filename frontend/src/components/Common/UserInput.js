@@ -1,23 +1,25 @@
 import React from 'react';
-import styled from 'styled-components';
+import './UserInput.css';
 
 /**
- *
+ * @param {*} props
  * @return {*}
  */
-function UserInput() {
-  const UserInput = styled.input`
-  outline: none;
-  width: 80vw;
-  border-radius: 20px;
-  border: 4px solid #000000;
-  font-size: 4vw;
-  margin: 1vw;
-`;
+function UserInput(props) {
+  let classname;
+
+  props.inputType == 'preferences' ?
+    classname = 'Preferences':
+    classname = 'JoinGroup';
 
   return (
     <>
-      <UserInput/>
+      <input
+        className={classname}
+        type={props.type}
+        placeholder={props.placeholder}
+        fontSize={props.fontSize}
+      />
     </>
   );
 }

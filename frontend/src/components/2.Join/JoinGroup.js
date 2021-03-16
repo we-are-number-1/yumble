@@ -1,19 +1,8 @@
 import {Link} from 'react-router-dom';
-// import styled from 'styled-components';
 import React, {useState} from 'react';
 import Help from '../Common/Help';
 import '../Common/Help.css';
-// import style from '../Common/Input.css';
 import UserInput from '../Common/UserInput';
-
-// const UserInput = styled.input`
-//   outline: none;
-//   width: 20vw;
-//   border-radius: 30px;
-//   border: 4px solid #000000;
-//   font-size: 4vw;
-//   margin: 1vw;
-// `;
 
 /**
  *
@@ -29,11 +18,10 @@ function GroupCode() {
         <div className="GroupCode_Box">
           Enter group code
           <div>
-            {/* <input className={style.input} placeholder="e.g P6aPE"
-              fontSize={3} type="text"></input> */}
             <UserInput
               input
               type="text"
+              inputType="joinGroup"
               placeholder="e.g P6aPE"
               fontSize={3}
             ></UserInput>

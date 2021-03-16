@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import StartPage from './components/1.Landing/StartPage';
 import CreateGroup from './components/3.CreateGroup/CreateGroup';
-import JoinGroup from './components/2.Joining/JoinGroup';
+import JoinGroup from './components/2.Join/JoinGroup';
 import Preferences from './components/4.Preferences/Preferences';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 

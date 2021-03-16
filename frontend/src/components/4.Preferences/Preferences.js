@@ -4,16 +4,6 @@ import Help from '../Common/Help';
 import '../Common/Help.css';
 import UserInput from '../Common/UserInput';
 import style from './Preferences.module.css';
-// import styled from 'styled-components';
-
-// const UserInput = styled.input`
-//   outline: none;
-//   width: 80vw;
-//   border-radius: 20px;
-//   border: 4px solid #000000;
-//   font-size: 4vw;
-//   margin: 1vw;
-// `;
 
 /**
  *
@@ -30,11 +20,10 @@ function Preferences() {
           Select your Preferences
         </h1>
         <div className={style.smallMargin}>
-          {/* <input className={style.input} placeholder="e.g P6aPE"
-              fontSize={3} type="text"></input> */}
           <UserInput
             input
             type="text"
+            inputType="preferences"
             placeholder="Enter your location"
             fontSize={3}
           ></UserInput>
