@@ -24,6 +24,10 @@ function CreateGroup() {
   // const [code, setCode] = useState(makeid());
   const [code, setCode] = useState(undefined);
 
+  const copyCode = () => {
+    navigator.clipboard.writeText(code);
+  };
+
   useEffect(() => {
     document.title = 'Create a group';
     setCode(makeid());
@@ -38,16 +42,12 @@ function CreateGroup() {
           Your group code is...
           <div className={styles.spacing}>{code}</div>
           <Link to='Preferences'>
-            <button className='GoButton'>Go</button>
+            <button onClick={() => copyCode()} className='GoButton'>
+              Go
+            </button>
           </Link>
           <br />
-          <button
-            onClick={() => {
-              navigator.clipboard.writeText(code);
-            }}
-            // className='SmallBtn'
-            id='copy'
-          >
+          <button onClick={() => copyCode()} id='copy'>
             Copy!
           </button>
         </div>
