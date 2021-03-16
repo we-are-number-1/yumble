@@ -5,13 +5,13 @@ import games from '../domain/Games';
  * @param {*} io
  */
 export function joinRoom(socket, io) {
-  socket.on('join_room', ({gameid, name}) => {
-    const game = games.getGame(gameid);
-    if (!game.session.host) {
-      game.session.host = socket;
+  socket.on('join_room', ({sessionId, name}) => {
+    const game = games.getGame(sessionId);
+    if (!game.session.hostSocket) {
+      game.session.hostSocket = socket;
     }
     game.session.addUser(socket, name);
-    socket.join(gameid);
+    socket.join(sessionId);
     io.to(gameid).emit('new_user', {users: game.session.users});
   });
 }
