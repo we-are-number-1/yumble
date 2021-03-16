@@ -7,6 +7,7 @@ import React from 'react';
 function CountdownPage() {
   return (
     <>
+      <p>Countdoww</p>
     </>
   );
 }

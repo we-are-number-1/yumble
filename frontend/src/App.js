@@ -8,7 +8,8 @@ import Lobby from './components/5.Lobby/LobbyPage';
 import Countdown from './components/6.Countdown/CountdownPage';
 import Swiping from './components/7.Swiping/SwipingPage';
 import Result from './components/8.Result/ResultPage';
-import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+import {BrowserRouter as Router, Switch, Route, Redirect}
+  from 'react-router-dom';
 
 /**
  *
@@ -24,9 +25,12 @@ function App() {
           <Route path="/JoinGroup" component={JoinGroup} />
           <Route path="/Preferences" component={Preferences} />
           <Route path="/Lobby" component={Lobby} />
-          <Route path="/Countdown" component={Countdown } />
+          <Route path="/Countdown" component={Countdown} />
           <Route path="/Swiping" component={Swiping} />
           <Route path="/Result" component={Result} />
+          <Route path="*">
+            <Redirect to="/"/>
+          </Route>
         </Switch>
       </div>
     </Router>

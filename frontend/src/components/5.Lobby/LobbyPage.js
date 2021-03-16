@@ -7,6 +7,7 @@ import React from 'react';
 function LobbyPage() {
   return (
     <>
+      <p>Lobby</p>
     </>
   );
 }
