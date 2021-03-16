@@ -14,7 +14,9 @@ export function disconnect(socket) {
         removeGame = gameid;
       }
     });
-    games.removeGame(removeGame);
+    if (removeGame) {
+      games.removeGame(removeGame);
+    }
     console.log('user disconnected with id:', socket.id);
   });
 }
