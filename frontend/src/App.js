@@ -1,28 +1,39 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
+import StartPage from './components/1.Landing/StartPage';
+import CreateGroup from './components/3.CreateGroup/CreateGroup';
+import JoinGroup from './components/2.Join/JoinGroup';
+import Preferences from './components/4.Preferences/Preferences';
+import Lobby from './components/5.Lobby/LobbyPage';
+import Countdown from './components/6.Countdown/CountdownPage';
+import Swiping from './components/7.Swiping/SwipingPage';
+import Result from './components/8.Result/ResultPage';
+import {BrowserRouter as Router, Switch, Route, Redirect}
+  from 'react-router-dom';
 
 /**
- * Main entry point for the application
- * @return {Object} React component
-*/
+ *
+ * @return {*}
+ */
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="BackGroundImage">
+        <Switch>
+          <Route path="/" exact component={StartPage} />
+          <Route path="/CreateGroup" component={CreateGroup} />
+          <Route path="/JoinGroup" component={JoinGroup} />
+          <Route path="/Preferences" component={Preferences} />
+          <Route path="/Lobby" component={Lobby} />
+          <Route path="/Countdown" component={Countdown} />
+          <Route path="/Swiping" component={Swiping} />
+          <Route path="/Result" component={Result} />
+          <Route path="*">
+            <Redirect to="/"/>
+          </Route>
+        </Switch>
+      </div>
+    </Router>
   );
 }
 

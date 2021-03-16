@@ -20,7 +20,7 @@ export class SocketSession {
    * @param {*} name, users input nickname
    */
   addUser(socket, name) {
-    this.users[socket.id] = {socket: socket, name: name};
+    this.users.set(socket.id, {socket: socket, name: name});
   }
 
   /**
