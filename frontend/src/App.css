@@ -2,6 +2,11 @@
   text-align: center;
 }
 
+#map {
+  height: 400px;
+  width: 10%;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
