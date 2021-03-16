@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {Link} from 'react-router-dom';
 import Help from '../Common/Help';
 import '../Common/Help.css';
@@ -8,6 +8,10 @@ import '../Common/Help.css';
  * @return {*}
  */
 function StartPage() {
+  useEffect(() => {
+    document.title = 'Yumble: Find places to eat, fast';
+  }, []);
+
   const [ButtonPopup, setButtonPopup] = useState(false);
 
   return (
