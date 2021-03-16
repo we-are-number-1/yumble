@@ -5,7 +5,7 @@
  */
  export function setPreferences(socket, cb) {
     socket.on('set_preferences', (preferences) => {
-      // Call back function with next round data.
+      // Call back function with object containing updated preferences
       cb(preferences);
     });
   }
