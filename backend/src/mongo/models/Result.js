@@ -13,3 +13,4 @@ const resultSchema = mongoose.Schema({
 });
 
 export default mongoose.model('Result', resultSchema);
+
