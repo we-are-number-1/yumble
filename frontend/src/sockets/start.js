@@ -3,6 +3,6 @@
  * @param {*} socket
  * @param {*} gameId
  */
-export function start(socket, gameId) {
-  socket.emit('start', {gameId});
+export function start(socket, sessionId) {
+  socket.emit('start', {sessionId});
 }
