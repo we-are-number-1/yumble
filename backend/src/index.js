@@ -5,14 +5,27 @@ import socketio from 'socket.io';
 import mongoose from 'mongoose';
 import games from './domain/Games';
 
+// Routes
+import sessionsRouteAPI from './routes/sessions';
+import preferencesRouteAPI from './routes/preferences';
+import resultsRouteAPI from './routes/results';
+
 const app = express();
 const server = http.createServer(app);
 const io = socketio(server);
 
 require('dotenv').config();
+app.use(express.json());
+
+// API
+app.use('/sessions', sessionsRouteAPI);
+app.use('/preferences', preferencesRouteAPI);
+app.use('/results', resultsRouteAPI);
 
 const mongoUri = process.env.ATLAS_URI;
-mongoose.connect(mongoUri, {useNewUrlParser: true, useUnifiedTopology: true},
+mongoose.connect(
+    mongoUri,
+    {useNewUrlParser: true, useUnifiedTopology: true},
     (err) => {
       if (err) {
         throw err;
@@ -24,15 +37,9 @@ mongoose.connect(mongoUri, {useNewUrlParser: true, useUnifiedTopology: true},
 
 const PORT = process.env.PORT || 3001;
 
-app.use(express.json());
-
 if (process.env.NODE_ENV == 'production') {
   app.use(express.static(path.join(__dirname, 'build')));
 }
-
-app.get('/api', (req, res) => {
-  res.send('Hello World');
-});
 
 if (process.env.NODE_ENV == 'production') {
   app.get('/*', (req, res) => {
@@ -47,10 +54,16 @@ io.on('connection', (socket) => {
   });
 
   // This is just so eslint does not throw error
-  games.newGame(io, {sessionId: 1234, preferences: {
-    roundInterval: 30000,
-  },
-  }, null);
+  games.newGame(
+      io,
+      {
+        sessionId: 1234,
+        preferences: {
+          roundInterval: 30000,
+        },
+      },
+      null,
+  );
 });
 
 server.listen(PORT, () => {
