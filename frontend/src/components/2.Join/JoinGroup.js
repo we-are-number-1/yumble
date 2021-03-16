@@ -13,6 +13,7 @@ function GroupCode() {
     document.title = 'Enter group code';
   }, []);
   const [ButtonPopup, setButtonPopup] = useState(false);
+  const [code, setCode] = useState(undefined);
 
   return (
     <>
@@ -27,10 +28,14 @@ function GroupCode() {
               inputType='joinGroup'
               placeholder='e.g P6aPE'
               fontSize={3}
+              onChange={(e) => setCode(e.target.value)}
             ></UserInput>
           </div>
           <Link to='Preferences'>
-            <button className='GoButton'>Go</button>
+            <button onClick={() => console.log(code)} className='GoButton'>
+              Go
+            </button>
+            {/* need to check if this code inpputed is correct */}
           </Link>
         </div>
       </div>
