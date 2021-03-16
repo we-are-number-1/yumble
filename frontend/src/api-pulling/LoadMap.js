@@ -1,5 +1,6 @@
 import {Loader} from '@googlemaps/js-api-loader';
 
+// eslint-disable-next-line valid-jsdoc
 /**
  * A function that loads Google's map for the first time.
  * NOTE: Added map div in index.html.
@@ -7,7 +8,7 @@ import {Loader} from '@googlemaps/js-api-loader';
  * Add loadMap() function to index.js once complete.
  * @return {Objects} Google Map and Marker
  */
-export default function loadMap() {
+export default function loadMap(componentRef) {
   let map;
   let marker;
 
@@ -18,7 +19,7 @@ export default function loadMap() {
 
   // Need to change document.getElementById('map') to it a React component.
   loader.load().then(() => {
-    map = new google.maps.Map(document.getElementById('map'), {
+    map = new google.maps.Map(componentRef, {
       /**
              * Lat (North Positive and South Negative)
              * Lng: (East positive and West Negative)
