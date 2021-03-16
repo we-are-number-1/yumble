@@ -79,6 +79,18 @@
   background: silver;
 }
 
+#copy {
+  cursor: pointer;
+  outline: none;
+  font-family: Comic Sans MS;
+  font-size: 2vw;
+  border-radius: 30px;
+  border-color: black;
+  border-width: 5px;
+  padding: 0vw 3vw 0vw 3vw;
+  background-color: rgb(35, 164, 224);
+}
+
 #HelpButton {
   padding: 0.5vw 1vw 0.5vw 1vw;
 }
