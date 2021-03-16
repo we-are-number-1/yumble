@@ -5,12 +5,12 @@
 export class SocketSession {
   /**
      * @param {*} sessionId, Unique identifier for a session
-     * @param {*} host, socket for the host of the session
+     * @param {*} hostSocket, socket for the host of the session
      * @param {*} preferences, preferences used to generate swipe deck and timer
      */
   constructor(sessionId, host, preferences) {
     this.sessionId = sessionId;
-    this.host = host;
+    this.hostSocket = host;
     this.preferences = preferences;
     this.users = new Map();
   }
