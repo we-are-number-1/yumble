@@ -7,12 +7,14 @@ export function disconnect(socket) {
   socket.on('disconnect', () => {
     const socketid = socket.id;
     const activeGames = games.getGames();
+    let removeGame = null;
     activeGames.forEach(([gameid, game]) => {
       game.session.users.filter((userid) => userid != socketid);
       if (game.session.users.size == 0) {
-        games.removeGame(gameid);
+        removeGame = gameid;
       }
     });
+    games.removeGame(removeGame);
     console.log('user disconnected with id:', socket.id);
   });
 }
