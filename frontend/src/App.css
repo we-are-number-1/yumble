@@ -139,6 +139,16 @@
   padding: 1vw 4.7vw 1vw 4.7vw;
 }
 
+#GoogleMaps_btn {
+  background-color: #59D47C;
+  width: 350px;
+  font-size: 2vw;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
 /* CreateGroup */
 .GroupCode_Box {
   outline: none;
@@ -168,5 +178,3 @@
 .GoButton:hover {
   background: cyan;
 }
-
-
