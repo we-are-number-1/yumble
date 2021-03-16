@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import Restaurant from './Restaurant';
+import restaurantSchema from './Restaurant';
 
 const resultSchema = mongoose.Schema({
   sessionId: {
@@ -7,7 +7,7 @@ const resultSchema = mongoose.Schema({
     required: true,
   },
   restaurant: {
-    type: [Restaurant],
+    type: [restaurantSchema],
     default: [],
   },
 });
