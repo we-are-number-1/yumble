@@ -137,34 +137,28 @@
   margin: 0;
 }
 
-.CreateGroup_btn {
+.Btn {
   cursor: pointer;
   outline: none;
   font-family: Comic Sans MS;
   font-size: 3vw;
   border-radius: 30px;
   border-color: black;
-  border-width: 5px;
+  border-width: 5px; 
+}
+
+.Btn:hover {
+  background: silver;
+}
+
+#CreateGroup_btn {
   padding: 1vw 3vw 1vw 3vw;
   margin-bottom: 1vw;
   margin-top: 2vw;
 }
-.CreateGroup_btn:hover {
-  background: silver;
-}
 
-.JoinGroup_btn {
-  cursor: pointer;
-  outline: none;
-  font-family: Comic Sans MS;
-  font-size: 3vw;
-  border-radius: 30px;
-  border-color: black;
-  border-width: 5px;
+#JoinGroup_btn {
   padding: 1vw 4.7vw 1vw 4.7vw;
-}
-.JoinGroup_btn:hover {
-  background: silver;
 }
 
 /* CreateGroup */

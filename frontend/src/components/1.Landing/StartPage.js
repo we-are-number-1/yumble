@@ -16,10 +16,10 @@ function StartPage() {
         <h1 className="StartTitle">yumble</h1>
 
         <Link to="/CreateGroup">
-          <button className="CreateGroup_btn">Create group</button>
+          <button className="Btn" id="CreateGroup_btn">Create group</button>
         </Link>
         <Link to="/JoinGroup">
-          <button className="JoinGroup_btn">Join group</button>
+          <button className="Btn" id="JoinGroup_btn">Join group</button>
         </Link>
       </div>
 
