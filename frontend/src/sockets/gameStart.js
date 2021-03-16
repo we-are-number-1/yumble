@@ -1,0 +1,7 @@
+/**
+ * Emits socket event to indicate start of a game.
+ * @param {*} socket
+ */
+export function gameStart(socket) {
+  socket.emit('game_start');
+}
