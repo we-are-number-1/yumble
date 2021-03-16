@@ -13,7 +13,10 @@ function GroupCode() {
     document.title = 'Enter group code';
   }, []);
   const [ButtonPopup, setButtonPopup] = useState(false);
-  const [code, setCode] = useState(undefined);
+  // use state to store code
+  // unsure if we can pass the code using the routing method we hav
+  // const [code, setCode] = useState(undefined);
+  const [code, setCode] = useState('temp');
 
   return (
     <>
@@ -28,14 +31,16 @@ function GroupCode() {
               inputType='joinGroup'
               placeholder='e.g P6aPE'
               fontSize={3}
+              // on change currently doesnt work
               onChange={(e) => setCode(e.target.value)}
             ></UserInput>
           </div>
-          <Link to='Preferences'>
+          <Link to={'Preferences/' + code}>
+            {/* need to change to check or whatnot */}
             <button onClick={() => console.log(code)} className='GoButton'>
               Go
             </button>
-            {/* need to check if this code inpputed is correct */}
+            {/* need to check if this code inputted is correct */}
           </Link>
         </div>
       </div>
