@@ -187,12 +187,3 @@
   margin: 1vw;
   font-size: 50pt;
 }
- .ResultCenter {
-  height: 80vh;
-  width: 80vw;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  /* margin: 0px 150px; */
- }
