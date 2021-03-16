@@ -5,9 +5,11 @@ import {Loader} from '@googlemaps/js-api-loader';
  * NOTE: Added map div in index.html.
  * Once the map component is finished then it can be replaced.
  * Add loadMap() function to index.js once complete.
+ * @return {Objects} Google Map and Marker
  */
 export default function loadMap() {
   let map;
+  let marker;
 
   const loader = new Loader({
     apiKey: 'AIzaSyCCyeBn-OwIHA-mpBzL42G7fu3_dpe8oC8',
@@ -26,9 +28,11 @@ export default function loadMap() {
       zoom: 18,
     });
 
-    new google.maps.Marker({
+    marker = new google.maps.Marker({
       position: {lat: -36.8523, lng: 174.76914},
       map: map,
     });
   });
+
+  return {map, marker};
 }
