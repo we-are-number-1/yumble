@@ -10,6 +10,7 @@ import styles from './CreateGroup.module.css';
  * @return {*}
  */
 function makeid() {
+  // commented out atm as the end point has not been implemented yet
   // axios.post('createSession').then((response) => {
   //   console.log(response);
   // });
