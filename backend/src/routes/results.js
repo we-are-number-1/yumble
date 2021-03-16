@@ -1,8 +1,8 @@
 import express from 'express';
-import Result from '../mongo/modelsResult';
+import Result from '../mongo/models/Result';
 const router = express.Router();
 
-// Post: Creating a result document in the result collection
+// Post: Creating a result object in the result collection
 router.post('/', async (req, res) => {
   const result = new Result({
     sessionId: req.body.sessionId, result: req.body.result,
