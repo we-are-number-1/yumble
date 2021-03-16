@@ -8,13 +8,7 @@ function Icon() {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      // x="0"
-      // y="0"
-      // enableBackground="new 0 0 512 512"
-      // version="1.1"
-      // viewBox="-800 -800 2000 2000"
       viewBox="-90 -90 600 600"
-      // xmlSpace="preserve"
       width="30"
       height="30"
     >
