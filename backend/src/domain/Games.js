@@ -39,6 +39,13 @@ export class Games {
         swipeDeck,
     ));
   }
+
+  /**
+   * @param {*} gameid
+   */
+  removeGame(gameid) {
+    this.activeGames.delete(gameid);
+  }
 }
 
 export default new Games();
