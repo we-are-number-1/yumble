@@ -4,20 +4,26 @@ import Help from '../Common/Help';
 import '../Common/Help.css';
 import styles from './CreateGroup.module.css';
 // import styled from 'styled-components';
+import axios from 'axios';
 
 /**
- *
+ * Currently a dummy method to randomly generate a code
  * @return {*}
  */
 function makeid() {
-  let result = '';
-  const characters =
-    'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-  const charactersLength = characters.length;
-  for (let i = 0; i < 5; i++) {
-    result += characters.charAt(Math.floor(Math.random() * charactersLength));
-  }
-  return result;
+  axios.post('createSession').then((response) => {
+    console.log(response);
+  });
+  return 'PING';
+  // let result = '';
+  // const characters =
+  //   'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  // const charactersLength = characters.length;
+  // for (let i = 0; i < 5; i++) {
+  //   result += characters.charAt(Math.floor(Math.random()
+  //  * charactersLength));
+  // }
+  // return result;
 }
 
 /**
