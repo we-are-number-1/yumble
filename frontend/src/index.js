@@ -6,7 +6,8 @@ import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
     <React.StrictMode>
-      <Map />
+      <Map restaurantLocations={[{lat: -36.8523, lng: 174.76914}]}
+        currentRestaurantIndex={0}/>
     </React.StrictMode>,
     document.getElementById('root'),
 );

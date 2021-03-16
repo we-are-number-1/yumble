@@ -1,14 +1,14 @@
 import {Loader} from '@googlemaps/js-api-loader';
 
-// eslint-disable-next-line valid-jsdoc
 /**
- * A function that loads Google's map for the first time.
- * NOTE: Added map div in index.html.
- * Once the map component is finished then it can be replaced.
- * Add loadMap() function to index.js once complete.
- * @return {Objects} Google Map and Marker
+ * loadMap() is a function which loads a map into the program
+ * for the first time.
+ * @param {Ref} componentRef - Reference to Map Component
+ * @param {JSON} restaurantLocation - Restaurant location which
+ * the map needs to point to.
+ * @return {Object} Marker and Map objects
  */
-export default function loadMap(componentRef) {
+export default function loadMap(componentRef, restaurantLocation) {
   let map;
   let marker;
 
@@ -17,20 +17,18 @@ export default function loadMap(componentRef) {
     version: 'weekly',
   });
 
-  // Need to change document.getElementById('map') to it a React component.
   loader.load().then(() => {
     map = new google.maps.Map(componentRef, {
       /**
              * Lat (North Positive and South Negative)
              * Lng: (East positive and West Negative)
-             * Currently, the map is pointing to UOA
       */
-      center: {lat: -36.8523, lng: 174.76914},
+      center: restaurantLocation,
       zoom: 18,
     });
 
     marker = new google.maps.Marker({
-      position: {lat: -36.8523, lng: 174.76914},
+      position: restaurantLocation,
       map: map,
     });
   });
