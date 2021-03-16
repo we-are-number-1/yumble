@@ -2,8 +2,10 @@ import {Link} from 'react-router-dom';
 import React, {useState, useEffect} from 'react';
 import Help from '../Common/Help';
 import '../Common/Help.css';
-import UserInput from '../Common/UserInput';
+// import UserInput from '../Common/UserInput';
+import AutocompleteSearchBox from './AutocompleteSearchBox';
 import style from './Preferences.module.css';
+
 
 /**
  *
@@ -22,15 +24,8 @@ function Preferences() {
       <div className='MakeCentre'>
         <h1 className={style.largeMargin}>Select your Preferences</h1>
         <div className={style.smallMargin}>
-          <UserInput
-            input
-            type='text'
-            inputType='preferences'
-            placeholder='Enter your location'
-            fontSize={3}
-          ></UserInput>
+          <AutocompleteSearchBox/>
         </div>
-
         <button className='GoButton'>Go</button>
         <Link to='/'>
           <button className='SmallBtn' id='BackButton'>
