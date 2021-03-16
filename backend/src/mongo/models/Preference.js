@@ -18,8 +18,8 @@ const preferenceSchema = mongoose.Schema({
     default: [],
   },
   price: {
-    type: Number,
-    required: true,
+    type: [Number],
+    default: [5, 15],
   },
 });
 
