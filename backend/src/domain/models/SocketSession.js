@@ -8,7 +8,7 @@ export class SocketSession {
      * @param {*} hostSocket, socket for the host of the session
      * @param {*} preferences, preferences used to generate swipe deck and timer
      */
-  constructor(sessionId, host, preferences) {
+  constructor(sessionId, hostSocket, preferences) {
     this.sessionId = sessionId;
     this.hostSocket = host;
     this.preferences = preferences;
