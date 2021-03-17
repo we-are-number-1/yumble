@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-
 import PlacesAutocomplete, {
   geocodeByAddress,
   getLatLng,
@@ -31,15 +30,14 @@ const AutocompleteSearchBox = () => {
         onSelect={handleSelect}
         searchOptions={searchOptions}
       >
-        {({getInputProps, suggestions, getSuggestionItemProps, loading}) => (
+        {({getInputProps, suggestions, getSuggestionItemProps}) => (
           <div>
             <p>Latitude: {coordinates.lat}</p>
             <p>Longitude: {coordinates.lng}</p>
 
-            <input {...getInputProps({placeholder: 'Enter a place'})} />
+            <input className={'Preferences'}
+              {...getInputProps({placeholder: 'Enter a place'})} />
             <div>
-              {loading ? <div>...loading</div> : null}
-
               {suggestions.map((suggestion, index) => {
                 const style = {
                   backgroundColor: suggestion.active ? '#41b6e6' : '#fff',

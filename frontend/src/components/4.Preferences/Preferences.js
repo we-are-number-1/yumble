@@ -2,7 +2,6 @@ import {Link} from 'react-router-dom';
 import React, {useState, useEffect} from 'react';
 import Help from '../Common/Help';
 import '../Common/Help.css';
-// import UserInput from '../Common/UserInput';
 import AutocompleteSearchBox from './AutocompleteSearchBox';
 import style from './Preferences.module.css';
 
