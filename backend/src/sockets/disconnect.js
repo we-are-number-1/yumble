@@ -5,17 +5,17 @@ import games from '../domain/Games';
  */
 export function disconnect(socket) {
   socket.on('disconnect', () => {
-    const socketid = socket.id;
+    const socketId = socket.id;
     const activeGames = games.getGames();
-    let removeGame = null;
-    activeGames.forEach(([gameid, game]) => {
-      game.session.users.filter((userid) => userid != socketid);
+    let sessionId = null;
+    activeGames.forEach((game) => {
+      game.session.users.filter((userId) => userId != socketId);
       if (game.session.users.size == 0) {
-        removeGame = gameid;
+        sessionId = game.session.sessionId;
       }
     });
-    if (removeGame) {
-      games.removeGame(removeGame);
+    if (sessionId) {
+      games.removeGame(sessionId);
     }
     console.log('user disconnected with id:', socket.id);
   });
