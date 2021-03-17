@@ -6,7 +6,7 @@ const resultSchema = mongoose.Schema({
     type: String,
     required: true,
   },
-  restaurant: {
+  restaurants: {
     type: [restaurantSchema],
     default: [],
   },
