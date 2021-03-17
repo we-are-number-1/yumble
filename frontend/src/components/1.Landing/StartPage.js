@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {Link} from 'react-router-dom';
-import Help from '../Common/Help';
 import '../Common/Help.css';
+import MapModal from '../Map/MapModal';
 
 /**
  *
@@ -34,12 +34,7 @@ function StartPage() {
       >
         help?
       </button>
-      <Help trigger={ButtonPopup} setTrigger={setButtonPopup}>
-        <p>
-          Press the [create group] to create a lobby. To join a group, press the
-          [join group] to join a group
-        </p>
-      </Help>
+      <MapModal trigger={ButtonPopup} setTrigger={setButtonPopup} />
     </>
   );
 }
