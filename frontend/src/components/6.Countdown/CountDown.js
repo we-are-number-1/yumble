@@ -1,12 +1,13 @@
-import {Link} from 'react-router-dom';
+import {Link, useHistory} from 'react-router-dom';
 import React, {useState} from 'react';
 import Help from '../Common/Help';
 import '../Common/Help.css';
-import {useHistory} from 'react-router-dom';
 
 const CountDown = () => {
   const [ButtonPopup, setButtonPopup] = useState(false);
   const [seconds, setSeconds] = React.useState(3);
+  // const [showResults, setShowResults] = React.useState(false);
+  // const onClickNoShow = () => setShowResults(false);
 
   React.useEffect(() => {
     if (seconds >= 0) {
@@ -18,7 +19,7 @@ const CountDown = () => {
   /**
    */
   function goNextPge() {
-    history.push('/Lobby');
+    history.push('/Result');
   }
 
   return (
@@ -26,7 +27,8 @@ const CountDown = () => {
       <h1 className='Title'>yumble</h1>
       <div className='MakeCentre'>
         <div>
-          <div className='StartTitle'>{seconds}</div>
+          {seconds == 0 ? <div className='StartTitle'>Go!</div>:
+          <div className='StartTitle'>{seconds}</div>}
         </div>
       </div>
       <Link to='/Lobby'>

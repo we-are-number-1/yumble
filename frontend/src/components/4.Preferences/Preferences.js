@@ -34,7 +34,6 @@ function Preferences() {
           <button className="GoButton">Go</button>
         </Link>
 
-        <button className='GoButton'>Go</button>
         <Link to='/'>
           <button className='SmallBtn' id='BackButton'>
             Back
@@ -62,5 +61,4 @@ function Preferences() {
     </>
   );
 }
-
 export default Preferences;
