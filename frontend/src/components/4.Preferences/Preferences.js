@@ -26,6 +26,9 @@ function Preferences() {
             fontSize={3}
           ></UserInput>
         </div>
+        <Link to="/Lobby">
+          <button className="GoButton">Go</button>
+        </Link>
 
         <button className='GoButton'>Go</button>
         <Link to='/'>
