@@ -10,6 +10,10 @@ const Lobby = () => {
 
   {/* link this to backend.
   Backend just needs to push data into People and NumOfCusines array */}
+  let GroupCode = '';
+  GroupCode = 'HX8192';
+
+
   const People = [
     'Bob',
     'Alex',
@@ -23,17 +27,19 @@ const Lobby = () => {
   ];
   People.push('meanie');
 
+
   const NumOfCusines = [
-    'Thai, ',
-    'Mediterranean, ',
-    'Burger, ',
-    'European',
   ];
-  NumOfCusines.push(', ' + 'Chinese');
 
+  NumOfCusines.length == 0 ? NumOfCusines.push('Thai') : null;
 
-  let GroupCode = '';
-  GroupCode = 'HX8192';
+  NumOfCusines.length > 0 ? (
+    NumOfCusines.push(', ' + 'Burger'),
+    NumOfCusines.push(', ' + 'European'),
+    NumOfCusines.push(', ' + 'Mediterranean'),
+    NumOfCusines.push(', ' + 'Chinese')
+    ) : null;
+
 
   const peopleList = () => {
     const peopleArray = [];
@@ -50,6 +56,7 @@ const Lobby = () => {
     }
     return peopleArray;
   };
+
 
   return (
     <>

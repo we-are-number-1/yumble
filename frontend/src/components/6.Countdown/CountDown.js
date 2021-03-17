@@ -6,27 +6,31 @@ import '../Common/Help.css';
 const CountDown = () => {
   const [ButtonPopup, setButtonPopup] = useState(false);
   const [seconds, setSeconds] = React.useState(3);
+  const history = useHistory();
+
 
   React.useEffect(() => {
-    if (seconds >= 0) {
-      setTimeout(() => setSeconds(seconds - 1), 1000);
-    }
+    seconds >= 0 ? setTimeout(() => setSeconds(seconds - 1), 1000) : null;
   });
 
-  const history = useHistory();
+
   /**
    */
   function goNextPge() {
     history.push('/Result');
   }
 
+
   return (
     <>
       <h1 className='Title'>yumble</h1>
       <div className='MakeCentre'>
         <div>
-          {seconds == 0 ? <div className='StartTitle'>Go!</div>:
-          <div className='StartTitle'>{seconds}</div>}
+          {seconds == 0 ? (
+            <div className='StartTitle'>Go!</div>
+          ) : (
+            <div className='StartTitle'>{seconds}</div>
+          )}
         </div>
       </div>
       <button
