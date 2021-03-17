@@ -210,7 +210,7 @@
   color: white;
   font-family: Comic Sans MS;
   font-size: 4vw;
-  margin: 30px;
+  margin-top: 10px;
 }
 
 .YesOrNoButton{
@@ -240,23 +240,49 @@
   outline: none;
   border: 5px solid #000000;
   background-color: white;
+  cursor: pointer;
+  height: 800px;
+  width: 400px;
+  margin-top: 5px;
   text-align: left;
   font-family: Comic Sans MS;
   border-radius: 30px;
   padding: 2vw;
-  font-size: 3vw;
 }
 
 .CardImage{
   border: 5px solid #000000;
   position: relative;
-  height: 350px; 
-  width: 350px; 
+  height: 330px; 
+  width: 330px; 
   border-radius: 30px;
-  padding-left: 30px;
+  margin-left: 25px;
+  /* padding-left: 50px; */
 }
 
 .PlaceDetails{
-  padding-top: 20px;
+  margin: 1px;
+}
 
+/* #DetailsButton{
+  position: relative;
+  margin-left: 2em;
+} */
 
+#name{
+  font-size: 54px;
+  font-weight: bold;
+}
+
+#location, #price, #cuisine{
+  font-size: 44px;
+  font-weight: lighter ;
+}
+
+#rating {
+  font-size: 40px;
+  text-align: end;
+  padding-bottom: -10px;
+  /* padding-left: 200px; */
+  
+}
