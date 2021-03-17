@@ -20,11 +20,11 @@ export class Games {
 
   /**
     *
-    * @param {*} id
+    * @param {*} sessionId
     * @return {*} game for give id
     */
-  getGame(id) {
-    return this.activeGames[id];
+  getGame(sessionId) {
+    return this.activeGames[sessionId];
   }
 
   /**
@@ -33,11 +33,19 @@ export class Games {
     * @param {*} swipeDeck, list of restaurants
     */
   newGame(io, session, swipeDeck) {
-    this.activeGames[session.sessionId] = new Game(
+    this.activeGames.set(session.sessionId, new Game(
         io,
         session,
         swipeDeck,
-    );
+    ));
+  }
+
+  /**
+   *
+   * @param {*} sessionId
+   */
+  removeGame(sessionId) {
+    this.activeGames.delete(sessionId);
   }
 }
 
