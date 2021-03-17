@@ -23,24 +23,29 @@ export class Game {
    */
   nextRound(callback) {
     this.round++;
-    if (this.round == this.swipeDeck.length) {
+    if (this.round === this.swipeDeck.length) {
       endGame();
+      return;
     }
+
+    this.io.to(this.session.sessionId).emit(
+        'next_round',
+        {
+          nextRoundStartTime: Date.now() + this.roundInterval*1000,
+          currentRound: round,
+        },
+    );
+
     setTimeout(
-        callback,
+        nextRound(),
         this.roundInterval*1000,
-        Date.now() + this.roundInterval*1000,
-        this.swipeDeck[round],
     );
   }
 
   /**
-   * This disconnects the client side user from the lobby
+   * This emits an end_game event to all users in the session
    */
   endGame() {
-    this.session.users.forEach((e) => {
-      e.socket.disconnect(true);
-    });
+    this.io.to(this.session.sessionId).emit('end_game');
   }
 }
-
