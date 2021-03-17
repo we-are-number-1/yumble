@@ -20,16 +20,3 @@ const restaurantSchema = mongoose.Schema({
 });
 
 export default mongoose.model('Restaurant', restaurantSchema);
-// TODO: Restaurant Model
-
-export const restaurantSchema = mongoose.Schema({
-  name: {
-    type: String,
-    required: true,
-  },
-  numberOfVotes: {
-    type: Number,
-    default: 0,
-  },
-});
-
