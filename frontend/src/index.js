@@ -1,13 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Map from './components/Map/Map';
 import './index.css';
+import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
     <React.StrictMode>
-      <Map restaurantLocations={[{lat: -36.8523, lng: 174.76914}]}
-        currentRestaurantIndex={0}/>
+      <App />
     </React.StrictMode>,
     document.getElementById('root'),
 );

@@ -9,22 +9,28 @@ import styles from './Map.module.css';
 function Map({restaurantLocations, currentRestaurantIndex}) {
   const [map, setMap] = useState(null);
   const [marker, setMarker] = useState(null);
-
   const componentRef = useRef();
+
+  // This was declared here because the API needed reference to this component
   const outputComponent = <div id='map' className={styles.map}
     ref={componentRef}></div>;
+
 
   /* The method either loads the map for the first time or
      it changes the position the map is pointing to.
   */
   useEffect(() => {
     if (map === null && marker === null) {
-      const {marker, map} = loadMap(componentRef.current,
-          restaurantLocations[currentRestaurantIndex]);
+      loadMap(componentRef.current,
+          restaurantLocations[currentRestaurantIndex], setMap, setMarker);
       setMap(map);
       setMarker(marker);
+    } else {
+      map.setCenter(restaurantLocations[currentRestaurantIndex]);
+      marker.setPosition(restaurantLocations[currentRestaurantIndex]);
     }
   }, [restaurantLocations, currentRestaurantIndex]);
+
 
   return outputComponent;
 }

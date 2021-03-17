@@ -1,14 +1,14 @@
 import {Loader} from '@googlemaps/js-api-loader';
 
 /**
- * loadMap() is a function which loads a map into the program
- * for the first time.
- * @param {Ref} componentRef - Reference to Map Component
- * @param {JSON} restaurantLocation - Restaurant location which
- * the map needs to point to.
- * @return {Object} Marker and Map objects
+ *
+ * @param {*} componentRef
+ * @param {*} restaurantLocation
+ * @param {*} setMap
+ * @param {*} setMarker
  */
-export default function loadMap(componentRef, restaurantLocation) {
+export default function loadMap(componentRef, restaurantLocation,
+    setMap, setMarker) {
   let map;
   let marker;
 
@@ -31,7 +31,8 @@ export default function loadMap(componentRef, restaurantLocation) {
       position: restaurantLocation,
       map: map,
     });
-  });
 
-  return {map, marker};
+    setMap(map);
+    setMarker(marker);
+  });
 }
