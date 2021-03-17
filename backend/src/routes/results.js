@@ -3,18 +3,14 @@ import Result from '../mongo/models/Result';
 const router = express.Router();
 
 // GET: Get results of top three restaurants
-router.get('/results/:id', async (req, res) => {
-  const result = new Result({
-    sessionId: req.params.id,
-    restaurants: req.result.restaurant,
+router.get('/:id', async (req, res) => {
+  Result.find({sessionId: req.params.id}, function(err, docs) {
+    if (error) {
+      console.log(err);
+    } else {
+      res.status(200).json(docs);
+    }
   });
-
-  try {
-    const newResult = await result.save();
-    res.status(200).json(newResult);
-  } catch (error) {
-    res.status(500).json({message: error.message});
-  }
 });
 
 export default router;
