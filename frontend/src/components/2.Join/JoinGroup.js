@@ -19,6 +19,8 @@ function GroupCode() {
   const [code, setCode] = useState('temp');
   const [name, setName] = useState('Bob');
 
+  console.log(name);
+
   return (
     <>
       <h1 className='Title'>yumble</h1>
@@ -33,7 +35,7 @@ function GroupCode() {
               placeholder='e.g Bob'
               fontSize={3}
               // on change currently doesnt work
-              onChange={(e) => setCode(e.target.value)}
+              onChange={(e) => setName(e.target.value)}
             ></UserInput>
           </div>
         </div>
