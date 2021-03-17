@@ -4,7 +4,7 @@
  * @param {*} io
  */
 export function updatePreference(socket, io) {
-  socket.on('set_preferences', ({sessionID, preferences}) => {
-    io.to(sessionID).emit('set_preferences', preferences);
+  socket.on('set_preferences', ({sessionId, preferences}) => {
+    io.to(sessionId).emit('set_preferences', preferences);
   });
 }
