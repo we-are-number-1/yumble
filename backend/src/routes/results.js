@@ -6,7 +6,7 @@ const router = express.Router();
 router.get('/results/:id', async (req, res) => {
   const result = new Result({
     sessionId: req.params.id,
-    restaurant: req.result.restaurant,
+    restaurants: req.result.restaurant,
   });
 
   try {
