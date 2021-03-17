@@ -3,16 +3,19 @@ import Result from '../mongo/models/Result';
 const router = express.Router();
 
 // GET: Get results of top three restaurants
-router.get('/:id', async (req, res) => {
+router.get('/:id', async (req, res, next) => {
   let result;
   try {
-    result = await Result.find({sessionId: req.params.id});
+    result = await Result.find({sessionID: req.params.id});
     if (result == null) {
       return res.status(404).json({message: 'Can not find the result'});
     }
   } catch (error) {
     res.status(500).json({message: error.message});
   }
+
+  res.json(result);
+  next();
 });
 
 // Post: Creating a result object in the result collection
