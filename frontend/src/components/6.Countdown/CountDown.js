@@ -30,9 +30,6 @@ const CountDown = () => {
         </div>
       </div>
       <Link to='/Lobby'>
-        <button className='SmallBtn' id='BackButton'>
-          Back
-        </button>{' '}
       </Link>
       <button
         onClick={() => setButtonPopup(true)}
