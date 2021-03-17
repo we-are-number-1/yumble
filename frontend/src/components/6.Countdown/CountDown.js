@@ -6,8 +6,6 @@ import '../Common/Help.css';
 const CountDown = () => {
   const [ButtonPopup, setButtonPopup] = useState(false);
   const [seconds, setSeconds] = React.useState(3);
-  // const [showResults, setShowResults] = React.useState(false);
-  // const onClickNoShow = () => setShowResults(false);
 
   React.useEffect(() => {
     if (seconds >= 0) {
