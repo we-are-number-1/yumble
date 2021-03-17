@@ -187,33 +187,3 @@
   margin: 1vw;
   font-size: 50pt;
 }
-
-.ShareButton {
-  cursor: pointer;
-  outline: none;
-  font-family: Comic Sans MS;
-  font-size: 2vw;
-  border-radius: 30px;
-  border-color: black;
-  border-width: 5px;
-  padding: 0vw 1.5vw 0vw 1.5vw;
-  background-color: yellow;
-  position: absolute;
-  top: 0;
-  right: 0;
-  margin: 2vw
-}
-
-.ShareButton:hover {
-  background:white;
-}
-
-/* Results Page */
-.ResultTitle {
-  -webkit-text-stroke: 4px black;
-  color: white;
-  font-family: Comic Sans MS;
-  margin: 1vw;
-  font-size: 50pt;
-}
-
