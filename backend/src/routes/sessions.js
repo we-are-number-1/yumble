@@ -1,6 +1,19 @@
 import express from 'express';
+import Session from '../mongo/models/Session';
 const router = express.Router();
 
-// TODO: Handlers...
-
-export default router;
+// GET: Creates and returns the sessionId of a new session
+router.get('/', async (req, res) => {
+    let session = new Session({
+      isFinished: false,
+    });
+  
+    try {
+      let newSession = await session.save();
+      res.status(201).json({sessionId: newSession._id});
+    } catch (error) {
+      res.status(500).json({ message: error.message });
+    }
+  });
+  
+  export default router;
