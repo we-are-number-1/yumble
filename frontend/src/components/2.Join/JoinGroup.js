@@ -35,7 +35,7 @@ function GroupCode() {
               onChange={(e) => setCode(e.target.value)}
             ></UserInput>
           </div>
-          <Link to={'Preferences/' + code}>
+          <Link to={'Lobby/' + code}>
             {/* need to change to check or whatnot */}
             <button onClick={() => console.log(code)} className='GoButton'>
               Go
