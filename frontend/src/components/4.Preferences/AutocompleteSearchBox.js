@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import {Link} from 'react-router-dom';
 import PlacesAutocomplete, {
   geocodeByAddress,
   getLatLng,
@@ -17,6 +18,7 @@ const AutocompleteSearchBox = () => {
 
   const google = window.google;
 
+  // Default the search location around New Zealand
   const searchOptions = {
     location: new google.maps.LatLng(-36.8, 174.8),
     radius: 2000,
@@ -32,10 +34,8 @@ const AutocompleteSearchBox = () => {
       >
         {({getInputProps, suggestions, getSuggestionItemProps}) => (
           <div>
-            <p>Latitude: {coordinates.lat}</p>
-            <p>Longitude: {coordinates.lng}</p>
 
-            <input className={'Preferences'}
+            <input className={'SearchBox'}
               {...getInputProps({placeholder: 'Enter a place'})} />
             <div>
               {suggestions.map((suggestion, index) => {
@@ -56,6 +56,14 @@ const AutocompleteSearchBox = () => {
           </div>
         )}
       </PlacesAutocomplete>
+      <Link to="/" state={coordinates}>
+        <button
+          disabled={(coordinates.lat === null && coordinates.lng === null)}
+          className='GoButton'
+        >
+          Go
+        </button>
+      </Link>
     </div>
   );
 };
