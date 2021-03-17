@@ -1,4 +1,5 @@
 import React, {useEffect} from 'react';
+import axios from 'axios';
 
 /**
  *
@@ -9,9 +10,22 @@ function SwipingPage() {
     document.title = 'Yes or No?';
   }, []);
 
+  const hitDummyEndpoint = () => {
+    axios.get('/sessions/testCard').then((response) =>{
+      console.log(response.data);
+    });
+  };
+
   return (
     <>
       <p>Swiping</p>
+      <button
+        onClick={() => hitDummyEndpoint()}
+        className='SmallBtn'
+        id='HelpButton'
+      >
+        test endpoint
+      </button>
     </>
   );
 }
