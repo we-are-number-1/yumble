@@ -3,31 +3,13 @@ import React, {useState} from 'react';
 import Help from '../Common/Help';
 import '../Common/Help.css';
 import '../5.Lobby/Lobby.css';
-// import UserInput from '../Common/UserInput';
-
-// const Results = () => (
-//   <div>
-//     <UserInput
-//       input
-//       type="text"
-//       inputType="preferences"
-//       placeholder="Enter your timer"
-//       fontSize={3}
-//     ></UserInput>
-//   </div>
-// );
 
 const Lobby = () => {
   const [ShareButtonPopup, setSharePopup] = useState(false);
   const [helpButtonPopup, setHelpButtonPopup] = useState(false);
 
-  /* Setting the timer should be
-  for Wongs part so he can use the code that is commented below */
-
-  // const [showResults, setShowResults] = React.useState(false);
-  // const onClickShow = () => setShowResults(true);
-  // const onClickNoShow = () => setShowResults(false);
-
+  {/* link this to backend.
+  Backend just needs to push data into People and NumOfCusines array */}
   const People = [
     'Bob',
     'Alex',
@@ -114,13 +96,6 @@ const Lobby = () => {
             arrives
           </p>
         </Help>
-        {/* <div>
-          <button type="submit" value="Search" onClick={onClickShow}>
-            Show
-          </button>
-          {showResults ? <Results /> : null}
-        </div>
-        <button onClick={onClickNoShow}>NoShow</button> */}
       </div>
     </>
   );
