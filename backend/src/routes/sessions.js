@@ -28,4 +28,4 @@ router.get('/testCard', async (req, res) => {
   res.status(200).json(testCard);
 });
 
-export default router;
+module.exports = router;
