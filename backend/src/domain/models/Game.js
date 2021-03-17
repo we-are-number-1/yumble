@@ -18,10 +18,10 @@ export class Game {
   }
 
   /**
-   * @param {*} callback, this function is called after the round interval
-   *                      has passed
+   * Starts a new round with a timer, and emits a next_round event to all users
+   * of the session
    */
-  nextRound(callback) {
+  nextRound() {
     this.round++;
     if (this.round === this.swipeDeck.length) {
       endGame();

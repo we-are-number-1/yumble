@@ -50,9 +50,6 @@ if (process.env.NODE_ENV == 'production') {
 
 io.on('connection', (socket) => {
   console.log('a user connected with id:', socket.id);
-  socket.on('disconnect', () => {
-    console.log('user disconnected with id:', socket.id);
-  });
 
   SocketEvents.disconnect(socket);
   SocketEvents.joinRoom(socket, io);
