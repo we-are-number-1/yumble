@@ -6,6 +6,6 @@ import games from '../domain/Games';
  */
 export function start(socket) {
   socket.on('start', ({gameId}) => {
-    games.getGame(gameId).nextRound();
+    games.getGame(gameId).startCountdown();
   });
 }
