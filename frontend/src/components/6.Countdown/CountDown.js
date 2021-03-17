@@ -2,42 +2,42 @@ import {Link} from 'react-router-dom';
 import React, {useState} from 'react';
 import Help from '../Common/Help';
 import '../Common/Help.css';
+import {useHistory} from 'react-router-dom';
 
 const CountDown = () => {
   const [ButtonPopup, setButtonPopup] = useState(false);
-
   const [seconds, setSeconds] = React.useState(3);
 
   React.useEffect(() => {
-    if (seconds > 0) {
+    if (seconds >= 0) {
       setTimeout(() => setSeconds(seconds - 1), 1000);
-    } else {
-      setSeconds('Go!');
     }
   });
 
+  const history = useHistory();
+  /**
+   */
+  function goNextPge() {
+    history.push('/Lobby');
+  }
+
   return (
     <>
-      <h1 className="Title">yumble</h1>
-      {/* This is to show how to change timer time */}
-      {/* <button style={{marginTop: '10vw'}} onClick={() => setSeconds(10)}>
-          Restart timer
-      </button> */}
-      <div className="MakeCentre">
+      <h1 className='Title'>yumble</h1>
+      <div className='MakeCentre'>
         <div>
-          <text className="StartTitle">{seconds}</text>
+          <div className='StartTitle'>{seconds}</div>
         </div>
       </div>
-
-      <Link to="/Lobby">
-        <button className="SmallBtn" id="BackButton">
+      <Link to='/Lobby'>
+        <button className='SmallBtn' id='BackButton'>
           Back
         </button>{' '}
       </Link>
       <button
         onClick={() => setButtonPopup(true)}
-        className="SmallBtn"
-        id="HelpButton"
+        className='SmallBtn'
+        id='HelpButton'
       >
         help?
       </button>
@@ -47,6 +47,7 @@ const CountDown = () => {
           your date!
         </p>
       </Help>
+      {seconds == -1 ? goNextPge() : null}
     </>
   );
 };
