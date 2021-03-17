@@ -2,8 +2,7 @@ import express from 'express';
 import Restaurant from '../mongo/models/Restaurant';
 const router = express.Router();
 
-// TODO: Handlers...
-// GET:
+// GET: Test JSON for a card
 router.get('/testCard', async (req, res) => {
   const testCard = new Restaurant({
     name: 'Lonestar',
@@ -14,4 +13,4 @@ router.get('/testCard', async (req, res) => {
   res.status(200).json(testCard);
 });
 
-export default router;
+module.exports = router;
