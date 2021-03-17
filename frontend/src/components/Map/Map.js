@@ -2,9 +2,10 @@ import React, {useEffect, useState} from 'react';
 import loadMap from '../../api-pulling/LoadMap';
 import '../Common/Help.css';
 
-// eslint-disable-next-line valid-jsdoc
 /**
+ *
  * @param {*} param0
+ * @return {*}
  */
 function Map({restaurantLocations, currentRestaurantIndex}) {
   const [map, setMap] = useState(null);
