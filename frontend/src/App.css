@@ -208,5 +208,12 @@
   background:white;
 }
 
-
+/* Results Page */
+.ResultTitle {
+  -webkit-text-stroke: 4px black;
+  color: white;
+  font-family: Comic Sans MS;
+  margin: 1vw;
+  font-size: 50pt;
+}
 
