@@ -17,11 +17,26 @@ function GroupCode() {
   // unsure if we can pass the code using the routing method we hav
   // const [code, setCode] = useState(undefined);
   const [code, setCode] = useState('temp');
+  const [name, setName] = useState('Bob');
 
   return (
     <>
       <h1 className='Title'>yumble</h1>
       <div className='MakeCentre'>
+        <div className='Username_Box'>
+          Enter Name
+          <div>
+            <UserInput
+              input
+              type='text'
+              inputType='joinGroup' // what is inputType
+              placeholder='e.g Bob'
+              fontSize={3}
+              // on change currently doesnt work
+              onChange={(e) => setCode(e.target.value)}
+            ></UserInput>
+          </div>
+        </div>
         <div className='GroupCode_Box'>
           Enter group code
           <div>
