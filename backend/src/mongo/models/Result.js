@@ -1,8 +1,8 @@
 import mongoose from 'mongoose';
-import restaurantSchema from './Restaurant';
+import {restaurantSchema} from './Restaurant';
 
 const resultSchema = mongoose.Schema({
-  sessionId: {
+  sessionID: {
     type: String,
     required: true,
   },
@@ -13,3 +13,4 @@ const resultSchema = mongoose.Schema({
 });
 
 export default mongoose.model('Result', resultSchema);
+
