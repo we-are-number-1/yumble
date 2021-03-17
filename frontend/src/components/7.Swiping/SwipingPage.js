@@ -1,6 +1,5 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import axios from 'axios';
-import React, {useState} from 'react';
 import Help from '../Common/Help';
 import '../Common/Help.css';
 
@@ -28,7 +27,6 @@ function SwipingPage() {
       console.log(response.data);
     });
   };
-  
   /**
  * @param {null} Adds the current restaurant details to array which stores
  * all right-swiped restaurants.
@@ -40,6 +38,7 @@ function SwipingPage() {
     SwipedRight.push(restaurant);
     console.log(SwipedRight);
     getNewCard();
+    hitDummyEndpoint();
   }
 
   /**
@@ -60,7 +59,6 @@ function SwipingPage() {
   function cardClicked() {
     console.log('Card clicked');
   }
-  
 
   return (
     <>
