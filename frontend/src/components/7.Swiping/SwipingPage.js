@@ -12,6 +12,7 @@ function SwipingPage() {
   const [ButtonPopup, setButtonPopup] = useState(false);
   const SwipedRight= [];
 
+  const RemainingTime = '25';
   let name = 'Lonestar';
   let location = 'Botany';
   let cuisine = 'European';
@@ -52,7 +53,6 @@ function SwipingPage() {
     price = '$';
     rating = '3.0';
   }
-
   /**
  * @param {null} Retrieves new restaurant details
  * @return {void}
@@ -65,7 +65,7 @@ function SwipingPage() {
   return (
     <>
       <h1 className='Title'> yumble</h1>
-      <h1 className='TimeCounter'> Remaining time: 21s </h1>
+      <h1 className='TimeCounter'> Remaining time: {RemainingTime}s</h1>
       <div className='MakeCentre'>
         <button
           className='YesOrNoButton'

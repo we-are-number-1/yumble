@@ -216,6 +216,7 @@
 .YesOrNoButton{
   cursor: pointer;
   position: absolute;
+  outline: none;
   top: 20vw;
   border: 4px solid #000000;
   color: white;
@@ -231,9 +232,17 @@
   right: 20vw;
 }
 
+#YesButton:hover{
+  background-color: #85c988;
+}
+
 #NoButton{
   background-color: #d34836; /* Green */
   left: 20vW
+}
+
+#NoButton:hover{
+  background-color: #d66354;
 }
 
 .SwipeCard{
