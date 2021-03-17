@@ -1,4 +1,4 @@
-import {Link, useHistory} from 'react-router-dom';
+import {useHistory} from 'react-router-dom';
 import React, {useState} from 'react';
 import Help from '../Common/Help';
 import '../Common/Help.css';
@@ -29,8 +29,6 @@ const CountDown = () => {
           <div className='StartTitle'>{seconds}</div>}
         </div>
       </div>
-      <Link to='/Lobby'>
-      </Link>
       <button
         onClick={() => setButtonPopup(true)}
         className='SmallBtn'
