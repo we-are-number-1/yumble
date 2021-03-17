@@ -15,6 +15,31 @@ export class Game {
     this.swipeDeck = swipeDeck;
     this.roundInterval = session.preferences.roundInterval;
     this.round = 0;
+    this.countdown = 3;
+  }
+
+  /**
+   * Handles countdown from 3 before game start
+   * Note: emits 3, 2, 1, 0.
+   * 0 represents the start of the game (calling nextRound)
+   */
+  startCountdown() {
+    this.io.to(this.session.sessionId).emit(
+        'countdown', {
+          count: this.countdown,
+        });
+
+    if (this.round === 0) {
+      this.nextRound();
+      return;
+    }
+
+    this.countdown--;
+
+    setTimeout(
+        this.startCountdown(),
+        1000,
+    );
   }
 
   /**
