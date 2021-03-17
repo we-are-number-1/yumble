@@ -169,4 +169,94 @@
   background: cyan;
 }
 
+/*Lobby box */
+.LobbyBox {
+  outline: none;
+  border: 4px solid #000000;
+  background-color: white;
+  height: 30vw;
+  width: 75vw;
+  font-family: Comic Sans MS;
+  border-radius: 30px;
+  padding: 2vw;
+  font-size: 3vw;
+  margin-top:  10vw;
+  margin-bottom: 1vw;
+  text-align:center;
+}
+
+.ShareButton {
+  cursor: pointer;
+  outline: none;
+  font-family: Comic Sans MS;
+  font-size: 2vw;
+  border-radius: 30px;
+  border-color: black;
+  border-width: 5px;
+  padding: 0vw 1.5vw 0vw 1.5vw;
+  background-color: yellow;
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 2vw
+}
+
+.ShareButton:hover {
+  background:white;
+}
+
+/*Lobby image container*/
+#container {
+  width:100%;
+  text-align:center;
+ }
+ #container > div {
+  width: calc(100% / 10);  
+  display: inline-block;
+  vertical-align: top;   
+  border:1px solid black;
+  border-width: 0.15vw;
+  text-align:center;
+  margin:2%;    
+  padding:1.5vw;
+ }
+
+ #FoodIcon {
+  background-position: center;
+  background-size: cover;
+}
+
+.Food0 {
+  background-image: url("http://clipart-library.com/images/rTnKGB8pc.png");
+}
+.Food1 {
+  background-image: url("http://clipart-library.com/images/pT78o69jc.png");
+}
+.Food2 {
+  background-image: url("http://clipart-library.com/images/8iAEnpG5T.gif");
+}
+.Food3 {
+  background-image: url("http://clipart-library.com/images/76TrEn8iK.png");
+}
+.Food4 {
+  background-image: url("http://clipart-library.com/images/XpcopgxTE.png");
+}
+.Food5 {
+  background-image: url("http://clipart-library.com/images/8i6LgpXiE.png");
+}
+.Food6 {
+  background-image: url("http://clipart-library.com/images/E6ipk75cE.png");
+}
+.Food7 {
+  background-image: url("http://clipart-library.com/images/Mdi9k6xc7.png");
+}
+.Food8 {
+  background-image: url("http://clipart-library.com/images/p6Tyz9ain.png");
+}
+.Food9 {
+  background-image: url("http://clipart-library.com/images/j5cR9y9Ta.jpg");
+}
+
+
+
 
