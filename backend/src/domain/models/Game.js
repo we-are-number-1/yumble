@@ -29,7 +29,7 @@ export class Game {
           count: this.countdown,
         });
 
-    if (this.round === 0) {
+    if (this.countdown === 0) {
       this.nextRound();
       return;
     }

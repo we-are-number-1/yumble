@@ -4,8 +4,8 @@
  * @param {*} cb call back function
  */
 export function countdown(socket, cb) {
-  socket.on('countdown', (count) => {
-    // Call back function with count data.
+  socket.on('countdown', ({count}) => {
+    // Call back function with current count
     cb(count);
   });
 }
