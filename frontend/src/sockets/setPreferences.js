@@ -9,4 +9,3 @@ export function setPreferences(socket, cb) {
     cb(preferences);
   });
 }
-  
