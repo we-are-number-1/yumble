@@ -103,7 +103,10 @@ function Preferences() {
               >
                 {/* value needs to be modified when making the POST */}
                 {/* Either hardcode or get from api */}
-                <option value='10-15'>$10-$15</option>
+                <option value='0,5'>$0-$5</option>
+                <option value='5,10'>$5-$10</option>
+                <option value='10,15'>$10-$15</option>
+                <option value='15,30'>$15-$30</option>
               </select>
             </div>
           </div>
