@@ -1,6 +1,9 @@
 import express from 'express';
 import Session from '../mongo/models/Session';
 import Restaurant from '../mongo/models/Restaurant';
+
+import { photos } from "./dummyPhotoParser";
+
 const router = express.Router();
 
 // GET: Creates and returns the sessionId of a new session
@@ -20,10 +23,13 @@ router.get('/', async (req, res) => {
 // GET: Test JSON for a card
 router.get('/testCard', async (req, res) => {
   const testCard = new Restaurant({
-    name: 'Lonestar',
-    location: 'Owen G Glen Building',
-    cuisine: 'European',
-    price: '5',
+    name: 'Lone Star Cafe & Bar',
+    location: 'Wiri',
+    price: '$$',
+    images: photos,
+    cuisine: 'European ', // this is currently not available in Google Places API - looking for workarounds
+    rating: '4.2',
+    menu: [],
   });
   res.status(200).json(testCard);
 });
