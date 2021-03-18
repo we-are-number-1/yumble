@@ -1,13 +1,17 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {Link} from 'react-router-dom';
+import Help from '../Common/Help';
 import '../Common/Help.css';
-import MapModal from '../Map/MapModal';
 
 /**
  *
  * @return {*}
  */
 function StartPage() {
+  useEffect(() => {
+    document.title = 'Yumble: Find places to eat, fast';
+  }, []);
+
   const [ButtonPopup, setButtonPopup] = useState(false);
 
   return (
@@ -34,7 +38,12 @@ function StartPage() {
       >
         help?
       </button>
-      <MapModal trigger={ButtonPopup} setTrigger={setButtonPopup} />
+      <Help trigger={ButtonPopup} setTrigger={setButtonPopup}>
+        <p>
+          Press the [create group] to create a lobby. To join a group, press the
+          [join group] to join a group
+        </p>
+      </Help>
     </>
   );
 }
