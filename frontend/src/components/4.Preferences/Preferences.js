@@ -11,10 +11,18 @@ import axios from 'axios';
  * @return {*}
  */
 function Preferences() {
+  useEffect(() => {
+    document.title = 'Choose game settings';
+  }, []);
   const [ButtonPopup, setButtonPopup] = useState(false);
 
   // TODO should be set to 'default' price range
   const [price, setPrice] = useState('0-5');
+  const [distance, setDistance] = useState(10); // default to 10
+  const [location, setLocation] = useState(undefined);
+  const [cuisines, setCuisines] = useState([]);
+
+  //genereate code for the session
   const [code, setCode] = useState(() => {
     axios.get('sessions').then((response) => {
       // ensure you only do it once
@@ -23,13 +31,11 @@ function Preferences() {
     });
   });
 
-  useEffect(() => {
-    document.title = 'Choose game settings';
-  }, []);
-
   // TODO temporary using code
   console.log(price);
-  // console.log(code);
+  console.log(code);
+
+  const postPreference = () => {};
 
   return (
     <>
