@@ -5,17 +5,19 @@ import PlacesAutocomplete, {
   getLatLng,
 } from 'react-places-autocomplete';
 
-const AutocompleteSearchBox = ({setLocation}) => {
+const AutocompleteSearchBox = ({setLocation, sendCoordinates}) => {
   const [address, setAddress] = useState('');
-  const [coordinates, setCoordinates] = useState({lat: null, lng: null});
+  // const [coordinates, setCoordinates] = useState({lat: null, lng: null});
 
-  console.log(coordinates);
+  // console.log(coordinates);
+
   const handleSelect = async (value) => {
     const results = await geocodeByAddress(value);
     const latLng = await getLatLng(results[0]);
     setAddress(value);
-    setCoordinates(latLng);
+    // setCoordinates(latLng);
     setLocation(value);
+    sendCoordinates(latLng);
   };
 
   const google = window.google;
@@ -59,14 +61,6 @@ const AutocompleteSearchBox = ({setLocation}) => {
           </div>
         )}
       </PlacesAutocomplete>
-      {/* <Link to="/" state={coordinates}>
-        <button
-          disabled={(coordinates.lat === null && coordinates.lng === null)}
-          className='GoButton'
-        >
-          Go
-        </button>
-      </Link> */}
     </div>
   );
 };

@@ -19,9 +19,9 @@ function Preferences() {
   // TODO should be set to 'default' price range
   const [Price, setPrice] = useState('0,5');
   const [Distance, setDistance] = useState('5'); // default to 20
-  const [Location, setLocation] = useState(undefined);
+  const [Location, setLocation] = useState('');
   const [Cuisines] = useState([]);
-  // const [coordinates, setCoordinates] = useState({lat: null, lng: null});
+  const [coordinates, setCoordinates] = useState({lat: null, lng: null});
 
   // TODO need to set default time
   const [Timer, setTimer] = useState(300);
@@ -50,6 +50,8 @@ function Preferences() {
     };
 
     console.log(newPref);
+    // TODO coordinates need to be sent somewhere?
+    console.log(coordinates);
 
     axios
         .post('../preferences', newPref)
@@ -68,7 +70,10 @@ function Preferences() {
         <div className={style.MakePreference}>
           <h1 className={style.largeMargin}>Select your Preferences</h1>
           <div className={style.smallMargin}>
-            <AutocompleteSearchBox setLocation={setLocation} />
+            <AutocompleteSearchBox
+              setLocation={setLocation}
+              sendCoordinates={setCoordinates}
+            />
           </div>
           <div>
             Range
@@ -81,7 +86,6 @@ function Preferences() {
               max='20'
               step='1'
               defaultValue={Distance}
-              // value='10'
             />
             <p>{Distance} KM</p>
           </div>
@@ -118,7 +122,6 @@ function Preferences() {
           </div>
 
           <Link to={'/Lobby/' + code}>
-            {/* need to make a post */}
             <button onClick={postPreference} className='GoButton'>
               Go
             </button>
