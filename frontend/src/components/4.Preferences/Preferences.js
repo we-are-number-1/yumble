@@ -25,6 +25,9 @@ function Preferences() {
         <div className={style.smallMargin}>
           <AutocompleteSearchBox/>
         </div>
+        <Link to="/Lobby">
+          <button className="GoButton">Go</button>
+        </Link>
         <Link to='/'>
           <button className='SmallBtn' id='BackButton'>
             Back
@@ -52,5 +55,4 @@ function Preferences() {
     </>
   );
 }
-
 export default Preferences;
