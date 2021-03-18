@@ -93,7 +93,7 @@
   left: 0;
 }
 
-.BackButton:hover {
+#BackButton:hover {
   background: white;
 }
 
@@ -147,6 +147,10 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
+}
+
+#GoogleMaps_btn:hover {
+  background: #c7ffd7;
 }
 
 /* CreateGroup */
