@@ -25,7 +25,6 @@ function MapModal(props) {
         >
           close
         </button>
-        {props.children}
       </div>
     </div>
   ) : (
