@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 import PlacesAutocomplete from 'react-places-autocomplete';
 import {getLocationCoordinates} from '../Common/LocationHelper';
 
-const AutocompleteSearchBox = () => {
+const PreferenceOptions = () => {
   const [address, setAddress] = useState('');
   const [coordinates, setCoordinates] = useState({lat: null, lng: null});
 
@@ -64,4 +64,4 @@ const AutocompleteSearchBox = () => {
   );
 };
 
-export default AutocompleteSearchBox;
+export default PreferenceOptions;
