@@ -24,7 +24,7 @@ export class Games {
     * @return {*} game for give id
     */
   getGame(sessionId) {
-    return this.activeGames[sessionId];
+    return this.activeGames.get(sessionId);
   }
 
   /**
