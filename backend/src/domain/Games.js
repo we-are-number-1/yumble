@@ -15,7 +15,7 @@ export class Games {
     * @return {activeGames} returns map of all active games
     */
   getGames() {
-    return activeGames;
+    return this.activeGames;
   }
 
   /**
