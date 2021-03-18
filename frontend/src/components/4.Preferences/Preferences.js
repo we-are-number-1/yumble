@@ -17,10 +17,13 @@ function Preferences() {
   const [ButtonPopup, setButtonPopup] = useState(false);
 
   // TODO should be set to 'default' price range
-  const [price, setPrice] = useState('0-5');
+  const [price, setPrice] = useState('0,5');
   const [distance, setDistance] = useState(20); // default to 20
-  // const [location, setLocation] = useState(undefined);
-  // const [cuisines, setCuisines] = useState([]);
+  const [location, setLocation] = useState(undefined);
+  const [cuisines] = useState([]);
+
+  // TODO need to set default time
+  const [timer] = useState(300);
 
   // genereate code for the session
   const [code, setCode] = useState(() => {
@@ -32,10 +35,30 @@ function Preferences() {
   });
 
   // TODO temporary using code
-  console.log(price);
-  console.log(code);
+  const postPreference = () => {
+    // change string to array form
+    const formattedPrice = price.split(',').map((x) => +x);
 
-  // const postPreference = () => {};
+    const newPref = {
+      sessionId: code,
+      location: location,
+      distance: distance,
+      cuisines: cuisines,
+      price: formattedPrice,
+      timer: timer,
+    };
+
+    console.log(newPref);
+
+    axios
+        .post('preferences', newPref)
+        .then((res) => {
+          console.log(res.data);
+        })
+        .catch(function(error) {
+          console.log(error);
+        });
+  };
 
   return (
     <>
@@ -50,6 +73,9 @@ function Preferences() {
               inputType='preferences'
               placeholder='Enter your location'
               fontSize={3}
+              onChange={(e) => {
+                setLocation(e.target.value);
+              }}
             ></UserInput>
           </div>
           <div>
@@ -59,13 +85,14 @@ function Preferences() {
                 setDistance(e.target.value);
               }}
               type='range'
-              min='5'
+              min='1'
               max='20'
               step='1'
               // value='10'
             />
-            <p>{distance}</p>
+            <p>{distance} KM</p>
           </div>
+          <div>Cusinies</div>
           <div>
             Price
             <div className='pricePicker'>
@@ -82,7 +109,10 @@ function Preferences() {
           </div>
 
           <Link to={'/Lobby/' + code}>
-            <button className='GoButton'>Go</button>
+            {/* need to make a post */}
+            <button onClick={postPreference} className='GoButton'>
+              Go
+            </button>
           </Link>
 
           <Link to='/'>
