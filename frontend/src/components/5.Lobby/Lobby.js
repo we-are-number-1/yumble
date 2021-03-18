@@ -1,10 +1,14 @@
 import {Link} from 'react-router-dom';
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import Help from '../Common/Help';
 import '../Common/Help.css';
 import '../5.Lobby/Lobby.css';
 
 const Lobby = () => {
+  useEffect(() => {
+    document.title = 'Waiting Room';
+  }, []);
+
   const [ShareButtonPopup, setSharePopup] = useState(false);
   const [helpButtonPopup, setHelpButtonPopup] = useState(false);
 
@@ -18,7 +22,7 @@ const Lobby = () => {
     'Bob',
     'Alex',
     'John',
-    'Chow',
+    'Banan',
     'meow',
     'woof',
     'mouse',
@@ -28,8 +32,7 @@ const Lobby = () => {
   People.push('meanie');
 
 
-  const NumOfCusines = [
-  ];
+  const NumOfCusines = [];
 
   NumOfCusines.length == 0 ? NumOfCusines.push('Thai') : null;
 
@@ -80,7 +83,7 @@ const Lobby = () => {
           Share
         </button>
         <Help trigger={ShareButtonPopup} setTrigger={setSharePopup}>
-          <div style={{textAlign: 'center'}}>
+          <div className='MakeTextCentre'>
             <h2> Please share this link:</h2> <a href="https://www.zomato.com/auckland">
               https://www.zomato.com/auckland</a>
           </div>
@@ -98,9 +101,9 @@ const Lobby = () => {
         </button>
 
         <Help trigger={helpButtonPopup} setTrigger={setHelpButtonPopup}>
-          <p>
-            This is the lobby room, please wait a moment before your date
-            arrives
+          <p className='MakeTextCentre'>
+            This is the lobby room,
+            please wait a moment for the lobby to be filled.
           </p>
         </Help>
       </div>
