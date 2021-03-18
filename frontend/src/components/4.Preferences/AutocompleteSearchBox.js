@@ -5,7 +5,7 @@ import PlacesAutocomplete, {
   getLatLng,
 } from 'react-places-autocomplete';
 
-const AutocompleteSearchBox = () => {
+const AutocompleteSearchBox = ({setLocation}) => {
   const [address, setAddress] = useState('');
   const [coordinates, setCoordinates] = useState({lat: null, lng: null});
 
@@ -15,6 +15,7 @@ const AutocompleteSearchBox = () => {
     const latLng = await getLatLng(results[0]);
     setAddress(value);
     setCoordinates(latLng);
+    setLocation(value);
   };
 
   const google = window.google;

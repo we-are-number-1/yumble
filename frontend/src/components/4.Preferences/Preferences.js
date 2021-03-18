@@ -21,6 +21,7 @@ function Preferences() {
   const [Distance, setDistance] = useState('5'); // default to 20
   const [Location, setLocation] = useState(undefined);
   const [Cuisines] = useState([]);
+  // const [coordinates, setCoordinates] = useState({lat: null, lng: null});
 
   // TODO need to set default time
   const [Timer, setTimer] = useState(300);
@@ -62,37 +63,23 @@ function Preferences() {
 
   return (
     <>
-      <h1 className="Title">yumble</h1>
-      <div className="MakeCentre">
+      <h1 className='Title'>yumble</h1>
+      <div className='MakeCentre'>
         <div className={style.MakePreference}>
           <h1 className={style.largeMargin}>Select your Preferences</h1>
           <div className={style.smallMargin}>
-            <AutocompleteSearchBox onChange={(e) => {
-              setLocation(e.target.value);
-            }} />
+            <AutocompleteSearchBox setLocation={setLocation} />
           </div>
-          {/* <div className={style.smallMargin}>
-            <UserInput
-              input
-              type='text'
-              inputType='preferences'
-              placeholder='Enter your location'
-              fontSize={3}
-              onChange={(e) => {
-                setLocation(e.target.value);
-              }}
-            ></UserInput>
-          </div> */}
           <div>
             Range
             <input
               onChange={(e) => {
                 setDistance(e.target.value);
               }}
-              type="range"
-              min="1"
-              max="20"
-              step="1"
+              type='range'
+              min='1'
+              max='20'
+              step='1'
               defaultValue={Distance}
               // value='10'
             />
@@ -104,10 +91,10 @@ function Preferences() {
               onChange={(e) => {
                 setTimer(e.target.value);
               }}
-              type="range"
-              min="180"
-              max="1800"
-              step="60"
+              type='range'
+              min='180'
+              max='1800'
+              step='60'
               defaultValue={Timer}
             />
             <p>{Timer / 60} Minutes</p>
@@ -115,38 +102,38 @@ function Preferences() {
           {/* <div>Cusinies</div> */}
           <div>
             Price
-            <div className="pricePicker">
+            <div className='pricePicker'>
               <select
                 onChange={(e) => {
                   setPrice(e.target.value);
                 }}
               >
                 {/* Either hardcode or get from api */}
-                <option value="0,5">$0-$5</option>
-                <option value="5,10">$5-$10</option>
-                <option value="10,15">$10-$15</option>
-                <option value="15,30">$15-$30</option>
+                <option value='0,5'>$0-$5</option>
+                <option value='5,10'>$5-$10</option>
+                <option value='10,15'>$10-$15</option>
+                <option value='15,30'>$15-$30</option>
               </select>
             </div>
           </div>
 
           <Link to={'/Lobby/' + code}>
             {/* need to make a post */}
-            <button onClick={postPreference} className="GoButton">
+            <button onClick={postPreference} className='GoButton'>
               Go
             </button>
           </Link>
 
-          <Link to="/">
-            <button className="SmallBtn" id="BackButton">
+          <Link to='/'>
+            <button className='SmallBtn' id='BackButton'>
               Back
             </button>
           </Link>
 
           <button
             onClick={() => setButtonPopup(true)}
-            className="SmallBtn"
-            id="HelpButton"
+            className='SmallBtn'
+            id='HelpButton'
           >
             help?
           </button>
