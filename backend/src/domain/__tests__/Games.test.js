@@ -11,7 +11,15 @@ test('game is persisted', () => {
   expect(games.getGame('1234')).toBeDefined();
 });
 
+test('get all active games', () => {
+  expect([...games.getGames().keys()]).toEqual(['1234']);
+});
+
 test('remove game', () => {
   games.removeGame('1234');
   expect(games.getGame('1234')).not.toBeDefined();
+});
+
+test('get all active games', () => {
+  expect([...games.getGames().keys()]).toEqual([]);
 });
