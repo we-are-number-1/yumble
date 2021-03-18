@@ -1,8 +1,8 @@
 /**
  * Emits a join_room even to backend sockets
  * @param {*} socket
- * @param {*} gameId
+ * @param {*} sessionId
  */
-export function start(socket, gameId) {
-  socket.emit('start', {gameId});
+export function start(socket, sessionId) {
+  socket.emit('start', {sessionId});
 }
