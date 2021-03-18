@@ -18,12 +18,12 @@ function Preferences() {
 
   // TODO should be set to 'default' price range
   const [Price, setPrice] = useState('0,5');
-  const [Distance, setDistance] = useState('20'); // default to 20
+  const [Distance, setDistance] = useState('5'); // default to 20
   const [Location, setLocation] = useState(undefined);
   const [Cuisines] = useState([]);
 
   // TODO need to set default time
-  const [timer] = useState(300);
+  const [Timer, setTimer] = useState(300);
 
   // genereate code for the session
   const [code, setCode] = useState(() => {
@@ -45,13 +45,13 @@ function Preferences() {
       distance: Number(Distance),
       cuisines: Cuisines,
       price: formattedPrice,
-      timer: timer,
+      timer: Timer,
     };
 
     console.log(newPref);
 
     axios
-        .post('preferences', newPref)
+        .post('../preferences', newPref)
         .then((res) => {
           console.log(res.data);
         })
@@ -88,11 +88,26 @@ function Preferences() {
               min='1'
               max='20'
               step='1'
+              defaultValue={Distance}
               // value='10'
             />
             <p>{Distance} KM</p>
           </div>
-          <div>Cusinies</div>
+          <div>
+            Timer
+            <input
+              onChange={(e) => {
+                setTimer(e.target.value);
+              }}
+              type='range'
+              min='180'
+              max='1800'
+              step='60'
+              defaultValue={Timer}
+            />
+            <p>{Timer / 60} Minutes</p>
+          </div>
+          {/* <div>Cusinies</div> */}
           <div>
             Price
             <div className='pricePicker'>
