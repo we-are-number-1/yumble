@@ -42,7 +42,7 @@ function Preferences() {
     const newPref = {
       sessionId: code,
       location: Location,
-      distance: Distance,
+      distance: Number(Distance),
       cuisines: Cuisines,
       price: formattedPrice,
       timer: timer,
