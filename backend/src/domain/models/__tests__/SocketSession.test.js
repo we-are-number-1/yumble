@@ -16,7 +16,7 @@ test('add user to socket session', () => {
   expect(session.users.get('1000')['name']).toBe('Jim');
 });
 
-test('remove user to socket session', () => {
+test('remove user from socket session', () => {
   expect(session.users.size).toBe(1);
   session.removeUser(socket);
   expect(session.users.size).toBe(0);
