@@ -10,3 +10,8 @@ test('add game', () => {
 test('game is persisted', () => {
   expect(games.getGame('1234')).toBeDefined();
 });
+
+test('remove game', () => {
+  games.removeGame('1234');
+  expect(games.getGame('1234')).not.toBeDefined();
+});
