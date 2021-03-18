@@ -101,7 +101,6 @@ function Preferences() {
                   setPrice(e.target.value);
                 }}
               >
-                {/* value needs to be modified when making the POST */}
                 {/* Either hardcode or get from api */}
                 <option value='0,5'>$0-$5</option>
                 <option value='5,10'>$5-$10</option>
