@@ -93,7 +93,7 @@
   left: 0;
 }
 
-.BackButton:hover {
+#BackButton:hover {
   background: white;
 }
 
@@ -139,6 +139,20 @@
   padding: 1vw 4.7vw 1vw 4.7vw;
 }
 
+#GoogleMaps_btn {
+  background-color: #59D47C;
+  width: 350px;
+  font-size: 18pt;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+#GoogleMaps_btn:hover {
+  background: #c7ffd7;
+}
+
 /* CreateGroup */
 .GroupCode_Box {
   outline: none;
@@ -169,4 +183,11 @@
   background: cyan;
 }
 
-
+/* Results Page */
+.ResultTitle {
+  -webkit-text-stroke: 4px black;
+  color: white;
+  font-family: Comic Sans MS;
+  margin: 1vw;
+  font-size: 50pt;
+}
