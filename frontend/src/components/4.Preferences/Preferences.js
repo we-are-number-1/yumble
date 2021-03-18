@@ -11,24 +11,25 @@ import axios from 'axios';
  * @return {*}
  */
 function Preferences() {
+  const [ButtonPopup, setButtonPopup] = useState(false);
+
+  // TODO should be set to 'default' price range
+  const [price, setPrice] = useState('0-5');
+  const [code, setCode] = useState(() => {
+    axios.get('sessions').then((response) => {
+      // ensure you only do it once
+      // currently logs twice?
+      setCode(response.data.sessionId);
+    });
+  });
+
   useEffect(() => {
     document.title = 'Choose game settings';
   }, []);
 
-  const [ButtonPopup, setButtonPopup] = useState(false);
-  // TODO should be set to 'default' price range
-  const [price, setPrice] = useState('0-5');
-  // const [code, setCode] = useState(undefined);
-
-  useEffect(() => {
-    axios.get('sessions').then((response) => {
-      // ensure you only do it once
-      console.log(response.data.sessionId);
-    });
-  }, []);
-
-  // TODO using price var
+  // TODO temporary using code
   console.log(price);
+  // console.log(code);
 
   return (
     <>
@@ -60,7 +61,10 @@ function Preferences() {
             </div>
           </div>
 
-          <button className='GoButton'>Go</button>
+          <Link to={'/Lobby/' + code}>
+            <button className='GoButton'>Go</button>
+          </Link>
+
           <Link to='/'>
             <button className='SmallBtn' id='BackButton'>
               Back
