@@ -15,7 +15,7 @@ export class Games {
     * @return {activeGames} returns map of all active games
     */
   getGames() {
-    return activeGames;
+    return this.activeGames;
   }
 
   /**
@@ -24,7 +24,7 @@ export class Games {
     * @return {*} game for give id
     */
   getGame(sessionId) {
-    return this.activeGames[sessionId];
+    return this.activeGames.get(sessionId);
   }
 
   /**
