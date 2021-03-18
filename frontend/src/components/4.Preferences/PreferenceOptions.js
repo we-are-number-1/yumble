@@ -5,7 +5,7 @@ import PlacesAutocomplete, {
   getLatLng,
 } from 'react-places-autocomplete';
 
-const AutocompleteSearchBox = () => {
+const PreferenceOptions = () => {
   const [address, setAddress] = useState('');
   const [coordinates, setCoordinates] = useState({lat: null, lng: null});
 
@@ -68,4 +68,4 @@ const AutocompleteSearchBox = () => {
   );
 };
 
-export default AutocompleteSearchBox;
+export default PreferenceOptions;
