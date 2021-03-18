@@ -17,10 +17,10 @@ function Preferences() {
   const [ButtonPopup, setButtonPopup] = useState(false);
 
   // TODO should be set to 'default' price range
-  const [price, setPrice] = useState('0,5');
-  const [distance, setDistance] = useState(20); // default to 20
-  const [location, setLocation] = useState(undefined);
-  const [cuisines] = useState([]);
+  const [Price, setPrice] = useState('0,5');
+  const [Distance, setDistance] = useState('20'); // default to 20
+  const [Location, setLocation] = useState(undefined);
+  const [Cuisines] = useState([]);
 
   // TODO need to set default time
   const [timer] = useState(300);
@@ -37,13 +37,13 @@ function Preferences() {
   // TODO temporary using code
   const postPreference = () => {
     // change string to array form
-    const formattedPrice = price.split(',').map((x) => +x);
+    const formattedPrice = Price.split(',').map((x) => +x);
 
     const newPref = {
       sessionId: code,
-      location: location,
-      distance: distance,
-      cuisines: cuisines,
+      location: Location,
+      distance: Distance,
+      cuisines: Cuisines,
       price: formattedPrice,
       timer: timer,
     };
@@ -90,7 +90,7 @@ function Preferences() {
               step='1'
               // value='10'
             />
-            <p>{distance} KM</p>
+            <p>{Distance} KM</p>
           </div>
           <div>Cusinies</div>
           <div>
