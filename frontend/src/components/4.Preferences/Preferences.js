@@ -18,11 +18,11 @@ function Preferences() {
 
   // TODO should be set to 'default' price range
   const [price, setPrice] = useState('0-5');
-  const [distance, setDistance] = useState(10); // default to 10
-  const [location, setLocation] = useState(undefined);
-  const [cuisines, setCuisines] = useState([]);
+  const [distance, setDistance] = useState(20); // default to 20
+  // const [location, setLocation] = useState(undefined);
+  // const [cuisines, setCuisines] = useState([]);
 
-  //genereate code for the session
+  // genereate code for the session
   const [code, setCode] = useState(() => {
     axios.get('sessions').then((response) => {
       // ensure you only do it once
@@ -35,7 +35,7 @@ function Preferences() {
   console.log(price);
   console.log(code);
 
-  const postPreference = () => {};
+  // const postPreference = () => {};
 
   return (
     <>
@@ -51,6 +51,20 @@ function Preferences() {
               placeholder='Enter your location'
               fontSize={3}
             ></UserInput>
+          </div>
+          <div>
+            Range
+            <input
+              onChange={(e) => {
+                setDistance(e.target.value);
+              }}
+              type='range'
+              min='5'
+              max='20'
+              step='1'
+              // value='10'
+            />
+            <p>{distance}</p>
           </div>
           <div>
             Price
