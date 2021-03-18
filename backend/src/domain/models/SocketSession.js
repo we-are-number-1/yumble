@@ -10,7 +10,7 @@ export class SocketSession {
      */
   constructor(sessionId, hostSocket, preferences) {
     this.sessionId = sessionId;
-    this.hostSocket = host;
+    this.hostSocket = hostSocket;
     this.preferences = preferences;
     this.users = new Map();
   }
