@@ -9,6 +9,7 @@ const AutocompleteSearchBox = () => {
   const [address, setAddress] = useState('');
   const [coordinates, setCoordinates] = useState({lat: null, lng: null});
 
+  console.log(coordinates);
   const handleSelect = async (value) => {
     const results = await geocodeByAddress(value);
     const latLng = await getLatLng(results[0]);
@@ -34,9 +35,10 @@ const AutocompleteSearchBox = () => {
       >
         {({getInputProps, suggestions, getSuggestionItemProps}) => (
           <div>
-
-            <input className={'SearchBox'}
-              {...getInputProps({placeholder: 'Enter a place'})} />
+            <input
+              className={'SearchBox'}
+              {...getInputProps({placeholder: 'Enter a place'})}
+            />
             <div>
               {suggestions.map((suggestion, index) => {
                 const style = {
