@@ -18,8 +18,8 @@ beforeAll((done) => {
   ioServer = ioBack(httpServer);
 
   ioServer.on('connection', (serverSocket) => {
-    done();
   });
+  done();
 });
 
 /**
@@ -48,8 +48,10 @@ beforeEach((done) => {
 });
 
 test('socket disconnect test', (done) => {
-  socket.on('disconnect', () => {
+  const mock = jest.fn();
+  mock.mockImplementation(() => {
     done();
   });
+  SocketEvent.disconnect(socket, mock);
   socket.close();
 });
