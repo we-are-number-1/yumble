@@ -62,6 +62,7 @@ function GroupCode() {
                 Go
               </button>
               {/* need to check if this code inputted is correct */}
+              {/* GET /sessions/:id 404 if does not exist */}
             </Link>
           </div>
         </div>
