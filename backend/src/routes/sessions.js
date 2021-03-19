@@ -27,7 +27,6 @@ router.get('/testCard', async (req, res) => {
     location: 'Wiri',
     price: '$$',
     images: photos,
-    // cuisine not available in Google Places API
     cuisine: 'European ', 
     rating: '4.2',
     menu: [],
