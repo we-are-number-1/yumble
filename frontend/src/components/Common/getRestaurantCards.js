@@ -7,7 +7,7 @@ let googleAPIKey = '';
 
 let dollar = "$";
 
-async function getRestaurantCards(restaurants, coords) {
+export async function getRestaurantCards(restaurants, coords) {
     var cards = [];
     restaurants = restaurants.restaurants;
     coords = coords.coords;
@@ -76,5 +76,3 @@ async function search(v, lat, long, name) {
     return id;
 }
 /* eslint-enable */
-
-exports.getRestaurantCards = getRestaurantCards;
