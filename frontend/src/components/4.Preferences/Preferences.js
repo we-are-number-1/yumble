@@ -36,14 +36,14 @@ function Preferences() {
 
   const postPreference = () => {
     // change string to array form
-    const formattedPrice = Price.split(',').map((x) => +x);
+    // const formattedPrice = Price.split(',').map((x) => +x);
 
     const newPref = {
       sessionId: code,
       location: Location,
       distance: Number(Distance),
       cuisines: Cuisines,
-      price: formattedPrice,
+      price: Number(Price), // formattedPrice,
       timer: Timer,
       coordinates: Coordinates,
     };
@@ -112,10 +112,10 @@ function Preferences() {
                 }}
               >
                 {/* Either hardcode or get from api */}
-                <option value='0,5'>$0-$5</option>
-                <option value='5,10'>$5-$10</option>
-                <option value='10,15'>$10-$15</option>
-                <option value='15,30'>$15-$30</option>
+                <option value='1'>$0-$5</option>
+                <option value='2'>$5-$10</option>
+                <option value='3'>$10-$15</option>
+                <option value='4'>$15-$30</option>
               </select>
             </div>
           </div>
