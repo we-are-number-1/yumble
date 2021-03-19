@@ -17,7 +17,6 @@ const google = window.google;
  * @param  {String} keyword Cuisine keyword
  */
 export async function getNearbyRestaurants(coordinates, radius, keyword) {
-  console.log('inside helper');
   const pyrmont = new google.maps.LatLng(-33.8665433, 151.1956316);
   const dummyMap = new google.maps.Map(document.getElementById('dummyMap'), {
     center: pyrmont,

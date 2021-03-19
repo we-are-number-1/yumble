@@ -26,7 +26,6 @@ const AutocompleteSearchBox = () => {
  */
   function handleSearchClick() {
     getNearbyRestaurants(coordinates, '5000', 'chinese');
-    console.log(coordinates);
   }
 
   return (
