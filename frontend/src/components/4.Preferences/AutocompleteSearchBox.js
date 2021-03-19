@@ -1,15 +1,21 @@
 import React, {useState} from 'react';
-import {Link} from 'react-router-dom';
 import PlacesAutocomplete from 'react-places-autocomplete';
 import {getLocationCoordinates} from '../Common/LocationHelper';
+import '../4.Preferences/AutocompleteSearchBox.css';
 
-const AutocompleteSearchBox = () => {
+const AutocompleteSearchBox = ({setLocation, sendCoordinates}) => {
   const [address, setAddress] = useState('');
-  const [coordinates, setCoordinates] = useState({lat: null, lng: null});
+  // const [coordinates, setCoordinates] = useState({lat: null, lng: null});
+
+  // console.log(coordinates);
 
   const handleSelect = async (value) => {
     setAddress(value);
-    setCoordinates(getLocationCoordinates(value));
+    // setCoordinates(latLng);
+    setLocation(value);
+    // sendCoordinates(latLng);
+    const result = await getLocationCoordinates(value);
+    sendCoordinates(result);
   };
 
   const google = window.google;
@@ -30,9 +36,10 @@ const AutocompleteSearchBox = () => {
       >
         {({getInputProps, suggestions, getSuggestionItemProps}) => (
           <div>
-
-            <input className={'SearchBox'}
-              {...getInputProps({placeholder: 'Enter a place'})} />
+            <input
+              className={'SearchBox'}
+              {...getInputProps({placeholder: 'Enter a place'})}
+            />
             <div>
               {suggestions.map((suggestion, index) => {
                 const style = {
@@ -52,14 +59,6 @@ const AutocompleteSearchBox = () => {
           </div>
         )}
       </PlacesAutocomplete>
-      <Link to="/" state={coordinates}>
-        <button
-          disabled={(coordinates.lat === null && coordinates.lng === null)}
-          className='GoButton'
-        >
-          Go
-        </button>
-      </Link>
     </div>
   );
 };
