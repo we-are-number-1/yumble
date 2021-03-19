@@ -41,6 +41,7 @@ export async function getNearbyRestaurants(coordinates, radius, keyword) {
 
 /**
 * @param  {[Object]} list A list of objects
+* @return {[Object]} A list of cards schemas
 */
 function parseLatAndLng(list) {
   const nearbyCoordinatesList = [];
@@ -49,7 +50,6 @@ function parseLatAndLng(list) {
     const lng = element.geometry.location.lng();
     nearbyCoordinatesList.push({lat, lng});
   });
-  
   console.log(nearbyCoordinatesList);
   return nearbyCoordinatesList;
 }
