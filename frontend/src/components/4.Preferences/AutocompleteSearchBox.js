@@ -1,10 +1,7 @@
 import React, {useState} from 'react';
 // import {Link} from 'react-router-dom';
-import PlacesAutocomplete, {
-  geocodeByAddress,
-  getLatLng,
-} from 'react-places-autocomplete';
-import {Link} from 'react-router-dom';
+import PlacesAutocomplete from 'react-places-autocomplete';
+// import {Link} from 'react-router-dom';
 import {getLocationCoordinates} from '../Common/LocationHelper';
 
 const AutocompleteSearchBox = ({setLocation, sendCoordinates}) => {

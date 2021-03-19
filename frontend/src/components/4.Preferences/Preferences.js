@@ -30,12 +30,10 @@ function Preferences() {
   const [code, setCode] = useState(() => {
     axios.get('sessions').then((response) => {
       // ensure you only do it once
-      // currently logs twice?
       setCode(response.data.sessionId);
     });
   });
 
-  // TODO temporary using code
   const postPreference = () => {
     // change string to array form
     const formattedPrice = Price.split(',').map((x) => +x);
@@ -67,7 +65,6 @@ function Preferences() {
     <>
       <h1 className='Title'>yumble</h1>
       <div className='MakeCentre'>
-<<<<<<< HEAD
         <div className={style.MakePreference}>
           <h1 className={style.largeMargin}>Select your Preferences</h1>
           <div className={style.smallMargin}>
@@ -140,18 +137,6 @@ function Preferences() {
             id='HelpButton'
           >
             help?
-=======
-        <h1 className={style.largeMargin}>Select your Preferences</h1>
-        <div className={style.smallMargin}>
-          <AutocompleteSearchBox/>
-        </div>
-        <Link to="/Lobby">
-          <button className="GoButton">Go</button>
-        </Link>
-        <Link to='/'>
-          <button className='SmallBtn' id='BackButton'>
-            Back
->>>>>>> 78b978e78876db9a0fb6222ae5ce3b73d7690b89
           </button>
           <Help trigger={ButtonPopup} setTrigger={setButtonPopup}>
             <p>
@@ -168,4 +153,5 @@ function Preferences() {
     </>
   );
 }
+
 export default Preferences;
