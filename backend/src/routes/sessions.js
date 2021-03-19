@@ -2,7 +2,7 @@ import express from 'express';
 import Session from '../mongo/models/Session';
 import Restaurant from '../mongo/models/Restaurant';
 
-import { photos } from "./dummyPhotoParser";
+import {photos} from "./dummyPhotoParser";
 
 const router = express.Router();
 
