@@ -2,6 +2,7 @@ import {Link} from 'react-router-dom';
 import React, {useState, useEffect} from 'react';
 import Help from '../Common/Help';
 import '../Common/Help.css';
+import {getNearbyRestaurants} from '../Common/LocationHelper';
 import AutocompleteSearchBox from './AutocompleteSearchBox';
 import style from './Preferences.module.css';
 import axios from 'axios';
@@ -33,6 +34,15 @@ function Preferences() {
       setCode(response.data.sessionId);
     });
   });
+
+
+  // Move this function to inside the master function by Aniket
+  /**
+   *
+   */
+  function handleSearch() {
+    getNearbyRestaurants(Coordinates, Distance, 'chinese');
+  }
 
   const postPreference = () => {
     // change string to array form
@@ -147,12 +157,13 @@ function Preferences() {
           {/* need to check if an address is provided */}
           <button style={{marginTop: '1vw'}}
             disabled={Coordinates.lat == null && Coordinates.lng == null}
-            onClick={postPreference}
+            onClick={postPreference, handleSearch}
             className='GoButton'
           >
               Go
           </button>
         </Link>
+        <div id="dummyMap" style={{visibility: 'hidden'}}></div>
       </div>
     </>
   );
