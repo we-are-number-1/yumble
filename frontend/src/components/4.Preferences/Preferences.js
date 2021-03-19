@@ -112,10 +112,10 @@ function Preferences() {
                 }}
               >
                 {/* Either hardcode or get from api */}
-                <option value='1'>$0-$5</option>
-                <option value='2'>$5-$10</option>
-                <option value='3'>$10-$15</option>
-                <option value='4'>$15-$30</option>
+                <option value='1'>$</option>
+                <option value='2'>$  $</option>
+                <option value='3'>$  $  $</option>
+                <option value='4'>$  $  $  $</option>
               </select>
             </div>
           </div>
