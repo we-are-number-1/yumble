@@ -2,8 +2,9 @@ import games from '../domain/Games';
 /**
  * Socket event for when a user disconnects.
  * @param {*} socket
+ * @param {*} cb callback function
  */
-export function disconnect(socket) {
+export function disconnect(socket, cb) {
   socket.on('disconnect', () => {
     const socketId = socket.id;
     const activeGames = games.getGames();
@@ -18,5 +19,6 @@ export function disconnect(socket) {
       games.removeGame(sessionId);
     }
     console.log('user disconnected with id:', socket.id);
+    cb();
   });
 }
