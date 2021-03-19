@@ -3,21 +3,18 @@ import React, {useState, useEffect} from 'react';
 import Help from '../Common/Help';
 import '../Common/Help.css';
 import styles from './CreateGroup.module.css';
-// import styled from 'styled-components';
+// import axios from 'axios';
 
 /**
- *
+ * Go get a code
  * @return {*}
  */
 function makeid() {
-  let result = '';
-  const characters =
-    'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-  const charactersLength = characters.length;
-  for (let i = 0; i < 5; i++) {
-    result += characters.charAt(Math.floor(Math.random() * charactersLength));
-  }
-  return result;
+  // commented out atm as the end point has not been implemented yet
+  // axios.post('createSession').then((response) => {
+  //   console.log(response);
+  // });
+  return 'PING';
 }
 
 /**
@@ -25,8 +22,16 @@ function makeid() {
  * @return {*}
  */
 function CreateGroup() {
+  // const [code, setCode] = useState(makeid());
+  const [code, setCode] = useState(undefined);
+
+  const copyCode = () => {
+    navigator.clipboard.writeText(code);
+  };
+
   useEffect(() => {
     document.title = 'Create a group';
+    setCode(makeid());
   }, []);
   const [ButtonPopup, setButtonPopup] = useState(false);
 
@@ -36,10 +41,16 @@ function CreateGroup() {
       <div className='MakeCentre'>
         <div className='GroupCode_Box'>
           Your group code is...
-          <div className={styles.spacing}>{makeid()}</div>
+          <div className={styles.spacing}>{code}</div>
           <Link to='Preferences'>
-            <button className='GoButton'>Go</button>
+            <button onClick={() => copyCode()} className='GoButton'>
+              Go
+            </button>
           </Link>
+          <br />
+          <button onClick={() => copyCode()} id='copy'>
+            Copy!
+          </button>
         </div>
       </div>{' '}
       <Link to='/'>
