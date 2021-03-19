@@ -12,7 +12,6 @@ describe('GET /sessions/testCard', () => {
     expect(response.body.name).toEqual('Lonestar');
     expect(response.body.location).toEqual('Wiri');
     expect(response.body.cuisine).toEqual(['European']);
-    expect(response.body.price).toEqual('$$');
     expect(response.statusCode).toBe(200); ;
   });
 });
