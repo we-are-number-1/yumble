@@ -33,6 +33,5 @@ function SocketContextProvider({children}) {
 }
 
 export {
-  SocketContext,
   SocketContextProvider,
 };
