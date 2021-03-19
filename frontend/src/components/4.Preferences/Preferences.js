@@ -18,7 +18,7 @@ function Preferences() {
 
   // TODO should be set to 'default' price range
   const [Price, setPrice] = useState('1');
-  const [Distance, setDistance] = useState('5'); // default to 20
+  const [Distance, setDistance] = useState('5000');
   const [Location, setLocation] = useState('');
   const [Cuisines] = useState([]);
   const [Coordinates, setCoordinates] = useState({lat: null, lng: null});
@@ -81,12 +81,12 @@ function Preferences() {
                 setDistance(e.target.value);
               }}
               type='range'
-              min='1'
-              max='20'
-              step='1'
+              min='1000'
+              max='20000'
+              step='1000'
               defaultValue={Distance}
             />
-            <p>{Distance} KM</p>
+            <p>{Distance/1000} KM</p>
           </div>
           <div>
             Timer
