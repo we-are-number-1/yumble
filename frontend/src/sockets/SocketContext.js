@@ -8,15 +8,14 @@ const SocketContext = React.createContext();
  * @return {*} SocketContext Provider
  */
 function SocketContextProvider({children}) {
-  const [socket, setSocket] = useState(() => {
-    setSocket(io());
-  });
+  const [socket, setSocket] = useState(io());
   const [countdown, setCountdown] = useState(null);
   const [users, setUsers] = useState(null);
   const [preferences, setPreferences] = useState(null);
 
   const context = {
     socket,
+    setSocket,
     countdown,
     setCountdown,
     users,
