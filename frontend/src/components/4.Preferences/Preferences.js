@@ -85,7 +85,7 @@ function Preferences() {
             />
           </div>
           <div>
-            <div className={style.MakeBold}>Range</div>
+            <div className={style.RangeAndTimerText}>Range</div>
             <input className={style.Slider}
               onChange={(e) => {
                 setDistance(e.target.value);
@@ -100,7 +100,7 @@ function Preferences() {
               Distance: {Distance/1000} KM</div>
           </div>
           <div>
-            <div className={style.MakeBold}>Timer</div>
+            <div className={style.RangeAndTimerText}>Timer</div>
             <input className={style.Slider}
               onChange={(e) => {
                 setTimer(e.target.value);

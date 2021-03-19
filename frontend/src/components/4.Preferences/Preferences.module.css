@@ -1,17 +1,20 @@
 .LocationTitle {
+  font-size: 1.5vw;
   font-family: Comic Sans MS;
+  font-weight: 500;
 }
 
 .MakePreference {
   outline: none;
   border: 4px solid #000000;
   background-color: white;
-  height: 50vw;
-  width: 61vw;
+  height: auto;
+  width: auto;
   font-family: Comic Sans MS;
   border-radius: 30px;
   padding: 1.5vw;
   margin-top: 10vw;
+  padding-right: 0.1vw;
 }
 
 .Slider {
@@ -27,14 +30,14 @@
   background-color: lightgreen;
   color: green;
   position: relative;
-  width: 6vw;
+  width: 5vw;
   height: 2vw;
   margin: 0.5vw;
   border: 1.2px solid #000000;
   border-radius: 20px;
   font-size: 1vw;
   font-family: Comic Sans MS;
-  right: 0.5vw;
+  right: 1.1vw;
 }
 
 .priceText {
@@ -42,8 +45,7 @@
   font-size: 1.5vw;
 }
 
-.MakeBold {
-font-weight: bold;
+.RangeAndTimerText {
 font-family: Comic Sans MS;
 font-size: 1.5vw;
 }
@@ -63,11 +65,12 @@ font-size: 1.5vw;
   border-radius: 30px;
   border: 0.5vw solid black;
   border-width: 3px;
-  padding: 0vw 28.8vw 0vw 28.8vw;
+  padding: 0vw 28.8vw 0vw 29.6vw;
   background-color: rgb(35, 164, 224);
   margin-top: 1vw;
   text-align: center;
-  
+  position: relative;
+  right: 0.8vw
 }
 
 .GoPrefButton:hover {

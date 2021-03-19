@@ -30,26 +30,26 @@ function GroupCode() {
       <div className='MakeCentre'>
         <div className='Join_input'>
           <div className='GroupCode_Box'>
-            Enter group code
+            <div className='AddMargin'>Enter group code</div>
             <div>
               <UserInput
                 input
                 type='text'
                 inputType='joinGroup'
-                placeholder='e.g P6aPE'
+                placeholder=' P6aPE'
                 fontSize={3}
                 // on change currently doesnt work
                 onChange={(e) => setCode(e.target.value)}
               ></UserInput>
             </div>
             <div className='Username_Box'>
-            Enter Name
+              <div className='AddMargin'>  Enter Name</div>
               <div>
                 <UserInput
                   input
                   type='text'
                   inputType='joinGroup' // what is inputType
-                  placeholder='e.g Alex'
+                  placeholder=' Alex'
                   fontSize={3}
                   // on change currently doesnt work
                   onChange={(e) => setName(e.target.value)}
