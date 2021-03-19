@@ -213,8 +213,8 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: 4vw;
-  margin-top: 10px;
+  font-size: 3.5vw;
+  margin-top: 0.5vw;
 }
 
 .YesOrNoButton{
@@ -233,7 +233,7 @@
 
 #YesButton{
   background-color: #6dc070; /* Green */
-  right: 20vw;
+  right: 10vw;
 }
 
 #YesButton:hover{
@@ -242,7 +242,7 @@
 
 #NoButton{
   background-color: #d34836; /* Green */
-  left: 20vW
+  left: 10vw
 }
 
 #NoButton:hover{
@@ -254,27 +254,24 @@
   border: 5px solid #000000;
   background-color: white;
   cursor: pointer;
-  height: 800px;
-  width: 400px;
-  margin-top: 5px;
-  text-align: left;
+  height: 50vw;
+  width: 25vw;
   font-family: Comic Sans MS;
   border-radius: 30px;
-  padding: 2vw;
+  padding: 1.5vw;
+  margin-bottom: 1vw;
+  margin-top: 1vw;
 }
 
 .CardImage{
-  border: 5px solid #000000;
-  position: relative;
-  height: 330px; 
-  width: 330px; 
+  border: 1px solid #000000;
+  height: 25vw; 
+  width: 25vw; 
   border-radius: 30px;
-  margin-left: 25px;
-  /* padding-left: 50px; */
 }
 
 .PlaceDetails{
-  margin: 1px;
+  margin: 1vw;
 }
 
 /* #DetailsButton{
@@ -283,19 +280,17 @@
 } */
 
 #name{
-  font-size: 54px;
+  font-size: 2.5vw;
   font-weight: bold;
 }
 
 #location, #price, #cuisine{
-  font-size: 44px;
-  font-weight: lighter ;
+  font-size: 1.5vw;
+  font-weight: lighter;
 }
 
 #rating {
-  font-size: 40px;
+  font-size: 1.5vw;
   text-align: end;
-  padding-bottom: -10px;
-  /* padding-left: 200px; */
-  
+  padding-bottom: 1;
 }
