@@ -4,6 +4,7 @@ import '../Common/Help.css';
 import MapModal from '../Common/MapModal';
 import Icon from '../Common/MapsPinpoint';
 import DataVisual from './DataVisual';
+import './ResultPage.css';
 
 const data = {
   // Replace labels with restuarant names from 'swiping' pages
