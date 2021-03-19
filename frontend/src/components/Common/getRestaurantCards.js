@@ -21,7 +21,7 @@ async function getRestaurantCards(restaurants, coords) {
         const card = {
             name: restaurants[i].name,
             location: suburb,
-            price: dollar.repeat(restaurants[i].price_level),\
+            price: dollar.repeat(restaurants[i].price_level),
             images: restaurants[i].photos[0].getUrl(600),
             menu: menu,
             rating: restaurants[i].rating,
