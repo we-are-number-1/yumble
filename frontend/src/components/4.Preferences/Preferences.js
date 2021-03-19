@@ -67,8 +67,8 @@ function Preferences() {
       <h1 className='Title'>yumble</h1>
       <div className='MakeCentre'>
         <div className={style.MakePreference}>
-          <h1 className={style.largeMargin}>Select your Preferences</h1>
-          <div className={style.smallMargin}>
+          <h1 className={style.LocationTitle}>Location</h1>
+          <div>
             <AutocompleteSearchBox
               setLocation={setLocation}
               sendCoordinates={setCoordinates}
@@ -76,7 +76,7 @@ function Preferences() {
           </div>
           <div>
             Range
-            <input
+            <input className={style.Slider}
               onChange={(e) => {
                 setDistance(e.target.value);
               }}
@@ -90,7 +90,7 @@ function Preferences() {
           </div>
           <div>
             Timer
-            <input
+            <input className={style.Slider}
               onChange={(e) => {
                 setTimer(e.target.value);
               }}
@@ -105,8 +105,8 @@ function Preferences() {
           {/* <div>Cusinies</div> */}
           <div>
             Price
-            <div className='pricePicker'>
-              <select
+            <div>
+              <select className={style.pricePicker}
                 onChange={(e) => {
                   setPrice(e.target.value);
                 }}
@@ -119,18 +119,6 @@ function Preferences() {
               </select>
             </div>
           </div>
-
-          <Link to={'/Lobby/' + code}>
-            {/* need to check if an address is provided */}
-            <button
-              disabled={Coordinates.lat == null && Coordinates.lng == null}
-              onClick={postPreference}
-              className='GoButton'
-            >
-              Go
-            </button>
-          </Link>
-
           <Link to='/'>
             <button className='SmallBtn' id='BackButton'>
               Back
@@ -155,6 +143,16 @@ function Preferences() {
             </p>
           </Help>
         </div>
+        <Link to={'/Lobby/' + code}>
+          {/* need to check if an address is provided */}
+          <button style={{marginTop: '1vw'}}
+            disabled={Coordinates.lat == null && Coordinates.lng == null}
+            onClick={postPreference}
+            className='GoButton'
+          >
+              Go
+          </button>
+        </Link>
       </div>
     </>
   );
