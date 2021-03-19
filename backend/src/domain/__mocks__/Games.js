@@ -1,4 +1,3 @@
-import {SocketSession} from '../models/SocketSession';
 
 /**
   * This class stores a list of all active games in session
