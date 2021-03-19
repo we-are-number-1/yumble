@@ -51,7 +51,7 @@ beforeEach((done) => {
   });
 });
 
-test('start socket', (done) => {
+test('join room test', (done) => {
   socket.on('new_user', ({users}) => {
     done();
   });
