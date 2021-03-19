@@ -6,4 +6,7 @@
     border: 2px solid #000000;
     font-size: 2vw;
     margin-bottom: 1vw;
+    position: relative;
+    right: 0.5vw;
+    font-family: Comic Sans MS;
 }

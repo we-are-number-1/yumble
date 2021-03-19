@@ -3,6 +3,7 @@ import React, {useState, useEffect} from 'react';
 import Help from '../Common/Help';
 import '../Common/Help.css';
 import UserInput from '../Common/UserInput';
+import '../2.Join/JoinGroup.css';
 
 /**
  *
@@ -28,20 +29,6 @@ function GroupCode() {
       <h1 className='Title'>yumble</h1>
       <div className='MakeCentre'>
         <div className='Join_input'>
-          <div className='Username_Box'>
-            Enter Name
-            <div>
-              <UserInput
-                input
-                type='text'
-                inputType='joinGroup' // what is inputType
-                placeholder='e.g Alex'
-                fontSize={3}
-                // on change currently doesnt work
-                onChange={(e) => setName(e.target.value)}
-              ></UserInput>
-            </div>
-          </div>
           <div className='GroupCode_Box'>
             Enter group code
             <div>
@@ -54,6 +41,20 @@ function GroupCode() {
                 // on change currently doesnt work
                 onChange={(e) => setCode(e.target.value)}
               ></UserInput>
+            </div>
+            <div className='Username_Box'>
+            Enter Name
+              <div>
+                <UserInput
+                  input
+                  type='text'
+                  inputType='joinGroup' // what is inputType
+                  placeholder='e.g Alex'
+                  fontSize={3}
+                  // on change currently doesnt work
+                  onChange={(e) => setName(e.target.value)}
+                ></UserInput>
+              </div>
             </div>
             <Link to={'Lobby/' + code}>
               {/* need to change to check or whatnot */}

@@ -14,7 +14,8 @@ const Lobby = () => {
 
   {
     /* link this to backend.
-  Backend just needs to push data into People and NumOfCusines array */
+  Backend just needs to push data into
+  People array, NumOfCusines array and GroupCode*/
   }
   let GroupCode = '';
   GroupCode = 'HX8192';
@@ -49,8 +50,8 @@ const Lobby = () => {
     for (let i = 0; i < People.length; i++) {
       const FoodID = Food.concat(i.toString());
       peopleArray.push(
-          <div className={FoodID} ID='FoodIcon'>
-            <text className='FoodIconText'>{People[i]}</text>
+          <div className={FoodID} id='FoodIcon' key={i.toString()}>
+            <div className='FoodIconText'>{People[i]}</div>
           </div>,
       );
     }
@@ -64,8 +65,9 @@ const Lobby = () => {
         <div className='CusineTitle'>Cusines: {NumOfCusines}</div>
         <div className={'LobbyBox'}>
           <div>
-            <text>Group code: {GroupCode}</text>
-            <text className='PeopleCounterText'>{People.length}/10</text>
+            <div className='Inline_Block'>Group code: {GroupCode}</div>
+            <span className='CentreTitle'></span>
+            <div className='Inline_Block'>{People.length}/10</div>
           </div>
           <div id='container'>{peopleList()}</div>
         </div>
