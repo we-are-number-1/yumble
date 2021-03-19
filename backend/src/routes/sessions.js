@@ -27,7 +27,7 @@ router.get('/testCard', async (req, res) => {
     location: 'Wiri',
     price: '$$',
     images: photos,
-    cuisine: 'European ', 
+    cuisine: 'European', 
     rating: '4.2',
     menu: [],
   });
