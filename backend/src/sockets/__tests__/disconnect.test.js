@@ -18,10 +18,8 @@ beforeAll((done) => {
   ioServer = ioBack(httpServer);
 
   ioServer.on('connection', (serverSocket) => {
-    SocketEvent.disconnect(serverSocket);
+    done();
   });
-
-  done();
 });
 
 /**
