@@ -9,8 +9,6 @@ let dollar = "$";
 
 export async function getRestaurantCards(restaurants, coords) {
     var cards = [];
-    restaurants = restaurants.restaurants;
-    coords = coords.coords;
 
     for (let i = 0; i < restaurants.length; i++) {
         const menu = await getMenu(20200305, coords[i].lat, coords[i].lng, restaurants[i].name);
@@ -30,7 +28,7 @@ export async function getRestaurantCards(restaurants, coords) {
 
         cards.push(card);
     }
-    
+
     console.log(cards);
     return cards;
 }
@@ -42,7 +40,7 @@ async function getMenu(v, lat, long, name) {
             method: 'get',
             url: `https://api.foursquare.com/v2/venues/${id.slice(1, -1)}/menu?client_id=${clientID}&client_secret=${clientSecret}&v=${v}`,
             headers: { }
-        };  
+        };
 
         try {
             let response = await axios(config);
@@ -55,7 +53,7 @@ async function getMenu(v, lat, long, name) {
         return null;
     }
   }
-  
+
 async function search(v, lat, long, name) {
     let intent = "match";
 
