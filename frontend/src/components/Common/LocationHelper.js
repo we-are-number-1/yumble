@@ -1,3 +1,14 @@
+import {geocodeByAddress, getLatLng} from 'react-places-autocomplete';
+
+/**
+ * @param  {String} value the string address value
+ */
+export async function getLocationCoordinates(value) {
+  const results = await geocodeByAddress(value);
+  const coordinates = await getLatLng(results[0]);
+  return coordinates;
+}
+
 const google = window.google;
 
 /**
@@ -6,6 +17,7 @@ const google = window.google;
  * @param  {String} keyword Cuisine keyword
  */
 export async function getNearbyRestaurants(coordinates, radius, keyword) {
+  console.log('inside helper');
   const pyrmont = new google.maps.LatLng(-33.8665433, 151.1956316);
   const dummyMap = new google.maps.Map(document.getElementById('dummyMap'), {
     center: pyrmont,
