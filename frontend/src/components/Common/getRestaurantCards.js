@@ -9,9 +9,7 @@ let dollar = "$";
 
 export async function getRestaurantCards(restaurants, coords) {
     var cards = [];
-    restaurants = restaurants.restaurants;
-    coords = coords.coords;
-
+    
     for (let i = 0; i < restaurants.length; i++) {
         const menu = await getMenu(20200305, coords[i].lat, coords[i].lng, restaurants[i].name);
 
