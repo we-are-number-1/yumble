@@ -19,7 +19,7 @@ function StartPage() {
       <div className='MakeCentre'>
         <h1 className='StartTitle'>yumble</h1>
 
-        <Link to='/CreateGroup'>
+        <Link to='/Preferences'>
           <button className='BigBtn' id='CreateGroup_btn'>
             Create group
           </button>

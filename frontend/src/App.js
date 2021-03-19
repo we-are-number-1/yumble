@@ -22,18 +22,19 @@ import {
 function App() {
   return (
     <Router>
-      <div className="BackGroundImage">
+      <div className='BackGroundImage'>
         <Switch>
-          <Route path="/" exact component={StartPage} />
-          <Route path="/CreateGroup" component={CreateGroup} />
-          <Route path="/JoinGroup" component={JoinGroup} />
-          <Route path="/Preferences" component={Preferences} />
-          <Route path="/Lobby" component={Lobby} />
-          <Route path="/Countdown" component={Countdown} />
-          <Route path="/Swiping" component={Swiping} />
-          <Route path="/Result" component={Result} />
-          <Route path="*">
-            <Redirect to="/" />
+          <Route path='/' exact component={StartPage} />
+          {/* createGroup should be removed */}
+          <Route path='/CreateGroup' component={CreateGroup} />
+          <Route path='/JoinGroup' component={JoinGroup} />
+          <Route path='/Preferences' component={Preferences} />
+          <Route path='/Lobby/:id' component={Lobby} />
+          <Route path='/Countdown' component={Countdown} />
+          <Route path='/Swiping' component={Swiping} />
+          <Route path='/Result' component={Result} />
+          <Route path='*'>
+            <Redirect to='/' />
           </Route>
         </Switch>
       </div>
