@@ -23,7 +23,7 @@ router.get('/', async (req, res) => {
 // GET: Test JSON for a card
 router.get('/testCard', async (req, res) => {
   const testCard = new Restaurant({
-    name: 'Lone Star Cafe & Bar',
+    name: 'Lonestar',
     location: 'Wiri',
     price: '$$',
     images: photos,
