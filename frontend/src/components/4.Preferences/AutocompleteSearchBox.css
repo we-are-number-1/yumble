@@ -1,8 +1,9 @@
 .SearchBox {
     outline: none;
-    width: 80vw;
+    width: 60vw;
+    height:3vw;
     border-radius: 20px;
-    border: 4px solid #000000;
-    font-size: 4vw;
-    margin: 1vw;
+    border: 2px solid #000000;
+    font-size: 2vw;
+    margin-bottom: 1vw;
 }
