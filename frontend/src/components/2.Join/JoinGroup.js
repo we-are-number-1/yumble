@@ -13,25 +13,56 @@ function GroupCode() {
     document.title = 'Enter group code';
   }, []);
   const [ButtonPopup, setButtonPopup] = useState(false);
+  // use state to store code
+  // unsure if we can pass the code using the routing method we hav
+  // const [code, setCode] = useState(undefined);
+  const [code, setCode] = useState('temp');
+  const [name, setName] = useState('Alex');
+
+  // TODO needs to be used
+  // just to 'use' the variable for now
+  console.log(name);
 
   return (
     <>
       <h1 className='Title'>yumble</h1>
       <div className='MakeCentre'>
-        <div className='GroupCode_Box'>
-          Enter group code
-          <div>
-            <UserInput
-              input
-              type='text'
-              inputType='joinGroup'
-              placeholder='e.g P6aPE'
-              fontSize={3}
-            ></UserInput>
+        <div className='Join_input'>
+          <div className='Username_Box'>
+            Enter Name
+            <div>
+              <UserInput
+                input
+                type='text'
+                inputType='joinGroup' // what is inputType
+                placeholder='e.g Alex'
+                fontSize={3}
+                // on change currently doesnt work
+                onChange={(e) => setName(e.target.value)}
+              ></UserInput>
+            </div>
           </div>
-          <Link to='Preferences'>
-            <button className='GoButton'>Go</button>
-          </Link>
+          <div className='GroupCode_Box'>
+            Enter group code
+            <div>
+              <UserInput
+                input
+                type='text'
+                inputType='joinGroup'
+                placeholder='e.g P6aPE'
+                fontSize={3}
+                // on change currently doesnt work
+                onChange={(e) => setCode(e.target.value)}
+              ></UserInput>
+            </div>
+            <Link to={'Lobby/' + code}>
+              {/* need to change to check or whatnot */}
+              <button onClick={() => console.log(code)} className='GoButton'>
+                Go
+              </button>
+              {/* need to check if this code inputted is correct */}
+            </Link>
+          </div>
         </div>
       </div>
       <Link to='/'>
