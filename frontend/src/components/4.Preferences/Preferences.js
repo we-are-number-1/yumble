@@ -21,7 +21,7 @@ function Preferences() {
   const [Distance, setDistance] = useState('5'); // default to 20
   const [Location, setLocation] = useState('');
   const [Cuisines] = useState([]);
-  const [coordinates, setCoordinates] = useState({lat: null, lng: null});
+  const [Coordinates, setCoordinates] = useState({lat: null, lng: null});
 
   // TODO need to set default time
   const [Timer, setTimer] = useState(300);
@@ -45,11 +45,12 @@ function Preferences() {
       cuisines: Cuisines,
       price: formattedPrice,
       timer: Timer,
+      coordinates: Coordinates,
     };
 
     console.log(newPref);
     // TODO coordinates need to be sent somewhere?
-    console.log(coordinates);
+    console.log(Coordinates);
 
     axios
         .post('../preferences', newPref)

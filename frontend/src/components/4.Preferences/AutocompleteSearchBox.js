@@ -1,7 +1,5 @@
 import React, {useState} from 'react';
-// import {Link} from 'react-router-dom';
 import PlacesAutocomplete from 'react-places-autocomplete';
-// import {Link} from 'react-router-dom';
 import {getLocationCoordinates} from '../Common/LocationHelper';
 
 const AutocompleteSearchBox = ({setLocation, sendCoordinates}) => {
@@ -15,7 +13,8 @@ const AutocompleteSearchBox = ({setLocation, sendCoordinates}) => {
     // setCoordinates(latLng);
     setLocation(value);
     // sendCoordinates(latLng);
-    sendCoordinates(getLocationCoordinates(value));
+    const result = await getLocationCoordinates(value);
+    sendCoordinates(result);
   };
 
   const google = window.google;
