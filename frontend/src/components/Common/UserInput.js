@@ -9,8 +9,8 @@ function UserInput(props) {
   let classname;
 
   props.inputType == 'preferences' ?
-    classname = 'Preferences':
-    classname = 'JoinGroup';
+    (classname = 'Preferences') :
+    (classname = 'JoinGroup');
 
   return (
     <>
@@ -19,6 +19,7 @@ function UserInput(props) {
         type={props.type}
         placeholder={props.placeholder}
         fontSize={props.fontSize}
+        onChange={props.onChange}
       />
     </>
   );
