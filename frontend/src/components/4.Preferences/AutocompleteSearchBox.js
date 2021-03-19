@@ -1,15 +1,19 @@
 import React, {useState} from 'react';
 import {Link} from 'react-router-dom';
-import PlacesAutocomplete from 'react-places-autocomplete';
-import {getLocationCoordinates} from '../Common/LocationHelper';
+import PlacesAutocomplete,
+{geocodeByAddress, getLatLng} from 'react-places-autocomplete';
+import {
+  getNearbyRestaurants} from '../Common/LocationHelper';
 
 const AutocompleteSearchBox = () => {
   const [address, setAddress] = useState('');
   const [coordinates, setCoordinates] = useState({lat: null, lng: null});
 
   const handleSelect = async (value) => {
+    const results = await geocodeByAddress(value);
+    const latLng = await getLatLng(results[0]);
     setAddress(value);
-    setCoordinates(getLocationCoordinates(value));
+    setCoordinates(latLng);
   };
 
   const google = window.google;
@@ -19,6 +23,12 @@ const AutocompleteSearchBox = () => {
     location: new google.maps.LatLng(-36.8, 174.8),
     radius: 2000,
   };
+
+  /**
+ */
+  function handleSearchClick() {
+    getNearbyRestaurants(coordinates, '5000', 'chinese');
+  }
 
   return (
     <div>
@@ -52,10 +62,12 @@ const AutocompleteSearchBox = () => {
           </div>
         )}
       </PlacesAutocomplete>
-      <Link to="/" state={coordinates}>
+      <div id="dummyMap" style={{visibility: 'hidden'}}></div>
+      <Link to="/">
         <button
           disabled={(coordinates.lat === null && coordinates.lng === null)}
           className='GoButton'
+          onClick={handleSearchClick}
         >
           Go
         </button>
