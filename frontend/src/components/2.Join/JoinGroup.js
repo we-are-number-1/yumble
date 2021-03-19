@@ -17,7 +17,8 @@ function GroupCode() {
   // unsure if we can pass the code using the routing method we hav
   // const [code, setCode] = useState(undefined);
   const [code, setCode] = useState('temp');
-  const [name, setName] = useState('Bob');
+
+  const [name, setName] = useState('Alex');
 
   // TODO needs to be used
   // just to 'use' the variable for now
