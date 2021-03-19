@@ -80,8 +80,8 @@ const Lobby = () => {
         <Help trigger={ShareButtonPopup} setTrigger={setSharePopup}>
           <div className='MakeTextCentre'>
             <h2> Please share this link:</h2>{' '}
-            <a href='https://www.zomato.com/auckland'>
-              https://www.zomato.com/auckland
+            <a href={'https://yumble.xyz/Lobby/' + GroupCode}>
+            https://yumble.xyz/Lobby/{GroupCode}
             </a>
           </div>
         </Help>

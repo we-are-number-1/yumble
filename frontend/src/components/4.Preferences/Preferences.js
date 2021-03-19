@@ -111,7 +111,7 @@ function Preferences() {
               step='60'
               defaultValue={Timer}
             />
-            <div className={style.SliderText}>Time:
+            <div className={style.SliderText}>Time:{' '}
               {Timer / 60} Minutes</div>
           </div>
           {/* <div>Cusinies</div> */}

@@ -39,17 +39,20 @@
 
 .priceText {
   color: green;
+  font-size: 1.5vw;
 }
 
 .MakeBold {
 font-weight: bold;
 font-family: Comic Sans MS;
+font-size: 1.5vw;
 }
 
 .SliderText {
   font-family: Comic Sans MS;
   text-align: center;
   margin-bottom: 1vw;
+  font-size: 1vw;
 }
 
 .GoPrefButton {
@@ -59,7 +62,7 @@ font-family: Comic Sans MS;
   font-size: 2vw;
   border-radius: 30px;
   border: 0.5vw solid black;
-  border-width: 2px;
+  border-width: 3px;
   padding: 0vw 28.8vw 0vw 28.8vw;
   background-color: rgb(35, 164, 224);
   margin-top: 1vw;
