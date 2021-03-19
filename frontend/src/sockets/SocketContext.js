@@ -9,7 +9,7 @@ const SocketContext = React.createContext();
  */
 function SocketContextProvider({children}) {
   const [socket, setSocket] = useState(() => {
-    setSocket(io());
+    return io();
   });
   const [countdown, setCountdown] = useState(null);
   const [users, setUsers] = useState(null);
@@ -17,6 +17,7 @@ function SocketContextProvider({children}) {
 
   const context = {
     socket,
+    setSocket,
     countdown,
     setCountdown,
     users,
