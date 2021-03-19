@@ -4,6 +4,8 @@ import PlacesAutocomplete, {
   geocodeByAddress,
   getLatLng,
 } from 'react-places-autocomplete';
+import {Link} from 'react-router-dom';
+import {getLocationCoordinates} from '../Common/LocationHelper';
 
 const AutocompleteSearchBox = ({setLocation, sendCoordinates}) => {
   const [address, setAddress] = useState('');
@@ -12,12 +14,11 @@ const AutocompleteSearchBox = ({setLocation, sendCoordinates}) => {
   // console.log(coordinates);
 
   const handleSelect = async (value) => {
-    const results = await geocodeByAddress(value);
-    const latLng = await getLatLng(results[0]);
     setAddress(value);
     // setCoordinates(latLng);
     setLocation(value);
-    sendCoordinates(latLng);
+    // sendCoordinates(latLng);
+    sendCoordinates(getLocationCoordinates(value));
   };
 
   const google = window.google;
