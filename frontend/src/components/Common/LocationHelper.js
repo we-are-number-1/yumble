@@ -33,12 +33,10 @@ export async function getNearbyRestaurants(coordinates, radius, keyword) {
   service.nearbySearch(request, (results, status) => {
     if (status === google.maps.places.PlacesServiceStatus.OK) {
       console.log(results);
-      const cards = getRestaurantCards(results, parseLatAndLng(results));
+      return getRestaurantCards(results, parseLatAndLng(results));
     }
   },
   );
-
-  return cards;
 }
 
 /**
