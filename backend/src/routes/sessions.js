@@ -2,7 +2,7 @@ import express from 'express';
 import Session from '../mongo/models/Session';
 import Restaurant from '../mongo/models/Restaurant';
 
-import {photos} from "./dummyPhotoParser";
+import {photos} from './dummyPhotoParser';
 
 const router = express.Router();
 
@@ -27,7 +27,8 @@ router.get('/testCard', async (req, res) => {
     location: 'Wiri',
     price: '$$',
     images: photos,
-    cuisine: 'European ', // this is currently not available in Google Places API - looking for workarounds
+    // cuisine not available in Google Places API
+    cuisine: 'European ', 
     rating: '4.2',
     menu: [],
   });
