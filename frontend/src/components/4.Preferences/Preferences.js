@@ -17,7 +17,7 @@ function Preferences() {
   const [ButtonPopup, setButtonPopup] = useState(false);
 
   // TODO should be set to 'default' price range
-  const [Price, setPrice] = useState('0,5');
+  const [Price, setPrice] = useState('1');
   const [Distance, setDistance] = useState('5'); // default to 20
   const [Location, setLocation] = useState('');
   const [Cuisines] = useState([]);
@@ -121,7 +121,12 @@ function Preferences() {
           </div>
 
           <Link to={'/Lobby/' + code}>
-            <button onClick={postPreference} className='GoButton'>
+            {/* need to check if an address is provided */}
+            <button
+              disabled={Coordinates.lat == null && Coordinates.lng == null}
+              onClick={postPreference}
+              className='GoButton'
+            >
               Go
             </button>
           </Link>
