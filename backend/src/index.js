@@ -51,7 +51,7 @@ if (process.env.NODE_ENV == 'production') {
 io.on('connection', (socket) => {
   console.log('a user connected with id:', socket.id);
 
-  SocketEvents.disconnect(socket);
+  SocketEvents.disconnect(socket, () => {});
   SocketEvents.joinRoom(socket, io);
   SocketEvents.start(socket);
   // This is just so eslint does not throw error
