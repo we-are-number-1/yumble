@@ -12,7 +12,7 @@ const photoRefs = [
   'ATtYBwKie-OMRs0vr1u39QzVLVLqBIMG7Tn6UyOcptRrFMSL_1OgbuwV17rq60vaMzOGtBqTgPHAt5WQxA9pI2jv4UhpkyT300TkiDB9ynUyRG4_KinG9S_bfaJLjoDhHMia9PjiJ96T90egjdKxGtdTeEwruPxBrNHw8MTyxm9zVV6Uf-ul',
 ];
 
-for (let i in photoRefs) {
+for (const i in photoRefs) {
   if (i < photoRefs.length) {
     photos.push(`https://maps.googleapis.com/maps/api/place/photo?photoreference=${photoRefs[i]}&key=${apiKey}&maxheight=600&maxwidth=600`);
   }
