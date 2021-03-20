@@ -14,6 +14,7 @@ import sessionsRouteAPI from './routes/sessions';
 const app = express();
 const server = http.createServer(app);
 const io = socketio(server);
+export {io};
 
 require('dotenv').config();
 app.use(express.json());
