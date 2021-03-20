@@ -12,9 +12,6 @@ import axios from 'axios';
  * @return {*}
  */
 function Preferences() {
-  useEffect(() => {
-    document.title = 'Choose game settings';
-  }, []);
   const [ButtonPopup, setButtonPopup] = useState(false);
 
   // TODO should be set to 'default' price range
@@ -35,6 +32,9 @@ function Preferences() {
     });
   });
 
+  useEffect(() => {
+    document.title = 'Choose game settings';
+  }, []);
 
   // Move this function to inside the master function by Aniket
   /**
@@ -85,7 +85,7 @@ function Preferences() {
             />
           </div>
           <div>
-            Range
+            <div className={style.RangeAndTimerText}>Range</div>
             <input className={style.Slider}
               onChange={(e) => {
                 setDistance(e.target.value);
@@ -96,10 +96,11 @@ function Preferences() {
               step='1000'
               defaultValue={Distance}
             />
-            <p>{Distance/1000} KM</p>
+            <div className={style.SliderText}>
+              Distance: {Distance/1000} KM</div>
           </div>
           <div>
-            Timer
+            <div className={style.RangeAndTimerText}>Timer</div>
             <input className={style.Slider}
               onChange={(e) => {
                 setTimer(e.target.value);
@@ -110,10 +111,11 @@ function Preferences() {
               step='60'
               defaultValue={Timer}
             />
-            <p>{Timer / 60} Minutes</p>
+            <div className={style.SliderText}>Time:{' '}
+              {Timer / 60} Minutes</div>
           </div>
           {/* <div>Cusinies</div> */}
-          <div>
+          <div className={style.priceText}>
             Price
             <div>
               <select className={style.pricePicker}
@@ -152,21 +154,20 @@ function Preferences() {
               sentences can be helpful in a number of different ways.
             </p>
           </Help>
-        </div>
-        <Link to={'/Lobby/' + code}>
-          {/* need to check if an address is provided */}
-          <button style={{marginTop: '1vw'}}
-            disabled={Coordinates.lat == null && Coordinates.lng == null}
-            onClick={postPreference, handleSearch}
-            className='GoButton'
-          >
+          <Link to={'/Lobby/' + code}>
+            {/* need to check if an address is provided */}
+            <button
+              disabled={Coordinates.lat == null && Coordinates.lng == null}
+              onClick={postPreference, handleSearch}
+              className={style.GoPrefButton}
+            >
               Go
-          </button>
-        </Link>
+            </button>
+          </Link>
+        </div>
         <div id="dummyMap" style={{visibility: 'hidden'}}></div>
       </div>
     </>
   );
 }
-
 export default Preferences;
