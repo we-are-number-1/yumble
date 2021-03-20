@@ -12,7 +12,7 @@ export function joinRoom(socket, io) {
       console.log('Invalid game code: ' + sessionId);
       return;
     }
-    
+
     if (!game.session.hostSocket) {
       game.session.hostSocket = socket;
     }
