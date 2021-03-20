@@ -22,9 +22,9 @@ const CountDown = () => {
 
   /**
    */
-  function goNextPge() {
-    history.push('/Result');
-  }
+  const goNextPge = () => {
+    history.push('/Swiping');
+  };
 
 
   return (
