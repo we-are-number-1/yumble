@@ -20,15 +20,21 @@ function Preferences() {
   const [Location, setLocation] = useState('');
   const [Cuisines] = useState([]);
   const [Coordinates, setCoordinates] = useState({lat: null, lng: null});
+  const [response] = useState({
+    'preferences': {},
+    'results': [],
+  });
 
   // TODO need to set default time
   const [Timer, setTimer] = useState(300);
 
   // genereate code for the session
   const [code, setCode] = useState(() => {
-    axios.get('sessions').then((response) => {
+    axios.post('sessions', response).then((response) => {
       // ensure you only do it once
-      setCode(response.data.sessionId);
+      console.log(response.data.truncCode);
+      setCode(response.data.truncCode);
+      // setCode(response.data.sessionId);
     });
   });
 
@@ -47,7 +53,7 @@ function Preferences() {
   const postPreference = () => {
     // change string to array form
     // const formattedPrice = Price.split(',').map((x) => +x);
-
+    console.log('TY');
     const newPref = {
       sessionId: code,
       location: Location,
