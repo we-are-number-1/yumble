@@ -20,6 +20,7 @@ function Preferences() {
   const [Location, setLocation] = useState('');
   const [Cuisines] = useState([]);
   const [Coordinates, setCoordinates] = useState({lat: null, lng: null});
+  // default post syntax
   const [response] = useState({
     'preferences': {},
     'results': [],
@@ -34,7 +35,6 @@ function Preferences() {
       // ensure you only do it once
       console.log(response.data.truncCode);
       setCode(response.data.truncCode);
-      // setCode(response.data.sessionId);
     });
   });
 
@@ -42,6 +42,7 @@ function Preferences() {
     document.title = 'Choose game settings';
   }, []);
 
+  // TODO NEED TO FIX
   // Move this function to inside the master function by Aniket
   /**
    *
@@ -51,27 +52,23 @@ function Preferences() {
   }
 
   const postPreference = () => {
-    // change string to array form
-    // const formattedPrice = Price.split(',').map((x) => +x);
-    console.log('TY');
     const newPref = {
-      sessionId: code,
       location: Location,
       distance: Number(Distance),
       cuisines: Cuisines,
-      price: Number(Price), // formattedPrice,
+      price: Number(Price),
       timer: Timer,
       coordinates: Coordinates,
     };
 
     console.log(newPref);
-    // TODO coordinates need to be sent somewhere?
     console.log(Coordinates);
 
     axios
-        .post('../preferences', newPref)
+        .patch('../sessions/'+code, newPref)
         .then((res) => {
           console.log(res.data);
+          handleSearch;
         })
         .catch(function(error) {
           console.log(error);
@@ -164,7 +161,7 @@ function Preferences() {
             {/* need to check if an address is provided */}
             <button
               disabled={Coordinates.lat == null && Coordinates.lng == null}
-              onClick={postPreference, handleSearch}
+              onClick={postPreference} // , handleSearch } // restaurants
               className={style.GoPrefButton}
             >
               Go
