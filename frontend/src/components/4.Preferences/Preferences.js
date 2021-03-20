@@ -33,7 +33,7 @@ function Preferences() {
   const [code, setCode] = useState(() => {
     axios.post('sessions', response).then((response) => {
       // ensure you only do it once
-      console.log(response.data.truncCode);
+      // console.log(response.data);
       setCode(response.data.truncCode);
     });
   });
@@ -61,14 +61,19 @@ function Preferences() {
       coordinates: Coordinates,
     };
 
-    console.log(newPref);
-    console.log(Coordinates);
+    // give correct json format
+    const give = {
+      preferences: newPref,
+    };
+
+    // console.log(newPref);
+    // console.log(give);
 
     axios
-        .patch('../sessions/'+code, newPref)
+        .patch('../sessions/'+code, give)
         .then((res) => {
           console.log(res.data);
-          handleSearch;
+          handleSearch; // TODO NEED TO FIX FOR RESTAURANTS
         })
         .catch(function(error) {
           console.log(error);
@@ -161,7 +166,7 @@ function Preferences() {
             {/* need to check if an address is provided */}
             <button
               disabled={Coordinates.lat == null && Coordinates.lng == null}
-              onClick={postPreference} // , handleSearch } // restaurants
+              onClick={postPreference} // , handleSearch } // TODO restaurants
               className={style.GoPrefButton}
             >
               Go
