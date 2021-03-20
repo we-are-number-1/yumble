@@ -8,8 +8,6 @@ import * as SocketEvents from './sockets';
 
 // Routes
 import sessionsRouteAPI from './routes/sessions';
-import preferencesRouteAPI from './routes/preferences';
-import resultsRouteAPI from './routes/results';
 
 const app = express();
 const server = http.createServer(app);
@@ -20,8 +18,6 @@ app.use(express.json());
 
 // API
 app.use('/sessions', sessionsRouteAPI);
-app.use('/preferences', preferencesRouteAPI);
-app.use('/results', resultsRouteAPI);
 
 const mongoUri = process.env.ATLAS_URI;
 mongoose.connect(
