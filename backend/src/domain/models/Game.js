@@ -65,15 +65,12 @@ export class Game {
         },
     );
 
-<<<<<<< HEAD
-    await setTimeout(
-        nextRound(),
-=======
-    setTimeout(
-        this.nextRound(),
->>>>>>> 000ed6461fab76614d77b076c27d32b8a4007e9a
-        this.roundInterval*1000,
-    );
+    for (let i=0; i < this.swipeDeck.length; i++) {
+      console.log(i);
+      await this.sleep(1000);
+    }
+
+    this.endGame();
   }
 
   /**
