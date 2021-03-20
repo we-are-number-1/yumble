@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import ',/swipeCard.css';
+import './SwipeCard.css';
 
 /**
  * @param {null} Retrieves new restaurant details

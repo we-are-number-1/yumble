@@ -6,7 +6,6 @@ import '../Common/Help.css';
 import MapModal from '../Common/MapModal';
 import Icon from '../Common/MapsPinpoint';
 import '../7.Swiping/SwipingPage.css';
-import '../Common/SwipeCard';
 import SwipeCard from '../Common/SwipeCard';
 import '../Common/SwipeCard.css';
 
