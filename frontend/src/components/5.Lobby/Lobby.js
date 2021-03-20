@@ -25,6 +25,13 @@ const Lobby = () => {
       socketContext.setCountdown(count);
       startCountdown();
     });
+    SocketEvents.setPreferences(socketContext.socket, (preferences) => {
+      socketContext.setPreferences(preferences);
+    });
+    SocketEvents.newUser(socketContext.socket, (data) => {
+      console.log(data);
+      socketContext.setUsers(data.users);
+    });
   }, []);
 
 

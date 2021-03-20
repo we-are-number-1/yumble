@@ -75,12 +75,10 @@ function GroupCode() {
           Back
         </button>
       </Link>
-
       <button
         onClick={() => setButtonPopup(true)}
         className='SmallBtn'
-        id='HelpButton'
-      >
+        id='HelpButton'>
         help?
       </button>
       <Help trigger={ButtonPopup} setTrigger={setButtonPopup}>
