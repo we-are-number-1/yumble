@@ -1,5 +1,12 @@
 import express from 'express';
 import Session from '../mongo/models/Session';
+<<<<<<< HEAD
+=======
+import Restaurant from '../mongo/models/Restaurant';
+
+import {photos} from './dummyPhotoParser';
+
+>>>>>>> 5388c27ff2128ff002b13d4ee17f91e25464206c
 const router = express.Router();
 
 /*  POST /sessions – Create a new Session and
@@ -34,6 +41,7 @@ router.post('/', async (req, res) => {
   }
 });
 
+<<<<<<< HEAD
 // GET /sessions/:id – Get the session object with the provided id
 router.get('/:id', getSession, (req, res) => {
   res.status(200).json(res.session);
@@ -57,6 +65,20 @@ router.patch('/:id', getSession, async (req, res) => {
   } catch (error) {
     res.status(400).json({message: error.message});
   }
+=======
+// GET: Test JSON for a card
+router.get('/testCard', async (req, res) => {
+  const testCard = new Restaurant({
+    name: 'Lonestar',
+    location: 'Wiri',
+    price: '$$',
+    images: photos,
+    cuisine: 'European',
+    rating: '4.2',
+    menu: [],
+  });
+  res.status(200).json(testCard);
+>>>>>>> 5388c27ff2128ff002b13d4ee17f91e25464206c
 });
 
 /**

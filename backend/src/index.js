@@ -4,10 +4,18 @@ import path from 'path';
 import socketio from 'socket.io';
 import mongoose from 'mongoose';
 import games from './domain/Games';
+import {SocketSession} from './domain/models/SocketSession';
 import * as SocketEvents from './sockets';
 
 // Routes
 import sessionsRouteAPI from './routes/sessions';
+<<<<<<< HEAD
+=======
+import preferencesRouteAPI from './routes/preferences';
+import resultsRouteAPI from './routes/results';
+import keysRouteAPI from './routes/keys';
+
+>>>>>>> 5388c27ff2128ff002b13d4ee17f91e25464206c
 
 const app = express();
 const server = http.createServer(app);
@@ -18,6 +26,12 @@ app.use(express.json());
 
 // API
 app.use('/sessions', sessionsRouteAPI);
+<<<<<<< HEAD
+=======
+app.use('/preferences', preferencesRouteAPI);
+app.use('/results', resultsRouteAPI);
+app.use('/api/keys', keysRouteAPI);
+>>>>>>> 5388c27ff2128ff002b13d4ee17f91e25464206c
 
 const mongoUri = process.env.ATLAS_URI;
 mongoose.connect(
@@ -44,23 +58,23 @@ if (process.env.NODE_ENV == 'production') {
   });
 }
 
+const session = new SocketSession('test', null, {'roundInterval': 5000});
+
+// This is just so eslint does not throw error
+games.newGame(
+    io,
+    session,
+    {
+      length: 10,
+    },
+);
+
 io.on('connection', (socket) => {
   console.log('a user connected with id:', socket.id);
 
-  SocketEvents.disconnect(socket);
+  SocketEvents.disconnect(socket, io, () => {});
   SocketEvents.joinRoom(socket, io);
   SocketEvents.start(socket);
-  // This is just so eslint does not throw error
-  games.newGame(
-      io,
-      {
-        sessionId: 1234,
-        preferences: {
-          roundInterval: 30000,
-        },
-      },
-      null,
-  );
 });
 
 server.listen(PORT, () => {
