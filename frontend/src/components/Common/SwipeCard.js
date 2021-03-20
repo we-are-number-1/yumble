@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import './SwipeCard.css';
 
 /**
@@ -15,12 +15,12 @@ function cardClicked() {
 * @return {*}
 **/
 function SwipeCard(props) {
-  const data = useState(props.data);
-  const name = useState(data.name);
-  const location = (data.location);
-  const cuisine = (data.cuisine);
-  const price = (data.price);
-  const rating = (data.rating);
+  const data = props.data;
+  const name = data.name;
+  const location = data.location;
+  const cuisine = data.cuisine;
+  const price = data.price;
+  const rating = data.rating;
 
   return (
     <div className="SwipeCard" onClick = {cardClicked}>

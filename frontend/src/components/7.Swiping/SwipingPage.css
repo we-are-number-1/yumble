@@ -26,7 +26,7 @@
   
   #YesButton{
     background-color: #6dc070; /* Green */
-    right: 10vw;
+    right: 15vw;
   }
   
   #YesButton:hover{
@@ -35,7 +35,7 @@
   
   #NoButton{
     background-color: #d34836; /* Green */
-    left: 10vw
+    left: 15vw
   }
   
   #NoButton:hover{
