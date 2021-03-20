@@ -5,3 +5,4 @@ export {start} from './start';
 export {nextRound} from './nextRound';
 export {countdown} from './countdown';
 export {setPreferences} from './setPreferences';
+export {invalidCode} from './invalidCode';

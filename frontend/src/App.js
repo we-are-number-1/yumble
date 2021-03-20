@@ -47,7 +47,7 @@ function App() {
           <Route path='/CreateGroup' component={CreateGroup} />
           <Route path='/JoinGroup' component={JoinGroup} />
           <Route path='/Preferences' component={Preferences} />
-          <Route path='/Lobby/:id' component={Lobby} />
+          <Route path='/Lobby' component={Lobby} />
           <Route path='/Countdown' component={Countdown} />
           <Route path='/Swiping' component={Swiping} />
           <Route path='/Result' component={Result} />
