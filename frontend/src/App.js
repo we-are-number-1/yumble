@@ -25,9 +25,6 @@ function App() {
   const socketContext = useContext(SocketContext);
   const socket = socketContext.socket;
   useEffect(() => {
-    SocketEvents.countdown(socket, ({count}) => {
-      socketContext.setCount(count);
-    });
     SocketEvents.endGame(socket, (data) => {
     });
     SocketEvents.newUser(socket, (data) => {
@@ -46,6 +43,7 @@ function App() {
       <div className='BackGroundImage'>
         <Switch>
           <Route path='/' exact component={StartPage} />
+
           {/* createGroup should be removed */}
           <Route path='/CreateGroup' component={CreateGroup} />
           <Route path='/JoinGroup' component={JoinGroup} />
