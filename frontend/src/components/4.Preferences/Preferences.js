@@ -12,9 +12,6 @@ import axios from 'axios';
  * @return {*}
  */
 function Preferences() {
-  useEffect(() => {
-    document.title = 'Choose game settings';
-  }, []);
   const [ButtonPopup, setButtonPopup] = useState(false);
 
   // TODO should be set to 'default' price range
@@ -35,6 +32,9 @@ function Preferences() {
     });
   });
 
+  useEffect(() => {
+    document.title = 'Choose game settings';
+  }, []);
 
   // Move this function to inside the master function by Aniket
   /**
