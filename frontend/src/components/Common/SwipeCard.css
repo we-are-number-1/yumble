@@ -1,0 +1,22 @@
+/* Swiping page cards */
+.SwipeCard{
+    outline: none;
+    border: 5px solid #000000;
+    background-color: white;
+    cursor: pointer;
+    height: 40vw;
+    width: 20vw;
+    font-family: Comic Sans MS;
+    border-radius: 30px;
+    padding: 1.5vw;
+    padding-bottom: 0.5vw;
+    margin-top: 1vw;
+    margin-bottom: 0.5vw;
+  }
+  
+  .CardImage{
+    border: 1px solid #000000;
+    height: 20vw; 
+    width: 20vw; 
+    border-radius: 30px;
+  }

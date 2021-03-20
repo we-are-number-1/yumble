@@ -20,15 +20,21 @@ function Preferences() {
   const [Location, setLocation] = useState('');
   const [Cuisines] = useState([]);
   const [Coordinates, setCoordinates] = useState({lat: null, lng: null});
+  // default post syntax
+  const [response] = useState({
+    'preferences': {},
+    'results': [],
+  });
 
   // TODO need to set default time
   const [Timer, setTimer] = useState(300);
 
   // genereate code for the session
   const [code, setCode] = useState(() => {
-    axios.get('sessions').then((response) => {
+    axios.post('sessions', response).then((response) => {
       // ensure you only do it once
-      setCode(response.data.sessionId);
+      // console.log(response.data);
+      setCode(response.data.truncCode);
     });
   });
 
@@ -36,7 +42,6 @@ function Preferences() {
     document.title = 'Choose game settings';
   }, []);
 
-  // Move this function to inside the master function by Aniket
   /**
    *
    */
@@ -45,25 +50,25 @@ function Preferences() {
   }
 
   const postPreference = () => {
-    // change string to array form
-    // const formattedPrice = Price.split(',').map((x) => +x);
-
     const newPref = {
-      sessionId: code,
       location: Location,
       distance: Number(Distance),
       cuisines: Cuisines,
-      price: Number(Price), // formattedPrice,
+      price: Number(Price),
       timer: Timer,
       coordinates: Coordinates,
     };
 
-    console.log(newPref);
-    // TODO coordinates need to be sent somewhere?
-    console.log(Coordinates);
+    // give correct json format
+    const give = {
+      preferences: newPref,
+    };
+
+    // console.log(newPref);
+    // console.log(give);
 
     axios
-        .post('../preferences', newPref)
+        .patch('../sessions/'+code, give)
         .then((res) => {
           console.log(res.data);
         })

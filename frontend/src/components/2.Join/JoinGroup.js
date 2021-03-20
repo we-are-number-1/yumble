@@ -16,8 +16,6 @@ function GroupCode() {
   // use state to store code
   // unsure if we can pass the code using the routing method we hav
   // const [code, setCode] = useState(undefined);
-
-
   const [name, setName] = useState('Alex');
   const [invalidCode, setInvalidCode] = useState(true);
   const [ButtonPopup, setButtonPopup] = useState(false);
@@ -77,12 +75,10 @@ function GroupCode() {
           Back
         </button>
       </Link>
-
       <button
         onClick={() => setButtonPopup(true)}
         className='SmallBtn'
-        id='HelpButton'
-      >
+        id='HelpButton'>
         help?
       </button>
       <Help trigger={ButtonPopup} setTrigger={setButtonPopup}>
