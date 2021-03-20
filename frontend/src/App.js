@@ -1,4 +1,3 @@
-// import React, {useEffect, useContext} from 'react';
 import './App.css';
 import StartPage from './components/1.Landing/StartPage';
 import CreateGroup from './components/3.CreateGroup/CreateGroup';
@@ -8,8 +7,6 @@ import Lobby from './components/5.Lobby/Lobby';
 import Countdown from './components/6.Countdown/CountDown';
 import Swiping from './components/7.Swiping/SwipingPage';
 import Result from './components/8.Result/ResultPage';
-// import {SocketContext} from './sockets/SocketContext';
-// import * as SocketEvents from './sockets';
 import {
   Switch,
   Route,
