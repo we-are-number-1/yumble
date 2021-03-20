@@ -61,7 +61,7 @@ games.newGame(
 io.on('connection', (socket) => {
   console.log('a user connected with id:', socket.id);
 
-  SocketEvents.disconnect(socket, () => {});
+  SocketEvents.disconnect(socket, io, () => {});
   SocketEvents.joinRoom(socket, io);
   SocketEvents.start(socket);
 });
