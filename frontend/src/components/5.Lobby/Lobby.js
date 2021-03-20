@@ -101,7 +101,7 @@ const Lobby = () => {
           <div className='MakeTextCentre'>
             <h2> Share the group code:</h2>
             <h1>{GroupCode}</h1>
-            <a href={'https://yumble.xyz/JoinGroup/' + GroupCode}>
+            <a href={'https://yumble.xyz/JoinGroup/'}>
             https://yumble.xyz/JoinGroup
             </a>
           </div>
