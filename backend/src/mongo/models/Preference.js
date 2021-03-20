@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import { coordinatesSchema } from './Coordinates';
+import {coordinatesSchema} from './Coordinates';
 
 export const preferenceSchema = mongoose.Schema({
   location: {
