@@ -2,21 +2,34 @@ import games from '../domain/Games';
 /**
  * Socket event for when a user disconnects.
  * @param {*} socket
+ * @param {*} io
+ * @param {*} cb callback function
  */
-export function disconnect(socket) {
+export function disconnect(socket, io, cb) {
   socket.on('disconnect', () => {
-    const socketId = socket.id;
+    // const socketId = socket.id;
     const activeGames = games.getGames();
-    let sessionId = null;
+
     activeGames.forEach((game) => {
-      game.session.users.filter((userId) => userId != socketId);
-      if (game.session.users.size == 0) {
-        sessionId = game.session.sessionId;
+      if (game.session.removeUser(socket)) {
+        const users = Array.from(
+            game.session.users.values()).map((e) => e.name);
+        console.log(users);
+        io.to(game.session.sessionId).emit('new_user', {users: users});
       }
     });
-    if (sessionId) {
-      games.removeGame(sessionId);
-    }
+    // let sessionId = null;
+    // activeGames.forEach((game) => {
+    //   game?.session?.users?.filter((userId) => userId != socketId);
+    //   if (game?.session?.users?.size == 0) {
+    //     sessionId = game.session.sessionId;
+    //   }
+    // });
+    // if (sessionId) {
+    //   games.removeGame(sessionId);
+    // }
+
     console.log('user disconnected with id:', socket.id);
+    cb();
   });
 }

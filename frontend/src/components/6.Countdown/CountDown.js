@@ -1,6 +1,7 @@
 import {useHistory} from 'react-router-dom';
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import Help from '../Common/Help';
+import {SocketContext} from './../../sockets/SocketContext';
 import '../Common/Help.css';
 
 const CountDown = () => {
@@ -11,18 +12,19 @@ const CountDown = () => {
   const [ButtonPopup, setButtonPopup] = useState(false);
   const [seconds, setSeconds] = React.useState(3);
   const history = useHistory();
-
+  const socketContext = useContext(SocketContext);
 
   React.useEffect(() => {
+    console.log(socketContext);
     seconds >= 0 ? setTimeout(() => setSeconds(seconds - 1), 1000) : null;
   });
 
 
   /**
    */
-  function goNextPge() {
-    history.push('/Result');
-  }
+  const goNextPge = () => {
+    history.push('/Swiping');
+  };
 
 
   return (

@@ -49,7 +49,7 @@ export class Game {
   nextRound() {
     this.round++;
     if (this.round === this.swipeDeck.length) {
-      endGame();
+      this.endGame();
       return;
     }
 
@@ -57,12 +57,12 @@ export class Game {
         'next_round',
         {
           nextRoundStartTime: Date.now() + this.roundInterval*1000,
-          currentRound: round,
+          currentRound: this.round,
         },
     );
 
     setTimeout(
-        nextRound(),
+        this.nextRound(),
         this.roundInterval*1000,
     );
   }

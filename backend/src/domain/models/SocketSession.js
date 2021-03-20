@@ -21,12 +21,15 @@ export class SocketSession {
    */
   addUser(socket, name) {
     this.users.set(socket.id, {socket: socket, name: name});
+    console.log('added user to game');
   }
 
   /**
+   *
    * @param {*} socket, users socket connection
+   * @return {*}
    */
   removeUser(socket) {
-    this.users.delete(socket.id);
+    return this.users.delete(socket.id);
   }
 }
