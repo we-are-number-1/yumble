@@ -18,12 +18,14 @@ function SwipingPage() {
   const [MapPopup, setMapPopup] = useState(false);
   const SwipedRight= [];
 
+  // Dummy data, should be retrieved by sockets
   const RemainingTime = '25';
   let name = 'Lonestar';
   let location = 'Botany';
   let cuisine = 'European';
   let price = '$$$';
   let rating = '4.0';
+  let id = '36472';
 
   useEffect(() => {
     document.title = 'Yes or No?';
@@ -31,9 +33,12 @@ function SwipingPage() {
 
   const hitDummyEndpoint = () => {
     axios.get('/sessions/testCard').then((response) =>{
-      console.log(response.data);
+      console.log('Dummy data:', response.data);
     });
   };
+
+  hitDummyEndpoint();
+
   /**
  * @param {null} Adds the current restaurant details to array which stores
  * all right-swiped restaurants.
@@ -41,11 +46,11 @@ function SwipingPage() {
  */
   function clickedYes() {
     console.log('clicked yes');
-    const restaurant = {name, location, cuisine, price, rating};
-    SwipedRight.push(restaurant);
+    const restaurantId = {name, id};
+    SwipedRight.push(restaurantId);
     console.log(SwipedRight);
+    console.log(SwipedRight.length);
     getNewCard();
-    hitDummyEndpoint();
   }
 
   /**
@@ -53,11 +58,13 @@ function SwipingPage() {
  * @return {void}
  */
   function getNewCard() {
+    // Dummy data, should be retrieved by sockets
     name = 'Burger King';
     location = 'Manukau';
-    cuisine = 'Cheap shit';
+    cuisine = 'Cheap food';
     price = '$';
     rating = '3.0';
+    id = '287376923';
   }
   /**
  * @param {null} Retrieves new restaurant details
@@ -112,8 +119,8 @@ function SwipingPage() {
       </button>
       <Help trigger={ButtonPopup} setTrigger={setButtonPopup}>
         <p>
-          - Press yes if you are keen to potentially visit this restaurant
-          otherwise press no.
+          - Click Keen! if you are keen to potentially visit this restaurant
+          otherwise click Nope!.
           <br></br>
           - View this restaurant on the map by clicking the green button
           below the card.
