@@ -43,7 +43,9 @@ function CreateGroup() {
           Your group code is...
           <div className={styles.spacing}>{code}</div>
           <Link to='Preferences'>
-            <button onClick={() => copyCode()} className='GoButton'>
+            <button
+              onClick={() => console.log('Button Clicked!')}
+              className='GoButton'>
               Go
             </button>
           </Link>
