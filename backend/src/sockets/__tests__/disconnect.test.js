@@ -52,6 +52,6 @@ test('socket disconnect test', (done) => {
   mock.mockImplementation(() => {
     done();
   });
-  SocketEvent.disconnect(socket, mock);
+  SocketEvent.disconnect(socket, ioServer, mock);
   socket.close();
 });
