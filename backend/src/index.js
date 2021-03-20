@@ -4,6 +4,7 @@ import path from 'path';
 import socketio from 'socket.io';
 import mongoose from 'mongoose';
 import games from './domain/Games';
+import {SocketSession} from './domain/models/SocketSession';
 import * as SocketEvents from './sockets';
 
 // Routes
@@ -51,23 +52,21 @@ if (process.env.NODE_ENV == 'production') {
   });
 }
 
+const session = new SocketSession('test', null, {'roundInterval': 5000});
+
+// This is just so eslint does not throw error
+games.newGame(
+    io,
+    session,
+    null,
+);
+
 io.on('connection', (socket) => {
   console.log('a user connected with id:', socket.id);
 
-  SocketEvents.disconnect(socket, () => {});
+  SocketEvents.disconnect(socket, io, () => {});
   SocketEvents.joinRoom(socket, io);
   SocketEvents.start(socket);
-  // This is just so eslint does not throw error
-  games.newGame(
-      io,
-      {
-        sessionId: 1234,
-        preferences: {
-          roundInterval: 30000,
-        },
-      },
-      null,
-  );
 });
 
 server.listen(PORT, () => {
