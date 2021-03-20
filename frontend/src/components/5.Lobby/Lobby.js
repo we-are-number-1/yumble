@@ -38,6 +38,7 @@ const Lobby = () => {
 
   const history = useHistory();
   const goBack = () => {
+    SocketEvents.leaveRoom(socketContext.socket);
     history.goBack();
   };
 
@@ -111,7 +112,7 @@ const Lobby = () => {
           </div>
         </Help>
         <button className='SmallBtn' id='BackButton'
-          onClick= {goBack}>
+          onClick={() => goBack()}>
             Back
         </button>
         <button
