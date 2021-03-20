@@ -10,7 +10,7 @@
   padding: 2vw;
   font-size: 3vw;
   margin-bottom: 1vw;
-  text-align: center;
+  text-align: right;
 }
 
 .CusineTitle {
@@ -48,13 +48,17 @@
   top: 5.2vw;
 }
 
-.PeopleCounterText {
-  position: absolute;
-  right: 12vw;
+.Inline_Block {
+  display: inline-block;
 }
 
 .MakeTextCentre {
   text-align: center;
+}
+
+.CentreTitle {
+  display: inline-block;
+  width: 15.3vw;
 }
 
 /*Lobby image container*/

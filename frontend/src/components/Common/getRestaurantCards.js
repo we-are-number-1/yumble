@@ -1,9 +1,11 @@
 import axios from 'axios';
+import getAPIKey from './getAPIKey';
 
 /* eslint-disable */
-let clientID = '';
-let clientSecret = '';
-let googleAPIKey = '';
+
+let clientCreds = getAPIKey(1);
+let clientID = clientCreds[0];
+let clientSecret = clientCreds[1];
 
 let dollar = "$";
 
@@ -73,4 +75,5 @@ async function search(v, lat, long, name) {
 
     return id;
 }
+
 /* eslint-enable */

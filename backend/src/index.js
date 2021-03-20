@@ -11,6 +11,8 @@ import * as SocketEvents from './sockets';
 import sessionsRouteAPI from './routes/sessions';
 import preferencesRouteAPI from './routes/preferences';
 import resultsRouteAPI from './routes/results';
+import keysRouteAPI from './routes/keys';
+
 
 const app = express();
 const server = http.createServer(app);
@@ -23,6 +25,7 @@ app.use(express.json());
 app.use('/sessions', sessionsRouteAPI);
 app.use('/preferences', preferencesRouteAPI);
 app.use('/results', resultsRouteAPI);
+app.use('/api/keys', keysRouteAPI);
 
 const mongoUri = process.env.ATLAS_URI;
 mongoose.connect(
@@ -61,7 +64,7 @@ games.newGame(
 io.on('connection', (socket) => {
   console.log('a user connected with id:', socket.id);
 
-  SocketEvents.disconnect(socket, () => {});
+  SocketEvents.disconnect(socket, io, () => {});
   SocketEvents.joinRoom(socket, io);
   SocketEvents.start(socket);
 });
