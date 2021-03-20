@@ -15,8 +15,8 @@ export const preferenceSchema = mongoose.Schema({
     default: [],
   },
   price: {
-    type: [Number],
-    default: [5, 15],
+    type: Number,
+    default: 0,
   },
   timer: {
     type: Number,
