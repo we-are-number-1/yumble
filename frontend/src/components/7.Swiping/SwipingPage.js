@@ -43,7 +43,7 @@ function SwipingPage() {
    */
   const goNextPge = () => {
     console.log('Game has Ended');
-    history.push('/Result');
+    history.replace('/Result');
   };
 
   const hitDummyEndpoint = () => {
