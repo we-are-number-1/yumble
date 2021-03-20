@@ -17,6 +17,7 @@ function GroupCode() {
   // unsure if we can pass the code using the routing method we hav
   // const [code, setCode] = useState(undefined);
 
+
   const [name, setName] = useState('Alex');
   const [invalidCode, setInvalidCode] = useState(true);
   const [ButtonPopup, setButtonPopup] = useState(false);
@@ -36,42 +37,39 @@ function GroupCode() {
       <h1 className='Title'>yumble</h1>
       <div className='MakeCentre'>
         <div className='Join_input'>
-          <div className='GroupCode_Box'>
-            <div className='AddMargin'>Enter group code</div>
+          <div className='AddMargin'>Enter group code</div>
+          <div>
+            <UserInput
+              input
+              type='text'
+              inputType='joinGroup'
+              placeholder=' P6aPE'
+              fontSize={3}
+              onChange={(e) => socketContext.setCode(e.target.value)}
+            ></UserInput>
+          </div>
+          <div className='Username_Box'>
+            <div className='AddMargin'>  Enter Name</div>
             <div>
               <UserInput
                 input
                 type='text'
-                inputType='joinGroup'
-                placeholder=' P6aPE'
+                inputType='joinGroup' // what is inputType
+                placeholder=' Alex'
                 fontSize={3}
                 // on change currently doesnt work
-                onChange={(e) => socketContext.setCode(e.target.value)}
+                onChange={(e) => setName(e.target.value)}
               ></UserInput>
             </div>
-            <div className='Username_Box'>
-              <div className='AddMargin'>  Enter Name</div>
-              <div>
-                <UserInput
-                  input
-                  type='text'
-                  inputType='joinGroup' // what is inputType
-                  placeholder=' Alex'
-                  fontSize={3}
-                  // on change currently doesnt work
-                  onChange={(e) => setName(e.target.value)}
-                ></UserInput>
-              </div>
-            </div>
-            {!invalidCode && <Redirect
-              to={`/Lobby/${socketContext.code}`} />}
-            <button
-              onClick={() => SocketEvents.joinRoom(socket,
-                  socketContext.code, name)}
-              className='GoButton'>
-                Go
-            </button>
           </div>
+          {!invalidCode && <Redirect
+            to={`/Lobby/${socketContext.code}`} />}
+          <button
+            onClick={() => SocketEvents.joinRoom(socket,
+                socketContext.code, name)}
+            className='GoButton'>
+                Go
+          </button>
         </div>
       </div>
       <Link to='/'>
