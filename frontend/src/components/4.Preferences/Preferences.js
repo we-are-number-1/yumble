@@ -44,8 +44,6 @@ function Preferences() {
     });
   }, []);
 
-  // TODO NEED TO FIX
-  // Move this function to inside the master function by Aniket
   /**
    *
    */
@@ -79,7 +77,6 @@ function Preferences() {
         .patch('../sessions/'+code, give)
         .then((res) => {
           console.log(res.data);
-          handleSearch; // TODO NEED TO FIX FOR RESTAURANTS
         })
         .catch(function(error) {
           console.log(error);
@@ -172,7 +169,7 @@ function Preferences() {
             {/* need to check if an address is provided */}
             <button
               disabled={Coordinates.lat == null && Coordinates.lng == null}
-              onClick={postPreference} // , handleSearch } // TODO restaurants
+              onClick={postPreference, handleSearch}
               className={style.GoPrefButton}
             >
               Go
