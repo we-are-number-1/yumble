@@ -42,15 +42,6 @@ const Lobby = () => {
     history.goBack();
   };
 
-
-  {
-    /* link this to backend.
-  Backend just needs to push data into
-  People array, NumOfCusines array and GroupCode*/
-  }
-  let GroupCode = '';
-  GroupCode = 'HX8192';
-
   const NumOfCusines = [];
 
   NumOfCusines.length == 0 ? NumOfCusines.push('Thai') : null;
@@ -88,7 +79,7 @@ const Lobby = () => {
         <div className='CusineTitle'>Cusines: {NumOfCusines}</div>
         <div className={'LobbyBox'}>
           <div>
-            <div className='Inline_Block'>Group code: {GroupCode}</div>
+            <div className='Inline_Block'>Group code: {socketContext.code}</div>
             <span className='CentreTitle'></span>
             <div className='Inline_Block'>{NumOfUsers}/10</div>
           </div>
@@ -105,7 +96,7 @@ const Lobby = () => {
         <Help trigger={ShareButtonPopup} setTrigger={setSharePopup}>
           <div className='MakeTextCentre'>
             <h2> Share the group code:</h2>
-            <h1>{GroupCode}</h1>
+            <h1>{socketContext.code}</h1>
             <a href={'https://yumble.xyz/JoinGroup/'}>
             https://yumble.xyz/JoinGroup
             </a>
