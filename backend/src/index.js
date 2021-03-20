@@ -9,7 +9,7 @@ import * as SocketEvents from './sockets';
 
 // Routes
 import sessionsRouteAPI from './routes/sessions';
-import keysRouteAPI from './routes/keys'
+import keysRouteAPI from './routes/keys';
 
 
 const app = express();
