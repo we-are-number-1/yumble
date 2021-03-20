@@ -1,17 +1,21 @@
 .JoinGroup {
     outline: none;
-    width: 20vw;
+    width: 25vw;
     border-radius: 30px;
     border: 4px solid #000000;
-    font-size: 4vw;
-    margin: 1vw;
+    font-size: 2.5vw;
+    margin-bottom: 1vw;
 }
 
 .Preferences {
     outline: none;
     width: 80vw;
     border-radius: 20px;
-    border: 4px solid #000000;
+    border: 3px solid #000000;
     font-size: 4vw;
     margin: 1vw;
+}
+
+.AddMargin {
+    margin-bottom: 0.5vw;
 }

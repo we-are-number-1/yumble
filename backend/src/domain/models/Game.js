@@ -53,7 +53,7 @@ export class Game {
   async nextRound() {
     this.round++;
     if (this.round === this.swipeDeck.length) {
-      endGame();
+      this.endGame();
       return;
     }
 
@@ -61,12 +61,17 @@ export class Game {
         'next_round',
         {
           nextRoundStartTime: Date.now() + this.roundInterval*1000,
-          currentRound: round,
+          currentRound: this.round,
         },
     );
 
+<<<<<<< HEAD
     await setTimeout(
         nextRound(),
+=======
+    setTimeout(
+        this.nextRound(),
+>>>>>>> 000ed6461fab76614d77b076c27d32b8a4007e9a
         this.roundInterval*1000,
     );
   }
