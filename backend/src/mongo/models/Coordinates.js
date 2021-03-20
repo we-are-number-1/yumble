@@ -5,7 +5,7 @@ export const coordinatesSchema = mongoose.Schema({
     type: Number,
     default: 0.0,
   },
-  lon: {
+  lng: {
     type: Number,
     default: 0.0,
   },

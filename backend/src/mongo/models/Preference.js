@@ -26,7 +26,7 @@ export const preferenceSchema = mongoose.Schema({
     type: coordinatesSchema,
     default: {
       lat: 0.0,
-      lon: 0.0,
+      lng: 0.0,
     },
   },
 });
