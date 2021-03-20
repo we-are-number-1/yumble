@@ -9,14 +9,6 @@ const restaurantSchema = mongoose.Schema({
     type: String,
     required: true,
   },
-  cuisine: {
-    type: [String],
-    default: [],
-  },
-  price: {
-    type: [Number],
-    default: [5, 15],
-  },
   numberOfVotes: {
     type: Number,
     default: 0,
@@ -25,4 +17,3 @@ const restaurantSchema = mongoose.Schema({
 
 module.exports.restaurantSchema = restaurantSchema;
 export default mongoose.model('Restaurant', restaurantSchema);
-

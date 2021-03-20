@@ -23,30 +23,34 @@ export class Game {
    * Note: emits 3, 2, 1, 0.
    * 0 represents the start of the game (calling nextRound)
    */
-  startCountdown() {
+  async startCountdown() {
     this.io.to(this.session.sessionId).emit(
         'countdown', {
           count: this.countdown,
         });
 
-    if (this.countdown === 0) {
-      this.nextRound();
-      return;
+    for (let i=0; i < this.countdown; i++) {
+      console.log(i);
+      await this.sleep(1000);
     }
 
-    this.countdown--;
+    this.nextRound();
+  }
 
-    setTimeout(
-        this.startCountdown(),
-        1000,
-    );
+  /**
+   *
+   * @param {*} ms
+   * @return {*}
+   */
+  sleep(ms) {
+    return new Promise((resolve) => setTimeout(resolve, ms));
   }
 
   /**
    * Starts a new round with a timer, and emits a next_round event to all users
    * of the session
    */
-  nextRound() {
+  async nextRound() {
     this.round++;
     if (this.round === this.swipeDeck.length) {
       this.endGame();
@@ -61,10 +65,12 @@ export class Game {
         },
     );
 
-    setTimeout(
-        this.nextRound(),
-        this.roundInterval*1000,
-    );
+    for (let i=0; i < this.swipeDeck.length; i++) {
+      console.log(i);
+      await this.sleep(1000);
+    }
+
+    this.endGame();
   }
 
   /**

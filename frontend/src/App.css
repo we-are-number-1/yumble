@@ -39,7 +39,6 @@
 
 /* need to refactor below */
 
-
 /* Common */
 .Title {
   position: absolute;
@@ -50,7 +49,7 @@
 }
 
 .BackGroundImage {
-  background-image: url("https://wallpaperaccess.com/full/679983.jpg");
+  background-image: url('https://wallpaperaccess.com/full/679983.jpg');
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -72,7 +71,6 @@
   align-self: flex-end;
   right: 0;
   margin: 1vw;
-
 }
 
 .SmallBtn:hover {
@@ -134,7 +132,7 @@
   font-size: 3vw;
   border-radius: 30px;
   border-color: black;
-  border-width: 5px; 
+  border-width: 5px;
 }
 
 .BigBtn:hover {
@@ -152,7 +150,7 @@
 }
 
 #GoogleMaps_btn {
-  background-color: #59D47C;
+  background-color: #59d47c;
   width: 350px;
   font-size: 18pt;
   display: flex;
@@ -163,6 +161,23 @@
 
 #GoogleMaps_btn:hover {
   background: #c7ffd7;
+}
+
+/* CreateGroup */
+.GroupCode_Box {
+  /* might be a merg conflict with join_input */
+}
+.Join_input {
+  outline: none;
+  border: 4px solid #000000;
+  background-color: white;
+  height: 30vw;
+  width: 30vw;
+  text-align: center;
+  font-family: Comic Sans MS;
+  border-radius: 30px;
+  padding: 2vw;
+  font-size: 3vw;
 }
 
 .GoButton {
