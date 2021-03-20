@@ -1,17 +1,18 @@
-import {Link, useHistory} from 'react-router-dom';
+import {useHistory, Redirect} from 'react-router-dom';
 import React, {useState, useEffect, useContext} from 'react';
 import Help from '../Common/Help';
 import {SocketContext} from './../../sockets/SocketContext';
+import * as SocketEvents from './../../sockets';
 import '../Common/Help.css';
 import '../5.Lobby/Lobby.css';
 
 const Lobby = () => {
   const socketContext = useContext(SocketContext);
-
   const [ShareButtonPopup, setSharePopup] = useState(false);
   const [helpButtonPopup, setHelpButtonPopup] = useState(false);
   const [users, setUsers] = useState(
     socketContext.users ? socketContext.users : []);
+  const [redirect, setRedirect] = useState(false);
 
   useEffect(() => {
     setUsers(socketContext.users ? socketContext.users : []);
@@ -19,12 +20,27 @@ const Lobby = () => {
 
   useEffect(() => {
     document.title = 'Waiting Room';
+    SocketEvents.countdown(socketContext.socket, (count) => {
+      console.log(count);
+      socketContext.setCountdown(count);
+      startCountdown();
+    });
   }, []);
+
+
+  /**
+   *
+   */
+  function startCountdown() {
+    // go to next page
+    setRedirect(true);
+  }
 
   const history = useHistory();
   const goBack = () => {
     history.goBack();
   };
+
 
   {
     /* link this to backend.
@@ -33,21 +49,6 @@ const Lobby = () => {
   }
   let GroupCode = '';
   GroupCode = 'HX8192';
-
-  {/* People list has been linked to backnd as users.
-  Just need NumOfCuisines array and GroupCode to be linked. */}
-  // const People = [
-  //   'Bob',
-  //   'Alex',
-  //   'John',
-  //   'Banan',
-  //   'meow',
-  //   'woof',
-  //   'mouse',
-  //   'kik',
-  //   'Chonk',
-  // ];
-  // People.push('meanie');
 
   const NumOfCusines = [];
 
@@ -78,6 +79,7 @@ const Lobby = () => {
     return peopleArray;
   };
 
+
   return (
     <>
       <h1 className='Title'>yumble</h1>
@@ -91,9 +93,11 @@ const Lobby = () => {
           </div>
           <div id='container'>{peopleList()}</div>
         </div>
-        <Link to='/CountDown'>
-          <button className='GoButton'>Go</button>
-        </Link>
+        <button className='GoButton'
+          onClick={() => SocketEvents.start(socketContext.socket, 'test')}>
+          Go
+        </button>
+        {redirect && <Redirect to='/CountDown' />}
         <button onClick={() => setSharePopup(true)} className='ShareButton'>
           Share
         </button>

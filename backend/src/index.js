@@ -58,7 +58,9 @@ const session = new SocketSession('test', null, {'roundInterval': 5000});
 games.newGame(
     io,
     session,
-    null,
+    {
+      length: 10,
+    },
 );
 
 io.on('connection', (socket) => {
