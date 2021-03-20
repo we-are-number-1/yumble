@@ -1,16 +1,25 @@
 import {Link} from 'react-router-dom';
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import Help from '../Common/Help';
+import {SocketContext} from './../../sockets/SocketContext';
 import '../Common/Help.css';
 import '../5.Lobby/Lobby.css';
 
 const Lobby = () => {
-  useEffect(() => {
-    document.title = 'Waiting Room';
-  }, []);
+  const socketContext = useContext(SocketContext);
 
   const [ShareButtonPopup, setSharePopup] = useState(false);
   const [helpButtonPopup, setHelpButtonPopup] = useState(false);
+  const [users, setUsers] = useState(
+    socketContext.users ? socketContext.users : []);
+
+  useEffect(() => {
+    setUsers(socketContext.users ? socketContext.users : []);
+  }, [socketContext]);
+
+  useEffect(() => {
+    document.title = 'Waiting Room';
+  }, []);
 
   {
     /* link this to backend.
@@ -46,11 +55,11 @@ const Lobby = () => {
     const peopleArray = [];
     const Food = 'Food';
 
-    for (let i = 0; i < People.length; i++) {
+    for (let i = 0; i < users.length; i++) {
       const FoodID = Food.concat(i.toString());
       peopleArray.push(
           <div className={FoodID} ID='FoodIcon'>
-            <text className='FoodIconText'>{People[i]}</text>
+            <text className='FoodIconText'>{users[i]}</text>
           </div>,
       );
     }
