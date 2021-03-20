@@ -4,8 +4,8 @@
  * @param {*} cb call back function
  */
 export function newUser(socket, cb) {
-  socket.on('new_user', ({users}) => {
+  socket.on('new_user', (data) => {
     // Call back function with input users.
-    cb(users);
+    cb(data);
   });
 }

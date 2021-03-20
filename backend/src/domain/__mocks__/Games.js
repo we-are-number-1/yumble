@@ -18,6 +18,7 @@ export class Games {
   getGame(sessionId) {
     return {
       session: {
+        users: new Map(),
         sessionId: sessionId,
         addUser: function( socket, name) {},
       },

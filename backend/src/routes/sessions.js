@@ -1,5 +1,6 @@
 import express from 'express';
 import Session from '../mongo/models/Session';
+
 const router = express.Router();
 
 /*  POST /sessions – Create a new Session and
