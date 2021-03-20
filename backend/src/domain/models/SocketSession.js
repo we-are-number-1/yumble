@@ -25,9 +25,11 @@ export class SocketSession {
   }
 
   /**
+   *
    * @param {*} socket, users socket connection
+   * @return {*}
    */
   removeUser(socket) {
-    this.users.delete(socket.id);
+    return this.users.delete(socket.id);
   }
 }
