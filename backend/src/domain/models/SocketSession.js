@@ -21,6 +21,7 @@ export class SocketSession {
    */
   addUser(socket, name) {
     this.users.set(socket.id, {socket: socket, name: name});
+    console.log('added user to game');
   }
 
   /**

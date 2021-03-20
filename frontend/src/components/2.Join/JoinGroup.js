@@ -1,23 +1,28 @@
 import {Link} from 'react-router-dom';
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import Help from '../Common/Help';
-import '../Common/Help.css';
 import UserInput from '../Common/UserInput';
+import * as SocketEvents from './../../sockets';
+import {SocketContext} from './../../sockets/SocketContext';
+import '../Common/Help.css';
 
 /**
  *
  * @return {*}
  */
 function GroupCode() {
-  useEffect(() => {
-    document.title = 'Enter group code';
-  }, []);
-  const [ButtonPopup, setButtonPopup] = useState(false);
+  const socketContext = useContext(SocketContext);
   // use state to store code
   // unsure if we can pass the code using the routing method we hav
   // const [code, setCode] = useState(undefined);
   const [code, setCode] = useState('temp');
   const [name, setName] = useState('Alex');
+  const socket = socketContext.socket;
+
+  useEffect(() => {
+    document.title = 'Enter group code';
+  }, []);
+  const [ButtonPopup, setButtonPopup] = useState(false);
 
   // TODO needs to be used
   // just to 'use' the variable for now
@@ -57,7 +62,9 @@ function GroupCode() {
             </div>
             <Link to={'Lobby/' + code}>
               {/* need to change to check or whatnot */}
-              <button onClick={() => console.log(code)} className='GoButton'>
+              <button
+                onClick={() => SocketEvents.joinRoom(socket, 'test', name)}
+                className='GoButton'>
                 Go
               </button>
               {/* need to check if this code inputted is correct */}
