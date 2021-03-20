@@ -1,17 +1,13 @@
 import mongoose from 'mongoose';
 
-const preferenceSchema = mongoose.Schema({
-  sessionId: {
-    type: String,
-    required: true,
-  },
+export const preferenceSchema = mongoose.Schema({
   location: {
     type: String,
-    required: true,
+    default: '',
   },
   distance: {
     type: Number,
-    required: true,
+    default: 0,
   },
   cuisines: {
     type: [String],
