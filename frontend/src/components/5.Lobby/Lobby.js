@@ -59,7 +59,7 @@ const Lobby = () => {
     for (let i = 0; i < users.length; i++) {
       const FoodID = Food.concat(i.toString());
       peopleArray.push(
-          <div className={FoodID} ID='FoodIcon'>
+          <div className={FoodID} id='FoodIcon' key={i.toString()}>
             <text className='FoodIconText'>{users[i]}</text>
           </div>,
       );
