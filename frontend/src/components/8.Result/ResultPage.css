@@ -9,7 +9,7 @@
   .MainContainer {
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
     width: 50vw;
     height: 100vh;
@@ -20,6 +20,17 @@
   }
   
   /* .PieChart {
-    width: 70%;
-    height: 70%;
+    width: 100%;
+    height: 100%;
   } */
+
+  .RegularTextBruh {
+    background-color: #ffffff;
+    height: 70vh;
+    width: 100vw;
+  }
+
+  .DataVisual {
+    width: 100vw;
+    height: 50vh;
+  }

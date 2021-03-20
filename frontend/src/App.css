@@ -117,6 +117,10 @@
   justify-content: center;
 }
 
+#ExtraHeight {
+  height: 95vh;
+}
+
 /* Unique */
 
 /* StartPage */

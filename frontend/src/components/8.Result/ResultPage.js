@@ -8,7 +8,8 @@ import './ResultPage.css';
 
 const data = {
   // Replace labels with restuarant names from 'swiping' pages
-  labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+  labels: ['Food Place 1', 'Food Place 2',
+    'Food Place 3', 'Food Place 4', 'Food Place 5', 'Food Place 6'],
   datasets: [
     {
       label: '# of Votes',
@@ -48,11 +49,13 @@ function ResultPage() {
 
   return (
     <>
-      <div className='MakeCentre'>
+      <div className='MakeCentre' id='ExtraHeight'>
         <h1 className='ResultTitle'>Top Choice</h1>
         <div className='MainContainer'>
-          <h1 className='ResultTitle'>*CARD*</h1>
-          <DataVisual data={data}/>
+          <h4
+            className='RegularTextBruh'>*CARD*****************************</h4>
+          <DataVisual className='DataVisual' data={data}/>
+          {/* className='DataVisual' */}
         </div>
         <button
           onClick={() => setMapPopup(true)}
