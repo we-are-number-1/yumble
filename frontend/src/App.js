@@ -25,9 +25,6 @@ function App() {
   const socketContext = useContext(SocketContext);
   const socket = socketContext.socket;
   useEffect(() => {
-    SocketEvents.countdown(socket, ({count}) => {
-      socketContext.setCount(count);
-    });
     SocketEvents.endGame(socket, (data) => {
     });
     SocketEvents.newUser(socket, (data) => {

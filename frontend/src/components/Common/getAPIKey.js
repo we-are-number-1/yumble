@@ -9,8 +9,8 @@ async function getAPIKey(platform) {
     const response = await axios.get('/api/keys/googleKey');
     return response.data.googleKey;
   } else if (platform === 1) {
-    const response = await axios.get('/api/keys/foursquareAPI');
-    return [response.data.foursquareID, response.data.foursquareSecret];
+    const response = await axios.get('/api/keys/foursquareKey');
+    return [response.data.foursquareID, response.data.foursquareSECRET];
   }
 }
 
