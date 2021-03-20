@@ -6,3 +6,4 @@ export {nextRound} from './nextRound';
 export {countdown} from './countdown';
 export {setPreferences} from './setPreferences';
 export {invalidCode} from './invalidCode';
+export {leaveRoom} from './leaveRoom';
