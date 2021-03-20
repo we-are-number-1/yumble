@@ -4,9 +4,10 @@ import '../Common/Help.css';
 import MapModal from '../Common/MapModal';
 import Icon from '../Common/MapsPinpoint';
 import DataVisual from './DataVisual';
+import SwipeCard from '../Common/SwipeCard';
 import './ResultPage.css';
 
-const data = {
+const pieChartData = {
   // Replace labels with restuarant names from 'swiping' pages
   labels: ['Food Place 1', 'Food Place 2',
     'Food Place 3', 'Food Place 4', 'Food Place 5', 'Food Place 6'],
@@ -36,6 +37,14 @@ const data = {
   ],
 };
 
+// Dummy data, should be retrieved by sockets
+const name = 'Lonestar';
+const location = 'Botany';
+const cuisine = 'European';
+const price = '$$$';
+const rating = '4.0';
+const Data = {name, location, cuisine, price, rating};
+
 /**
  *
  * @return {*}
@@ -52,9 +61,8 @@ function ResultPage() {
       <div className='MakeCentre' id='ExtraHeight'>
         <h1 className='ResultTitle'>Top Choice</h1>
         <div className='MainContainer'>
-          <h4
-            className='RegularTextBruh'>*CARD*****************************</h4>
-          <DataVisual className='DataVisual' data={data}/>
+          <SwipeCard data={Data}/>
+          <DataVisual className='DataVisual' data={pieChartData}/>
           {/* className='DataVisual' */}
         </div>
         <button
