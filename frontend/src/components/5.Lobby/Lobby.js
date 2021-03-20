@@ -76,7 +76,7 @@ const Lobby = () => {
           <div>
             <div className='Inline_Block'>Group code: {GroupCode}</div>
             <span className='CentreTitle'></span>
-            <div className='Inline_Block'>{People.length}/10</div>
+            <div className='Inline_Block'>{users.length}/10</div>
           </div>
           <div id='container'>{peopleList()}</div>
         </div>
