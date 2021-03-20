@@ -1,4 +1,4 @@
-import {Link, Redirect} from 'react-router-dom';
+import {useHistory, Redirect} from 'react-router-dom';
 import React, {useState, useEffect, useContext} from 'react';
 import Help from '../Common/Help';
 import {SocketContext} from './../../sockets/SocketContext';
@@ -27,6 +27,7 @@ const Lobby = () => {
     });
   }, []);
 
+
   /**
    *
    */
@@ -34,6 +35,12 @@ const Lobby = () => {
     // go to next page
     setRedirect(true);
   }
+
+  const history = useHistory();
+  const goBack = () => {
+    history.goBack();
+  };
+
 
   {
     /* link this to backend.
@@ -46,18 +53,22 @@ const Lobby = () => {
   const NumOfCusines = [];
 
   NumOfCusines.length == 0 ? NumOfCusines.push('Thai') : null;
-
   NumOfCusines.length > 0 ?
+
       (NumOfCusines.push(', ' + 'Burger'),
       NumOfCusines.push(', ' + 'European'),
       NumOfCusines.push(', ' + 'Mediterranean'),
       NumOfCusines.push(', ' + 'Chinese')) : null;
 
+
+  let NumOfUsers = 0;
+  NumOfUsers = users.length;
+
   const peopleList = () => {
     const peopleArray = [];
     const Food = 'Food';
 
-    for (let i = 0; i < users.length; i++) {
+    for (let i = 0; i < NumOfUsers; i++) {
       const FoodID = Food.concat(i.toString());
       peopleArray.push(
           <div className={FoodID} id='FoodIcon' key={i.toString()}>
@@ -78,7 +89,7 @@ const Lobby = () => {
           <div>
             <div className='Inline_Block'>Group code: {GroupCode}</div>
             <span className='CentreTitle'></span>
-            <div className='Inline_Block'>{users.length}/10</div>
+            <div className='Inline_Block'>{NumOfUsers}/10</div>
           </div>
           <div id='container'>{peopleList()}</div>
         </div>
@@ -92,17 +103,17 @@ const Lobby = () => {
         </button>
         <Help trigger={ShareButtonPopup} setTrigger={setSharePopup}>
           <div className='MakeTextCentre'>
-            <h2> Please share this link:</h2>{' '}
-            <a href={'https://yumble.xyz/Lobby/' + GroupCode}>
-            https://yumble.xyz/Lobby/{GroupCode}
+            <h2> Share the group code:</h2>
+            <h1>{GroupCode}</h1>
+            <a href={'https://yumble.xyz/JoinGroup/'}>
+            https://yumble.xyz/JoinGroup
             </a>
           </div>
         </Help>
-        <Link to='/Preferences'>
-          <button className='SmallBtn' id='BackButton'>
+        <button className='SmallBtn' id='BackButton'
+          onClick= {goBack}>
             Back
-          </button>
-        </Link>
+        </button>
         <button
           onClick={() => setHelpButtonPopup(true)}
           className='SmallBtn'
