@@ -12,6 +12,7 @@ function SocketContextProvider({children}) {
   const [countdown, setCountdown] = useState(null);
   const [users, setUsers] = useState(null);
   const [preferences, setPreferences] = useState(null);
+  const [code, setCode] = useState(null);
 
   const context = {
     socket,
@@ -22,6 +23,8 @@ function SocketContextProvider({children}) {
     setUsers,
     preferences,
     setPreferences,
+    code,
+    setCode,
   };
 
   return (
