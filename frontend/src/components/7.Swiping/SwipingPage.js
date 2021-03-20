@@ -1,6 +1,9 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useContext} from 'react';
+import {useHistory} from 'react-router-dom';
 import axios from 'axios';
 
+import {SocketContext} from './../../sockets/SocketContext';
+import * as SocketEvents from './../../sockets';
 import Help from '../Common/Help';
 import '../Common/Help.css';
 import MapModal from '../Common/MapModal';
@@ -15,6 +18,8 @@ const mapSrc = 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3192.58818
  * @return {*}
  */
 function SwipingPage() {
+  const history = useHistory();
+  const socketContext = useContext(SocketContext);
   const [ButtonPopup, setButtonPopup] = useState(false);
   const [MapPopup, setMapPopup] = useState(false);
   const SwipedRight= [];
@@ -31,7 +36,15 @@ function SwipingPage() {
 
   useEffect(() => {
     document.title = 'Yes or No?';
+    SocketEvents.endGame(socketContext.socket, goNextPge);
   }, []);
+
+  /**
+   */
+  const goNextPge = () => {
+    console.log('Game has Ended');
+    history.replace('/Result');
+  };
 
   const hitDummyEndpoint = () => {
     axios.get('/sessions/testCard').then((response) =>{
