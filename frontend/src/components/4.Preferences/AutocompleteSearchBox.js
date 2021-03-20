@@ -38,7 +38,8 @@ const AutocompleteSearchBox = ({setLocation, sendCoordinates}) => {
           <div>
             <input
               className={'SearchBox'}
-              {...getInputProps({placeholder: 'Enter a place'})}
+              {...getInputProps({placeholder:
+                ' Grafton, Auckland, New Zealand'})}
             />
             <div>
               {suggestions.map((suggestion, index) => {

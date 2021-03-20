@@ -1,5 +1,4 @@
 import express from 'express';
-require('dotenv').config();
 
 const router = express.Router();
 
@@ -11,4 +10,13 @@ router.get('/googleKey', async (req, res) => {
   res.status(200).json(key);
 });
 
-export default router;
+// GET: Returns the foursquare API key from env var
+router.get('/foursquareKey', async (req, res) => {
+  const key = {
+    foursquareID: process.env.FOURSQUARE_API_ID,
+    foursquareSECRET: process.env.FOURSQUARE_API_SECRET,
+  };
+  res.status(200).json(key);
+});
+
+module.exports = router;
