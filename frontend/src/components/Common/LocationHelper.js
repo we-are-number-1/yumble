@@ -17,7 +17,9 @@ let cards = null;
  * @param  {number} radius The radius around the defined coordinates
  * @param  {String} keyword Cuisine keyword
  */
-export async function getNearbyRestaurants(coordinates, radius, keyword) {
+export async function getNearbyRestaurants(coordinates,
+    radius,
+    keyword) {
   const pyrmont = new google.maps.LatLng(-33.8665433, 151.1956316);
   const dummyMap = new google.maps.Map(document.getElementById('dummyMap'), {
     center: pyrmont,
@@ -31,9 +33,11 @@ export async function getNearbyRestaurants(coordinates, radius, keyword) {
     keyword: keyword,
   };
   const service = new google.maps.places.PlacesService(dummyMap);
+
   service.nearbySearch(request, async (results, status) => {
     if (status === google.maps.places.PlacesServiceStatus.OK) {
-      cards = await getRestaurantCards(results, parseLatAndLng(results));
+      cards = await getRestaurantCards(results,
+          parseLatAndLng(results));
     }
   },
   );
