@@ -12,9 +12,8 @@ import '../7.Swiping/SwipingPage.css';
 import SwipeCard from '../Common/SwipeCard';
 
 /**
- *
  * @return {*}
- * @param {*} props
+ * @param  {*} props
  */
 function SwipingPage(props) {
   const history = useHistory();
@@ -25,13 +24,14 @@ function SwipingPage(props) {
   const [CardPass, setCardPass] = useState(null);
 
   const RemainingTime = '25';
-  const [Data, setData] = useState(CardData.shift());
+  const [Data, setData] = useState(CardData[0]); // 0th element
   const [redirect, setRedirect] = useState(false);
 
   useEffect(() => {
     document.title = 'Yes or No?';
     SocketEvents.endGame(socketContext.socket, goNextPge);
-    setCardPass( props.location.state.slice());
+    setCardPass(props.location.state.slice());
+    CardData.shift();
   }, []);
 
   console.log(CardData);
@@ -42,32 +42,15 @@ function SwipingPage(props) {
     history.replace('/Result');
   };
 
-
-  /**
- * @param {number} index
- * @return {void}
- */
-  function clickedYes() {
-    console.log('clicked yes');
-    getNewCard();
-  }
-
   /**
   *
+  *
   */
-  function clickedNo() {
-    console.log('clicked no');
-    getNewCard();
-  }
-
-  /**
- * @param {null} Retrieves new restaurant details
- * @return {void}
- */
   function getNewCard() {
+    console.log('CLICK');
     try {
       if (CardData[0] !== undefined) {
-        setData(CardData[0]);
+        setData(CardData.shift());
       } else {
         setRedirect(true);
       }
@@ -84,14 +67,14 @@ function SwipingPage(props) {
         <button
           className='YesOrNoButton'
           id='YesButton'
-          onClick = {clickedYes}
+          onClick = {getNewCard}
         >
           Keen!
         </button>
         <button
           className='YesOrNoButton'
           id='NoButton'
-          onClick = {clickedNo}
+          onClick = {getNewCard}
         >
           Nope!
         </button>
