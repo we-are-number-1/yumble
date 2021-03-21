@@ -1,5 +1,5 @@
 import axios from 'axios';
-import getAPIKey from './getAPIKey';
+// import getAPIKey from './getAPIKey';
 
 /* eslint-disable */
 
@@ -12,15 +12,15 @@ let dollar = "$";
 export async function getRestaurantCards(restaurants, coords) {
   var cards = [];
 
-  clientCreds = await getAPIKey(1);
-  clientID = clientCreds[0];
-  clientSecret = clientCreds[1];
+  // clientCreds = await getAPIKey(1);
+  // clientID = clientCreds[0];
+  // clientSecret = clientCreds[1];
 
   for (let i = 0; i < restaurants.length; i++) {
     var price;
     var suburb;
 
-    const menu = await getMenu(20200305, coords[i].lat, coords[i].lng, restaurants[i].name);
+    // const menu = await getMenu(20200305, coords[i].lat, coords[i].lng, restaurants[i].name);
 
     // get the suburb by some quick string operations
     suburb = restaurants[i].vicinity.split(", ");
@@ -39,9 +39,10 @@ export async function getRestaurantCards(restaurants, coords) {
           location: suburb,
           price: price,
           images: restaurants[i].photos[0].getUrl(600),
-          menu: menu,
+          // menu: menu,
           rating: restaurants[i].rating,
-          cuisine: "Kiwiana"
+          cuisine: "Kiwiana",
+          coords: coords[i],
       };
       cards.push(card);
     } catch (error) {
@@ -49,8 +50,6 @@ export async function getRestaurantCards(restaurants, coords) {
       console.log(error);
     }
   }
-
-  console.log(cards);
   return cards;
 }
 

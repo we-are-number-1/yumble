@@ -1,6 +1,6 @@
 import React, {useEffect, useState, useContext} from 'react';
-import {useHistory} from 'react-router-dom';
-import axios from 'axios';
+import {useHistory, Redirect} from 'react-router-dom';
+// import axios from 'axios';
 
 import {SocketContext} from './../../sockets/SocketContext';
 import * as SocketEvents from './../../sockets';
@@ -16,29 +16,27 @@ const mapSrc = 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3192.58818
 /**
  *
  * @return {*}
+ * @param {*} props
  */
-function SwipingPage() {
+function SwipingPage(props) {
   const history = useHistory();
   const socketContext = useContext(SocketContext);
   const [ButtonPopup, setButtonPopup] = useState(false);
   const [MapPopup, setMapPopup] = useState(false);
-  const SwipedRight= [];
+  const CardData = props.location.state;
+  const [CardPass, setCardPass] = useState(null);
 
-  // Dummy data, should be retrieved by sockets
   const RemainingTime = '25';
-  let name = 'Lonestar';
-  let location = 'Botany';
-  let cuisine = 'European';
-  let price = '$$$';
-  let rating = '4.0';
-  let id = '36472';
-  const Data = {name, location, cuisine, price, rating};
+  const [Data, setData] = useState(CardData.shift());
+  const [redirect, setRedirect] = useState(false);
 
   useEffect(() => {
     document.title = 'Yes or No?';
     SocketEvents.endGame(socketContext.socket, goNextPge);
+    setCardPass( props.location.state.slice());
   }, []);
 
+  console.log(CardData);
   /**
    */
   const goNextPge = () => {
@@ -46,25 +44,21 @@ function SwipingPage() {
     history.replace('/Result');
   };
 
-  const hitDummyEndpoint = () => {
-    axios.get('/sessions/testCard').then((response) =>{
-      console.log('Dummy data:', response.data);
-    });
-  };
-
-  hitDummyEndpoint();
 
   /**
- * @param {null} Adds the current restaurant details to array which stores
- * all right-swiped restaurants.
+ * @param {number} index
  * @return {void}
  */
   function clickedYes() {
     console.log('clicked yes');
-    const restaurantId = {name, id};
-    SwipedRight.push(restaurantId);
-    console.log(SwipedRight);
-    console.log(SwipedRight.length);
+    getNewCard();
+  }
+
+  /**
+  *
+  */
+  function clickedNo() {
+    console.log('clicked no');
     getNewCard();
   }
 
@@ -73,13 +67,15 @@ function SwipingPage() {
  * @return {void}
  */
   function getNewCard() {
-    // Dummy data, should be retrieved by sockets
-    name = 'Burger King';
-    location = 'Manukau';
-    cuisine = 'Cheap food';
-    price = '$';
-    rating = '3.0';
-    id = '287376923';
+    try {
+      if (CardData[0] !== undefined) {
+        setData(CardData[0]);
+      } else {
+        setRedirect(true);
+      }
+    } catch (error) {
+      setRedirect(true);
+    }
   }
 
   return (
@@ -97,6 +93,7 @@ function SwipingPage() {
         <button
           className='YesOrNoButton'
           id='NoButton'
+          onClick = {clickedNo}
         >
           Nope!
         </button>
@@ -129,6 +126,8 @@ function SwipingPage() {
           below the card.
         </p>
       </Help>
+      {redirect && <
+        Redirect to={{pathname: '/Result', state: CardPass}}/>}
     </>
   );
 }
