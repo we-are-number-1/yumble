@@ -43,13 +43,14 @@
 }
 
 .FoodIconText {
+  font-size: 2.5vw;
   display: block;
   position: relative;
   top: 5.2vw;
-  overflow: hidden;
+  overflow:auto;
   white-space: nowrap;
   text-overflow:clip;
-  max-width: auto;
+  max-width: 1000vw;
 }
 
 .Inline_Block {
