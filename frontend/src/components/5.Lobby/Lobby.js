@@ -1,17 +1,18 @@
-import {Link, useHistory} from 'react-router-dom';
+import {useHistory, Redirect} from 'react-router-dom';
 import React, {useState, useEffect, useContext} from 'react';
 import Help from '../Common/Help';
 import {SocketContext} from './../../sockets/SocketContext';
+import * as SocketEvents from './../../sockets';
 import '../Common/Help.css';
 import '../5.Lobby/Lobby.css';
 
 const Lobby = () => {
   const socketContext = useContext(SocketContext);
-
   const [ShareButtonPopup, setSharePopup] = useState(false);
   const [helpButtonPopup, setHelpButtonPopup] = useState(false);
   const [users, setUsers] = useState(
     socketContext.users ? socketContext.users : []);
+  const [redirect, setRedirect] = useState(false);
 
   useEffect(() => {
     setUsers(socketContext.users ? socketContext.users : []);
@@ -19,35 +20,33 @@ const Lobby = () => {
 
   useEffect(() => {
     document.title = 'Waiting Room';
+    SocketEvents.countdown(socketContext.socket, (count) => {
+      console.log(`${count} second countdown`);
+      socketContext.setCountdown(count);
+      startCountdown();
+    });
+    SocketEvents.setPreferences(socketContext.socket, (preferences) => {
+      socketContext.setPreferences(preferences);
+    });
+    SocketEvents.newUser(socketContext.socket, (data) => {
+      console.log(data);
+      socketContext.setUsers(data.users);
+    });
   }, []);
+
+  /**
+   *
+   */
+  function startCountdown() {
+    // go to next page
+    setRedirect(true);
+  }
 
   const history = useHistory();
   const goBack = () => {
+    SocketEvents.leaveRoom(socketContext.socket);
     history.goBack();
   };
-
-  {
-    /* link this to backend.
-  Backend just needs to push data into
-  People array, NumOfCusines array and GroupCode*/
-  }
-  let GroupCode = '';
-  GroupCode = 'HX8192';
-
-  {/* People list has been linked to backnd as users.
-  Just need NumOfCuisines array and GroupCode to be linked. */}
-  // const People = [
-  //   'Bob',
-  //   'Alex',
-  //   'John',
-  //   'Banan',
-  //   'meow',
-  //   'woof',
-  //   'mouse',
-  //   'kik',
-  // ];
-  // People.push('Chonk');
-  // People.push('meanie');
 
   const NumOfCusines = [];
 
@@ -78,6 +77,7 @@ const Lobby = () => {
     return peopleArray;
   };
 
+
   return (
     <>
       <h1 className='Title'>yumble</h1>
@@ -85,29 +85,33 @@ const Lobby = () => {
         <div className='CusineTitle'>Cusines: {NumOfCusines}</div>
         <div className={'LobbyBox'}>
           <div>
-            <div className='Inline_Block'>Group code: {GroupCode}</div>
+            <div className='Inline_Block'>Group code: {socketContext.code}</div>
             <span className='CentreTitle'></span>
             <div className='Inline_Block'>{NumOfUsers}/10</div>
           </div>
           <div id='container'>{peopleList()}</div>
         </div>
-        <Link to='/CountDown'>
-          <button className='GoButton'>Go</button>
-        </Link>
+        <button className='GoButton'
+          onClick={
+            () => SocketEvents.start(socketContext.socket, socketContext.code)
+          }>
+          Go
+        </button>
+        {redirect && <Redirect to='/CountDown' />}
         <button onClick={() => setSharePopup(true)} className='ShareButton'>
           Share
         </button>
         <Help trigger={ShareButtonPopup} setTrigger={setSharePopup}>
           <div className='MakeTextCentre'>
             <h2> Share the group code:</h2>
-            <h1>{GroupCode}</h1>
+            <h1>{socketContext.code}</h1>
             <a href={'https://yumble.xyz/JoinGroup/'}>
             https://yumble.xyz/JoinGroup
             </a>
           </div>
         </Help>
         <button className='SmallBtn' id='BackButton'
-          onClick= {goBack}>
+          onClick={() => goBack()}>
             Back
         </button>
         <button

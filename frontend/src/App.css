@@ -39,7 +39,6 @@
 
 /* need to refactor below */
 
-
 /* Common */
 .Title {
   position: absolute;
@@ -50,7 +49,7 @@
 }
 
 .BackGroundImage {
-  background-image: url("https://wallpaperaccess.com/full/679983.jpg");
+  background-image: url('https://wallpaperaccess.com/full/679983.jpg');
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -72,7 +71,6 @@
   align-self: flex-end;
   right: 0;
   margin: 1vw;
-
 }
 
 .SmallBtn:hover {
@@ -117,6 +115,10 @@
   justify-content: center;
 }
 
+#ExtraHeight {
+  height: 95vh;
+}
+
 /* Unique */
 
 /* StartPage */
@@ -134,7 +136,7 @@
   font-size: 3vw;
   border-radius: 30px;
   border-color: black;
-  border-width: 5px; 
+  border-width: 5px;
 }
 
 .BigBtn:hover {
@@ -152,7 +154,7 @@
 }
 
 #GoogleMaps_btn {
-  background-color: #59D47C;
+  background-color: #59d47c;
   width: 350px;
   font-size: 18pt;
   display: flex;
@@ -179,13 +181,4 @@
 
 .GoButton:hover {
   background: cyan;
-}
-
-/* Results Page */
-.ResultTitle {
-  -webkit-text-stroke: 4px black;
-  color: white;
-  font-family: Comic Sans MS;
-  margin: 1vw;
-  font-size: 50pt;
 }

@@ -2,22 +2,24 @@ import {useHistory} from 'react-router-dom';
 import React, {useState, useEffect, useContext} from 'react';
 import Help from '../Common/Help';
 import {SocketContext} from './../../sockets/SocketContext';
+import * as SocketEvents from './../../sockets';
 import '../Common/Help.css';
 
 const CountDown = () => {
-  useEffect(() => {
-    document.title = 'Go!';
-  }, []);
-
-  const [ButtonPopup, setButtonPopup] = useState(false);
-  const [seconds, setSeconds] = React.useState(3);
   const history = useHistory();
   const socketContext = useContext(SocketContext);
+  const [ButtonPopup, setButtonPopup] = useState(false);
+  const [seconds, setSeconds] = useState(socketContext.countdown);
 
-  React.useEffect(() => {
-    console.log(socketContext);
+  useEffect(() => {
+    document.title = 'Go!';
+    SocketEvents.nextRound(socketContext.socket, goNextPge);
+    console.log(socketContext.countdown);
+  }, []);
+
+  useEffect(() => {
     seconds >= 0 ? setTimeout(() => setSeconds(seconds - 1), 1000) : null;
-  });
+  }, [seconds]);
 
 
   /**
