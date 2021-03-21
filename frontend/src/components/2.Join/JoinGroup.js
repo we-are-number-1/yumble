@@ -30,9 +30,7 @@ function GroupCode() {
     <>
       <h1 className='Title'>yumble</h1>
       <div className='MakeCentre'>
-        <div className='Join_input'>
-          <div className='GroupCode_Box'>
-            <div className='AddMargin'>Enter group code</div>
+        <div className='GroupCode_Box'>
           <div className='AddMargin'>Enter group code</div>
           <div>
             <UserInput
@@ -50,32 +48,6 @@ function GroupCode() {
               <UserInput
                 input
                 type='text'
-                inputType='joinGroup'
-                placeholder=' P6aPE'
-                fontSize={3}
-                // on change currently doesnt work
-                onChange={(e) => setCode(e.target.value)}
-              ></UserInput>
-            </div>
-            <div className='Username_Box'>
-              <div className='AddMargin'>  Enter Name</div>
-              <div>
-                <UserInput
-                  input
-                  type='text'
-                  inputType='joinGroup' // what is inputType
-                  placeholder=' Alex'
-                  fontSize={3}
-                  // on change currently doesnt work
-                  onChange={(e) => setName(e.target.value)}
-                ></UserInput>
-              </div>
-            </div>
-            <Link to={'Lobby/' + code}>
-              {/* need to change to check or whatnot */}
-              <button
-                onClick={() => SocketEvents.joinRoom(socket, 'test', name)}
-                className='GoButton'>
                 inputType='joinGroup' // what is inputType
                 placeholder=' Alex'
                 fontSize={3}
