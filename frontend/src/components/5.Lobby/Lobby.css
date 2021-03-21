@@ -46,6 +46,10 @@
   display: block;
   position: relative;
   top: 5.2vw;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow:clip;
+  max-width: auto;
 }
 
 .Inline_Block {
