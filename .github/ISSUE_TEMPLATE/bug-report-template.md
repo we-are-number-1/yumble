@@ -2,8 +2,8 @@
 name: Bug Report Template
 about: A blueprint for creating consistent Bug Reports on the yumble repo.
 title: "[BUG] Add Bug Report"
-labels: ''
-assignees: blakehattingh
+labels: 'BUG'
+assignees: ''
 
 ---
 

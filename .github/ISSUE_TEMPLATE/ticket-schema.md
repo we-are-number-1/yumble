@@ -31,7 +31,6 @@ Description inside ticket
 * Any linked sub-issues
 * Adequately describes the details of the modification to the repo.
 * Further categorization if it helps with overall organization of the repo
-* [Optional]: Why you made this pull request
 
 ### Additional guideline for [REQUEST]:
 * Is your feature request related to a problem? Please describe.
