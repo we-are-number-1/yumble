@@ -115,6 +115,10 @@
   justify-content: center;
 }
 
+#ExtraHeight {
+  height: 95vh;
+}
+
 /* Unique */
 
 /* StartPage */
@@ -194,13 +198,4 @@
 
 .GoButton:hover {
   background: cyan;
-}
-
-/* Results Page */
-.ResultTitle {
-  -webkit-text-stroke: 4px black;
-  color: white;
-  font-family: Comic Sans MS;
-  margin: 1vw;
-  font-size: 50pt;
 }
