@@ -7,6 +7,7 @@ import Icon from '../Common/MapsPinpoint';
 /**
  *
  * @return {*}
+ * TODO: remove hard-coded location for the winning restaurant coordinates
  */
 function ResultPage() {
   const [ButtonPopup, setButtonPopup] = useState(false);
@@ -27,7 +28,8 @@ function ResultPage() {
           View on Google Maps
           <Icon />
         </button>
-        <MapModal trigger={MapPopup} setTrigger={setMapPopup} />
+        <MapModal trigger={MapPopup} setTrigger={setMapPopup}
+          restaurantLocation={-36.8523, 174.7691} />
       </div>
 
       <button
