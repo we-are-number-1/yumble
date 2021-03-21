@@ -11,7 +11,6 @@ const CountDown = (props) => {
   const [ButtonPopup, setButtonPopup] = useState(false);
   const [seconds, setSeconds] = useState(socketContext.countdown);
   const [data] = useState(props.location.state);
-  const [timer, setTimer] = useState(3);
   const [redirect, setRedirect] = useState(false);
 
   /**
@@ -20,7 +19,7 @@ const CountDown = (props) => {
    */
   function cb(data) {
     setRedirect(true);
-    setTimer(data.nextRoundTime);
+    socketContext.setCountdown(data.nextRoundTime);
   };
 
   useEffect(() => {
@@ -61,7 +60,7 @@ const CountDown = (props) => {
       </Help>
       {redirect ?
         <Redirect to={{pathname: '/Swiping',
-          state: [data, timer]}}
+          state: [data]}}
         /> : null}
       <div id="dummyMap" style={{visibility: 'hidden'}}></div>
     </>

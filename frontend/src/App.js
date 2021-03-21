@@ -1,5 +1,5 @@
 import './App.css';
-import StartPage from './components/8.Result/ResultPage';
+import StartPage from './components/1.Landing/StartPage';
 import CreateGroup from './components/3.CreateGroup/CreateGroup';
 import JoinGroup from './components/2.Join/JoinGroup';
 import Preferences from './components/4.Preferences/Preferences';

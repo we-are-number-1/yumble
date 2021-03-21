@@ -7,7 +7,7 @@ import '../Common/Help.css';
  * @param {*} param0
  * @return {*}
  */
-function Map({restaurantLocations, currentRestaurantIndex}) {
+function Map({restaurantLocations}) {
   const [map, setMap] = useState(null);
   const [marker, setMarker] = useState(null);
 
@@ -17,12 +17,12 @@ function Map({restaurantLocations, currentRestaurantIndex}) {
   useEffect(() => {
     if (map === null && marker === null) {
       loadMap(document.getElementById('map'),
-          restaurantLocations[currentRestaurantIndex], setMap, setMarker);
+          restaurantLocations, setMap, setMarker);
     } else {
-      map.setCenter(restaurantLocations[currentRestaurantIndex]);
-      marker.setPosition(restaurantLocations[currentRestaurantIndex]);
+      map.setCenter(restaurantLocations);
+      marker.setPosition(restaurantLocations);
     }
-  }, [restaurantLocations, currentRestaurantIndex]);
+  }, [restaurantLocations]);
 
 
   return <div id='map' style={{width: '600px', height: '400px'}} />;

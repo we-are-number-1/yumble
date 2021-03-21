@@ -67,6 +67,8 @@ io.on('connection', (socket) => {
   SocketEvents.joinRoom(socket, io);
   SocketEvents.start(socket);
   SocketEvents.leaveRoom(socket, io, () => {});
+  SocketEvents.setRestaurants(socket);
+  SocketEvents.vote(socket);
 });
 
 server.listen(PORT, () => {

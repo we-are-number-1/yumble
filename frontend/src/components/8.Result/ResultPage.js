@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import Help from '../Common/Help';
 import '../Common/Help.css';
 import MapModal from '../Common/MapModal';
@@ -7,6 +7,7 @@ import DataVisual from './DataVisual';
 import SwipeCard from '../Common/SwipeCard';
 import axios from 'axios';
 import './ResultPage.css';
+import {SocketContext} from '../../sockets/SocketContext';
 
 // Dummy data, should be retrieved by sockets
 const name = 'Lonestar';
@@ -18,6 +19,7 @@ const rating = '4.0';
 /**
  * @param {*} props
  * @return {*}
+ * TODO: remove hard-coded location for the winning restaurant coordinates
  */
 function ResultPage(props) {
   // const socketContext = useContext(SocketContext);
@@ -27,6 +29,7 @@ function ResultPage(props) {
   const [data, setData] = useState({name, location, cuisine, price, rating});
   const [pie, setPie] = useState(null);
   const [chart, setChart] = useState(false);
+  const socketContext = useContext(SocketContext);
 
 
   useEffect(() => {
@@ -52,7 +55,8 @@ function ResultPage(props) {
         location: card.location,
         cuisine: cuisine,
         price: price,
-        rating: rating});
+        rating: rating,
+        images: `https://c.files.bbci.co.uk/050B/production/_103119210_lazytown2.jpg`});
 
       console.log(cardList);
       const pieChart = {};
@@ -120,7 +124,8 @@ function ResultPage(props) {
           View on Google Maps
           <Icon />
         </button>
-        <MapModal trigger={MapPopup} setTrigger={setMapPopup} />
+        <MapModal trigger={MapPopup} setTrigger={setMapPopup}
+          restaurantLocation={{lat: -36.8523, lng: 174.7691}} />
       </div>
 
       <button

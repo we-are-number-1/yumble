@@ -12,6 +12,7 @@ export function joinRoom(socket, io) {
       console.log('Invalid game code: ' + sessionId);
       return;
     }
+    io.to(socket.id).emit('invalid_code', false);
 
     if (!game.session.hostSocket) {
       game.session.hostSocket = socket;
@@ -20,7 +21,11 @@ export function joinRoom(socket, io) {
     socket.join(sessionId);
     const users = Array.from(game.session.users.values()).map((e) => e.name);
     console.log(users);
-    io.to(socket.id).emit('invalid_code', false);
+
     io.to(sessionId).emit('new_user', {users: users});
+    if (game.session.restaurants) {
+      console.log(`restaurants sent to ${name}`);
+      io.to(sessionId).emit('update_restaurants', game.session.restaurants);
+    }
   });
 }
