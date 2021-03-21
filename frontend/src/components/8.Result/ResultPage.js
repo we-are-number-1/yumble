@@ -46,13 +46,16 @@ const rating = '4.0';
 const Data = {name, location, cuisine, price, rating};
 
 /**
- *
+ * @param {*} props
  * @return {*}
  */
-function ResultPage() {
+function ResultPage(props) {
   const [ButtonPopup, setButtonPopup] = useState(false);
   const [MapPopup, setMapPopup] = useState(false);
+
+
   useEffect(() => {
+    console.log(props.location.state);
     document.title = 'Time to go eat!';
   }, []);
 
