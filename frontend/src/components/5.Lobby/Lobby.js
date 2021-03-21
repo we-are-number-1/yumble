@@ -104,12 +104,12 @@ const Lobby = (props) => {
           </div>
           <div id='container'>{peopleList()}</div>
         </div>
-        <button className='GoButton'
+        {socketContext.host && <button className='GoButton'
           onClick={
             () => SocketEvents.start(socketContext.socket, socketContext.code)
           }>
           Go
-        </button>
+        </button>}
         {redirect && <Redirect to={{pathname: '/CountDown', state: cardData}}/>}
         <button onClick={() => setSharePopup(true)} className='ShareButton'>
           Share

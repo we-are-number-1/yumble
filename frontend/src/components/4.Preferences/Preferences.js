@@ -70,6 +70,7 @@ function Preferences() {
     console.log(`room code ${code}`);
     console.log(cardData);
     socketContext.setCode(code);
+    socketContext.setHost(true);
     SocketEvents.setRestaurants(socketContext.socket, code, cardData);
 
     const newPref = {

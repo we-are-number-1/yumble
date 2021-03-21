@@ -22,7 +22,7 @@ function SwipingPage(props) {
   const CardData = props.location.state[0];
   const [CardPass, setCardPass] = useState(null);
   const [decided, setDecided] = useState(false);
-  const [time, setTime] = useState(0);
+  const [time, setTime] = useState(socketContext.countdown);
   const [Data, setData] = useState(CardData[0]);
   const [redirect, setRedirect] = useState(false);
 
@@ -31,15 +31,39 @@ function SwipingPage(props) {
     setData(CardData.shift());
     SocketEvents.endGame(socketContext.socket, goNextPge);
     SocketEvents.nextRound(socketContext.socket, getNewCard);
-    setCardPass( props.location.state[0].slice());
+    setCardPass(props.location.state[0].slice());
     setTime(socketContext.countdown);
   }, []);
 
-  useEffect(() => {
-    time >= 0 ? setTimeout(
-        () =>
-          setTime((time - 1) < 0 ? 0 : time-1 ), 1000) : null;
+  useEffect(async () => {
+    // /**
+    //  * @param {*} resolve
+    //  * @return {*}
+    //  */
+    // function solve(resolve) {
+    //   setTime(time - 1);
+    //   return resolve;
+    // }
+    // console.log(time);
+    // await setTimeout(solve, resolve
+    //     , 1000);
+    setTimeout(() => {
+      if (time < 1) {
+        setTime(socketContext.countdown/1000);
+      } else {
+        setTime(time - 1);
+      }
+    }, 1000);
   }, [time]);
+
+
+  // /**
+  //  *
+  //  */
+  // function timer(resolve, setTheTime ){
+  //   resolve();
+  //   setTheTime(time-1);
+  // }
 
   /**
    */
@@ -80,7 +104,7 @@ function SwipingPage(props) {
  * @return {void}
  */
   function getNewCard(timer) {
-    setTime(socketContext.countdown + 1);
+    setTime(socketContext.countdown/1000);
     try {
       setDecided(false);
       CardData.shift();
@@ -99,19 +123,19 @@ function SwipingPage(props) {
         <button
           className='YesOrNoButton'
           id='YesButton'
-          onClick = {clickedYes}
+          onClick={clickedYes}
         >
           Keen!
         </button>
         <button
           className='YesOrNoButton'
           id='NoButton'
-          onClick = {clickedNo}
+          onClick={clickedNo}
         >
           Nope!
         </button>
 
-        <SwipeCard data = {Data} ></SwipeCard>
+        <SwipeCard data={Data} ></SwipeCard>
 
         <button
           onClick={() => setMapPopup(true)}
@@ -122,7 +146,7 @@ function SwipingPage(props) {
           <Icon />
         </button>
         <MapModal trigger={MapPopup} setTrigger={setMapPopup}
-          restaurantLocation={Data.coords}/>
+          restaurantLocation={Data.coords} />
       </div>
       <button
         onClick={() => setButtonPopup(true)}
@@ -141,7 +165,7 @@ function SwipingPage(props) {
         </p>
       </Help>
       {redirect && <
-        Redirect to={{pathname: '/Result', state: CardPass}}/>}
+        Redirect to={{pathname: '/Result', state: CardPass}} />}
     </>
   );
 }
