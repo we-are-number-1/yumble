@@ -105,8 +105,8 @@ const Lobby = () => {
           <div className='MakeTextCentre'>
             <h2> Share the group code:</h2>
             <h1>{socketContext.code}</h1>
-            <a href={'https://yumble.xyz/JoinGroup/'}>
-            https://yumble.xyz/JoinGroup
+            <a href={'https://yumble.xyz'}>
+            https://yumble.xyz
             </a>
           </div>
         </Help>
