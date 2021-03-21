@@ -11,7 +11,6 @@ import Icon from '../Common/MapsPinpoint';
 import '../7.Swiping/SwipingPage.css';
 import SwipeCard from '../Common/SwipeCard';
 
-const mapSrc = 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3192.588180029826!2d174.7669186152492!3d-36.85233777993783!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6d0d47e383f32253%3A0xbd49f61f758a9e5b!2sThe%20University%20of%20Auckland!5e0!3m2!1sen!2snz!4v1615862553109!5m2!1sen!2snz';
 
 /**
  *
@@ -30,6 +29,7 @@ function SwipingPage(props) {
   const [Data, setData] = useState(CardData.shift());
   const [redirect, setRedirect] = useState(false);
 
+  const mapSrc = 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3192.588180029826!2d174.7669186152492!3d-36.85233777993783!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6d0d47e383f32253%3A0xbd49f61f758a9e5b!2sThe%20University%20of%20Auckland!5e0!3m2!1sen!2snz!4v1615862553109!5m2!1sen!2snz';
   useEffect(() => {
     document.title = 'Yes or No?';
     SocketEvents.endGame(socketContext.socket, goNextPge);
@@ -108,7 +108,12 @@ function SwipingPage(props) {
           View on Google Maps
           <Icon />
         </button>
-        <MapModal trigger={MapPopup} setTrigger={setMapPopup} mapSrc={mapSrc}/>
+        <MapModal
+          trigger={MapPopup}
+          setTrigger={setMapPopup}
+          mapSrc={mapSrc}
+          // mapCoords={Data.coords}
+        />
       </div>
       <button
         onClick={() => setButtonPopup(true)}

@@ -20,3 +20,26 @@
     width: 20vw; 
     border-radius: 30px;
   }
+
+  .PlaceDetails{
+    margin: 1vw;
+  }
+  
+  #name{
+    font-size: 2.0vw;
+    font-weight: bold;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    pointer-events:none;
+  }
+  
+  #location, #price, #cuisine{
+    font-size: 1.5vw;
+    font-weight: lighter;
+  }
+  
+  #rating {
+    font-size: 1.5vw;
+    text-align: end;
+  }
