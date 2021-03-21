@@ -2,7 +2,6 @@ import {Redirect} from 'react-router-dom';
 import React, {useState, useEffect, useContext} from 'react';
 import Help from '../Common/Help';
 import {SocketContext} from './../../sockets/SocketContext';
-import {getNearbyRestaurants} from '../Common/LocationHelper';
 import * as SocketEvents from './../../sockets';
 import '../Common/Help.css';
 
@@ -11,36 +10,30 @@ const CountDown = (props) => {
   const socketContext = useContext(SocketContext);
   const [ButtonPopup, setButtonPopup] = useState(false);
   const [seconds, setSeconds] = useState(socketContext.countdown);
-  const CardPref = props.location.state;
-  const [CardData, setCardData] = useState(0);
-  let boolean = true;
+  const [data] = useState(props.location.state);
+  const [timer, setTimer] = useState(3);
+  const [redirect, setRedirect] = useState(false);
 
+  /**
+   *
+   * @param {*} data
+   */
+  function cb(data) {
+    setRedirect(true);
+    setTimer(data.nextRoundTime);
+  };
 
   useEffect(() => {
     document.title = 'Go!';
-    SocketEvents.nextRound(socketContext.socket, goNextPge);
+    SocketEvents.nextRound(socketContext.socket, cb);
     console.log(socketContext.countdown);
+    console.log(props.location.state);
   }, []);
 
   useEffect(() => {
     seconds >= 0 ? setTimeout(() => setSeconds(seconds - 1), 1000) : null;
   }, [seconds]);
 
-  useEffect(async () => {
-    if (boolean) {
-      setCardData(await getNearbyRestaurants(
-          CardPref.coords, CardPref.dist, CardPref.cuisine));
-      boolean = false;
-    }
-  });
-
-  /**
-   *
-   */
-  const goNextPge = async () => {
-    // console.log('card data', CardData);
-    // history.push('/Swiping', CardData);
-  };
 
   return (
     <>
@@ -66,8 +59,10 @@ const CountDown = (props) => {
           Please wait for the timer!
         </p>
       </Help>
-      {seconds == -1 ?
-        <Redirect to={{pathname: '/Swiping', state: CardData}}/> : null}
+      {redirect ?
+        <Redirect to={{pathname: '/Swiping',
+          state: [data, timer]}}
+        /> : null}
       <div id="dummyMap" style={{visibility: 'hidden'}}></div>
     </>
   );

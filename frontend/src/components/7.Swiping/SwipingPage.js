@@ -1,5 +1,5 @@
 import React, {useEffect, useState, useContext} from 'react';
-import {useHistory, Redirect} from 'react-router-dom';
+import {Redirect} from 'react-router-dom';
 // import axios from 'axios';
 
 import {SocketContext} from './../../sockets/SocketContext';
@@ -19,69 +19,82 @@ const mapSrc = 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3192.58818
  * @param {*} props
  */
 function SwipingPage(props) {
-  const history = useHistory();
   const socketContext = useContext(SocketContext);
   const [ButtonPopup, setButtonPopup] = useState(false);
   const [MapPopup, setMapPopup] = useState(false);
-  const CardData = props.location.state;
+  const CardData = props.location.state[0];
   const [CardPass, setCardPass] = useState(null);
-
-  const RemainingTime = '25';
-  const [Data, setData] = useState(CardData.shift());
+  const [decided, setDecided] = useState(false);
+  const [time, setTime] = useState((props.location.state[1]/1000) + 1);
+  const [Data, setData] = useState(CardData[0]);
   const [redirect, setRedirect] = useState(false);
 
   useEffect(() => {
     document.title = 'Yes or No?';
+    setData(CardData.shift());
     SocketEvents.endGame(socketContext.socket, goNextPge);
-    setCardPass( props.location.state.slice());
+    SocketEvents.nextRound(socketContext.socket, getNewCard);
+    setCardPass( props.location.state[0].slice());
   }, []);
 
-  console.log(CardData);
+  useEffect(() => {
+    time >= 0 ? setTimeout(
+        () =>
+          setTime((time - 1) < 0 ? 0 : time-1 ), 1000) : null;
+  }, [time]);
+
   /**
    */
   const goNextPge = () => {
     console.log('Game has Ended');
-    history.replace('/Result');
+    setRedirect(true);
   };
-
 
   /**
  * @param {number} index
  * @return {void}
  */
   function clickedYes() {
-    console.log('clicked yes');
-    getNewCard();
+    if (!decided) {
+      console.log(Data);
+      console.log(socketContext.code);
+      SocketEvents.vote(socketContext.socket,
+          socketContext.code, {name: Data.name, location: Data.location});
+      console.log('clicked yes');
+      setDecided(true);
+    }
   }
 
   /**
   *
   */
   function clickedNo() {
-    console.log('clicked no');
-    getNewCard();
+    if (!decided) {
+      console.log('clicked no');
+      setDecided(true);
+    }
   }
 
   /**
- * @param {null} Retrieves new restaurant details
+ * @param {*} timer new restaurant details
  * @return {void}
  */
-  function getNewCard() {
+  function getNewCard(timer) {
+    setTime(props.location.state[1]/1000 + 1);
     try {
+      setDecided(false);
+      CardData.shift();
       if (CardData[0] !== undefined) {
         setData(CardData[0]);
-      } else {
-        setRedirect(true);
       }
     } catch (error) {
-      setRedirect(true);
     }
   }
 
   return (
     <>
       <h1 className='Title'> yumble</h1>
-      <h1 className='TimeCounter'> Remaining time: {RemainingTime}s</h1>
+      <h1 className='TimeCounter'> Remaining time: {time}s</h1>
       <div className='MakeCentre'>
         <button
           className='YesOrNoButton'

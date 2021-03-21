@@ -13,8 +13,7 @@ const Lobby = (props) => {
   const [users, setUsers] = useState(
     socketContext.users ? socketContext.users : []);
   const [redirect, setRedirect] = useState(false);
-
-  const CardPref = props.location.state;
+  const [cardData, setCardData] = useState(props.location.state);
 
 
   useEffect(() => {
@@ -23,17 +22,27 @@ const Lobby = (props) => {
 
   useEffect(() => {
     document.title = 'Waiting Room';
-    SocketEvents.countdown(socketContext.socket, (count) => {
-      console.log(`${count} second countdown`);
-      socketContext.setCountdown(count);
-      startCountdown();
-    });
+
     SocketEvents.setPreferences(socketContext.socket, (preferences) => {
       socketContext.setPreferences(preferences);
     });
     SocketEvents.newUser(socketContext.socket, (data) => {
       console.log(data);
       socketContext.setUsers(data.users);
+    });
+    SocketEvents.updateRestaurants(
+        socketContext.socket,
+        (data) => {
+          console.log(data);
+          if (data) {
+            setCardData(data);
+          }
+        },
+    );
+    SocketEvents.countdown(socketContext.socket, (count) => {
+      console.log(`${count} second countdown`);
+      socketContext.setCountdown(count);
+      startCountdown();
     });
   }, []);
 
@@ -101,7 +110,7 @@ const Lobby = (props) => {
           }>
           Go
         </button>
-        {redirect && <Redirect to={{pathname: '/CountDown', state: CardPref}}/>}
+        {redirect && <Redirect to={{pathname: '/CountDown', state: cardData}}/>}
         <button onClick={() => setSharePopup(true)} className='ShareButton'>
           Share
         </button>
