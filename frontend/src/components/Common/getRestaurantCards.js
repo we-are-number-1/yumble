@@ -41,7 +41,8 @@ export async function getRestaurantCards(restaurants, coords) {
           images: restaurants[i].photos[0].getUrl(600),
           menu: menu,
           rating: restaurants[i].rating,
-          cuisine: "Kiwiana"
+          cuisine: "Kiwiana",
+          coords: coords[i],
       };
       cards.push(card);
     } catch (error) {
