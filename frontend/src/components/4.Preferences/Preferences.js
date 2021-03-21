@@ -2,7 +2,7 @@ import {Link} from 'react-router-dom';
 import React, {useState, useEffect, useContext} from 'react';
 import Help from '../Common/Help';
 import '../Common/Help.css';
-// import {getNearbyRestaurants} from '../Common/LocationHelper';
+import {getNearbyRestaurants} from '../Common/LocationHelper';
 import AutocompleteSearchBox from './AutocompleteSearchBox';
 import style from './Preferences.module.css';
 import {SocketContext} from './../../sockets/SocketContext';
