@@ -1,10 +1,12 @@
 import {Link} from 'react-router-dom';
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import Help from '../Common/Help';
 import '../Common/Help.css';
 import {getNearbyRestaurants} from '../Common/LocationHelper';
 import AutocompleteSearchBox from './AutocompleteSearchBox';
 import style from './Preferences.module.css';
+import {SocketContext} from './../../sockets/SocketContext';
+import * as SocketEvents from './../../sockets';
 import axios from 'axios';
 
 /**
@@ -12,6 +14,7 @@ import axios from 'axios';
  * @return {*}
  */
 function Preferences() {
+  const socketContext = useContext(SocketContext);
   const [ButtonPopup, setButtonPopup] = useState(false);
 
   // TODO should be set to 'default' price range
@@ -27,19 +30,18 @@ function Preferences() {
   });
 
   // TODO need to set default time
-  const [Timer, setTimer] = useState(300);
+  const [Timer, setTimer] = useState(30);
 
   // genereate code for the session
-  const [code, setCode] = useState(() => {
+  const [code, setCode] = useState(undefined);
+
+  useEffect(() => {
+    document.title = 'Choose game settings';
     axios.post('sessions', response).then((response) => {
       // ensure you only do it once
       // console.log(response.data);
       setCode(response.data.truncCode);
     });
-  });
-
-  useEffect(() => {
-    document.title = 'Choose game settings';
   }, []);
 
   /**
@@ -47,9 +49,15 @@ function Preferences() {
    */
   function handleSearch() {
     getNearbyRestaurants(Coordinates, Distance, 'chinese');
+    postPreference();
   }
 
   const postPreference = () => {
+    console.log(`room code ${code}`);
+    socketContext.setCode(code);
+    SocketEvents.joinRoom(socketContext.socket,
+        code, 'Host');
+
     const newPref = {
       location: Location,
       distance: Number(Distance),
@@ -111,13 +119,13 @@ function Preferences() {
                 setTimer(e.target.value);
               }}
               type='range'
-              min='180'
-              max='1800'
-              step='60'
+              min='5'
+              max='60'
+              step='5'
               defaultValue={Timer}
             />
             <div className={style.SliderText}>Time:{' '}
-              {Timer / 60} Minutes</div>
+              {Timer} Seconds</div>
           </div>
           {/* <div>Cusinies</div> */}
           <div className={style.priceText}>
@@ -163,7 +171,7 @@ function Preferences() {
             {/* need to check if an address is provided */}
             <button
               disabled={Coordinates.lat == null && Coordinates.lng == null}
-              onClick={postPreference, handleSearch}
+              onClick={handleSearch}
               className={style.GoPrefButton}
             >
               Go

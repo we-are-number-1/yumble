@@ -1,5 +1,8 @@
 import express from 'express';
 import Session from '../mongo/models/Session';
+import games from '../domain/Games';
+import {SocketSession} from '../domain/models/SocketSession';
+import {io} from '../index';
 
 const router = express.Router();
 
@@ -13,6 +16,7 @@ router.post('/', async (req, res) => {
 
   let mongoId;
   let code;
+
 
   try {
     const newSession = await session.save();
@@ -33,6 +37,19 @@ router.post('/', async (req, res) => {
   } catch (error) {
     res.status(500).json({message: error.message});
   }
+
+  console.log(`game created with code: ${code}`);
+  const sessionRoom = new SocketSession(
+      code,
+      null,
+      {'roundInterval': 5000});
+
+  games.newGame(
+      io,
+      sessionRoom,
+      {
+        length: 10,
+      });
 });
 
 // GET /sessions/:id – Get the session object with the provided id
@@ -47,6 +64,8 @@ router.patch('/:id', getSession, async (req, res) => {
   }
   if (req.body.preferences != null) {
     res.session.preferences = req.body.preferences;
+    games.getGame(req.params.id)
+        .roundInterval = req.body.preferences.timer * 1000;
   }
   if (req.body.results != null) {
     res.session.results = req.body.results;

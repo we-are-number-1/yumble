@@ -21,7 +21,7 @@ const Lobby = () => {
   useEffect(() => {
     document.title = 'Waiting Room';
     SocketEvents.countdown(socketContext.socket, (count) => {
-      console.log(count);
+      console.log(`${count} second countdown`);
       socketContext.setCountdown(count);
       startCountdown();
     });
@@ -93,7 +93,9 @@ const Lobby = () => {
           <div id='container'>{peopleList()}</div>
         </div>
         <button className='GoButton'
-          onClick={() => SocketEvents.start(socketContext.socket, 'test')}>
+          onClick={
+            () => SocketEvents.start(socketContext.socket, socketContext.code)
+          }>
           Go
         </button>
         {redirect && <Redirect to='/CountDown' />}
