@@ -45,8 +45,8 @@ const Lobby = () => {
   //   'woof',
   //   'mouse',
   //   'kik',
-  //   'Chonk',
   // ];
+  // People.push('Chonk');
   // People.push('meanie');
 
   const NumOfCusines = [];
