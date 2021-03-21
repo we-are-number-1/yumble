@@ -49,7 +49,7 @@
 }
 
 .BackGroundImage {
-  background-image: url('https://wallpaperaccess.com/full/679983.jpg');
+  background-image: url('BackgroundImage.webp');
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -165,19 +165,6 @@
 
 #GoogleMaps_btn:hover {
   background: #c7ffd7;
-}
-
-.Join_input {
-  outline: none;
-  border: 4px solid #000000;
-  background-color: white;
-  height: 30vw;
-  width: 30vw;
-  text-align: center;
-  font-family: Comic Sans MS;
-  border-radius: 30px;
-  padding: 2vw;
-  font-size: 3vw;
 }
 
 .GoButton {
