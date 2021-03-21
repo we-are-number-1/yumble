@@ -5,13 +5,16 @@ import MapModal from '../Common/MapModal';
 import Icon from '../Common/MapsPinpoint';
 
 /**
- *
+ * @param {*} props
  * @return {*}
  */
-function ResultPage() {
+function ResultPage(props) {
   const [ButtonPopup, setButtonPopup] = useState(false);
   const [MapPopup, setMapPopup] = useState(false);
+
+
   useEffect(() => {
+    console.log(props.location.state);
     document.title = 'Time to go eat!';
   }, []);
 

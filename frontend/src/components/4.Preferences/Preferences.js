@@ -2,7 +2,7 @@ import {Link} from 'react-router-dom';
 import React, {useState, useEffect, useContext} from 'react';
 import Help from '../Common/Help';
 import '../Common/Help.css';
-import {getNearbyRestaurants} from '../Common/LocationHelper';
+// import {getNearbyRestaurants} from '../Common/LocationHelper';
 import AutocompleteSearchBox from './AutocompleteSearchBox';
 import style from './Preferences.module.css';
 import {SocketContext} from './../../sockets/SocketContext';
@@ -48,7 +48,7 @@ function Preferences() {
    *
    */
   function handleSearch() {
-    getNearbyRestaurants(Coordinates, Distance, 'chinese');
+    // getNearbyRestaurants(Coordinates, Distance, 'chinese');
     postPreference();
   }
 
@@ -167,7 +167,11 @@ function Preferences() {
               sentences can be helpful in a number of different ways.
             </p>
           </Help>
-          <Link to={'/Lobby/' + code}>
+          <Link to={{
+            pathname: `/Lobby/${code}`,
+            state:
+              {coords: Coordinates, dist: Distance, cuisine: ['european']}}}
+          >
             {/* need to check if an address is provided */}
             <button
               disabled={Coordinates.lat == null && Coordinates.lng == null}
@@ -178,7 +182,6 @@ function Preferences() {
             </button>
           </Link>
         </div>
-        <div id="dummyMap" style={{visibility: 'hidden'}}></div>
       </div>
     </>
   );

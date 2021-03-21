@@ -6,13 +6,16 @@ import * as SocketEvents from './../../sockets';
 import '../Common/Help.css';
 import '../5.Lobby/Lobby.css';
 
-const Lobby = () => {
+const Lobby = (props) => {
   const socketContext = useContext(SocketContext);
   const [ShareButtonPopup, setSharePopup] = useState(false);
   const [helpButtonPopup, setHelpButtonPopup] = useState(false);
   const [users, setUsers] = useState(
     socketContext.users ? socketContext.users : []);
   const [redirect, setRedirect] = useState(false);
+
+  const CardPref = props.location.state;
+
 
   useEffect(() => {
     setUsers(socketContext.users ? socketContext.users : []);
@@ -98,7 +101,7 @@ const Lobby = () => {
           }>
           Go
         </button>
-        {redirect && <Redirect to='/CountDown' />}
+        {redirect && <Redirect to={{pathname: '/CountDown', state: CardPref}}/>}
         <button onClick={() => setSharePopup(true)} className='ShareButton'>
           Share
         </button>

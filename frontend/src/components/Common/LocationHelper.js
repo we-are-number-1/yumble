@@ -1,6 +1,7 @@
 import {geocodeByAddress, getLatLng} from 'react-places-autocomplete';
 import {getRestaurantCards} from './getRestaurantCards';
 
+
 /**
  * @param  {String} value the string address value
  */
@@ -10,7 +11,7 @@ export async function getLocationCoordinates(value) {
 }
 
 const google = window.google;
-
+let cards = null;
 /**
  * @param  {Object} coordinates Object with lat and lng values
  * @param  {number} radius The radius around the defined coordinates
@@ -30,13 +31,13 @@ export async function getNearbyRestaurants(coordinates, radius, keyword) {
     keyword: keyword,
   };
   const service = new google.maps.places.PlacesService(dummyMap);
-  service.nearbySearch(request, (results, status) => {
+  service.nearbySearch(request, async (results, status) => {
     if (status === google.maps.places.PlacesServiceStatus.OK) {
-      console.log(results);
-      return getRestaurantCards(results, parseLatAndLng(results));
+      cards = await getRestaurantCards(results, parseLatAndLng(results));
     }
   },
   );
+  return cards;
 }
 
 /**
@@ -50,6 +51,5 @@ function parseLatAndLng(list) {
     const lng = element.geometry.location.lng();
     nearbyCoordinatesList.push({lat, lng});
   });
-  console.log(nearbyCoordinatesList);
   return nearbyCoordinatesList;
 }
