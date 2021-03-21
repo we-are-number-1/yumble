@@ -13,15 +13,9 @@ import '../Common/Help.css';
  */
 function GroupCode() {
   const socketContext = useContext(SocketContext);
-  // use state to store code
-  // unsure if we can pass the code using the routing method we hav
-  // const [code, setCode] = useState(undefined);
-
-
   const [name, setName] = useState('Alex');
   const [invalidCode, setInvalidCode] = useState(true);
   const [ButtonPopup, setButtonPopup] = useState(false);
-  const socket = socketContext.socket;
 
   useEffect(() => {
     document.title = 'Enter group code';
@@ -65,7 +59,7 @@ function GroupCode() {
           {!invalidCode && <Redirect
             to={`/Lobby/${socketContext.code}`} />}
           <button
-            onClick={() => SocketEvents.joinRoom(socket,
+            onClick={() => SocketEvents.joinRoom(socketContext.socket,
                 socketContext.code, name)}
             className='GoButton'>
                 Go
@@ -77,12 +71,10 @@ function GroupCode() {
           Back
         </button>
       </Link>
-
       <button
         onClick={() => setButtonPopup(true)}
         className='SmallBtn'
-        id='HelpButton'
-      >
+        id='HelpButton'>
         help?
       </button>
       <Help trigger={ButtonPopup} setTrigger={setButtonPopup}>

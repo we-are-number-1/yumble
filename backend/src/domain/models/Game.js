@@ -29,7 +29,7 @@ export class Game {
           count: this.countdown,
         });
 
-    for (let i=0; i < this.countdown; i++) {
+    for (let i=0; i <= this.countdown; i++) {
       console.log(i);
       await this.sleep(1000);
     }
@@ -60,14 +60,14 @@ export class Game {
     this.io.to(this.session.sessionId).emit(
         'next_round',
         {
-          nextRoundStartTime: Date.now() + this.roundInterval*1000,
+          nextRoundStartTime: Date.now() + this.roundInterval,
           currentRound: this.round,
         },
     );
 
     for (let i=0; i < this.swipeDeck.length; i++) {
-      console.log(i);
-      await this.sleep(1000);
+      console.log(i * this.roundInterval);
+      await this.sleep(this.roundInterval);
     }
 
     this.endGame();

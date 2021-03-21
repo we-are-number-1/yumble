@@ -7,7 +7,7 @@ import games from '../domain/Games';
 export function joinRoom(socket, io) {
   socket.on('join_room', ({sessionId, name}) => {
     const game = games.getGame(sessionId);
-    if (!game) {
+    if (!game || game.session.users.size >= 10) {
       io.to(socket.id).emit('invalid_code', true);
       console.log('Invalid game code: ' + sessionId);
       return;
