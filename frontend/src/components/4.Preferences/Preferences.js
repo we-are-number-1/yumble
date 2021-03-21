@@ -2,7 +2,7 @@ import {Link} from 'react-router-dom';
 import React, {useState, useEffect, useContext} from 'react';
 import Help from '../Common/Help';
 import '../Common/Help.css';
-import {getNearbyRestaurants} from '../Common/LocationHelper';
+// import {getNearbyRestaurants} from '../Common/LocationHelper';
 import AutocompleteSearchBox from './AutocompleteSearchBox';
 import style from './Preferences.module.css';
 import {SocketContext} from './../../sockets/SocketContext';
@@ -49,9 +49,11 @@ function Preferences() {
    */
   function handleSearch() {
     getNearbyRestaurants(Coordinates, Distance, 'chinese');
+    postPreference();
   }
 
   const postPreference = () => {
+    console.log(`room code ${code}`);
     socketContext.setCode(code);
     SocketEvents.joinRoom(socketContext.socket,
         code, 'Host');
@@ -169,7 +171,7 @@ function Preferences() {
             {/* need to check if an address is provided */}
             <button
               disabled={Coordinates.lat == null && Coordinates.lng == null}
-              onClick={postPreference, handleSearch}
+              onClick={handleSearch}
               className={style.GoPrefButton}
             >
               Go
