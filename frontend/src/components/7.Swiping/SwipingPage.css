@@ -1,0 +1,62 @@
+
+.TimeCounter {
+    color: white;
+    font-family: Comic Sans MS;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5vw;
+    margin-top: 0.5vw;
+  }
+  
+  .YesOrNoButton{
+    cursor: pointer;
+    position: absolute;
+    outline: none;
+    top: 20vw;
+    border: 4px solid #000000;
+    color: white;
+    padding: 40px;
+    text-align: center;
+    font-size: 32px;
+    margin: 4px 2px;
+    border-radius: 50%;
+  }
+  
+  #YesButton{
+    background-color: #6dc070; /* Green */
+    right: 15vw;
+  }
+  
+  #YesButton:hover{
+    background-color: #85c988;
+  }
+  
+  #NoButton{
+    background-color: #d34836; /* Green */
+    left: 15vw
+  }
+  
+  #NoButton:hover{
+    background-color: #d66354;
+  }
+  
+  .PlaceDetails{
+    margin: 1vw;
+  }
+  
+  #name{
+    font-size: 2.5vw;
+    font-weight: bold;
+  }
+  
+  #location, #price, #cuisine{
+    font-size: 1.5vw;
+    font-weight: lighter;
+  }
+  
+  #rating {
+    font-size: 1.5vw;
+    text-align: end;
+  }

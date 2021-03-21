@@ -9,22 +9,19 @@ import * as SocketEvents from './sockets';
 
 // Routes
 import sessionsRouteAPI from './routes/sessions';
-import preferencesRouteAPI from './routes/preferences';
-import resultsRouteAPI from './routes/results';
 import keysRouteAPI from './routes/keys';
 
 
 const app = express();
 const server = http.createServer(app);
 const io = socketio(server);
+export {io};
 
 require('dotenv').config();
 app.use(express.json());
 
 // API
 app.use('/sessions', sessionsRouteAPI);
-app.use('/preferences', preferencesRouteAPI);
-app.use('/results', resultsRouteAPI);
 app.use('/api/keys', keysRouteAPI);
 
 const mongoUri = process.env.ATLAS_URI;
@@ -58,7 +55,9 @@ const session = new SocketSession('test', null, {'roundInterval': 5000});
 games.newGame(
     io,
     session,
-    null,
+    {
+      length: 10,
+    },
 );
 
 io.on('connection', (socket) => {
@@ -67,6 +66,7 @@ io.on('connection', (socket) => {
   SocketEvents.disconnect(socket, io, () => {});
   SocketEvents.joinRoom(socket, io);
   SocketEvents.start(socket);
+  SocketEvents.leaveRoom(socket, io, () => {});
 });
 
 server.listen(PORT, () => {

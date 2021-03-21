@@ -1,10 +1,12 @@
 import {Link} from 'react-router-dom';
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import Help from '../Common/Help';
 import '../Common/Help.css';
 import {getNearbyRestaurants} from '../Common/LocationHelper';
 import AutocompleteSearchBox from './AutocompleteSearchBox';
 import style from './Preferences.module.css';
+import {SocketContext} from './../../sockets/SocketContext';
+import * as SocketEvents from './../../sockets';
 import axios from 'axios';
 
 /**
@@ -12,6 +14,7 @@ import axios from 'axios';
  * @return {*}
  */
 function Preferences() {
+  const socketContext = useContext(SocketContext);
   const [ButtonPopup, setButtonPopup] = useState(false);
 
   // TODO should be set to 'default' price range
@@ -20,23 +23,27 @@ function Preferences() {
   const [Location, setLocation] = useState('');
   const [Cuisines] = useState([]);
   const [Coordinates, setCoordinates] = useState({lat: null, lng: null});
+  // default post syntax
+  const [response] = useState({
+    'preferences': {},
+    'results': [],
+  });
 
   // TODO need to set default time
-  const [Timer, setTimer] = useState(300);
+  const [Timer, setTimer] = useState(30);
 
   // genereate code for the session
-  const [code, setCode] = useState(() => {
-    axios.get('sessions').then((response) => {
-      // ensure you only do it once
-      setCode(response.data.sessionId);
-    });
-  });
+  const [code, setCode] = useState(undefined);
 
   useEffect(() => {
     document.title = 'Choose game settings';
+    axios.post('sessions', response).then((response) => {
+      // ensure you only do it once
+      // console.log(response.data);
+      setCode(response.data.truncCode);
+    });
   }, []);
 
-  // Move this function to inside the master function by Aniket
   /**
    *
    */
@@ -45,25 +52,29 @@ function Preferences() {
   }
 
   const postPreference = () => {
-    // change string to array form
-    // const formattedPrice = Price.split(',').map((x) => +x);
+    socketContext.setCode(code);
+    SocketEvents.joinRoom(socketContext.socket,
+        code, 'Host');
 
     const newPref = {
-      sessionId: code,
       location: Location,
       distance: Number(Distance),
       cuisines: Cuisines,
-      price: Number(Price), // formattedPrice,
+      price: Number(Price),
       timer: Timer,
       coordinates: Coordinates,
     };
 
-    console.log(newPref);
-    // TODO coordinates need to be sent somewhere?
-    console.log(Coordinates);
+    // give correct json format
+    const give = {
+      preferences: newPref,
+    };
+
+    // console.log(newPref);
+    // console.log(give);
 
     axios
-        .post('../preferences', newPref)
+        .patch('../sessions/'+code, give)
         .then((res) => {
           console.log(res.data);
         })
@@ -106,13 +117,13 @@ function Preferences() {
                 setTimer(e.target.value);
               }}
               type='range'
-              min='180'
-              max='1800'
-              step='60'
+              min='5'
+              max='60'
+              step='5'
               defaultValue={Timer}
             />
             <div className={style.SliderText}>Time:{' '}
-              {Timer / 60} Minutes</div>
+              {Timer} Seconds</div>
           </div>
           {/* <div>Cusinies</div> */}
           <div className={style.priceText}>

@@ -1,25 +1,44 @@
 import mongoose from 'mongoose';
+import {coordinatesSchema} from './Coordinates';
 
-const preferenceSchema = mongoose.Schema({
-  sessionId: {
-    type: String,
-    required: true,
-  },
+export const preferenceSchema = mongoose.Schema({
   location: {
     type: String,
-    required: true,
+    default: '',
   },
   distance: {
     type: Number,
-    required: true,
+    default: 0,
   },
   cuisines: {
     type: [String],
     default: [],
   },
   price: {
-    type: [Number],
-    default: [5, 15],
+    type: Number,
+    default: 0,
+  },
+  timer: {
+    type: Number,
+    default: 0,
+  },
+  coordinates: {
+    type: coordinatesSchema,
+    default: {
+      lat: 0.0,
+      lng: 0.0,
+    },
+  },
+  timer: {
+    type: Number,
+    default: 0,
+  },
+  coordinates: {
+    type: coordinatesSchema,
+    default: {
+      lat: 0.0,
+      lng: 0.0,
+    },
   },
 });
 
