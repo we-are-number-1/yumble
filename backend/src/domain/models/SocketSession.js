@@ -21,7 +21,7 @@ export class SocketSession {
    */
   addUser(socket, name) {
     this.users.set(socket.id, {socket: socket, name: name});
-    console.log('added user to game');
+    console.log(`added user to game: ${this.sessionId}`);
   }
 
   /**
@@ -30,6 +30,7 @@ export class SocketSession {
    * @return {*}
    */
   removeUser(socket) {
+    console.log(`removed user from game: ${this.sessionId}`);
     return this.users.delete(socket.id);
   }
 }
