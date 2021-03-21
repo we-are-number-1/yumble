@@ -49,9 +49,11 @@ function Preferences() {
    */
   function handleSearch() {
     getNearbyRestaurants(Coordinates, Distance, 'chinese');
+    postPreference();
   }
 
   const postPreference = () => {
+    console.log(`room code ${code}`);
     socketContext.setCode(code);
     SocketEvents.joinRoom(socketContext.socket,
         code, 'Host');
@@ -169,7 +171,7 @@ function Preferences() {
             {/* need to check if an address is provided */}
             <button
               disabled={Coordinates.lat == null && Coordinates.lng == null}
-              onClick={postPreference, handleSearch}
+              onClick={handleSearch}
               className={style.GoPrefButton}
             >
               Go
