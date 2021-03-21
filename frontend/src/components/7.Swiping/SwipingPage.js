@@ -11,12 +11,9 @@ import Icon from '../Common/MapsPinpoint';
 import '../7.Swiping/SwipingPage.css';
 import SwipeCard from '../Common/SwipeCard';
 
-const mapSrc = 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3192.588180029826!2d174.7669186152492!3d-36.85233777993783!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6d0d47e383f32253%3A0xbd49f61f758a9e5b!2sThe%20University%20of%20Auckland!5e0!3m2!1sen!2snz!4v1615862553109!5m2!1sen!2snz';
-
 /**
- *
  * @return {*}
- * @param {*} props
+ * @param  {*} props
  */
 function SwipingPage(props) {
   const history = useHistory();
@@ -27,13 +24,14 @@ function SwipingPage(props) {
   const [CardPass, setCardPass] = useState(null);
 
   const RemainingTime = '25';
-  const [Data, setData] = useState(CardData.shift());
+  const [Data, setData] = useState(CardData[0]); // 0th element
   const [redirect, setRedirect] = useState(false);
 
   useEffect(() => {
     document.title = 'Yes or No?';
     SocketEvents.endGame(socketContext.socket, goNextPge);
-    setCardPass( props.location.state.slice());
+    setCardPass(props.location.state.slice());
+    CardData.shift();
   }, []);
 
   console.log(CardData);
@@ -44,32 +42,15 @@ function SwipingPage(props) {
     history.replace('/Result');
   };
 
-
-  /**
- * @param {number} index
- * @return {void}
- */
-  function clickedYes() {
-    console.log('clicked yes');
-    getNewCard();
-  }
-
   /**
   *
+  *
   */
-  function clickedNo() {
-    console.log('clicked no');
-    getNewCard();
-  }
-
-  /**
- * @param {null} Retrieves new restaurant details
- * @return {void}
- */
   function getNewCard() {
+    console.log('CLICK');
     try {
       if (CardData[0] !== undefined) {
-        setData(CardData[0]);
+        setData(CardData.shift());
       } else {
         setRedirect(true);
       }
@@ -86,14 +67,14 @@ function SwipingPage(props) {
         <button
           className='YesOrNoButton'
           id='YesButton'
-          onClick = {clickedYes}
+          onClick = {getNewCard}
         >
           Keen!
         </button>
         <button
           className='YesOrNoButton'
           id='NoButton'
-          onClick = {clickedNo}
+          onClick = {getNewCard}
         >
           Nope!
         </button>
@@ -108,7 +89,8 @@ function SwipingPage(props) {
           View on Google Maps
           <Icon />
         </button>
-        <MapModal trigger={MapPopup} setTrigger={setMapPopup} mapSrc={mapSrc}/>
+        <MapModal trigger={MapPopup} setTrigger={setMapPopup}
+          restaurantLocation={Data.coords}/>
       </div>
       <button
         onClick={() => setButtonPopup(true)}

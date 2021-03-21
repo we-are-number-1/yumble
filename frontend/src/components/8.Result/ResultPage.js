@@ -48,6 +48,7 @@ const Data = {name, location, cuisine, price, rating};
 /**
  * @param {*} props
  * @return {*}
+ * TODO: remove hard-coded location for the winning restaurant coordinates
  */
 function ResultPage(props) {
   const [ButtonPopup, setButtonPopup] = useState(false);
@@ -76,7 +77,8 @@ function ResultPage(props) {
           View on Google Maps
           <Icon />
         </button>
-        <MapModal trigger={MapPopup} setTrigger={setMapPopup} />
+        <MapModal trigger={MapPopup} setTrigger={setMapPopup}
+          restaurantLocation={{lat: -36.8523, lng: 174.7691}} />
       </div>
 
       <button
