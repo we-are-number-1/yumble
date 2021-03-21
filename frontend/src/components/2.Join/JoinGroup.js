@@ -30,7 +30,7 @@ function GroupCode() {
     <>
       <h1 className='Title'>yumble</h1>
       <div className='MakeCentre'>
-        <div className='Join_input'>
+        <div className='GroupCode_Box'>
           <div className='AddMargin'>Enter group code</div>
           <div>
             <UserInput
