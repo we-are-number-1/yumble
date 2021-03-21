@@ -1,5 +1,5 @@
 import React, {useEffect, useState, useContext} from 'react';
-import {useHistory, Redirect} from 'react-router-dom';
+import {Redirect} from 'react-router-dom';
 // import axios from 'axios';
 
 import {SocketContext} from './../../sockets/SocketContext';
@@ -16,70 +16,126 @@ import SwipeCard from '../Common/SwipeCard';
  * @param  {*} props
  */
 function SwipingPage(props) {
-  const history = useHistory();
   const socketContext = useContext(SocketContext);
   const [ButtonPopup, setButtonPopup] = useState(false);
   const [MapPopup, setMapPopup] = useState(false);
-  const CardData = props.location.state;
+  const CardData = props.location.state[0];
   const [CardPass, setCardPass] = useState(null);
-
-  const RemainingTime = '25';
-  const [Data, setData] = useState(CardData[0]); // 0th element
+  const [decided, setDecided] = useState(false);
+  const [time, setTime] = useState(socketContext.countdown);
+  const [Data, setData] = useState(CardData[0]);
   const [redirect, setRedirect] = useState(false);
 
   useEffect(() => {
     document.title = 'Yes or No?';
+    setData(CardData.shift());
     SocketEvents.endGame(socketContext.socket, goNextPge);
-    setCardPass(props.location.state.slice());
-    CardData.shift();
+    SocketEvents.nextRound(socketContext.socket, getNewCard);
+    setCardPass(props.location.state[0].slice());
+    setTime(socketContext.countdown);
   }, []);
 
-  console.log(CardData);
+  useEffect(async () => {
+    // /**
+    //  * @param {*} resolve
+    //  * @return {*}
+    //  */
+    // function solve(resolve) {
+    //   setTime(time - 1);
+    //   return resolve;
+    // }
+    // console.log(time);
+    // await setTimeout(solve, resolve
+    //     , 1000);
+    setTimeout(() => {
+      if (time < 1) {
+        setTime(socketContext.countdown/1000);
+      } else {
+        setTime(time - 1);
+      }
+    }, 1000);
+  }, [time]);
+
+
+  // /**
+  //  *
+  //  */
+  // function timer(resolve, setTheTime ){
+  //   resolve();
+  //   setTheTime(time-1);
+  // }
+
   /**
    */
   const goNextPge = () => {
     console.log('Game has Ended');
-    history.replace('/Result');
+    setRedirect(true);
   };
+
+  /**
+ * @param {number} index
+ * @return {void}
+ */
+  function clickedYes() {
+    if (!decided) {
+      console.log(Data);
+      console.log(socketContext.code);
+      SocketEvents.vote(socketContext.socket,
+          socketContext.code, {name: Data.name, location: Data.location});
+      console.log('clicked yes');
+      setDecided(true);
+    }
+  }
+
 
   /**
   *
   *
   */
-  function getNewCard() {
-    console.log('CLICK');
+  function clickedNo() {
+    if (!decided) {
+      console.log('clicked no');
+      setDecided(true);
+    }
+  }
+
+  /**
+ * @param {*} timer new restaurant details
+ * @return {void}
+ */
+  function getNewCard(timer) {
+    setTime(socketContext.countdown/1000);
     try {
+      setDecided(false);
+      CardData.shift();
       if (CardData[0] !== undefined) {
-        setData(CardData.shift());
-      } else {
-        setRedirect(true);
+        setData(CardData[0]);
       }
     } catch (error) {
-      setRedirect(true);
     }
   }
 
   return (
     <>
       <h1 className='Title'> yumble</h1>
-      <h1 className='TimeCounter'> Remaining time: {RemainingTime}s</h1>
+      <h1 className='TimeCounter'> Remaining time: {time}s</h1>
       <div className='MakeCentre'>
         <button
           className='YesOrNoButton'
           id='YesButton'
-          onClick = {getNewCard}
+          onClick={clickedYes}
         >
           Keen!
         </button>
         <button
           className='YesOrNoButton'
           id='NoButton'
-          onClick = {getNewCard}
+          onClick={clickedNo}
         >
           Nope!
         </button>
 
-        <SwipeCard data = {Data} ></SwipeCard>
+        <SwipeCard data={Data} ></SwipeCard>
 
         <button
           onClick={() => setMapPopup(true)}
@@ -90,7 +146,7 @@ function SwipingPage(props) {
           <Icon />
         </button>
         <MapModal trigger={MapPopup} setTrigger={setMapPopup}
-          restaurantLocation={Data.coords}/>
+          restaurantLocation={Data.coords} />
       </div>
       <button
         onClick={() => setButtonPopup(true)}
@@ -109,7 +165,7 @@ function SwipingPage(props) {
         </p>
       </Help>
       {redirect && <
-        Redirect to={{pathname: '/Result', state: CardPass}}/>}
+        Redirect to={{pathname: '/Result', state: CardPass}} />}
     </>
   );
 }

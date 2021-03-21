@@ -1,4 +1,4 @@
-import {Link} from 'react-router-dom';
+import {Link, Redirect} from 'react-router-dom';
 import React, {useState, useEffect, useContext} from 'react';
 import Help from '../Common/Help';
 import '../Common/Help.css';
@@ -7,6 +7,7 @@ import AutocompleteSearchBox from './AutocompleteSearchBox';
 import style from './Preferences.module.css';
 import {SocketContext} from './../../sockets/SocketContext';
 import * as SocketEvents from './../../sockets';
+import {getNearbyRestaurants} from '../Common/LocationHelper';
 import axios from 'axios';
 
 /**
@@ -23,14 +24,17 @@ function Preferences() {
   const [Location, setLocation] = useState('');
   const [Cuisines] = useState([]);
   const [Coordinates, setCoordinates] = useState({lat: null, lng: null});
+  const [redirect, setRedirect] = useState(false);
+  const [cardData, setCardData] = useState(null);
+
   // default post syntax
   const [response] = useState({
-    'preferences': {},
-    'results': [],
+    preferences: {},
+    results: [],
   });
 
   // TODO need to set default time
-  const [Timer, setTimer] = useState(30);
+  const [Timer, setTimer] = useState(5);
 
   // genereate code for the session
   const [code, setCode] = useState(undefined);
@@ -47,16 +51,27 @@ function Preferences() {
   /**
    *
    */
-  function handleSearch() {
-    // getNearbyRestaurants(Coordinates, Distance, 'chinese');
-    postPreference();
+  async function handleSearch() {
+    console.log(Coordinates);
+    const data = await getNearbyRestaurants(
+        Coordinates, Distance, 'european');
+    setCardData(data);
+    console.log(data);
   }
+
+  useEffect(()=>{
+    if (cardData) {
+      postPreference();
+    }
+  }, [cardData]);
+
 
   const postPreference = () => {
     console.log(`room code ${code}`);
+    console.log(cardData);
     socketContext.setCode(code);
-    SocketEvents.joinRoom(socketContext.socket,
-        code, 'Host');
+    socketContext.setHost(true);
+    SocketEvents.setRestaurants(socketContext.socket, code, cardData);
 
     const newPref = {
       location: Location,
@@ -83,6 +98,10 @@ function Preferences() {
         .catch(function(error) {
           console.log(error);
         });
+
+    SocketEvents.joinRoom(socketContext.socket,
+        code, 'Host');
+    setRedirect(true);
   };
 
   return (
@@ -167,21 +186,22 @@ function Preferences() {
               sentences can be helpful in a number of different ways.
             </p>
           </Help>
-          <Link to={{
-            pathname: `/Lobby/${code}`,
-            state:
-              {coords: Coordinates, dist: Distance, cuisine: ['european']}}}
-          >
-            {/* need to check if an address is provided */}
-            <button
-              disabled={Coordinates.lat == null && Coordinates.lng == null}
-              onClick={handleSearch}
-              className={style.GoPrefButton}
-            >
+          {redirect && <Redirect to={
+            {
+              pathname: `/Lobby/${code}`,
+              state: cardData,
+            }
+          }
+          />}
+          {/* need to check if an address is provided */}
+          <button
+            disabled={Coordinates.lat == null && Coordinates.lng == null}
+            onClick={() => handleSearch()}
+            className={style.GoPrefButton}>
               Go
-            </button>
-          </Link>
+          </button>
         </div>
+        <div id="dummyMap" style={{visibility: 'hidden'}}></div>
       </div>
     </>
   );

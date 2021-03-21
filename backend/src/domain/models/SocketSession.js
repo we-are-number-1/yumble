@@ -1,3 +1,5 @@
+import Session from '../../mongo/models/Session';
+
 /**
  * This class is responsible for all information regarding a
  * single session or lobby
@@ -13,6 +15,7 @@ export class SocketSession {
     this.hostSocket = hostSocket;
     this.preferences = preferences;
     this.users = new Map();
+    this.votes = new Map();
   }
 
   /**
@@ -32,5 +35,43 @@ export class SocketSession {
   removeUser(socket) {
     console.log(`removed user from game: ${this.sessionId}`);
     return this.users.delete(socket.id);
+  }
+
+  /**
+   *
+   * @param {*} restaurant
+   */
+  addVote(restaurant) {
+    console.log(restaurant);
+    const data = this.votes.get(restaurant.name);
+    if (data) {
+      data.votes = data.votes + 1;
+      this.votes.set(restaurant.name, data);
+    } else {
+      this.votes.set(
+          restaurant.name,
+          {votes: 1, location: restaurant.location},
+      );
+    }
+  }
+
+  /**
+   *
+   */
+  async syncDb() {
+    try {
+      const session = await Session.findOne({truncCode: this.sessionId});
+      const restaurants = [];
+      this.votes.forEach((value, key, map) => {
+        restaurants.push(
+            {name: key, location: value.location, numberOfVotes: value.votes},
+        );
+      });
+      console.log(restaurants);
+      session.results = restaurants;
+      session.save();
+    } catch (error) {
+      console.log(error);
+    }
   }
 }
