@@ -42,21 +42,4 @@
     background-color: #d66354;
   }
   
-  .PlaceDetails{
-    margin: 1vw;
-  }
   
-  #name{
-    font-size: 2.5vw;
-    font-weight: bold;
-  }
-  
-  #location, #price, #cuisine{
-    font-size: 1.5vw;
-    font-weight: lighter;
-  }
-  
-  #rating {
-    font-size: 1.5vw;
-    text-align: end;
-  }
