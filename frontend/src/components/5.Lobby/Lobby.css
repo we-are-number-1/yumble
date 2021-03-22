@@ -3,7 +3,7 @@
   outline: none;
   border: 4px solid #000000;
   background-color: white;
-  height: 30vw;
+  height: auto;
   width: 75vw;
   font-family: Comic Sans MS;
   border-radius: 30px;
@@ -43,9 +43,14 @@
 }
 
 .FoodIconText {
+  font-size: 2.5vw;
   display: block;
   position: relative;
-  top: 5.2vw;
+  top: 5.7vw;
+  overflow:auto;
+  white-space: nowrap;
+  text-overflow:clip;
+  max-width: auto;
 }
 
 .Inline_Block {
@@ -73,7 +78,7 @@
   border: 1px solid black;
   border-width: 0.15vw;
   text-align: center;
-  margin: 2.5%;
+  margin: 2.8%;
   padding: 1.5vw;
 }
 

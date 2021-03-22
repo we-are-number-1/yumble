@@ -15,7 +15,8 @@ export class Game {
     this.swipeDeck = swipeDeck;
     this.roundInterval = session.preferences.roundInterval;
     this.round = 0;
-    this.countdown = 3;
+    this.countdown = 4;
+    this.gameActive = true;
   }
 
   /**
@@ -29,7 +30,7 @@ export class Game {
           count: this.countdown,
         });
 
-    for (let i=0; i <= this.countdown; i++) {
+    for (let i=0; i < this.countdown; i++) {
       console.log(i);
       await this.sleep(1000);
     }
@@ -57,15 +58,15 @@ export class Game {
       return;
     }
 
-    this.io.to(this.session.sessionId).emit(
-        'next_round',
-        {
-          nextRoundStartTime: Date.now() + this.roundInterval,
-          currentRound: this.round,
-        },
-    );
 
     for (let i=0; i < this.swipeDeck.length; i++) {
+      this.io.to(this.session.sessionId).emit(
+          'next_round',
+          {
+            nextRoundTime: this.roundInterval,
+            currentRound: this.round,
+          },
+      );
       console.log(i * this.roundInterval);
       await this.sleep(this.roundInterval);
     }
@@ -76,7 +77,10 @@ export class Game {
   /**
    * This emits an end_game event to all users in the session
    */
-  endGame() {
+  async endGame() {
+    await this.sleep(500);
+    this.session.syncDb();
+    await this.sleep(200);
     this.io.to(this.session.sessionId).emit('end_game');
   }
 }

@@ -48,7 +48,7 @@ router.post('/', async (req, res) => {
       io,
       sessionRoom,
       {
-        length: 10,
+        length: 1,
       });
 });
 
@@ -64,6 +64,7 @@ router.patch('/:id', getSession, async (req, res) => {
   }
   if (req.body.preferences != null) {
     res.session.preferences = req.body.preferences;
+    console.log(req.body.preferences.timer * 1000);
     games.getGame(req.params.id)
         .roundInterval = req.body.preferences.timer * 1000;
   }
