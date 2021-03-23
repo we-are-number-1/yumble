@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {Link} from 'react-router-dom';
+import {BrowserRouter, Link} from 'react-router-dom';
 import Help from '../Common/Help';
 import '../Common/Help.css';
 
@@ -18,7 +18,7 @@ function StartPage() {
     <>
       <div className='MakeCentre'>
         <h1 className='StartTitle'>yumble</h1>
-
+        <BrowserRouter>
         <Link to='/Preferences'>
           <button className='BigBtn' id='CreateGroup_btn'>
             Create group
@@ -29,6 +29,7 @@ function StartPage() {
             Join group
           </button>
         </Link>
+        </BrowserRouter>
       </div>
 
       <button

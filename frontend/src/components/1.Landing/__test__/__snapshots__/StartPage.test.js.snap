@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Start Page snapshot testing 1`] = `
+Array [
+  <div
+    className="MakeCentre"
+  >
+    <h1
+      className="StartTitle"
+    >
+      yumble
+    </h1>
+    <a
+      href="/Preferences"
+      onClick={[Function]}
+    >
+      <button
+        className="BigBtn"
+        id="CreateGroup_btn"
+      >
+        Create group
+      </button>
+    </a>
+    <a
+      href="/JoinGroup"
+      onClick={[Function]}
+    >
+      <button
+        className="BigBtn"
+        id="JoinGroup_btn"
+      >
+        Join group
+      </button>
+    </a>
+  </div>,
+  <button
+    className="SmallBtn"
+    id="HelpButton"
+    onClick={[Function]}
+  >
+    help?
+  </button>,
+  "",
+]
+`;
