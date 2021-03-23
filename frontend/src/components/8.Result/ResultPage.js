@@ -72,10 +72,8 @@ function ResultPage(props) {
         }
       }
 
-
       pieChart.datasets = [{
         label: '# of Votes',
-        // Replace numbers with number of votes from 'swiping' page
         data: votes,
         borderColor: [
           'rgba(255, 99, 132, 0.2)',
@@ -114,7 +112,6 @@ function ResultPage(props) {
         <div className='MainContainer'>
           <SwipeCard data={data}/>
           {chart&&<DataVisual className='DataVisual' data={pie}/>}
-          {/* className='DataVisual' */}
         </div>
         <button
           onClick={() => setMapPopup(true)}
