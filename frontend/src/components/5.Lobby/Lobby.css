@@ -1,0 +1,119 @@
+/*Lobby box */
+.LobbyBox {
+  outline: none;
+  border: 4px solid #000000;
+  background-color: white;
+  height: auto;
+  width: 75vw;
+  font-family: Comic Sans MS;
+  border-radius: 30px;
+  padding: 2vw;
+  font-size: 3vw;
+  margin-bottom: 1vw;
+  text-align: right;
+}
+
+.CusineTitle {
+  margin-top: 10vw;
+  margin-bottom: 1vw;
+  font-weight: bold;
+  color: white;
+  font-family: Comic Sans MS;
+  font-size: 2vw;
+}
+
+.ShareButton {
+  cursor: pointer;
+  outline: none;
+  font-family: Comic Sans MS;
+  font-size: 2vw;
+  border-radius: 30px;
+  border-color: black;
+  border-width: 5px;
+  padding: 0vw 1.5vw 0vw 1.5vw;
+  background-color: yellow;
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 2vw;
+}
+
+.ShareButton:hover {
+  background: white;
+}
+
+.FoodIconText {
+  font-size: 2.5vw;
+  display: block;
+  position: relative;
+  top: 5.7vw;
+  overflow:auto;
+  white-space: nowrap;
+  text-overflow:clip;
+  max-width: auto;
+}
+
+.Inline_Block {
+  display: inline-block;
+}
+
+.MakeTextCentre {
+  text-align: center;
+}
+
+.CentreTitle {
+  display: inline-block;
+  width: 15.3vw;
+}
+
+/*Lobby image container*/
+#container {
+  width: 100%;
+  text-align: center;
+}
+#container > div {
+  width: calc(100% / 10);
+  display: inline-block;
+  vertical-align: top;
+  border: 1px solid black;
+  border-width: 0.15vw;
+  text-align: center;
+  margin: 2.8%;
+  padding: 1.5vw;
+}
+
+#FoodIcon {
+  background-position: center;
+  background-size: cover;
+}
+
+.Food0 {
+  background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxoYX3yYvMaw2juMh5k-pQdZxi3iqi3Z_FZvvkkC0riaG9x0I2&s');
+}
+.Food1 {
+  background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYs1mLqODqg2dVakwOfQP3ekQxMUgNpjt5BMuOGXC3WgPbsDit&s');
+}
+.Food2 {
+  background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSA8oOJICNTY5QwNpHakzDoCWf2pDYFeyGzTZ-ZVjXo70hNtjU&s');
+}
+.Food3 {
+  background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSEo8nBiDhQGhptSb2hhbWhKrawgLvpPX0q3DubgXgIX6NWqvw&s');
+}
+.Food4 {
+  background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwGzp3IpAdCzRuIOL7_kKZmlxgd-9AdpkYDOqFzJ7NSfaf6pYx&s');
+}
+.Food5 {
+  background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLSzQuKxwpH3K1wA5_OSZrkMJgYgXzDXaUzGSOHzyBQcapee8&s');
+}
+.Food6 {
+  background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQlhMYQDLeaxAlB0NtpM6FNGrJP-tsWHPvkn9DxLC2wAsTV6Sk&s');
+}
+.Food7 {
+  background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqHcWePcAGjIQSJS-0fa5dyMd-i2XwgtL0fZO_JrrJn_ePvAg&s');
+}
+.Food8 {
+  background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcREocbdf5t5MKIcglNisJaynTKmfZ0wJNUNxmJFJ1PT0kI95UT0&s');
+}
+.Food9 {
+  background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSY5ltOFSPRyOab_JHIWnhqmBjI3ORCmfWMfM8wittlLrg_MBI&s');
+}

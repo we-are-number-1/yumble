@@ -4,17 +4,22 @@
   "private": true,
   "proxy": "http://localhost:3001",
   "dependencies": {
+    "@googlemaps/js-api-loader": "^1.11.2",
     "@material-ui/core": "^4.11.3",
     "@material-ui/icons": "^4.11.2",
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.5",
     "@testing-library/user-event": "^12.8.3",
     "axios": "^0.21.1",
+    "chart.js": "^2.9.4",
     "fontsource-roboto": "^4.0.0",
+    "rangeslider.js": "^2.3.3",
     "react": "^17.0.1",
+    "react-chartjs-2": "^2.11.1",
     "react-dom": "^17.0.1",
+    "react-places-autocomplete": "^7.3.0",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "4.0.3",
+    "react-scripts": "^4.0.3",
     "socket.io-client": "^3.1.2",
     "styled-components": "^5.2.1",
     "web-vitals": "^1.1.0"
@@ -49,6 +54,7 @@
     "eslint": "^7.21.0",
     "eslint-config-google": "^0.14.0",
     "eslint-plugin-react": "^7.22.0",
-    "react-test-renderer": "^17.0.1"
+    "react-test-renderer": "^17.0.1",
+    "socket.io": "^4.0.0"
   }
 }

@@ -5,7 +5,9 @@ import games from '../domain/Games';
  * @param {*} socket
  */
 export function start(socket) {
-  socket.on('start', ({sessionId}) => {
-    games.getGame(sessionId).nextRound();
+  socket.on('start', ({sessionId, length}) => {
+    const game = games.getGame(sessionId);
+    // game.swipeDeck.length = length;
+    game.startCountdown();
   });
 }
