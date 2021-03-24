@@ -5,7 +5,7 @@ import games from '../domain/Games';
  * @param {*} io
  * @param {*} cb callback function
  */
-export function leaveRoom(socket, io, cb) {
+export function leaveRoom(socket, io, cb = null) {
   socket.on('leave_room', () => {
     const activeGames = games.getGames();
     activeGames.forEach((game) => {
@@ -17,6 +17,9 @@ export function leaveRoom(socket, io, cb) {
       }
     });
     console.log('user left room with id:', socket.id);
-    cb();
+    if (cb) {
+      console.log('done is called');
+      cb(socket.id);
+    }
   });
 }

@@ -25,6 +25,13 @@ export class Games {
       startCountdown: function() { },
     };
   }
+
+  /**
+   * @return {*}
+   */
+  getGames() {
+    return new Map();
+  }
 }
 
 export default new Games();
