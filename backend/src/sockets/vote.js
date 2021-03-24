@@ -3,10 +3,14 @@ import games from '../domain/Games';
 /**
  * Socket event for when a user disconnects.
  * @param {*} socket
+ * @param {*} cb
  */
-export function vote(socket) {
+export function vote(socket, cb = null) {
   socket.on('vote', (sessionId, vote) => {
     console.log(sessionId);
     games.getGame(sessionId).session.addVote(vote);
+    if (cb) {
+      cb();
+    }
   });
 }

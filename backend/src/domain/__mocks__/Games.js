@@ -22,6 +22,7 @@ export class Games {
         users: new Map(),
         sessionId: sessionId,
         addUser: function( socket, name) {},
+        addVote: jest.fn(),
       },
       startCountdown: function() { },
     };
