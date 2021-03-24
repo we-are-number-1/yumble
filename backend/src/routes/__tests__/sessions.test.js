@@ -1,9 +1,8 @@
-
 const {MongoMemoryServer} = require('mongodb-memory-server');
-const express = require('express');
 const mongoose = require('mongoose');
+// const request = require('supertest');
 const sessions = require('../sessions');
-const request = require('supertest');
+const express = require('express');
 
 jest.mock('../../index.js');
 
@@ -24,6 +23,7 @@ beforeAll(async (done) => {
     useUnifiedTopology: true,
     useFindAndModify: false,
   });
+
   server = app.listen(0, () => {
     port = server.address().port;
     done();
@@ -42,7 +42,7 @@ beforeEach(async () => {
         'Japanese',
         'Chinese',
       ],
-      'price': 3,
+      'price': 5,
       'timer': 20,
       'coordinates': {
         'lat': 34.6424325,
@@ -67,30 +67,30 @@ afterAll((done) => {
   });
 });
 
-describe('Unit Test', () =>{
-  it('Post Sessions', async (done) =>{
-    const response = await request(app).post('/sessions').send({
-      preferences: '',
-      results: '',
-    });
-    expect(response.body.sessionId).toEqual('');
-    expect(response.body.truncCode).toEqual('');
-    expect(response.statusCode).toBe(201);
+// describe('Unit Test', () =>{
+//   it('Post Sessions', async (done) =>{
+//     const response = await request(app).post('/sessions').send({
+//       preferences: '',
+//       results: '',
+//     });
+//     expect(response.body.sessionId).toEqual('');
+//     expect(response.body.truncCode).toEqual('');
+//     expect(response.statusCode).toBe(201);
 
-    done();
-  } );
+//     done();
+//   } );
 
-  // it('invalid 400', async (done) =>{
-  //   const body = {
-  //     sessionId : '05334010727e7af37aa2824',
-  //     truncCode : 'a2824'
-  //   }
-  //   const response = await request(app).post('/sessions').send({
-  //     preferences: ,
-  //     results: ,
-  //     errorcheck: ,
-  //   });
-  //   expect(response.statusCode).toBe(400);
-  //   done();
-  // } );
-});
+// it('invalid 400', async (done) =>{
+//   const body = {
+//     sessionId : '05334010727e7af37aa2824',
+//     truncCode : 'a2824'
+//   }
+//   const response = await request(app).post('/sessions').send({
+//     preferences: ,
+//     results: ,
+//     errorcheck: ,
+//   });
+//   expect(response.statusCode).toBe(400);
+//   done();
+// } );
+// });
