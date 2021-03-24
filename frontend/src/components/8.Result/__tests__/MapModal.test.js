@@ -10,7 +10,7 @@ test('MapModal snapshot testing with/without defining the trigger', () => {
   // Stub the initial state
   const MapPopup = 'true';
 
-  // Mock useState before rendering your component
+  // Mock useState before rendering the MapModal component
   jest
       .spyOn(React, 'useState')
       .mockImplementationOnce(() => mockSetMapPopup(false));
