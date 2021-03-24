@@ -1,6 +1,8 @@
 const io = require('socket.io-client');
 const http = require('http');
 const ioBack = require('socket.io');
+import games from '../../domain/Games';
+import {SocketSession} from '../../domain/models/SocketSession';
 
 import * as SocketEvent from '../index';
 
@@ -8,6 +10,11 @@ let socket;
 let httpServer;
 let httpServerAddr;
 let ioServer;
+let socketServer;
+
+jest.mock('../../domain/Games');
+jest.mock('../../domain/models/Game');
+jest.mock('../../domain/models/SocketSession');
 
 /**
  * Setup WS & HTTP servers
@@ -17,7 +24,8 @@ beforeAll((done) => {
   httpServerAddr = httpServer.address();
   ioServer = ioBack(httpServer);
 
-  ioServer.on('connection', (ioServerSocket) => {
+  ioServer.on('connection', (serverSocket) => {
+    socketServer = serverSocket;
   });
   done();
 });
@@ -47,11 +55,13 @@ beforeEach((done) => {
   });
 });
 
-test('set preferences test', (done) => {
+test('vote test', (done) => {
+  games.newGame(null, new SocketSession(null, '1234', null), null);
   const mock = jest.fn();
   mock.mockImplementation(() => {
     done();
   });
-  SocketEvent.setPreferences(socket, mock);
-  ioServer.emit('set_preferences', {});
+  SocketEvent.vote(socketServer, mock);
+  socket.emit('vote');
 });
+
