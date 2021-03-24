@@ -1,17 +1,16 @@
 const {MongoMemoryServer} = require('mongodb-memory-server');
 const mongoose = require('mongoose');
-const request = require('supertest');
+// const request = require('supertest');
 const sessions = require('../sessions');
 const express = require('express');
 
 jest.mock('../../index.js');
 
 let mongod;
-let app;
 let server;
 let mockSession;
 
-app = express();
+const app = express();
 app.use(express.json());
 app.use('/sessions', sessions);
 
