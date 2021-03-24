@@ -42,8 +42,8 @@ beforeEach(async () => {
         'Japanese',
         'Chinese',
       ],
-      'price': 20,
-      'timer': 600,
+      'price': 5,
+      'timer': 20,
       'coordinates': {
         'lat': 34.6424325,
         'lng': 10.2343462,
