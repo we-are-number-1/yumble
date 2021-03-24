@@ -15,7 +15,8 @@ export class Game {
     this.swipeDeck = swipeDeck;
     this.roundInterval = session.preferences.roundInterval;
     this.round = 0;
-    this.countdown = 3;
+    this.countdown = 4;
+    this.gameActive = true;
   }
 
   /**
@@ -24,6 +25,7 @@ export class Game {
    * 0 represents the start of the game (calling nextRound)
    */
   async startCountdown() {
+    // Let all users in game start countdown
     this.io.to(this.session.sessionId).emit(
         'countdown', {
           count: this.countdown,
@@ -38,7 +40,7 @@ export class Game {
   }
 
   /**
-   *
+   * Sleep function
    * @param {*} ms
    * @return {*}
    */
@@ -57,17 +59,18 @@ export class Game {
       return;
     }
 
-    this.io.to(this.session.sessionId).emit(
-        'next_round',
-        {
-          nextRoundStartTime: Date.now() + this.roundInterval*1000,
-          currentRound: this.round,
-        },
-    );
 
     for (let i=0; i < this.swipeDeck.length; i++) {
-      console.log(i);
-      await this.sleep(1000);
+      // Notifies users of round change
+      this.io.to(this.session.sessionId).emit(
+          'next_round',
+          {
+            nextRoundTime: this.roundInterval,
+            currentRound: this.round,
+          },
+      );
+      console.log(i * this.roundInterval);
+      await this.sleep(this.roundInterval);
     }
 
     this.endGame();
@@ -76,7 +79,11 @@ export class Game {
   /**
    * This emits an end_game event to all users in the session
    */
-  endGame() {
+  async endGame() {
+    // Delay to let db sync, then tell users game has ended
+    await this.sleep(500);
+    this.session.syncDb();
+    await this.sleep(200);
     this.io.to(this.session.sessionId).emit('end_game');
   }
 }

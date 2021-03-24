@@ -1,32 +1,37 @@
-import {useHistory} from 'react-router-dom';
+import {Redirect} from 'react-router-dom';
 import React, {useState, useEffect, useContext} from 'react';
 import Help from '../Common/Help';
 import {SocketContext} from './../../sockets/SocketContext';
 import * as SocketEvents from './../../sockets';
 import '../Common/Help.css';
 
-const CountDown = () => {
-  const history = useHistory();
+const CountDown = (props) => {
+  // const history = useHistory();
   const socketContext = useContext(SocketContext);
   const [ButtonPopup, setButtonPopup] = useState(false);
   const [seconds, setSeconds] = useState(socketContext.countdown);
+  const [data] = useState(props.location.state);
+  const [redirect, setRedirect] = useState(false);
+
+  /**
+   *
+   * @param {*} data
+   */
+  function cb(data) {
+    setRedirect(true);
+    socketContext.setCountdown(data.nextRoundTime);
+  };
 
   useEffect(() => {
     document.title = 'Go!';
-    SocketEvents.nextRound(socketContext.socket, goNextPge);
+    SocketEvents.nextRound(socketContext.socket, cb);
     console.log(socketContext.countdown);
+    console.log(props.location.state);
   }, []);
 
   useEffect(() => {
     seconds >= 0 ? setTimeout(() => setSeconds(seconds - 1), 1000) : null;
   }, [seconds]);
-
-
-  /**
-   */
-  const goNextPge = () => {
-    history.push('/Swiping');
-  };
 
 
   return (
@@ -53,7 +58,11 @@ const CountDown = () => {
           Please wait for the timer!
         </p>
       </Help>
-      {seconds == -1 ? goNextPge() : null}
+      {redirect ?
+        <Redirect to={{pathname: '/Swiping',
+          state: [data]}}
+        /> : null}
+      <div id="dummyMap" style={{visibility: 'hidden'}}></div>
     </>
   );
 };
