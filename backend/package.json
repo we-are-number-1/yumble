@@ -12,7 +12,10 @@
     "fix-lint": "eslint . --fix"
   },
   "jest": {
-    "testEnvironment": "node"
+    "testEnvironment": "node",
+    "testPathIgnorePatterns": [
+      "<rootDir>/dist/"
+    ]
   },
   "keywords": [],
   "author": "",
