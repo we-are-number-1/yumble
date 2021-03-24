@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {BrowserRouter, Link} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import Help from '../Common/Help';
 import '../Common/Help.css';
 
@@ -18,18 +18,18 @@ function StartPage() {
     <>
       <div className='MakeCentre'>
         <h1 className='StartTitle'>yumble</h1>
-        <BrowserRouter>
-          <Link to='/Preferences'>
-            <button className='BigBtn' id='CreateGroup_btn'>
+        {/* <BrowserRouter> */}
+        <Link to='/Preferences'>
+          <button className='BigBtn' id='CreateGroup_btn'>
             Create group
-            </button>
-          </Link>
-          <Link to='/JoinGroup'>
-            <button className='BigBtn' id='JoinGroup_btn'>
+          </button>
+        </Link>
+        <Link to='/JoinGroup'>
+          <button className='BigBtn' id='JoinGroup_btn'>
             Join group
-            </button>
-          </Link>
-        </BrowserRouter>
+          </button>
+        </Link>
+        {/* </BrowserRouter> */}
       </div>
 
       <button
