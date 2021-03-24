@@ -1,7 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import MapModal from '../../Common/MapModal';
+import MapModal from '../MapModal';
 
 test('MapModal snapshot testing with/without defining the trigger', () => {
   // Cache original functionality
