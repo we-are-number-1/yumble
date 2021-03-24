@@ -1,8 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`MapModal snapshot testing 1`] = `""`;
+exports[`MapModal snapshot testing with/without defining the trigger 1`] = `""`;
 
-exports[`MapModal snapshot testing with defining a trigger 1`] = `
+exports[`MapModal snapshot testing with/without defining the trigger 2`] = `
 <div
   className="Help"
 >
@@ -28,5 +28,3 @@ exports[`MapModal snapshot testing with defining a trigger 1`] = `
   </div>
 </div>
 `;
-
-exports[`MapModal snapshot testing without defining the trigger 1`] = `""`;
