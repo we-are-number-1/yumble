@@ -3,12 +3,19 @@ import games from '../domain/Games';
 /**
  * Handles sending of preference update (as object) to users based on session ID
  * @param {*} socket
- * @param {*} io
+ * @param {*} cb
  */
-export function setRestaurants(socket) {
+export function setRestaurants(socket, cb = null) {
   socket.on('set_restaurants', ({sessionId, restaurants}) => {
-    games.getGame(sessionId).session.restaurants = restaurants;
-    console.log(restaurants.length);
-    games.getGame(sessionId).swipeDeck.length = restaurants.length;
+    if (games?.getGame(sessionId)?.session) {
+      games.getGame(sessionId).session.restaurants = restaurants;
+      console.log(restaurants.length);
+      if (games?.getGame(sessionId)?.swipeDeck?.length) {
+        games.getGame(sessionId).swipeDeck.length = restaurants.length;
+      }
+    }
+    if (cb) {
+      cb();
+    }
   });
 }
