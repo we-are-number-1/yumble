@@ -53,5 +53,5 @@ test('countdown test', (done) => {
     done();
   });
   SocketEvent.countdown(socket, mock);
-  ioServer.emit('countdown', {count: 1});
+  ioServer.emit('countdown', 'data');
 });
