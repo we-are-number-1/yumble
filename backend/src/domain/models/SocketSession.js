@@ -28,7 +28,6 @@ export class SocketSession {
   }
 
   /**
-   *
    * @param {*} socket, users socket connection
    * @return {*}
    */
@@ -38,7 +37,7 @@ export class SocketSession {
   }
 
   /**
-   *
+   * Add vote for given restaurant input
    * @param {*} restaurant
    */
   addVote(restaurant) {
@@ -56,7 +55,7 @@ export class SocketSession {
   }
 
   /**
-   *
+   * Syncs votes stored in memory to the database
    */
   async syncDb() {
     try {
