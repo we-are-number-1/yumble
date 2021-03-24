@@ -1,0 +1,76 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Join Page snapshot testing 1`] = `
+Array [
+  <h1
+    className="Title"
+  >
+    yumble
+  </h1>,
+  <div
+    className="MakeCentre"
+  >
+    <div
+      className="GroupCode_Box"
+    >
+      <div
+        className="AddMargin"
+      >
+        Enter group code
+      </div>
+      <div>
+        <input
+          className="JoinGroup"
+          fontSize={3}
+          onChange={[Function]}
+          placeholder=" P6aPE"
+          type="text"
+        />
+      </div>
+      <div
+        className="Username_Box"
+      >
+        <div
+          className="AddMargin"
+        >
+            Enter Name
+        </div>
+        <div>
+          <input
+            className="JoinGroup"
+            fontSize={3}
+            onChange={[Function]}
+            placeholder=" Alex"
+            type="text"
+          />
+        </div>
+      </div>
+      <button
+        className="GoButton"
+        onClick={[Function]}
+      >
+        Go
+      </button>
+    </div>
+  </div>,
+  <a
+    href="/"
+    onClick={[Function]}
+  >
+    <button
+      className="SmallBtn"
+      id="BackButton"
+    >
+      Back
+    </button>
+  </a>,
+  <button
+    className="SmallBtn"
+    id="HelpButton"
+    onClick={[Function]}
+  >
+    help?
+  </button>,
+  "",
+]
+`;
