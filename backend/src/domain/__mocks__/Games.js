@@ -1,3 +1,4 @@
+import {Game} from '../models/Game';
 
 /**
   * This class stores a list of all active games in session
@@ -31,6 +32,19 @@ export class Games {
    */
   getGames() {
     return new Map();
+  }
+
+  /**
+    * @param {*} io, server io socket connection
+    * @param {*} session, session for game to be played
+    * @param {*} swipeDeck, list of restaurants
+    */
+  newGame(io, session, swipeDeck) {
+    this.activeGames.set(session.sessionId, new Game(
+        io,
+        session,
+        swipeDeck,
+    ));
   }
 }
 
