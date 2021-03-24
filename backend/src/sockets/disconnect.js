@@ -7,7 +7,6 @@ import games from '../domain/Games';
  */
 export function disconnect(socket, io, cb) {
   socket.on('disconnect', () => {
-    // const socketId = socket.id;
     const activeGames = games.getGames();
 
     activeGames.forEach((game) => {

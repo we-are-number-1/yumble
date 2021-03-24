@@ -7,7 +7,6 @@ import games from '../domain/Games';
  */
 export function vote(socket, cb = null) {
   socket.on('vote', (sessionId, vote) => {
-    console.log(sessionId);
     games.getGame(sessionId).session.addVote(vote);
     if (cb) {
       cb();
