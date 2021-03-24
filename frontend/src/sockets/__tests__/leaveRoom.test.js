@@ -8,6 +8,7 @@ let socket;
 let httpServer;
 let httpServerAddr;
 let ioServer;
+let serverSocket;
 
 /**
  * Setup WS & HTTP servers
@@ -17,7 +18,8 @@ beforeAll((done) => {
   httpServerAddr = httpServer.address();
   ioServer = ioBack(httpServer);
 
-  ioServer.on('connection', (serverSocket) => {
+  ioServer.on('connection', (ioServerSocket) => {
+    serverSocket = ioServerSocket;
   });
   done();
 });
@@ -47,11 +49,9 @@ beforeEach((done) => {
   });
 });
 
-test('countdown test', (done) => {
-  const mock = jest.fn();
-  mock.mockImplementation(() => {
+test('leaveRoom test', (done) => {
+  serverSocket.on('leave_room', () => {
     done();
   });
-  SocketEvent.countdown(socket, mock);
-  ioServer.emit('countdown', {count: 1});
+  SocketEvent.leaveRoom(socket);
 });

@@ -47,11 +47,11 @@ beforeEach((done) => {
   });
 });
 
-test('countdown test', (done) => {
+test('invalidCode test', (done) => {
   const mock = jest.fn();
   mock.mockImplementation(() => {
     done();
   });
-  SocketEvent.countdown(socket, mock);
-  ioServer.emit('countdown', {count: 1});
+  SocketEvent.invalidCode(socket, mock);
+  ioServer.emit('invalid_code', 'data');
 });

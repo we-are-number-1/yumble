@@ -47,11 +47,11 @@ beforeEach((done) => {
   });
 });
 
-test('countdown test', (done) => {
+test('updateRestaurants test', (done) => {
   const mock = jest.fn();
   mock.mockImplementation(() => {
     done();
   });
-  SocketEvent.countdown(socket, mock);
-  ioServer.emit('countdown', {count: 1});
+  SocketEvent.updateRestaurants(socket, mock);
+  ioServer.emit('update_restaurants', 'data');
 });
