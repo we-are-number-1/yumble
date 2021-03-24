@@ -25,6 +25,7 @@ export class Game {
    * 0 represents the start of the game (calling nextRound)
    */
   async startCountdown() {
+    // let all users in game start countdown
     this.io.to(this.session.sessionId).emit(
         'countdown', {
           count: this.countdown,
@@ -39,7 +40,7 @@ export class Game {
   }
 
   /**
-   *
+   * sleep function
    * @param {*} ms
    * @return {*}
    */
@@ -60,6 +61,7 @@ export class Game {
 
 
     for (let i=0; i < this.swipeDeck.length; i++) {
+      // notifies users of round change
       this.io.to(this.session.sessionId).emit(
           'next_round',
           {
@@ -78,6 +80,7 @@ export class Game {
    * This emits an end_game event to all users in the session
    */
   async endGame() {
+    // delay to let db sync, thne tell suers game has ended
     await this.sleep(500);
     this.session.syncDb();
     await this.sleep(200);
