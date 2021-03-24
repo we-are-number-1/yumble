@@ -4,7 +4,6 @@ export {endGame} from './endGame';
 export {start} from './start';
 export {nextRound} from './nextRound';
 export {countdown} from './countdown';
-export {setPreferences} from './setPreferences';
 export {setRestaurants} from './setRestaurants';
 export {updateRestaurants} from './updateRestaurants';
 export {invalidCode} from './invalidCode';
