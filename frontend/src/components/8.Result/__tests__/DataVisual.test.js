@@ -5,10 +5,6 @@ import DataVisual from '../DataVisual';
 
 // Sets boundary using jest.mock to render 'down' the elements in the DOM
 
-// jest.mock('react-chartjs-2/lib/index.js', () => ({
-//   ChartComponent: 'ChartComponent',
-// }));
-
 jest.mock('react-chartjs-2', () => ({
   Pie: 'Pie',
 }));
