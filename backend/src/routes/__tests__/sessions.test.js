@@ -67,30 +67,4 @@ afterAll((done) => {
   });
 });
 
-// describe('Unit Test', () =>{
-//   it('Post Sessions', async (done) =>{
-//     const response = await request(app).post('/sessions').send({
-//       preferences: '',
-//       results: '',
-//     });
-//     expect(response.body.sessionId).toEqual('');
-//     expect(response.body.truncCode).toEqual('');
-//     expect(response.statusCode).toBe(201);
 
-//     done();
-//   } );
-
-// it('invalid 400', async (done) =>{
-//   const body = {
-//     sessionId : '05334010727e7af37aa2824',
-//     truncCode : 'a2824'
-//   }
-//   const response = await request(app).post('/sessions').send({
-//     preferences: ,
-//     results: ,
-//     errorcheck: ,
-//   });
-//   expect(response.statusCode).toBe(400);
-//   done();
-// } );
-// });
