@@ -1,3 +1,32 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`MapModal snapshot testing 1`] = `""`;
+
+exports[`MapModal snapshot testing with defining a trigger 1`] = `
+<div
+  className="Help"
+>
+  <div
+    className="Help-inner"
+  >
+    <div
+      id="map"
+      style={
+        Object {
+          "height": "400px",
+          "width": "600px",
+        }
+      }
+    />
+    <button
+      className="SmallBtn"
+      id="CloseButton"
+      onClick={[Function]}
+    >
+      close
+    </button>
+  </div>
+</div>
+`;
+
+exports[`MapModal snapshot testing without defining the trigger 1`] = `""`;
