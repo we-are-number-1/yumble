@@ -18,7 +18,6 @@ function StartPage() {
     <>
       <div className='MakeCentre'>
         <h1 className='StartTitle'>yumble</h1>
-        {/* <BrowserRouter> */}
         <Link to='/Preferences'>
           <button className='BigBtn' id='CreateGroup_btn'>
             Create group
@@ -29,7 +28,6 @@ function StartPage() {
             Join group
           </button>
         </Link>
-        {/* </BrowserRouter> */}
       </div>
 
       <button
