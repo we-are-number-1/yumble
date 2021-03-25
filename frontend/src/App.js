@@ -1,12 +1,11 @@
 import './App.css';
 import StartPage from './components/1.Landing/StartPage';
-import CreateGroup from './components/3.CreateGroup/CreateGroup';
 import JoinGroup from './components/2.Join/JoinGroup';
-import Preferences from './components/4.Preferences/Preferences';
-import Lobby from './components/5.Lobby/Lobby';
-import Countdown from './components/6.Countdown/CountDown';
-import Swiping from './components/7.Swiping/SwipingPage';
-import Result from './components/8.Result/ResultPage';
+import Preferences from './components/3.Preferences/Preferences';
+import Lobby from './components/4.Lobby/Lobby';
+import Countdown from './components/5.Countdown/CountDown';
+import Swiping from './components/6.Swiping/SwipingPage';
+import Result from './components/7.Result/ResultPage';
 import {
   Switch,
   Route,
@@ -24,9 +23,6 @@ function App() {
       <div className='BackGroundImage'>
         <Switch>
           <Route path='/' exact component={StartPage} />
-
-          {/* createGroup should be removed */}
-          <Route path='/CreateGroup' component={CreateGroup} />
           <Route path='/JoinGroup' component={JoinGroup} />
           <Route path='/Preferences' component={Preferences} />
           <Route path='/Lobby/:id' component={Lobby} />

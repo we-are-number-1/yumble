@@ -5,8 +5,8 @@ import '../Common/Help.css';
 // import {getNearbyRestaurants} from '../Common/LocationHelper';
 import AutocompleteSearchBox from './AutocompleteSearchBox';
 import style from './Preferences.module.css';
-import {SocketContext} from './../../sockets/SocketContext';
-import * as SocketEvents from './../../sockets';
+import {SocketContext} from '../../sockets/SocketContext';
+import * as SocketEvents from '../../sockets';
 import {getNearbyRestaurants} from '../Common/LocationHelper';
 import axios from 'axios';
 
@@ -43,7 +43,6 @@ function Preferences() {
     document.title = 'Choose game settings';
     axios.post('sessions', response).then((response) => {
       // ensure you only do it once
-      // console.log(response.data);
       setCode(response.data.truncCode);
     });
   }, []);
@@ -52,11 +51,11 @@ function Preferences() {
    *
    */
   async function handleSearch() {
-    console.log(Coordinates);
+    // console.log(Coordinates);
     const data = await getNearbyRestaurants(
         Coordinates, Distance, 'european');
     setCardData(data);
-    console.log(data);
+    // console.log(data);
   }
 
   useEffect(()=>{
@@ -87,9 +86,6 @@ function Preferences() {
       preferences: newPref,
     };
 
-    // console.log(newPref);
-    // console.log(give);
-
     axios
         .patch('../sessions/'+code, give)
         .then((res) => {
@@ -102,6 +98,13 @@ function Preferences() {
     SocketEvents.joinRoom(socketContext.socket,
         code, 'Host');
     setRedirect(true);
+    // {redirect && <Redirect to={
+    //   {
+    //     pathname: `/Lobby/${code}`,
+    //     state: cardData,
+    //   }
+    // }
+    // />}
   };
 
   return (
@@ -147,6 +150,7 @@ function Preferences() {
               {Timer} Seconds</div>
           </div>
           {/* <div>Cusinies</div> */}
+          {/* If you want to add a cusinie option in the preference list */}
           <div className={style.priceText}>
             Price
             <div>
@@ -155,7 +159,6 @@ function Preferences() {
                   setPrice(e.target.value);
                 }}
               >
-                {/* Either hardcode or get from api */}
                 <option value='1'>$</option>
                 <option value='2'>$  $</option>
                 <option value='3'>$  $  $</option>
