@@ -67,4 +67,16 @@ afterAll((done) => {
   });
 });
 
-
+describe('Unit Test', () =>{
+  it('Post Sessions', async (done) =>{
+    const response = await request(app).post('/sessions').send({
+      preferences: '',
+      results: '',
+    });
+    expect(response.body.sessionId).toEqual('');
+    expect(response.body.truncCode).toEqual('');
+    expect(response.statusCode).toBe(201);
+  
+    done();
+  } );
+})
