@@ -24,9 +24,6 @@ function App() {
       <div className='BackGroundImage'>
         <Switch>
           <Route path='/' exact component={StartPage} />
-
-          {/* createGroup should be removed */}
-          <Route path='/CreateGroup' component={CreateGroup} />
           <Route path='/JoinGroup' component={JoinGroup} />
           <Route path='/Preferences' component={Preferences} />
           <Route path='/Lobby/:id' component={Lobby} />
