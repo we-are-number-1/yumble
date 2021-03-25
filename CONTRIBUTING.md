@@ -4,10 +4,13 @@
 
 ## Repository Information
 
-### Issues/Tickets and pull request schema 
+### Issues/Tickets approval and review process
 * All changes to the repo or any additions to the linked wiki must be documented using an Issue ticket
-* Tickets, pull requests all follow the same schema. 
-* Refer to the [Yumble Wiki]: https://github.com/we-are-number-1/yumble/wiki/Ticket-&-Commit-Schema for futher details on the schema yumble will be using
+* All issue tickets, feature requests and bug reports must be approved through this [process](https://github.com/we-are-number-1/yumble/wiki/Issue-Review-&-Approval-process) before work is completed.
+* Here is an updated list of all [approved labels](https://github.com/we-are-number-1/yumble/wiki/Label-Definitions) for issues.
+
+### Pull Request approval and approval process
+* All pull requests must follow this [process](https://github.com/we-are-number-1/yumble/wiki/Pull-Request-Review-and-Approval-Process)
 
 ### Developer Environment
 * Node 15.x
@@ -24,7 +27,7 @@ Email `se701group1@gmail.com` to ask for access to the prod environment.
 Deployment of the frontend and backend
 
 ### Architecture
-A description of the architecture can be found within the wiki. Changes to the architecture can be 
+A description of the [architecture](https://github.com/we-are-number-1/yumble/wiki/Yumble-Architecture-&-Design) can be found within the wiki. Further documentation of architecture avaliable at request. 
 
 ## Outside Contributors
 
@@ -38,5 +41,4 @@ A description of the architecture can be found within the wiki. Changes to the a
 * Ask `se701group1@gmail.com` to be added as an outside collaborator
 
 ## Links for internal developers:
-* [example 1 contributing.md](https://github.com/WeAllJS/weallcontribute/blob/latest/CONTRIBUTING.md)
-* [example 2 contributing.md](https://github.com/github/docs/blob/main/CONTRIBUTING.md)
+* [Yumble_Table_of_Contents.md](https://github.com/we-are-number-1/yumble/wiki/Yumble-Table-of-Contents)
