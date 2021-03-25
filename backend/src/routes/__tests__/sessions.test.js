@@ -1,7 +1,6 @@
 const {MongoMemoryServer} = require('mongodb-memory-server');
 const mongoose = require('mongoose');
-// const request = require('supertest');
-const sessions = require('../sessions');
+const axios = require('axios');
 const express = require('express');
 
 jest.mock('../../index.js');
@@ -9,10 +8,10 @@ jest.mock('../../index.js');
 let mongod;
 let server;
 let mockSession;
+let port;
 
 const app = express();
 app.use(express.json());
-app.use('/sessions', sessions);
 
 beforeAll(async (done) => {
   mongod = new MongoMemoryServer();
@@ -34,6 +33,9 @@ beforeEach(async () => {
   const coll = await mongoose.connection.db.createCollection('sessions');
 
   mockSession = {
+    '_id': '60534086b68128b3509c0a73',
+    'truncCode': 'c0a73',
+    'isFinished': true,
     'preferences': {
       'location': 'Auckland',
       'distance': 10,
@@ -67,16 +69,18 @@ afterAll((done) => {
   });
 });
 
-describe('Unit Test', () =>{
-  it('Post Sessions', async (done) =>{
-    const response = await request(app).post('/sessions').send({
-      preferences: '',
-      results: '',
-    });
-    expect(response.body.sessionId).toEqual('');
-    expect(response.body.truncCode).toEqual('');
-    expect(response.statusCode).toBe(201);
-  
+
+describe('Post /session', () =>{
+  it('Post Sessions with preference and results', async (done) =>{
+    const body = {'preferences': {}, 'results': []};
+
+    const response = await axios.post(`http://localhost:${port}/sessions`, body);
+    const returnEvent = response.data;
+    expect(returnEvent.sessionId).toBeDefined();
+    const code = returnEvent.sessionId.substr(returnEvent.sessionId.length - 5);
+    expect(returnEvent.truncCode).toBe(code);
+    console.log(returnEvent.sessionId);
+    console.log(code);
     done();
   } );
-})
+});
