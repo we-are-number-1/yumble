@@ -1,9 +1,8 @@
 const {MongoMemoryServer} = require('mongodb-memory-server');
 const mongoose = require('mongoose');
 const express = require('express');
-// const request = require('supertest');
+const sessions = require('../../routes/sessions');
 const axios = require('axios');
-// const sessions = require('../sessions');
 
 jest.mock('../../index.js');
 
@@ -25,7 +24,7 @@ beforeAll(async (done) => {
 
   app = express();
   app.use(express.json());
-  // app.use('/sessions', sessions);
+  app.use('/sessions', sessions);
 
   server = app.listen(0, () => {
     port = server.address().port;
@@ -37,22 +36,18 @@ beforeEach(async () => {
   const coll = await mongoose.connection.db.createCollection('sessions');
 
   mockSession = {
-    'preferences': {
-      'location': 'Auckland',
-      'distance': 10,
-      'cuisines': [
-        'Thai',
-        'Japanese',
-        'Chinese',
-      ],
-      'price': 5,
-      'timer': 20,
-      'coordinates': {
-        'lat': 34.6424325,
-        'lng': 10.2343462,
+    preferences: {
+      location: 'Auckland',
+      distance: 10,
+      cuisines: ['Thai', 'Japanese', 'Chinese'],
+      price: 5,
+      timer: 20,
+      coordinates: {
+        lat: 34.6424325,
+        lng: 10.2343462,
       },
     },
-    'results': [],
+    results: [],
   };
   await coll.insertOne(mockSession);
 });
@@ -70,17 +65,82 @@ afterAll((done) => {
   });
 });
 
-describe('GET /sessions/:id', () => {
-  it('can not find a session without a id', async (done) => {
-    let err;
-    try {
-      await axios.get(`http://localhost:${port}/sessions`);
-    } catch (error) {
-      err = error;
-    }
-    expect(err).toBeDefined();
-    done();
+describe('PATCH', () => {
+  it('should be able to update the session object', async () => {
+    const body = {
+      preferences: {},
+      results: [],
+    };
+
+    let response = await axios.post(`http://localhost:${port}/sessions`, body);
+    let returnTask = response.data;
+
+    const updateBody = {
+      isFinished: true,
+      preferences: {
+        location: 'Sydney',
+        distance: 10,
+        cuisines: ['Thai', 'Japanese', 'Chinese'],
+        price: 20,
+        timer: 600,
+        coordinates: {
+          lat: 34.6424325,
+          lng: 10.2343462,
+        },
+      },
+
+      results: [
+        {
+          name: 'Thai Restaurant',
+          location: '1 Thai Street',
+          numberOfVotes: 5,
+        },
+        {
+          name: 'Japanese Restaurant',
+          location: '1 Japan Street',
+          numberOfVotes: 3,
+        },
+        {
+          name: 'Chinese Restaurant',
+          location: '1 China Street',
+          numberOfVotes: 7,
+        },
+      ],
+    };
+
+    response = await axios.patch(
+        `http://localhost:${port}/sessions/${returnTask.truncCode}`,
+        updateBody,
+    );
+
+    returnTask = response.data;
+
+    expect(response.status).toBe(200);
+    expect(returnTask.isFinished).toBe(true);
+    expect(returnTask.preferences.location).toBe('Sydney');
+    expect(returnTask.results[1].name).toBe('Japanese Restaurant');
   });
 });
 
+describe('Post /session', () =>{
+  it('Post Sessions with preference and results', async (done) =>{
+    const body = {'preferences': {}, 'results': []};
 
+    const response = await axios.post(`http://localhost:${port}/sessions`, body);
+    const returnEvent = response.data;
+    const code = returnEvent.sessionId.substr(returnEvent.sessionId.length - 5);
+    expect(returnEvent.sessionId).toBeDefined();
+    expect(returnEvent.truncCode).toBe(code);
+    if (response.status == 201) {
+      console.log(`The session has been successfully created`);
+      console.log(`The sessionID is: ${returnEvent.sessionId}`);
+      console.log(`The session code is: ${code}`);
+    } else if (response.status == 404) {
+    } else {
+      console.log(`The session is failed, errer: 404`);
+      console.log(`The session is failed, errer: 500`);
+    }
+
+    done();
+  } );
+});
