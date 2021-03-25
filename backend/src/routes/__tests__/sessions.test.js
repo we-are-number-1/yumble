@@ -1,9 +1,8 @@
 const {MongoMemoryServer} = require('mongodb-memory-server');
 const mongoose = require('mongoose');
 const express = require('express');
-// const request = require('supertest');
+const sessions = require('../../routes/sessions');
 const axios = require('axios');
-// const sessions = require('../sessions');
 
 jest.mock('../../index.js');
 
@@ -25,7 +24,7 @@ beforeAll(async (done) => {
 
   app = express();
   app.use(express.json());
-  // app.use('/sessions', sessions);
+  app.use('/sessions', sessions);
 
   server = app.listen(0, () => {
     port = server.address().port;
@@ -37,22 +36,18 @@ beforeEach(async () => {
   const coll = await mongoose.connection.db.createCollection('sessions');
 
   mockSession = {
-    'preferences': {
-      'location': 'Auckland',
-      'distance': 10,
-      'cuisines': [
-        'Thai',
-        'Japanese',
-        'Chinese',
-      ],
-      'price': 5,
-      'timer': 20,
-      'coordinates': {
-        'lat': 34.6424325,
-        'lng': 10.2343462,
+    preferences: {
+      location: 'Auckland',
+      distance: 10,
+      cuisines: ['Thai', 'Japanese', 'Chinese'],
+      price: 5,
+      timer: 20,
+      coordinates: {
+        lat: 34.6424325,
+        lng: 10.2343462,
       },
     },
-    'results': [],
+    results: [],
   };
   await coll.insertOne(mockSession);
 });
@@ -71,16 +66,37 @@ afterAll((done) => {
 });
 
 describe('GET /sessions/:id', () => {
-  it('can not find a session without a id', async (done) => {
-    let err;
-    try {
-      await axios.get(`http://localhost:${port}/sessions`);
-    } catch (error) {
-      err = error;
-    }
-    expect(err).toBeDefined();
-    done();
+  it('should return the session object', async () => {
+    const body = {
+      preferences: {
+        location: 'Sydney',
+        distance: 10,
+        cuisines: ['Thai', 'Japanese', 'Chinese'],
+        price: 20,
+        timer: 600,
+        coordinates: {
+          lat: 34.6424325,
+          lng: 10.2343462,
+        },
+      },
+      results: [],
+    };
+
+    let response = await axios.post(`http://localhost:${port}/sessions`, body);
+    let returnTask = response.data;
+
+    response = await axios.get(
+        `http://localhost:${port}/sessions/${returnTask.truncCode}`,
+    );
+
+    returnTask = response.data;
+
+    expect(returnTask.isFinished).toBe(false);
+    expect(returnTask._id).toBeDefined();
+    expect(returnTask.preferences.distance).toBe(10);
+    expect(returnTask.preferences.location).toBe('Sydney');
+    expect(returnTask.preferences.price).toBe(20);
+    expect(response.status).toBe(200);
   });
 });
-
 
