@@ -6,7 +6,6 @@ import * as SocketEvents from './../../sockets';
 import '../Common/Help.css';
 
 const CountDown = (props) => {
-  // const history = useHistory();
   const socketContext = useContext(SocketContext);
   const [ButtonPopup, setButtonPopup] = useState(false);
   const [seconds, setSeconds] = useState(socketContext.countdown);
