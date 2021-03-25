@@ -1,18 +1,22 @@
 const {MongoMemoryServer} = require('mongodb-memory-server');
 const mongoose = require('mongoose');
-// const request = require('supertest');
-const sessions = require('../sessions');
 const express = require('express');
+// const request = require('supertest');
+const axios = require('axios');
+const sessions = require('../sessions');
+
 
 jest.mock('../../index.js');
 
 let mongod;
 let server;
 let mockSession;
+let app;
+let port;
 
-const app = express();
-app.use(express.json());
-app.use('/sessions', sessions);
+// app = express();
+// app.use(express.json());
+// app.use('/sessions', sessions);
 
 beforeAll(async (done) => {
   mongod = new MongoMemoryServer();
@@ -23,6 +27,10 @@ beforeAll(async (done) => {
     useUnifiedTopology: true,
     useFindAndModify: false,
   });
+
+  app = express();
+  app.use(express.json());
+  app.use('/sessions', sessions);
 
   server = app.listen(0, () => {
     port = server.address().port;
@@ -65,6 +73,36 @@ afterAll((done) => {
 
     done();
   });
+});
+
+describe('GET /sessions/:id', () => {
+  it('can not find a session with invalid id', async (done) => {
+    // const response = await request(app).get('/sessions/c2345');
+    // const response = await axios.get('http://localhost:${port}/sessions/c1234');
+    // expect(response.statusCode).toBe(404);
+    let err;
+    try {
+      await axios.get(`http://localhost:${port}/sessions`);
+    } catch (error) {
+      err = error;
+    }
+    expect(err).toBeDefined();
+    done();
+  });
+
+  // it('gets a session by its id', async (done) => {
+  //   const response = await request(app).get('/sessions/c0a73');
+  //   expect(response.body._id).toBeTruthy();
+  //   expect(response.body.truncCode).toEqual('');
+  //   expect(response.body.isFinished).toBeTruthy();
+  //   expect(response.body.preferences).toEqual('');
+  //   expect(response.body.results).toEqual('');
+  //   expect(response.statusCode).toBe(200);
+  //   done();
+  // });
+
+  // it('returns a 500 when a internal error is encountered',async (done) => {
+  // });
 });
 
 
