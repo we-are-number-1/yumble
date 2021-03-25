@@ -166,7 +166,7 @@ describe('GET', () => {
     let returnTask = response.data;
 
     response = await axios.get(
-        `http://localhost:${port}/sessions/${returnTask.truncCode}`
+        `http://localhost:${port}/sessions/${returnTask.truncCode}`,
     );
 
     returnTask = response.data;
