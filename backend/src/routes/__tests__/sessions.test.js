@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const express = require('express');
 // const request = require('supertest');
 const axios = require('axios');
-//const sessions = require('../sessions');
+// const sessions = require('../sessions');
 
 jest.mock('../../index.js');
 
@@ -29,7 +29,7 @@ beforeAll(async (done) => {
 
   app = express();
   app.use(express.json());
-  //app.use('/sessions', sessions);
+  // app.use('/sessions', sessions);
 
   server = app.listen(0, () => {
     port = server.address().port;
