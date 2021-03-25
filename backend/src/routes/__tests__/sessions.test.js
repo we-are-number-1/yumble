@@ -1,17 +1,16 @@
 const {MongoMemoryServer} = require('mongodb-memory-server');
 const mongoose = require('mongoose');
-const axios = require('axios');
 const express = require('express');
+const sessions = require('../../routes/sessions');
+const axios = require('axios');
 
 jest.mock('../../index.js');
 
 let mongod;
 let server;
 let mockSession;
+let app;
 let port;
-
-const app = express();
-app.use(express.json());
 
 beforeAll(async (done) => {
   mongod = new MongoMemoryServer();
@@ -23,6 +22,10 @@ beforeAll(async (done) => {
     useFindAndModify: false,
   });
 
+  app = express();
+  app.use(express.json());
+  app.use('/sessions', sessions);
+
   server = app.listen(0, () => {
     port = server.address().port;
     done();
@@ -33,25 +36,18 @@ beforeEach(async () => {
   const coll = await mongoose.connection.db.createCollection('sessions');
 
   mockSession = {
-    '_id': '60534086b68128b3509c0a73',
-    'truncCode': 'c0a73',
-    'isFinished': true,
-    'preferences': {
-      'location': 'Auckland',
-      'distance': 10,
-      'cuisines': [
-        'Thai',
-        'Japanese',
-        'Chinese',
-      ],
-      'price': 5,
-      'timer': 20,
-      'coordinates': {
-        'lat': 34.6424325,
-        'lng': 10.2343462,
+    preferences: {
+      location: 'Auckland',
+      distance: 10,
+      cuisines: ['Thai', 'Japanese', 'Chinese'],
+      price: 5,
+      timer: 20,
+      coordinates: {
+        lat: 34.6424325,
+        lng: 10.2343462,
       },
     },
-    'results': [],
+    results: [],
   };
   await coll.insertOne(mockSession);
 });
@@ -76,11 +72,19 @@ describe('Post /session', () =>{
 
     const response = await axios.post(`http://localhost:${port}/sessions`, body);
     const returnEvent = response.data;
-    expect(returnEvent.sessionId).toBeDefined();
     const code = returnEvent.sessionId.substr(returnEvent.sessionId.length - 5);
+    expect(returnEvent.sessionId).toBeDefined();
     expect(returnEvent.truncCode).toBe(code);
-    console.log(returnEvent.sessionId);
-    console.log(code);
+    if (response.status == 201) {
+      console.log(`The session has been successfully created`);
+      console.log(`The sessionID is: ${returnEvent.sessionId}`);
+      console.log(`The session code is: ${code}`);
+    } else if (response.status == 404) {
+      console.log(`The session is failed, errer: 404`);
+    } else {
+      console.log(`The session is failed, errer: 500`);
+    }
+
     done();
   } );
 });
