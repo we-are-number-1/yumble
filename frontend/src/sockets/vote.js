@@ -5,6 +5,5 @@
  * @param {*} vote
  */
 export function vote(socket, sessionId, vote) {
-  console.log(sessionId);
   socket.emit('vote', sessionId, vote);
 }
