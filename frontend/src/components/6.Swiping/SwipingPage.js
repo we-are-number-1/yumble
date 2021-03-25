@@ -90,7 +90,7 @@ function SwipingPage(props) {
       }
     } catch (error) {
     }
-  }
+  };
 
   return (
     <>
@@ -145,6 +145,6 @@ function SwipingPage(props) {
         Redirect to={{pathname: '/Result', state: CardPass}} />}
     </>
   );
-}
+};
 
 export default SwipingPage;
