@@ -17,7 +17,7 @@ beforeAll((done) => {
   httpServerAddr = httpServer.address();
   ioServer = ioBack(httpServer);
 
-  ioServer.on('connection', (ioServerSocket) => {
+  ioServer.on('connection', (serverSocket) => {
   });
   done();
 });
@@ -47,11 +47,11 @@ beforeEach((done) => {
   });
 });
 
-test('set preferences test', (done) => {
+test('invalidCode test', (done) => {
   const mock = jest.fn();
   mock.mockImplementation(() => {
     done();
   });
-  SocketEvent.setPreferences(socket, mock);
-  ioServer.emit('set_preferences', {});
+  SocketEvent.invalidCode(socket, mock);
+  ioServer.emit('invalid_code', 'data');
 });

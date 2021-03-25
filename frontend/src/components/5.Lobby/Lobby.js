@@ -22,10 +22,6 @@ const Lobby = (props) => {
 
   useEffect(() => {
     document.title = 'Waiting Room';
-
-    SocketEvents.setPreferences(socketContext.socket, (preferences) => {
-      socketContext.setPreferences(preferences);
-    });
     SocketEvents.newUser(socketContext.socket, (data) => {
       console.log(data);
       socketContext.setUsers(data.users);
