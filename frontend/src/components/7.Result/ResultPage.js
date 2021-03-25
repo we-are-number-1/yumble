@@ -21,7 +21,7 @@ const rating = '4.0';
  * @return {*}
  * TODO: remove hard-coded location for the winning restaurant coordinates
  */
-function ResultPage(props) {
+function ResultPage() {
   // const socketContext = useContext(SocketContext);
   const [ButtonPopup, setButtonPopup] = useState(false);
   const [MapPopup, setMapPopup] = useState(false);
@@ -56,6 +56,8 @@ function ResultPage(props) {
         cuisine: cuisine,
         price: price,
         rating: rating,
+        // Update images so that it can retrieve the correct one
+        // instead of this hard coded version
         // images: `https://c.files.bbci.co.uk/050B/production/_103119210_lazytown2.jpg`
       });
 
