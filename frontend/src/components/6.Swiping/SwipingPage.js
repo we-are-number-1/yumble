@@ -1,6 +1,5 @@
 import React, {useEffect, useState, useContext} from 'react';
 import {Redirect} from 'react-router-dom';
-// import axios from 'axios';
 
 import {SocketContext} from './../../sockets/SocketContext';
 import * as SocketEvents from './../../sockets';
@@ -12,8 +11,8 @@ import '../6.Swiping/SwipingPage.css';
 import SwipeCard from '../Common/SwipeCard';
 
 /**
- * @return {*}
  * @param  {*} props
+ * @return {*}
  */
 function SwipingPage(props) {
   const socketContext = useContext(SocketContext);
@@ -36,17 +35,6 @@ function SwipingPage(props) {
   }, []);
 
   useEffect(async () => {
-    // /**
-    //  * @param {*} resolve
-    //  * @return {*}
-    //  */
-    // function solve(resolve) {
-    //   setTime(time - 1);
-    //   return resolve;
-    // }
-    // console.log(time);
-    // await setTimeout(solve, resolve
-    //     , 1000);
     setTimeout(() => {
       if (time < 1) {
         setTime(socketContext.countdown/1000);
@@ -57,16 +45,6 @@ function SwipingPage(props) {
   }, [time]);
 
 
-  // /**
-  //  *
-  //  */
-  // function timer(resolve, setTheTime ){
-  //   resolve();
-  //   setTheTime(time-1);
-  // }
-
-  /**
-   */
   const goNextPge = () => {
     console.log('Game has Ended');
     setRedirect(true);
@@ -90,7 +68,6 @@ function SwipingPage(props) {
 
   /**
   *
-  *
   */
   function clickedNo() {
     if (!decided) {
@@ -113,7 +90,7 @@ function SwipingPage(props) {
       }
     } catch (error) {
     }
-  }
+  };
 
   return (
     <>
@@ -168,6 +145,6 @@ function SwipingPage(props) {
         Redirect to={{pathname: '/Result', state: CardPass}} />}
     </>
   );
-}
+};
 
 export default SwipingPage;

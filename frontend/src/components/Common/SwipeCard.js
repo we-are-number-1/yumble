@@ -2,7 +2,6 @@ import React from 'react';
 import './SwipeCard.css';
 
 /**
- * @param {null} Retrieves new restaurant details
  * @return {void}
  */
 function cardClicked() {
@@ -22,7 +21,6 @@ function SwipeCard(props) {
   const cuisine = data.cuisine;
   const price = data.price;
   const rating = data.rating;
-  // console.log(images);
 
   return (
     <div className="SwipeCard" onClick = {cardClicked}>
