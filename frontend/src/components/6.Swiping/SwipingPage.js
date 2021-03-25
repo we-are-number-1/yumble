@@ -8,7 +8,7 @@ import Help from '../Common/Help';
 import '../Common/Help.css';
 import MapModal from '../Common/MapModal';
 import Icon from '../Common/MapsPinpoint';
-import '../7.Swiping/SwipingPage.css';
+import '../6.Swiping/SwipingPage.css';
 import SwipeCard from '../Common/SwipeCard';
 
 /**
