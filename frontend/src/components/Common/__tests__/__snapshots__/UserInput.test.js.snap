@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`User Input snapshot testing 1`] = `
+<input
+  className="Preferences"
+/>
+`;
+
+exports[`User Input snapshot testing 2`] = `
+<input
+  className="JoinGroup"
+/>
+`;

@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Location Helper snapshot testing with on/off trigger off 1`] = `""`;
+
+exports[`Location Helper snapshot testing with on/off trigger on 1`] = `
+<div
+  className="Help"
+>
+  <div
+    className="Help-inner"
+  >
+    <button
+      className="SmallBtn"
+      id="CloseButton"
+      onClick={[Function]}
+    >
+      close
+    </button>
+  </div>
+</div>
+`;
