@@ -145,6 +145,74 @@ describe('Post /session', () =>{
   } );
 });
 
+describe('GET fail', () => {
+  it('should recieve a 404 response', async (done) => {
+    try {
+      response = await axios.get(
+          `http://localhost:${port}/sessions/${234567}`);
+      console.log('the status was' + response.status);
+    } catch (err) {
+      expect(err.response.status).toBe(404);
+      done();
+    }
+  });
+});
+
+describe('PATCH GET fail', () => {
+  it('should recieve a 404 response', async (done) => {
+    const body = {
+      preferences: {},
+      results: [],
+    };
+
+    await axios.post(`http://localhost:${port}/sessions`, body);
+
+    const updateBody = {
+      isFinished: true,
+      preferences: {
+        location: 'Sydney',
+        distance: 10,
+        cuisines: ['Thai', 'Japanese', 'Chinese'],
+        price: 20,
+        timer: 600,
+        coordinates: {
+          lat: 34.6424325,
+          lng: 10.2343462,
+        },
+      },
+
+      results: [
+        {
+          name: 'Thai Restaurant',
+          location: '1 Thai Street',
+          numberOfVotes: 5,
+        },
+        {
+          name: 'Japanese Restaurant',
+          location: '1 Japan Street',
+          numberOfVotes: 3,
+        },
+        {
+          name: 'Chinese Restaurant',
+          location: '1 China Street',
+          numberOfVotes: 7,
+        },
+      ],
+    };
+
+
+    try {
+      await axios.patch(
+          `http://localhost:${port}/sessions/${4567}`,
+          updateBody,
+      );
+    } catch (err) {
+      expect(err.response.status).toBe(404);
+      done();
+    }
+  });
+});
+
 describe('GET', () => {
   it('should return the session object', async () => {
     const body = {
