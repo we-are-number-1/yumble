@@ -1,10 +1,10 @@
 import {useHistory, Redirect} from 'react-router-dom';
 import React, {useState, useEffect, useContext} from 'react';
 import Help from '../Common/Help';
-import {SocketContext} from './../../sockets/SocketContext';
-import * as SocketEvents from './../../sockets';
+import {SocketContext} from '../../sockets/SocketContext';
+import * as SocketEvents from '../../sockets';
 import '../Common/Help.css';
-import '../5.Lobby/Lobby.css';
+import './Lobby.css';
 
 const Lobby = (props) => {
   const socketContext = useContext(SocketContext);
@@ -57,6 +57,7 @@ const Lobby = (props) => {
     history.goBack();
   };
 
+  // Dummy data for Cuisines as this has not been linked to backend yet.
   const NumOfCusines = [];
 
   NumOfCusines.length == 0 ? NumOfCusines.push('Thai') : null;
@@ -75,6 +76,7 @@ const Lobby = (props) => {
     const peopleArray = [];
     const Food = 'Food';
 
+    // Pushing users data into lobby dynamically
     for (let i = 0; i < NumOfUsers; i++) {
       const FoodID = Food.concat(i.toString());
       peopleArray.push(

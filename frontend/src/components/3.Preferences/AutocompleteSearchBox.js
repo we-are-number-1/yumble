@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import PlacesAutocomplete from 'react-places-autocomplete';
 import {getLocationCoordinates} from '../Common/LocationHelper';
-import '../4.Preferences/AutocompleteSearchBox.css';
+import './AutocompleteSearchBox.css';
 
 const AutocompleteSearchBox = ({setLocation, sendCoordinates}) => {
   const [address, setAddress] = useState('');
