@@ -65,41 +65,6 @@ afterAll((done) => {
   });
 });
 
-describe('GET /sessions/:id', () => {
-  it('should return the session object', async () => {
-    const body = {
-      preferences: {
-        location: 'Sydney',
-        distance: 10,
-        cuisines: ['Thai', 'Japanese', 'Chinese'],
-        price: 20,
-        timer: 600,
-        coordinates: {
-          lat: 34.6424325,
-          lng: 10.2343462,
-        },
-      },
-      results: [],
-    };
-
-    let response = await axios.post(`http://localhost:${port}/sessions`, body);
-    let returnTask = response.data;
-
-    response = await axios.get(
-        `http://localhost:${port}/sessions/${returnTask.truncCode}`,
-    );
-
-    returnTask = response.data;
-
-    expect(returnTask.isFinished).toBe(false);
-    expect(returnTask._id).toBeDefined();
-    expect(returnTask.preferences.distance).toBe(10);
-    expect(returnTask.preferences.location).toBe('Sydney');
-    expect(returnTask.preferences.price).toBe(20);
-    expect(response.status).toBe(200);
-  });
-});
-
 describe('PATCH', () => {
   it('should be able to update the session object', async () => {
     const body = {
@@ -157,3 +122,25 @@ describe('PATCH', () => {
   });
 });
 
+describe('Post /session', () =>{
+  it('Post Sessions with preference and results', async (done) =>{
+    const body = {'preferences': {}, 'results': []};
+
+    const response = await axios.post(`http://localhost:${port}/sessions`, body);
+    const returnEvent = response.data;
+    const code = returnEvent.sessionId.substr(returnEvent.sessionId.length - 5);
+    expect(returnEvent.sessionId).toBeDefined();
+    expect(returnEvent.truncCode).toBe(code);
+    if (response.status == 201) {
+      console.log(`The session has been successfully created`);
+      console.log(`The sessionID is: ${returnEvent.sessionId}`);
+      console.log(`The session code is: ${code}`);
+    } else if (response.status == 404) {
+    } else {
+      console.log(`The session is failed, errer: 404`);
+      console.log(`The session is failed, errer: 500`);
+    }
+
+    done();
+  } );
+});
