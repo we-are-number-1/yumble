@@ -121,3 +121,26 @@ describe('PATCH', () => {
     expect(returnTask.results[1].name).toBe('Japanese Restaurant');
   });
 });
+
+describe('Post /session', () =>{
+  it('Post Sessions with preference and results', async (done) =>{
+    const body = {'preferences': {}, 'results': []};
+
+    const response = await axios.post(`http://localhost:${port}/sessions`, body);
+    const returnEvent = response.data;
+    const code = returnEvent.sessionId.substr(returnEvent.sessionId.length - 5);
+    expect(returnEvent.sessionId).toBeDefined();
+    expect(returnEvent.truncCode).toBe(code);
+    if (response.status == 201) {
+      console.log(`The session has been successfully created`);
+      console.log(`The sessionID is: ${returnEvent.sessionId}`);
+      console.log(`The session code is: ${code}`);
+    } else if (response.status == 404) {
+    } else {
+      console.log(`The session is failed, errer: 404`);
+      console.log(`The session is failed, errer: 500`);
+    }
+
+    done();
+  } );
+});
