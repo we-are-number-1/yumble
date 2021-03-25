@@ -4,7 +4,6 @@ exports[`DataVisual snapshot testing 1`] = `
 <div
   className="PieChart"
 >
-   
   <Pie
     data={
       Object {
