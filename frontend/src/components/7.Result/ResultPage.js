@@ -21,7 +21,7 @@ const rating = '4.0';
  * @return {*}
  * TODO: remove hard-coded location for the winning restaurant coordinates
  */
-function ResultPage(props) {
+function ResultPage() {
   // const socketContext = useContext(SocketContext);
   const [ButtonPopup, setButtonPopup] = useState(false);
   const [MapPopup, setMapPopup] = useState(false);
@@ -56,7 +56,10 @@ function ResultPage(props) {
         cuisine: cuisine,
         price: price,
         rating: rating,
-        images: `https://c.files.bbci.co.uk/050B/production/_103119210_lazytown2.jpg`});
+        // Update images so that it can retrieve the correct one
+        // instead of this hard coded version
+        // images: `https://c.files.bbci.co.uk/050B/production/_103119210_lazytown2.jpg`
+      });
 
       console.log(cardList);
       const pieChart = {};
@@ -72,10 +75,8 @@ function ResultPage(props) {
         }
       }
 
-
       pieChart.datasets = [{
         label: '# of Votes',
-        // Replace numbers with number of votes from 'swiping' page
         data: votes,
         borderColor: [
           'rgba(255, 99, 132, 0.2)',
@@ -114,7 +115,6 @@ function ResultPage(props) {
         <div className='MainContainer'>
           <SwipeCard data={data}/>
           {chart&&<DataVisual className='DataVisual' data={pie}/>}
-          {/* className='DataVisual' */}
         </div>
         <button
           onClick={() => setMapPopup(true)}
