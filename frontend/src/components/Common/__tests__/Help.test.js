@@ -2,7 +2,7 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import Help from '../Help';
 
-it('Location Helper snapshot testing with on/off trigger on', () => {
+test('Location Helper snapshot testing with on/off trigger on', () => {
   const component1 = renderer.create(
       <>
         <Help trigger={true}/>
