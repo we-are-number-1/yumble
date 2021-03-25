@@ -27,7 +27,7 @@ Email `se701group1@gmail.com` to ask for access to the prod environment.
 Deployment of the frontend and backend
 
 ### Architecture
-A description of the [architecture](https://github.com/we-are-number-1/yumble/wiki/Yumble-Architecture-&-Design) can be found within the wiki. Backlog of aritecture can be found on the groups google-drive.git and must be requested from se701group1@gmail.com
+A description of the [architecture](https://github.com/we-are-number-1/yumble/wiki/Yumble-Architecture-&-Design) can be found within the wiki. Backlog of architecture avaliable at request. 
 
 ## Outside Contributors
 
