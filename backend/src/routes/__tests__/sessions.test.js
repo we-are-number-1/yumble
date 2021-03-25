@@ -115,6 +115,7 @@ describe('PATCH', () => {
 
     returnTask = response.data;
 
+    expect(response.status).toBe(200);
     expect(returnTask.isFinished).toBe(true);
     expect(returnTask.preferences.location).toBe('Sydney');
     expect(returnTask.results[1].name).toBe('Japanese Restaurant');
