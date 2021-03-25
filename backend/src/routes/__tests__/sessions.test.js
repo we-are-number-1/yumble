@@ -13,10 +13,6 @@ let mockSession;
 let app;
 let port;
 
-// app = express();
-// app.use(express.json());
-// app.use('/sessions', sessions);
-
 beforeAll(async (done) => {
   mongod = new MongoMemoryServer();
 
@@ -76,9 +72,6 @@ afterAll((done) => {
 
 describe('GET /sessions/:id', () => {
   it('can not find a session without a id', async (done) => {
-    // const response = await request(app).get('/sessions/c2345');
-    // const response = await axios.get('http://localhost:${port}/sessions/c1234');
-    // expect(response.statusCode).toBe(404);
     let err;
     try {
       await axios.get(`http://localhost:${port}/sessions`);
@@ -88,20 +81,6 @@ describe('GET /sessions/:id', () => {
     expect(err).toBeDefined();
     done();
   });
-
-  // it('gets a session by its id', async (done) => {
-  //   const response = await request(app).get('/sessions/c0a73');
-  //   expect(response.body._id).toBeTruthy();
-  //   expect(response.body.truncCode).toEqual('');
-  //   expect(response.body.isFinished).toBeTruthy();
-  //   expect(response.body.preferences).toEqual('');
-  //   expect(response.body.results).toEqual('');
-  //   expect(response.statusCode).toBe(200);
-  //   done();
-  // });
-
-  // it('returns a 500 when a internal error is encountered',async (done) => {
-  // });
 });
 
 
