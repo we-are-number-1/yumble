@@ -15,10 +15,6 @@ test('MapModal snapshot testing with/without defining the trigger', () => {
       .spyOn(React, 'useState')
       .mockImplementationOnce(() => mockSetMapPopup(false));
 
-  jest.mock('../../Map/Map', () => ({
-    Map: 'Map',
-  }));
-
   // Testing without defining the trigger
   const tree1 = renderer
       .create(
