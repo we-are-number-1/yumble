@@ -56,7 +56,8 @@ function ResultPage(props) {
         cuisine: cuisine,
         price: price,
         rating: rating,
-        images: `https://c.files.bbci.co.uk/050B/production/_103119210_lazytown2.jpg`});
+        // images: `https://c.files.bbci.co.uk/050B/production/_103119210_lazytown2.jpg`
+      });
 
       console.log(cardList);
       const pieChart = {};
