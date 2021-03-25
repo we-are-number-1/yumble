@@ -57,6 +57,7 @@ const Lobby = (props) => {
     history.goBack();
   };
 
+  // Dummy data for Cuisines as this has not been linked to backend yet.
   const NumOfCusines = [];
 
   NumOfCusines.length == 0 ? NumOfCusines.push('Thai') : null;
@@ -75,6 +76,7 @@ const Lobby = (props) => {
     const peopleArray = [];
     const Food = 'Food';
 
+    // Pushing users data into lobby dynamically
     for (let i = 0; i < NumOfUsers; i++) {
       const FoodID = Food.concat(i.toString());
       peopleArray.push(
