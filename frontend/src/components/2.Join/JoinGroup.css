@@ -1,0 +1,14 @@
+/* CreateGroup */
+.GroupCode_Box {
+    outline: none;
+    border: 5px solid #000000;
+    background-color: white;
+    width: 25vw;
+    text-align: center;
+    font-family: Comic Sans MS;
+    border-radius: 40px;
+    padding: 2vw;
+    font-size: 3vw;
+    margin-top: 8vw;
+    font-size: 2vw;
+  }
