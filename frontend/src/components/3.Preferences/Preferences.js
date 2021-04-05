@@ -53,7 +53,7 @@ function Preferences() {
   async function handleSearch() {
     // console.log(Coordinates);
     const data = await getNearbyRestaurants(
-        Coordinates, Distance, 'european');
+        Coordinates, Distance, 'european', Price);
     setCardData(data);
     // console.log(data);
   }

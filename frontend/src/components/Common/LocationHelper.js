@@ -16,10 +16,12 @@ let cards = null;
  * @param  {Object} coordinates Object with lat and lng values
  * @param  {number} radius The radius around the defined coordinates
  * @param  {String} keyword Cuisine keyword
+ * @param  {number} maxPriceLevel is the max value of the research result
  */
 export async function getNearbyRestaurants(coordinates,
     radius,
-    keyword) {
+    keyword,
+    maxPriceLevel) {
   const pyrmont = new google.maps.LatLng(-33.8665433, 151.1956316);
   const dummyMap = new google.maps.Map(document.getElementById('dummyMap'), {
     center: pyrmont,
@@ -31,6 +33,7 @@ export async function getNearbyRestaurants(coordinates,
     radius: radius,
     type: ['restaurant'], // Default value
     keyword: keyword,
+    maxPriceLevel: maxPriceLevel,
   };
   const service = new google.maps.places.PlacesService(dummyMap);
 

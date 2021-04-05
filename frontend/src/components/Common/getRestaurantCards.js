@@ -27,11 +27,7 @@ export async function getRestaurantCards(restaurants, coords) {
     suburb = suburb[suburb.length - 2];
 
     // some restaurants dont have a price level -- default to "$"
-    if (restaurants[i].price_level !== undefined) {
-      price = dollar.repeat(restaurants[i].price_level+1);
-    } else {
-      price = "$";
-    }
+    price = (restaurants[i].price_level !== undefined) ? dollar.repeat(restaurants[i].price_level) : "$";
 
     try {
       const card = {
