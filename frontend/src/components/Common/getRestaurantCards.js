@@ -19,7 +19,7 @@ export async function getRestaurantCards(restaurants, coords, priceLevel) {
     var price;
     var suburb;
 
-    if (restaurants[i].price_level != priceLevel) {
+    if (restaurants[i].price_level > priceLevel) {
       continue;
     }
 
