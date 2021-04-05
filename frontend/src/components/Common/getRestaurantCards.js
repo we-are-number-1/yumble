@@ -9,9 +9,8 @@ let clientSecret;
 
 let dollar = "$";
 
-export async function getRestaurantCards(restaurants, coords) {
+export async function getRestaurantCards(restaurants, coords, priceLevel) {
   var cards = [];
-
   // clientCreds = await getAPIKey(1);
   // clientID = clientCreds[0];
   // clientSecret = clientCreds[1];
@@ -20,6 +19,10 @@ export async function getRestaurantCards(restaurants, coords) {
     var price;
     var suburb;
 
+    if (restaurants[i].price_level != priceLevel) {
+      continue;
+    }
+
     // const menu = await getMenu(20200305, coords[i].lat, coords[i].lng, restaurants[i].name);
 
     // get the suburb by some quick string operations
@@ -27,11 +30,7 @@ export async function getRestaurantCards(restaurants, coords) {
     suburb = suburb[suburb.length - 2];
 
     // some restaurants dont have a price level -- default to "$"
-    if (restaurants[i].price_level !== undefined) {
-      price = dollar.repeat(restaurants[i].price_level+1);
-    } else {
-      price = "$";
-    }
+    price = (restaurants[i].price_level !== undefined) ? dollar.repeat(restaurants[i].price_level) : "$";
 
     try {
       const card = {
