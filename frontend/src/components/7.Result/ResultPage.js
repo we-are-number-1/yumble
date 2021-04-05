@@ -30,7 +30,7 @@ function ResultPage() {
   const [pie, setPie] = useState(null);
   const [chart, setChart] = useState(false);
   const socketContext = useContext(SocketContext);
-
+  const [hasResult, setHasResult] = useState(false);
 
   useEffect(() => {
     document.title = 'Time to go eat!';
@@ -48,7 +48,8 @@ function ResultPage() {
   }, []);
 
   useEffect(()=>{
-    if (cardList) {
+    if (cardList && cardList.length > 0) {
+      setHasResult(true);
       const card = cardList[0];
       setData({
         name: card.name,
@@ -111,23 +112,31 @@ function ResultPage() {
   return (
     <>
       <div className='MakeCentre' id='ExtraHeight'>
-        <h1 className='ResultTitle'>Top Choice</h1>
-        <div className='MainContainer'>
-          <SwipeCard data={data}/>
-          {chart&&<DataVisual className='DataVisual' data={pie}/>}
-        </div>
-        <button
-          onClick={() => setMapPopup(true)}
-          className='BigBtn'
-          id='GoogleMaps_btn'
-        >
-          View on Google Maps
-          <Icon />
-        </button>
-        <MapModal trigger={MapPopup} setTrigger={setMapPopup}
-          restaurantLocation={{lat: -36.8523, lng: 174.7691}} />
+        { hasResult ? <>
+          <h1 className='ResultTitle'>Top Choice</h1>
+          <div className='MainContainer'>
+            <SwipeCard data={data}/>
+            {chart&&<DataVisual className='DataVisual' data={pie}/>}
+          </div>
+          <button
+            onClick={() => setMapPopup(true)}
+            className='BigBtn'
+            id='GoogleMaps_btn'
+          >
+            View on Google Maps
+            <Icon />
+          </button>
+          <MapModal trigger={MapPopup} setTrigger={setMapPopup}
+            restaurantLocation={{lat: -36.8523, lng: 174.7691}} />
+        </> : <>
+          <h2 className='ResultTitle'> No Result Decided :( </h2>
+          <h2 className='ResultTitle'> Wanna try another place ? </h2>
+          <button className='ButtonReset' onClick={
+            () => window.location.reload()}>
+            Try Again :) </button>
+        </>
+        }
       </div>
-
       <button
         onClick={() => setButtonPopup(true)}
         className='SmallBtn'
