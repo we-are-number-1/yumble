@@ -30,13 +30,14 @@ function ResultPage() {
   const [pie, setPie] = useState(null);
   const [chart, setChart] = useState(false);
   const socketContext = useContext(SocketContext);
-  const [hasResult, setHasResult] = useState(false);
+  const [hasResult, setHasResult] = useState(null);
 
   useEffect(() => {
     document.title = 'Time to go eat!';
     axios
         .get('sessions/'+ socketContext.code)
         .then((res) => {
+          setHasResult(false);
           setCardList(res.data.results.sort(
               function(a, b) {
                 return b.numberOfVotes - a.numberOfVotes;
@@ -112,7 +113,8 @@ function ResultPage() {
   return (
     <>
       <div className='MakeCentre' id='ExtraHeight'>
-        { hasResult ? <>
+        { hasResult === null ? <></> : hasResult === true ?
+        <>
           <h1 className='ResultTitle'>Top Choice</h1>
           <div className='MainContainer'>
             <SwipeCard data={data}/>
