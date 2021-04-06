@@ -17,7 +17,7 @@ const price = '$$$';
 const rating = '4.0';
 
 /**
- * @param {*} props {hasResult} it is used for testing
+ * @param {*} props {hasResult}
  * @return {*}
  * TODO: remove hard-coded location for the winning restaurant coordinates
  */
@@ -29,6 +29,12 @@ function ResultPage(props) {
   const [pie, setPie] = useState(null);
   const [chart, setChart] = useState(false);
   const socketContext = useContext(SocketContext);
+  // use this attribute to decide what component to render
+  // null -> nothing
+  // false -> no result decided
+  // true -> result with pie chart
+  // default is null because no props is passed in
+  // need to have props due to the testing purpose
   const [hasResult, setHasResult] = useState(props.hasResult);
 
   useEffect(() => {
