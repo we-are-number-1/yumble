@@ -17,11 +17,13 @@ const price = '$$$';
 const rating = '4.0';
 
 /**
- * @param {*} props
+ * @param {*} props {hasResult} it is used for testing
  * @return {*}
  * TODO: remove hard-coded location for the winning restaurant coordinates
  */
-function ResultPage() {
+function ResultPage(props) {
+  console.log(props);
+  console.log(props.hasResult);
   // const socketContext = useContext(SocketContext);
   const [ButtonPopup, setButtonPopup] = useState(false);
   const [MapPopup, setMapPopup] = useState(false);
@@ -30,7 +32,7 @@ function ResultPage() {
   const [pie, setPie] = useState(null);
   const [chart, setChart] = useState(false);
   const socketContext = useContext(SocketContext);
-  const [hasResult, setHasResult] = useState(null);
+  const [hasResult, setHasResult] = useState(props.hasResult);
 
   useEffect(() => {
     document.title = 'Time to go eat!';
@@ -113,7 +115,7 @@ function ResultPage() {
   return (
     <>
       <div className='MakeCentre' id='ExtraHeight'>
-        { hasResult === null ? <></> : hasResult === true ?
+        { hasResult === undefined ? <></> : hasResult === true ?
         <>
           <h1 className='ResultTitle'>Top Choice</h1>
           <div className='MainContainer'>
