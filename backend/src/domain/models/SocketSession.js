@@ -41,7 +41,6 @@ export class SocketSession {
    * @param {*} restaurant
    */
   addVote(restaurant) {
-    console.log(restaurant);
     const data = this.votes.get(restaurant.name);
     if (data) {
       data.votes = data.votes + 1;
@@ -49,7 +48,13 @@ export class SocketSession {
     } else {
       this.votes.set(
           restaurant.name,
-          {votes: 1, location: restaurant.location},
+          {votes: 1, 
+          location: restaurant.location,
+          coords: restaurant.coords,
+          cuisine: restaurant.cuisine,
+          price: restaurant.price,
+          rating: restaurant.rating,
+          images: restaurant.images},
       );
     }
   }
@@ -63,7 +68,14 @@ export class SocketSession {
       const restaurants = [];
       this.votes.forEach((value, key, map) => {
         restaurants.push(
-            {name: key, location: value.location, numberOfVotes: value.votes},
+            {name: key, 
+            location: value.location, 
+            numberOfVotes: value.votes,
+            coords: value.coords,
+            cuisine: value.cuisine,
+            price: value.price,
+            rating: value.rating,
+            images: value.images},
         );
       });
       console.log(restaurants);

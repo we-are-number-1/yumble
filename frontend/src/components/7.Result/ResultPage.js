@@ -9,20 +9,18 @@ import axios from 'axios';
 import './ResultPage.css';
 import {SocketContext} from '../../sockets/SocketContext';
 
-// Dummy data, should be retrieved by sockets
-const name = 'Lonestar';
-const location = 'Botany';
-const cuisine = 'European';
-const price = '$$$';
-const rating = '4.0';
+// Dummy data, real data is retrived from sockets
+const name = '';
+const location = '';
+const cuisine = '';
+const price = '';
+const rating = 0;
 
 /**
  * @param {*} props
  * @return {*}
- * TODO: remove hard-coded location for the winning restaurant coordinates
  */
-function ResultPage() {
-  // const socketContext = useContext(SocketContext);
+function ResultPage(props) {
   const [ButtonPopup, setButtonPopup] = useState(false);
   const [MapPopup, setMapPopup] = useState(false);
   const [cardList, setCardList] = useState(null);
@@ -30,7 +28,6 @@ function ResultPage() {
   const [pie, setPie] = useState(null);
   const [chart, setChart] = useState(false);
   const socketContext = useContext(SocketContext);
-
 
   useEffect(() => {
     document.title = 'Time to go eat!';
@@ -53,12 +50,11 @@ function ResultPage() {
       setData({
         name: card.name,
         location: card.location,
-        cuisine: cuisine,
-        price: price,
-        rating: rating,
-        // Update images so that it can retrieve the correct one
-        // instead of this hard coded version
-        // images: `https://c.files.bbci.co.uk/050B/production/_103119210_lazytown2.jpg`
+        cuisine: card.cuisine,
+        price: card.price,
+        rating: card.rating,
+        images: card.images,
+        coords: card.coords,
       });
 
       console.log(cardList);
@@ -125,7 +121,7 @@ function ResultPage() {
           <Icon />
         </button>
         <MapModal trigger={MapPopup} setTrigger={setMapPopup}
-          restaurantLocation={{lat: -36.8523, lng: 174.7691}} />
+          restaurantLocation={data.coords} />
       </div>
 
       <button
