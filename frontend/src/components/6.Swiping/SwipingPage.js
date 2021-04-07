@@ -31,17 +31,18 @@ function SwipingPage(props) {
     SocketEvents.endGame(socketContext.socket, goNextPge);
     SocketEvents.nextRound(socketContext.socket, getNewCard);
     setCardPass(props.location.state[0].slice());
-    setTime(socketContext.countdown);
   }, []);
 
-  useEffect(async () => {
-    setTimeout(() => {
-      if (time < 1) {
-        setTime(socketContext.countdown/1000);
-      } else {
+  useEffect(() => {
+    const t = setTimeout(() => {
+      if (time > 0) {
         setTime(time - 1);
       }
     }, 1000);
+
+    return () => {
+      setTimeout(t);
+    };
   }, [time]);
 
 
@@ -81,7 +82,7 @@ function SwipingPage(props) {
  * @return {void}
  */
   function getNewCard(timer) {
-    setTime(socketContext.countdown/1000);
+    setTime(socketContext.countdown);
     try {
       setDecided(false);
       CardData.shift();
