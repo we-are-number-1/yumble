@@ -23,7 +23,7 @@ const restaurantSchema = mongoose.Schema({
   },
   cuisine: {
     type: String,
-    default: [],
+    default: '',
   },
   price: {
     type: String,

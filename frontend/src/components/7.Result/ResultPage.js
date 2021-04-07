@@ -10,11 +10,11 @@ import './ResultPage.css';
 import {SocketContext} from '../../sockets/SocketContext';
 
 // Dummy data, real data is retrived from sockets
-const name = '';
-const location = '';
-const cuisine = '';
-const price = '';
-const rating = 0;
+const name = 'Lonestar';
+const location = 'Botany';
+const cuisine = 'European';
+const price = '$$$';
+const rating = 4.1;
 
 /**
  * @param {*} props
