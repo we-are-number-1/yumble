@@ -48,7 +48,6 @@ function ResultPage() {
   }, []);
 
   useEffect(()=>{
-    console.log(cardList);
     if (cardList) {
       const card = cardList[0];
       setData({
@@ -62,7 +61,6 @@ function ResultPage() {
         // images: `https://c.files.bbci.co.uk/050B/production/_103119210_lazytown2.jpg`
       });
 
-      console.log(cardList);
       const pieChart = {};
       pieChart.labels = [];
       const votes = [];
