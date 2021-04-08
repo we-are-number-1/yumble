@@ -17,7 +17,7 @@ const price = '$$$';
 const rating = 4.0;
 
 /**
- * @param {*} props
+ * @param {*} props {hasResult}
  * @return {*}
  */
 function ResultPage(props) {
@@ -28,12 +28,20 @@ function ResultPage(props) {
   const [pie, setPie] = useState(null);
   const [chart, setChart] = useState(false);
   const socketContext = useContext(SocketContext);
+  // use this attribute to decide what component to render
+  // null -> nothing
+  // false -> no result decided
+  // true -> result with pie chart
+  // default is null because no props is passed in
+  // need to have props due to the testing purpose
+  const [hasResult, setHasResult] = useState(props.hasResult);
 
   useEffect(() => {
     document.title = 'Time to go eat!';
     axios
         .get('sessions/'+ socketContext.code)
         .then((res) => {
+          setHasResult(false);
           setCardList(res.data.results.sort(
               function(a, b) {
                 return b.numberOfVotes - a.numberOfVotes;
@@ -45,7 +53,8 @@ function ResultPage(props) {
   }, []);
 
   useEffect(()=>{
-    if (cardList) {
+    if (cardList && cardList.length > 0) {
+      setHasResult(true);
       const card = cardList[0];
       setData({
         name: card.name,
@@ -56,13 +65,10 @@ function ResultPage(props) {
         images: card.images,
         coords: card.coords,
       });
-
-      console.log(cardList);
       const pieChart = {};
       pieChart.labels = [];
       const votes = [];
       for (let i = 0; i < cardList.length; i++) {
-        console.log(i);
         if (cardList[i].name && i < 6) {
           pieChart.labels.push(cardList[i].name);
           votes.push(cardList[i].numberOfVotes);
@@ -107,23 +113,32 @@ function ResultPage(props) {
   return (
     <>
       <div className='MakeCentre' id='ExtraHeight'>
-        <h1 className='ResultTitle'>Top Choice</h1>
-        <div className='MainContainer'>
-          <SwipeCard data={data}/>
-          {chart&&<DataVisual className='DataVisual' data={pie}/>}
-        </div>
-        <button
-          onClick={() => setMapPopup(true)}
-          className='BigBtn'
-          id='GoogleMaps_btn'
-        >
-          View on Google Maps
-          <Icon />
-        </button>
-        <MapModal trigger={MapPopup} setTrigger={setMapPopup}
-          restaurantLocation={data.coords} />
+        { hasResult === undefined ? <></> : hasResult === true ?
+        <>
+          <h1 className='ResultTitle'>Top Choice</h1>
+          <div className='MainContainer'>
+            <SwipeCard data={data}/>
+            {chart&&<DataVisual className='DataVisual' data={pie}/>}
+          </div>
+          <button
+            onClick={() => setMapPopup(true)}
+            className='BigBtn'
+            id='GoogleMaps_btn'
+          >
+            View on Google Maps
+            <Icon />
+          </button>
+          <MapModal trigger={MapPopup} setTrigger={setMapPopup}
+            restaurantLocation={{lat: -36.8523, lng: 174.7691}} />
+        </> : <>
+          <h2 className='ResultTitle'> No Result Decided :( </h2>
+          <h2 className='ResultTitle'> Wanna try another place ? </h2>
+          <button className='ButtonReset' onClick={
+            () => window.location.reload()}>
+            Try Again :) </button>
+        </>
+        }
       </div>
-
       <button
         onClick={() => setButtonPopup(true)}
         className='SmallBtn'

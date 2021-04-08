@@ -80,6 +80,7 @@ export class SocketSession {
       });
       console.log(restaurants);
       session.results = restaurants;
+      session.isFinished = true;
       session.save();
     } catch (error) {
       console.log(error);
