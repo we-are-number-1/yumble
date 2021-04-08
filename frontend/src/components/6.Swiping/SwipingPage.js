@@ -41,7 +41,7 @@ function SwipingPage(props) {
     }, 1000);
 
     return () => {
-      setTimeout(t);
+      clearTimeout(t);
     };
   }, [time]);
 
