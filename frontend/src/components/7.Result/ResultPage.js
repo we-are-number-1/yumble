@@ -14,7 +14,7 @@ const name = 'Lonestar';
 const location = 'Botany';
 const cuisine = 'European';
 const price = '$$$';
-const rating = 4.1;
+const rating = 4.0;
 
 /**
  * @param {*} props
