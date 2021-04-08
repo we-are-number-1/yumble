@@ -24,8 +24,6 @@ const CountDown = (props) => {
   useEffect(() => {
     document.title = 'Go!';
     SocketEvents.nextRound(socketContext.socket, cb);
-    console.log(socketContext.countdown);
-    console.log(props.location.state);
   }, []);
 
   useEffect(() => {

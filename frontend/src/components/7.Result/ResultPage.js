@@ -60,13 +60,10 @@ function ResultPage() {
         // instead of this hard coded version
         // images: `https://c.files.bbci.co.uk/050B/production/_103119210_lazytown2.jpg`
       });
-
-      console.log(cardList);
       const pieChart = {};
       pieChart.labels = [];
       const votes = [];
       for (let i = 0; i < cardList.length; i++) {
-        console.log(i);
         if (cardList[i].name && i < 6) {
           pieChart.labels.push(cardList[i].name);
           votes.push(cardList[i].numberOfVotes);

@@ -51,11 +51,10 @@ function Preferences() {
    *
    */
   async function handleSearch() {
-    // console.log(Coordinates);
     const data = await getNearbyRestaurants(
         Coordinates, Distance, 'european');
     setCardData(data);
-    // console.log(data);
+
   }
 
   useEffect(()=>{
@@ -66,8 +65,6 @@ function Preferences() {
 
 
   const postPreference = () => {
-    console.log(`room code ${code}`);
-    console.log(cardData);
     socketContext.setCode(code);
     socketContext.setHost(true);
     SocketEvents.setRestaurants(socketContext.socket, code, cardData);
@@ -89,7 +86,6 @@ function Preferences() {
     axios
         .patch('../sessions/'+code, give)
         .then((res) => {
-          console.log(res.data);
         })
         .catch(function(error) {
           console.log(error);

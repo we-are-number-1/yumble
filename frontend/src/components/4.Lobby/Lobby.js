@@ -23,20 +23,17 @@ const Lobby = (props) => {
   useEffect(() => {
     document.title = 'Waiting Room';
     SocketEvents.newUser(socketContext.socket, (data) => {
-      console.log(data);
       socketContext.setUsers(data.users);
     });
     SocketEvents.updateRestaurants(
         socketContext.socket,
         (data) => {
-          console.log(data);
           if (data) {
             setCardData(data);
           }
         },
     );
     SocketEvents.countdown(socketContext.socket, (count) => {
-      console.log(`${count} second countdown`);
       socketContext.setCountdown(count);
       startCountdown();
     });
