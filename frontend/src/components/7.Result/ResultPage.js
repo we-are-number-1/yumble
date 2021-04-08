@@ -9,17 +9,16 @@ import axios from 'axios';
 import './ResultPage.css';
 import {SocketContext} from '../../sockets/SocketContext';
 
-// Dummy data, should be retrieved by sockets
+// Dummy data, real data is retrived from sockets
 const name = 'Lonestar';
 const location = 'Botany';
 const cuisine = 'European';
 const price = '$$$';
-const rating = '4.0';
+const rating = 4.0;
 
 /**
  * @param {*} props {hasResult}
  * @return {*}
- * TODO: remove hard-coded location for the winning restaurant coordinates
  */
 function ResultPage(props) {
   const [ButtonPopup, setButtonPopup] = useState(false);
@@ -60,12 +59,11 @@ function ResultPage(props) {
       setData({
         name: card.name,
         location: card.location,
-        cuisine: cuisine,
-        price: price,
-        rating: rating,
-        // Update images so that it can retrieve the correct one
-        // instead of this hard coded version
-        // images: `https://c.files.bbci.co.uk/050B/production/_103119210_lazytown2.jpg`
+        cuisine: card.cuisine,
+        price: card.price,
+        rating: card.rating,
+        images: card.images,
+        coords: card.coords,
       });
       const pieChart = {};
       pieChart.labels = [];
