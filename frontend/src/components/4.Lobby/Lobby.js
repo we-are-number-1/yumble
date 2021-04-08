@@ -112,7 +112,7 @@ const Lobby = (props) => {
         <Help trigger={ShareButtonPopup} setTrigger={setSharePopup}>
           <div className='MakeTextCentre'>
             <h2> Share the group code:</h2>
-            <h1>{socketContext.code}</h1>
+            <h1><b>{socketContext.code}</b></h1>
             <a href={'https://yumble.xyz'}>
             https://yumble.xyz
             </a>
