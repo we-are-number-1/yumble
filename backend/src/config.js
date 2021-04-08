@@ -1,4 +1,4 @@
 export default
 {
-  'session_expiry': 30,
+  'session_expiry': 604800,
 };
