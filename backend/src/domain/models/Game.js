@@ -1,3 +1,4 @@
+import Games from '../Games';
 
 /**
  * Main game controller for the application.
@@ -85,5 +86,7 @@ export class Game {
     this.session.syncDb();
     await this.sleep(200);
     this.io.to(this.session.sessionId).emit('end_game');
+    // Remove game from active games list
+    Games.removeGame(this.session.sessionId);
   }
 }
