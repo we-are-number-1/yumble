@@ -48,6 +48,7 @@ function ResultPage() {
   }, []);
 
   useEffect(()=>{
+    console.log(cardList);
     if (cardList) {
       const card = cardList[0];
       setData({

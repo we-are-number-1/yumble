@@ -55,6 +55,8 @@ router.post('/', async (req, res) => {
 // GET /sessions/:id – Get the session object with the provided id
 router.get('/:id', getSession, (req, res) => {
   res.status(200).json(res.session);
+  console.log(res.session);
+  console.log(res.session.preferences.coordinates);
 });
 
 // PATCH /sessions/:id – Update the session with prefereces or results

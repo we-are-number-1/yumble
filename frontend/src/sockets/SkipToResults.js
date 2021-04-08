@@ -4,7 +4,7 @@
  * @param {*} cb call back function
  */
 export function skipToResults(socket, cb) {
-  socket.on('skip-to-results', (data) => {
+  socket.on('skip_to_results', (data) => {
     cb(data);
   });
 }
