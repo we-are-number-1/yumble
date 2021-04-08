@@ -15,10 +15,12 @@ function GroupCode() {
   const socketContext = useContext(SocketContext);
   const [name, setName] = useState('Alex');
   const [invalidCode, setInvalidCode] = useState(true);
+  const [skip, setSkip] = useState(false);
   const [ButtonPopup, setButtonPopup] = useState(false);
 
   useEffect(() => {
     document.title = 'Enter group code';
+    SocketEvents.skipToResults(socketContext.socket, setSkip);
     SocketEvents.invalidCode(socketContext.socket, setInvalidCode);
   }, []);
 
@@ -56,8 +58,8 @@ function GroupCode() {
               ></UserInput>
             </div>
           </div>
-          {!invalidCode && <Redirect
-            to={`/Lobby/${socketContext.code}`} />}
+          {!invalidCode && <Redirect to={`/Lobby/${socketContext.code}`} />}
+          {skip && <Redirect to={'/Result'} />}
           <button
             onClick={() => SocketEvents.joinRoom(socketContext.socket,
                 socketContext.code, name)}
