@@ -1,13 +1,12 @@
 /*Lobby box */
 .LobbyBox {
   outline: none;
-  border: 4px solid #000000;
+  border: 0.25rem solid #000000;
   background-color: white;
   height: auto;
   width: 75vw;
   font-family: Comic Sans MS;
   border-radius: 30px;
-  padding: 2vw;
   font-size: 3vw;
   margin-bottom: 1vw;
   text-align: right;

@@ -26,8 +26,8 @@ function App() {
           <Route path='/Start' exact component={StartPage} />
           <Route path='/JoinGroup' component={JoinGroup} />
           <Route path='/Preferences' component={Preferences} />
-          <Route path='/' component={Lobby} />
-          <Route path='/Countdown' component={Countdown} />
+          <Route path='/Lobby/:id' component={Lobby} />
+          <Route path='/' component={Countdown} />
           <Route path='/Swiping' component={Swiping} />
           <Route path='/Result' component={Result} />
           <Route path='*'>
