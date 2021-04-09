@@ -171,15 +171,22 @@
 .GoButton {
   cursor: pointer;
   outline: none;
-  font-family: Comic Sans MS;
   font-size: 2vw;
   border-radius: 30px;
   border-color: black;
   border-width: 3px;
-  padding: 0vw 3vw 0vw 3vw;
+  padding: .5rem 2rem !important;
   background-color: rgb(35, 164, 224);
 }
 
 .GoButton:hover {
   background: cyan;
+}
+#Card-field {
+  background-color: #6f7279;
+  color: white;
+}
+#Card-Header {
+  background-color: #414246;
+  color: white;
 }
