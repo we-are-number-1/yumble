@@ -6,7 +6,7 @@ import '../2.Join/JoinGroup.css';
 import * as SocketEvents from './../../sockets';
 import {SocketContext} from './../../sockets/SocketContext';
 import '../Common/Help.css';
-
+import Button from 'react-bootstrap/Button';
 /**
  *
  * @return {*}
@@ -67,19 +67,21 @@ function GroupCode() {
         </div>
       </div>
       <Link to='/'>
-        <button className='SmallBtn' id='BackButton'>
+        <Button variant='danger' size='lg' id='BackButton'>
           Back
-        </button>
+        </Button>
       </Link>
-      <button
+      <Button
         onClick={() => setButtonPopup(true)}
-        className='SmallBtn'
+        variant='info'
+        size='lg'
         id='HelpButton'>
-        help?
-      </button>
+        Help
+      </Button>
       <Help trigger={ButtonPopup} setTrigger={setButtonPopup}>
         <p>
-          Copy the group code from the person who created the lobby and paste it
+          Copy the <mark>group code</mark> from the person who created the
+          lobby and paste it
           down here.
         </p>
       </Help>
