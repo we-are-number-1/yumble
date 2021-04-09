@@ -61,7 +61,7 @@
 .SmallBtn {
   outline: none;
   font-family: Comic Sans MS;
-  font-size: 2vw;
+  font-size: 2em;
   border-radius: 30px;
   border-color: black;
   border-width: 5px;
@@ -133,7 +133,7 @@
   cursor: pointer;
   outline: none;
   font-family: Comic Sans MS;
-  font-size: 3vw;
+  font-size: 3em;
   border-radius: 30px;
   border-color: black;
   border-width: 5px;
@@ -161,6 +161,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  margin-top: 1em;
 }
 
 #GoogleMaps_btn:hover {
@@ -171,7 +172,7 @@
   cursor: pointer;
   outline: none;
   font-family: Comic Sans MS;
-  font-size: 2vw;
+  font-size: 2em;
   border-radius: 30px;
   border-color: black;
   border-width: 3px;

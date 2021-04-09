@@ -1,7 +1,7 @@
-import {useHistory, Redirect} from 'react-router-dom';
-import React, {useState, useEffect, useContext} from 'react';
+import { useHistory, Redirect } from 'react-router-dom';
+import React, { useState, useEffect, useContext } from 'react';
 import Help from '../Common/Help';
-import {SocketContext} from '../../sockets/SocketContext';
+import { SocketContext } from '../../sockets/SocketContext';
 import * as SocketEvents from '../../sockets';
 import '../Common/Help.css';
 import './Lobby.css';
@@ -11,10 +11,10 @@ const Lobby = (props) => {
   const [ShareButtonPopup, setSharePopup] = useState(false);
   const [helpButtonPopup, setHelpButtonPopup] = useState(false);
   const [users, setUsers] = useState(
-    socketContext.users ? socketContext.users : []);
+    socketContext.users ? socketContext.users : []
+  );
   const [redirect, setRedirect] = useState(false);
   const [cardData, setCardData] = useState(props.location.state);
-
 
   useEffect(() => {
     setUsers(socketContext.users ? socketContext.users : []);
@@ -39,7 +39,6 @@ const Lobby = (props) => {
     });
   }, []);
 
-
   /**
    *
    */
@@ -58,13 +57,12 @@ const Lobby = (props) => {
   const NumOfCusines = [];
 
   NumOfCusines.length == 0 ? NumOfCusines.push('Thai') : null;
-  NumOfCusines.length > 0 ?
-
-      (NumOfCusines.push(', ' + 'Burger'),
+  NumOfCusines.length > 0
+    ? (NumOfCusines.push(', ' + 'Burger'),
       NumOfCusines.push(', ' + 'European'),
       NumOfCusines.push(', ' + 'Mediterranean'),
-      NumOfCusines.push(', ' + 'Chinese')) : null;
-
+      NumOfCusines.push(', ' + 'Chinese'))
+    : null;
 
   let NumOfUsers = 0;
   NumOfUsers = users.length;
@@ -77,14 +75,13 @@ const Lobby = (props) => {
     for (let i = 0; i < NumOfUsers; i++) {
       const FoodID = Food.concat(i.toString());
       peopleArray.push(
-          <div className={FoodID} id='FoodIcon' key={i.toString()}>
-            <text className='FoodIconText'>{users[i]}</text>
-          </div>,
+        <div className={FoodID} id='FoodIcon' key={i.toString()}>
+          <text className='FoodIconText'>{users[i]}</text>
+        </div>
       );
     }
     return peopleArray;
   };
-
 
   return (
     <>
@@ -99,13 +96,19 @@ const Lobby = (props) => {
           </div>
           <div id='container'>{peopleList()}</div>
         </div>
-        {socketContext.host && <button className='GoButton'
-          onClick={
-            () => SocketEvents.start(socketContext.socket, socketContext.code)
-          }>
-          Go
-        </button>}
-        {redirect && <Redirect to={{pathname: '/CountDown', state: cardData}}/>}
+        {socketContext.host && (
+          <button
+            className='GoButton'
+            onClick={() =>
+              SocketEvents.start(socketContext.socket, socketContext.code)
+            }
+          >
+            Go
+          </button>
+        )}
+        {redirect && (
+          <Redirect to={{ pathname: '/CountDown', state: cardData }} />
+        )}
         <button onClick={() => setSharePopup(true)} className='ShareButton'>
           Share
         </button>
@@ -118,9 +121,8 @@ const Lobby = (props) => {
             </a>
           </div>
         </Help>
-        <button className='SmallBtn' id='BackButton'
-          onClick={() => goBack()}>
-            Back
+        <button className='SmallBtn' id='BackButton' onClick={() => goBack()}>
+          Back
         </button>
         <button
           onClick={() => setHelpButtonPopup(true)}
