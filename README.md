@@ -17,6 +17,8 @@ Make sure to have installed the project first.
 
 Before starting the backend, you will need to create a `.env` file in the `backend` folder. Put your teams dev environment Mongo Atlas key (see [how to make a Mongo Atlas dev database](https://github.com/we-are-number-1/yumble/wiki/MongoDB-Atlas)) in the `.env` file, prefixed with `ATLAS_URI=`. 
 
+The backend folder has a `.env.example` file that can be copied, renamed, and modified for use as the `.env`.
+
 To start the backend after adding the `.env` file, run `npm start` in either the root or backend folder.
 
 #### Frontend

@@ -8,7 +8,7 @@ test('Swiping Card snapshot testing', () => {
   const location = 'Botany';
   const cuisine = 'European';
   const price = '$$$';
-  const rating = '4.0';
+  const rating = 4.0;
   const Data = {name, images, location, cuisine, price, rating};
 
   const tree = renderer.create(<SwipeCard data = {Data}/>).toJSON();
