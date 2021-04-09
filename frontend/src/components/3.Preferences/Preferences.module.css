@@ -1,5 +1,5 @@
 .LocationTitle {
-  font-size: 1.5vw;
+  font-size: 1.5em;
   font-family: Comic Sans MS;
   font-weight: 500;
 }
@@ -10,7 +10,6 @@
   background-color: white;
   height: auto;
   width: auto;
-  font-family: Comic Sans MS;
   border-radius: 30px;
   padding: 1.5vw;
   margin-top: 10vw;
@@ -18,11 +17,11 @@
 }
 
 .Slider {
- background-color: pink;
- width: 60vw;
- position: relative;
- right: 0.5vw;
- border: 2px solid #000000;
+  background-color: pink;
+  width: 60vw;
+  position: relative;
+  right: 0.5vw;
+  border: 2px solid #000000;
 }
 
 .pricePicker {
@@ -30,47 +29,48 @@
   background-color: lightgreen;
   color: green;
   position: relative;
-  width: 5vw;
-  height: 2vw;
+  width: 6em;
+  height: 5vh;
+  max-height: 50px;
   margin: 0.5vw;
   border: 1.2px solid #000000;
   border-radius: 20px;
-  font-size: 1vw;
+  font-size: 1em;
   font-family: Comic Sans MS;
   right: 1.1vw;
 }
 
 .priceText {
   color: green;
-  font-size: 1.5vw;
+  font-size: 1.5em;
 }
 
 .RangeAndTimerText {
-font-family: Comic Sans MS;
-font-size: 1.5vw;
+  font-family: Comic Sans MS;
+  font-size: 1.5em;
 }
 
 .SliderText {
   font-family: Comic Sans MS;
   text-align: center;
   margin-bottom: 1vw;
-  font-size: 1vw;
+  font-size: 1em;
 }
 
 .GoPrefButton {
   cursor: pointer;
   outline: none;
   font-family: Comic Sans MS;
-  font-size: 2vw;
+  font-size: 2em;
   border-radius: 30px;
   border: 0.5vw solid black;
   border-width: 3px;
   padding: 0vw 28.8vw 0vw 29.6vw;
   background-color: rgb(35, 164, 224);
-  margin-top: 1vw;
+  margin-top: 5vh;
   text-align: center;
   position: relative;
-  right: 0.8vw
+  right: 0.8vw;
 }
 
 .GoPrefButton:hover {
