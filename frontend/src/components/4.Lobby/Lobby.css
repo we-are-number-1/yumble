@@ -6,10 +6,11 @@
   height: auto;
   width: 75vw;
   font-family: Comic Sans MS;
-  border-radius: 30px;
-  font-size: 3vw;
+  border-radius: 2.2rem;
+  font-size: 2vw;
   margin-bottom: 1vw;
-  text-align: right;
+  padding: 1rem;
+  text-align: left;
 }
 
 .CusineTitle {
@@ -26,9 +27,9 @@
   outline: none;
   font-family: Comic Sans MS;
   font-size: 2vw;
-  border-radius: 30px;
+  border-radius: 2rem;
   border-color: black;
-  border-width: 5px;
+  border-width: 0.3rem;
   padding: 0vw 1.5vw 0vw 1.5vw;
   background-color: yellow;
   position: absolute;
