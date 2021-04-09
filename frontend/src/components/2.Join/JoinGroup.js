@@ -36,30 +36,26 @@ function GroupCode() {
           <Card.Body>
             <Card.Title>Enter Group Name</Card.Title>
             <Card.Text>
-              <div>
-                <UserInput
-                  input
-                  type='text'
-                  inputType='joinGroup'
-                  placeholder=' P6aPE'
-                  fontSize={3}
-                  onChange={(e) => socketContext.setCode(e.target.value)}
-                ></UserInput>
-              </div>
+              <UserInput
+                input
+                type='text'
+                inputType='joinGroup'
+                placeholder=' P6aPE'
+                fontSize={3}
+                onChange={(e) => socketContext.setCode(e.target.value)}
+              ></UserInput>
             </Card.Text>
             <Card.Title>Enter Your Name</Card.Title>
             <Card.Text>
-              <div>
-                <UserInput
-                  input
-                  type='text'
-                  inputType='joinGroup' // what is inputType
-                  placeholder='Alex'
-                  fontSize={3}
-                  // on change currently doesnt work
-                  onChange={(e) => setName(e.target.value)}
-                ></UserInput>
-              </div>
+              <UserInput
+                input
+                type='text'
+                inputType='joinGroup' // what is inputType
+                placeholder='Alex'
+                fontSize={3}
+                // on change currently doesnt work
+                onChange={(e) => setName(e.target.value)}
+              ></UserInput>
             </Card.Text>
             <Button
               onClick={() => SocketEvents.joinRoom(socketContext.socket,
