@@ -20,7 +20,7 @@ function SwipeCard(props) {
   const location = data.location;
   const cuisine = data.cuisine;
   const price = data.price;
-  const rating = data.rating.toFixed(1);
+  const rating = parseFloat(data.rating).toFixed(1);
 
   return (
     <div className="SwipeCard" onClick = {cardClicked}>

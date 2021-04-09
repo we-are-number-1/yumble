@@ -4,44 +4,44 @@ import '../Common/Help.css';
 import MapModal from '../Common/MapModal';
 import Icon from '../Common/MapsPinpoint';
 import DataVisual from './DataVisual';
+import Result from './Result';
 import SwipeCard from '../Common/SwipeCard';
 import axios from 'axios';
 import './ResultPage.css';
 import {SocketContext} from '../../sockets/SocketContext';
+import {Container, Row, Col} from 'react-bootstrap';
 
-// Dummy data, real data is retrived from sockets
+
+
+// Dummy data, should be retrieved by sockets
 const name = 'Lonestar';
 const location = 'Botany';
 const cuisine = 'European';
 const price = '$$$';
-const rating = 4.0;
+const rating = '4.0';
 
 /**
- * @param {*} props {hasResult}
+ * @param {*} props
  * @return {*}
+ * TODO: remove hard-coded location for the winning restaurant coordinates
  */
-function ResultPage(props) {
+function ResultPage() {
+  // const socketContext = useContext(SocketContext);
   const [ButtonPopup, setButtonPopup] = useState(false);
   const [MapPopup, setMapPopup] = useState(false);
+  const [ResultPopup, setResultPopup] = useState(false);
   const [cardList, setCardList] = useState(null);
   const [data, setData] = useState({name, location, cuisine, price, rating});
   const [pie, setPie] = useState(null);
   const [chart, setChart] = useState(false);
   const socketContext = useContext(SocketContext);
-  // use this attribute to decide what component to render
-  // null -> nothing
-  // false -> no result decided
-  // true -> result with pie chart
-  // default is null because no props is passed in
-  // need to have props due to the testing purpose
-  const [hasResult, setHasResult] = useState(props.hasResult);
+
 
   useEffect(() => {
     document.title = 'Time to go eat!';
     axios
         .get('sessions/'+ socketContext.code)
         .then((res) => {
-          setHasResult(false);
           setCardList(res.data.results.sort(
               function(a, b) {
                 return b.numberOfVotes - a.numberOfVotes;
@@ -53,22 +53,25 @@ function ResultPage(props) {
   }, []);
 
   useEffect(()=>{
-    if (cardList && cardList.length > 0) {
-      setHasResult(true);
+    if (cardList) {
       const card = cardList[0];
       setData({
         name: card.name,
         location: card.location,
-        cuisine: card.cuisine,
-        price: card.price,
-        rating: card.rating,
-        images: card.images,
-        coords: card.coords,
+        cuisine: cuisine,
+        price: price,
+        rating: rating,
+        // Update images so that it can retrieve the correct one
+        // instead of this hard coded version
+        // images: `https://c.files.bbci.co.uk/050B/production/_103119210_lazytown2.jpg`
       });
+
+      console.log(cardList);
       const pieChart = {};
       pieChart.labels = [];
       const votes = [];
       for (let i = 0; i < cardList.length; i++) {
+        console.log(i);
         if (cardList[i].name && i < 6) {
           pieChart.labels.push(cardList[i].name);
           votes.push(cardList[i].numberOfVotes);
@@ -112,33 +115,77 @@ function ResultPage(props) {
 
   return (
     <>
-      <div className='MakeCentre' id='ExtraHeight'>
-        { hasResult === undefined ? <></> : hasResult === true ?
-        <>
-          <h1 className='ResultTitle'>Top Choice</h1>
-          <div className='MainContainer'>
-            <SwipeCard data={data}/>
-            {chart&&<DataVisual className='DataVisual' data={pie}/>}
+      <h1 className='Title'>yumble</h1>
+      <h1 className='ResultTitle'>Top Choice</h1>
+      <Container style={{ marginTop: '2em', maxHeight:'100%' }} >
+      <div className='MakeCentre'>
+
+        
+          <div className='MainContainer' style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  
+                }}> 
+            <Row lg={12} style={{                   
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  maxWidth:'95%' }} className='justify-content-md-center' >
+              <Col
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  maxHeight: '50%',
+                  marginTop: '1em',
+                }}
+                xs={{span: 12, order: 1}}
+                md={{span: 12, order: 1}}
+              >
+                <SwipeCard data={data}/>
+              </Col>
+              <Col
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}
+                lg={6}
+                xs={{span: 12, order: 2}}
+                md={{span: 12, order: 2}}>
+
+                
+                <button
+                  onClick={() => setResultPopup(true)}
+                  className='BigBtn'
+                  id='Resultbutton'
+                  style={{fontSize:'2em', marginTop:'0.1em', marginBottom:'0.1em'}}
+                  >
+                  See results
+                </button>
+                <Result trigger={ResultPopup} setTrigger={setResultPopup}>
+                  {chart&&<DataVisual className='DataVisual' data={pie}/>}
+                </Result>
+
+                
+              </Col>
+            </Row>
           </div>
-          <button
-            onClick={() => setMapPopup(true)}
-            className='BigBtn'
-            id='GoogleMaps_btn'
-          >
-            View on Google Maps
-            <Icon />
-          </button>
-          <MapModal trigger={MapPopup} setTrigger={setMapPopup}
-            restaurantLocation={{lat: -36.8523, lng: 174.7691}} />
-        </> : <>
-          <h2 className='ResultTitle'> No Result Decided :( </h2>
-          <h2 className='ResultTitle'> Wanna try another place ? </h2>
-          <button className='ButtonReset' onClick={
-            () => window.location.reload()}>
-            Try Again :) </button>
-        </>
-        }
+        
+        <button
+          onClick={() => setMapPopup(true)}
+          className='BigBtn'
+          id='GoogleMaps_btn'
+          style={{margin:'0'}}
+        >
+          View on Google Maps
+          <Icon />
+        </button>
+        <MapModal trigger={MapPopup} setTrigger={setMapPopup}
+          restaurantLocation={{lat: -36.8523, lng: 174.7691}} />
       </div>
+      </Container>
       <button
         onClick={() => setButtonPopup(true)}
         className='SmallBtn'
@@ -147,9 +194,11 @@ function ResultPage(props) {
       <Help trigger={ButtonPopup} setTrigger={setButtonPopup}>
         <p>You are all set! Click on [View on Google Maps]
           to see where you and your friends are going.</p>
+          
       </Help>
     </>
   );
 }
+
 
 export default ResultPage;
