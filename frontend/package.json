@@ -12,7 +12,6 @@
     "@testing-library/user-event": "^12.8.3",
     "axios": "^0.21.1",
     "bootstrap": "^4.6.0",
-    "bootstrap-loader": "^3.0.4",
     "chart.js": "^2.9.4",
     "fontsource-roboto": "^4.0.0",
     "rangeslider.js": "^2.3.3",
@@ -56,6 +55,7 @@
   "devDependencies": {
     "eslint": "^7.21.0",
     "eslint-config-google": "^0.14.0",
+    "eslint-config-prettier": "^8.1.0",
     "eslint-plugin-react": "^7.22.0",
     "react-test-renderer": "^17.0.1",
     "socket.io": "^4.0.0"

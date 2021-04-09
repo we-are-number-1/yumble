@@ -56,7 +56,6 @@ function Preferences() {
     const data = await getNearbyRestaurants(
         Coordinates, Distance, 'european');
     setCardData(data);
-    // console.log(data);
   }
 
   useEffect(()=>{

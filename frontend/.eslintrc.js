@@ -1,24 +1,19 @@
 module.exports = {
-  'env': {
-    'browser': true,
-    'es2021': true,
+  env: {
+    browser: true,
+    es2021: true,
   },
-  'extends': [
-    'plugin:react/recommended',
-    'google',
-  ],
-  'parserOptions': {
-    'ecmaFeatures': {
-      'jsx': true,
+  extends: ['plugin:react/recommended', 'google', 'prettier'],
+  parserOptions: {
+    ecmaFeatures: {
+      jsx: true,
     },
-    'ecmaVersion': 12,
-    'sourceType': 'module',
+    ecmaVersion: 12,
+    sourceType: 'module',
   },
-  'plugins': [
-    'react',
-  ],
-  'ignorePatterns': ['**/build/**/*.js', '**/node_modules/**/*.js'],
-  'rules': {
+  plugins: ['react'],
+  ignorePatterns: ['**/build/**/*.js', '**/node_modules/**/*.js'],
+  rules: {
     // suppress errors for missing 'import React' in files
     'react/react-in-jsx-scope': 'off',
     'linebreak-style': 0,
