@@ -14,7 +14,7 @@ test('Swiping page', () => {
     location: 'Botany',
     cuisine: 'European',
     price: '$$$',
-    rating: '4.0',
+    rating: 4.0,
   }];
 
   const location={Location};
