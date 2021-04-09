@@ -61,6 +61,11 @@ function SwipingPage(props) {
       SocketEvents.vote(socketContext.socket, socketContext.code, {
         name: Data.name,
         location: Data.location,
+        coords: Data.coords,
+        cuisine: Data.cuisine,
+        price: Data.price,
+        rating: Data.rating,
+        images: Data.images,
       });
       console.log('clicked yes');
       setDecided(true);
