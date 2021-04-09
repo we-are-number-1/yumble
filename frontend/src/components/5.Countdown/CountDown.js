@@ -18,7 +18,7 @@ const CountDown = (props) => {
    */
   function cb(data) {
     setRedirect(true);
-    socketContext.setCountdown(data.nextRoundTime);
+    socketContext.setCountdown(data.nextRoundTime/1000);
   };
 
   useEffect(() => {
@@ -29,7 +29,12 @@ const CountDown = (props) => {
   }, []);
 
   useEffect(() => {
-    seconds >= 0 ? setTimeout(() => setSeconds(seconds - 1), 1000) : null;
+    let t = null;
+    if (seconds >= 0) {
+      t = setTimeout(() => setSeconds(seconds - 1), 1000);
+    }
+
+    return () => clearTimeout(t);
   }, [seconds]);
 
 

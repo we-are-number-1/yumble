@@ -3,6 +3,8 @@ import mongoose from 'mongoose';
 import {preferenceSchema} from './Preference';
 import {restaurantSchema} from './Restaurant';
 
+import config from '../../config';
+
 const sessionSchema = mongoose.Schema({
   truncCode: {
     type: String,
@@ -20,6 +22,7 @@ const sessionSchema = mongoose.Schema({
     type: [restaurantSchema],
     required: true,
   },
+  createdAt: {type: Date, expires: config, default: Date.now},
 });
 
 export default mongoose.model('Session', sessionSchema);

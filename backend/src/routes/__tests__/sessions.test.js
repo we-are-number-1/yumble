@@ -94,16 +94,40 @@ describe('PATCH', () => {
           name: 'Thai Restaurant',
           location: '1 Thai Street',
           numberOfVotes: 5,
+          coords: {
+            lat: 34.6424325,
+            lng: 10.2343462,
+          },
+          cuisine: 'Thai',
+          price: '$$',
+          rating: 3.5,
+          images: ''
         },
         {
           name: 'Japanese Restaurant',
           location: '1 Japan Street',
           numberOfVotes: 3,
+          coords: {
+            lat: 34.123456,
+            lng: 10.789101,
+          },
+          cuisine: 'Japanese',
+          price: '$$',
+          rating: 3.5,
+          images: ''
         },
         {
           name: 'Chinese Restaurant',
           location: '1 China Street',
           numberOfVotes: 7,
+          coords: {
+            lat: 34.6424325,
+            lng: 10.2343462,
+          },
+          cuisine: 'Chinese',
+          price: '$$$$',
+          rating: 4.3,
+          images: ''
         },
       ],
     };
@@ -118,7 +142,13 @@ describe('PATCH', () => {
     expect(response.status).toBe(200);
     expect(returnTask.isFinished).toBe(true);
     expect(returnTask.preferences.location).toBe('Sydney');
+    expect(returnTask.results[0].location).toBe('1 Thai Street');
+    expect(returnTask.results[0].numberOfVotes).toBe(5);
     expect(returnTask.results[1].name).toBe('Japanese Restaurant');
+    expect(returnTask.results[1].coords.lat).toBe(34.123456);
+    expect(returnTask.results[1].cuisine).toBe('Japanese');
+    expect(returnTask.results[2].price).toBe('$$$$');
+    expect(returnTask.results[2].rating).toBe(4.3);
   });
 });
 
