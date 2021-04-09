@@ -13,7 +13,13 @@ export function leaveRoom(socket, io, cb = null) {
         const users = Array.from(
             game.session.users.values()).map((e) => e.name);
         console.log(users);
-        io.to(game.session.sessionId).emit('new_user', {users: users});
+        // Remove the game if the game hasnt started and no one is in the lobby
+        // To prevent a memory leak
+        if(users.length==0 && game.gameActive==false){
+          games.removeGame(game.session.sessionId);
+        }else{
+          io.to(game.session.sessionId).emit('new_user', {users: users});
+        }
       }
     });
     console.log('user left room with id:', socket.id);

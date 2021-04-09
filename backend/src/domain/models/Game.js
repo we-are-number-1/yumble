@@ -17,7 +17,7 @@ export class Game {
     this.roundInterval = session.preferences.roundInterval;
     this.round = 0;
     this.countdown = 4;
-    this.gameActive = true;
+    this.gameActive = false;
   }
 
   /**
@@ -26,6 +26,7 @@ export class Game {
    * 0 represents the start of the game (calling nextRound)
    */
   async startCountdown() {
+    this.gameActive = true;
     // Let all users in game start countdown
     this.io.to(this.session.sessionId).emit(
         'countdown', {
