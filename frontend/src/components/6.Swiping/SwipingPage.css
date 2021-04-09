@@ -9,6 +9,12 @@
   margin-top: 0.5vw;
 }
 
+.btnColumn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .YesOrNoButton {
   cursor: pointer;
   outline: none;

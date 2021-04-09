@@ -100,33 +100,9 @@ function SwipingPage(props) {
         <Container style={{ marginTop: '2em' }}>
           <Row lg={12} className='justify-content-md-center'>
             <Col
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-              }}
-              xs={{ span: 6, order: 3 }}
-              md={{ span: 2, order: 3 }}
-            >
-              <button
-                className={`YesOrNoButton align-items-center`}
-                id='YesButton'
-                onClick={clickedYes}
-              >
-                Keen!
-              </button>
-            </Col>
-            <Col lg={6} xs={{ span: 12, order: 1 }} md={{ span: 8, order: 2 }}>
-              <SwipeCard data={Data}></SwipeCard>
-            </Col>
-            <Col
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-              }}
               xs={{ span: 6, order: 2 }}
               md={{ span: 2, order: 1 }}
+              className='btnColumn'
             >
               <button
                 className='YesOrNoButton'
@@ -134,6 +110,22 @@ function SwipingPage(props) {
                 onClick={clickedNo}
               >
                 Nope!
+              </button>
+            </Col>
+            <Col lg={6} xs={{ span: 12, order: 1 }} md={{ span: 8, order: 2 }}>
+              <SwipeCard data={Data}></SwipeCard>
+            </Col>
+            <Col
+              xs={{ span: 6, order: 3 }}
+              md={{ span: 2, order: 3 }}
+              className='btnColumn'
+            >
+              <button
+                className={`YesOrNoButton align-items-center`}
+                id='YesButton'
+                onClick={clickedYes}
+              >
+                Keen!
               </button>
             </Col>
           </Row>
