@@ -1,8 +1,10 @@
 import React, {useState, useEffect} from 'react';
 import {Link} from 'react-router-dom';
-import Help from '../Common/Help';
-import '../Common/Help.css';
+import Button from 'react-bootstrap/Button';
 
+import Container from 'react-bootstrap/Container';
+import '../Common/Help.css';
+import Help from '../Common/Help';
 /**
  *
  * @return {*}
@@ -13,34 +15,53 @@ function StartPage() {
   }, []);
 
   const [ButtonPopup, setButtonPopup] = useState(false);
-
   return (
     <>
-      <div className='MakeCentre'>
-        <h1 className='StartTitle'>yumble</h1>
-        <Link to='/Preferences'>
-          <button className='BigBtn' id='CreateGroup_btn'>
-            Create group
-          </button>
-        </Link>
-        <Link to='/JoinGroup'>
-          <button className='BigBtn' id='JoinGroup_btn'>
-            Join group
-          </button>
-        </Link>
-      </div>
+      <Container>
+        <div className='MakeCentre'>
+          <h1 className='StartTitle'>
+            yumble
+            <small className='text-muted' style={{'font-size': '2rem'}}>
+              2.0
+            </small>
+          </h1>
+          <Link to='/Preferences'>
+            <Button
+              variant='warning'
+              size='lg'
+              className='BigBtn'
+              id='CreateGroup_btn'
+            >
+              Create group
+            </Button>
+          </Link>
+          <Link to='/JoinGroup'>
+            <Button
+              size='lg'
+              variant='success'
+              className='BigBtn'
+              id='JoinGroup_btn'
+            >
+              Join group
+            </Button>
+          </Link>
+        </div>
+      </Container>
 
-      <button
+      <Button
         onClick={() => setButtonPopup(true)}
-        className='SmallBtn'
+        variant='info'
+        size='lg'
         id='HelpButton'
       >
-        help?
-      </button>
+        Help
+      </Button>
       <Help trigger={ButtonPopup} setTrigger={setButtonPopup}>
         <p>
-          Press the [create group] to create a lobby. To join a group, press the
-          [join group] to join a group
+          Press the <mark> create group </mark> button to create a fresh lobby
+          and be a host. To join a exisitng group lobby,press the
+          <mark>join group</mark>
+          button to join a group
         </p>
       </Help>
     </>

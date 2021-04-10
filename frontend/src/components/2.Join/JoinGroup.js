@@ -6,7 +6,8 @@ import '../2.Join/JoinGroup.css';
 import * as SocketEvents from './../../sockets';
 import {SocketContext} from './../../sockets/SocketContext';
 import '../Common/Help.css';
-
+import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
 /**
  *
  * @return {*}
@@ -24,62 +25,64 @@ function GroupCode() {
 
   // TODO needs to be used
   // just to 'use' the variable for now
-  console.log(name);
-
   return (
     <>
       <h1 className='Title'>yumble</h1>
       <div className='MakeCentre'>
-        <div className='GroupCode_Box'>
-          <div className='AddMargin'>Enter group code</div>
-          <div>
-            <UserInput
-              input
-              type='text'
-              inputType='joinGroup'
-              placeholder=' P6aPE'
-              fontSize={3}
-              onChange={(e) => socketContext.setCode(e.target.value)}
-            ></UserInput>
-          </div>
-          <div className='Username_Box'>
-            <div className='AddMargin'>  Enter Name</div>
-            <div>
+        <Card id='Card-field'>
+          <Card.Header as="h5" id='Card-Header'>Join Game</Card.Header>
+          <Card.Body>
+            <Card.Title>Enter Group Name</Card.Title>
+            <Card.Text>
+              <UserInput
+                input
+                type='text'
+                inputType='joinGroup'
+                placeholder=' P6aPE'
+                fontSize={3}
+                onChange={(e) => socketContext.setCode(e.target.value)}
+              ></UserInput>
+            </Card.Text>
+            <Card.Title>Enter Your Name</Card.Title>
+            <Card.Text>
               <UserInput
                 input
                 type='text'
                 inputType='joinGroup' // what is inputType
-                placeholder=' Alex'
+                placeholder='Alex'
                 fontSize={3}
                 // on change currently doesnt work
                 onChange={(e) => setName(e.target.value)}
               ></UserInput>
-            </div>
-          </div>
-          {!invalidCode && <Redirect
-            to={`/Lobby/${socketContext.code}`} />}
-          <button
-            onClick={() => SocketEvents.joinRoom(socketContext.socket,
-                socketContext.code, name)}
-            className='GoButton'>
-                Go
-          </button>
-        </div>
+            </Card.Text>
+            <Button
+              onClick={() => SocketEvents.joinRoom(socketContext.socket,
+                  socketContext.code, name)}
+              className='GoButton'
+              variant='success'>
+                  Go
+            </Button>
+          </Card.Body>
+        </Card>
+        {!invalidCode && <Redirect
+          to={`/Lobby/${socketContext.code}`} />}
       </div>
       <Link to='/'>
-        <button className='SmallBtn' id='BackButton'>
+        <Button variant='danger' size='lg' id='BackButton'>
           Back
-        </button>
+        </Button>
       </Link>
-      <button
+      <Button
         onClick={() => setButtonPopup(true)}
-        className='SmallBtn'
+        variant='info'
+        size='lg'
         id='HelpButton'>
-        help?
-      </button>
+        Help
+      </Button>
       <Help trigger={ButtonPopup} setTrigger={setButtonPopup}>
         <p>
-          Copy the group code from the person who created the lobby and paste it
+          Copy the <mark>group code</mark> from the person who created the
+          lobby and paste it
           down here.
         </p>
       </Help>
