@@ -129,7 +129,7 @@ function ResultPage(props) {
             <Icon />
           </button>
           <MapModal trigger={MapPopup} setTrigger={setMapPopup}
-            restaurantLocation={{lat: -36.8523, lng: 174.7691}} />
+            restaurantLocation={data.coords} />
         </> : <>
           <h2 className='ResultTitle'> No Result Decided :( </h2>
           <h2 className='ResultTitle'> Wanna try another place ? </h2>
