@@ -12,7 +12,6 @@ import {SocketContext} from '../../sockets/SocketContext';
 // Dummy data, real data is retrived from sockets
 const name = 'Lonestar';
 const location = 'Botany';
-const cuisine = 'European';
 const price = '$$$';
 const rating = 4.0;
 
@@ -24,7 +23,7 @@ function ResultPage(props) {
   const [ButtonPopup, setButtonPopup] = useState(false);
   const [MapPopup, setMapPopup] = useState(false);
   const [cardList, setCardList] = useState(null);
-  const [data, setData] = useState({name, location, cuisine, price, rating});
+  const [data, setData] = useState({name, location, price, rating});
   const [pie, setPie] = useState(null);
   const [chart, setChart] = useState(false);
   const socketContext = useContext(SocketContext);
@@ -59,7 +58,6 @@ function ResultPage(props) {
       setData({
         name: card.name,
         location: card.location,
-        cuisine: card.cuisine,
         price: card.price,
         rating: card.rating,
         images: card.images,
