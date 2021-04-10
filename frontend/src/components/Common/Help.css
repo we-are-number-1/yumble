@@ -1,3 +1,4 @@
+
 .Help {
   position: fixed;
   top: 0;
@@ -9,13 +10,12 @@
   justify-content: center;
   align-items: center;
 }
-
 .Help-inner {
   position: relative;
   padding: 2.5vw;
+  margin: 0;
   width: 100%;
   max-width: 640px;
-  background-color: #fff;
   border-radius: 30px;
   border-color: black;
 }

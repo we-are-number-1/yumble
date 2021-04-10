@@ -2,6 +2,7 @@
   "name": "backend",
   "version": "1.0.0",
   "description": "",
+  "type": "module",
   "main": "index.js",
   "scripts": {
     "test": "jest --forceExit",
@@ -20,16 +21,18 @@
   "keywords": [],
   "author": "",
   "dependencies": {
+    "@babel/cli": "^7.13.10",
+    "@babel/core": "^7.13.10",
+    "@babel/node": "^7.13.10",
+    "@babel/preset-env": "^7.13.10",
+    "axios": "^0.21.1",
+    "debug": "^4.3.1",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "mongoose": "^5.11.19",
     "socket.io": "^3.1.2"
   },
   "devDependencies": {
-    "@babel/cli": "^7.13.10",
-    "@babel/core": "^7.13.10",
-    "@babel/node": "^7.13.10",
-    "@babel/preset-env": "^7.13.10",
     "babel-jest": "^26.6.3",
     "eslint": "^7.21.0",
     "eslint-config-google": "^0.14.0",
@@ -37,7 +40,6 @@
     "mongodb-memory-server": "^6.9.6",
     "nodemon": "^2.0.7",
     "socket.io-client": "^4.0.0",
-    "supertest": "^6.1.3",
-    "axios": "^0.21.1"
+    "supertest": "^6.1.3"
   }
 }

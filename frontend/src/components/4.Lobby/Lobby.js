@@ -1,7 +1,7 @@
-import { useHistory, Redirect } from 'react-router-dom';
-import React, { useState, useEffect, useContext } from 'react';
+import {useHistory, Redirect} from 'react-router-dom';
+import React, {useState, useEffect, useContext} from 'react';
 import Help from '../Common/Help';
-import { SocketContext } from '../../sockets/SocketContext';
+import {SocketContext} from '../../sockets/SocketContext';
 import * as SocketEvents from '../../sockets';
 import '../Common/Help.css';
 import './Lobby.css';
@@ -11,7 +11,7 @@ const Lobby = (props) => {
   const [ShareButtonPopup, setSharePopup] = useState(false);
   const [helpButtonPopup, setHelpButtonPopup] = useState(false);
   const [users, setUsers] = useState(
-    socketContext.users ? socketContext.users : []
+    socketContext.users ? socketContext.users : [],
   );
   const [redirect, setRedirect] = useState(false);
   const [cardData, setCardData] = useState(props.location.state);
@@ -23,17 +23,17 @@ const Lobby = (props) => {
   useEffect(() => {
     document.title = 'Waiting Room';
     SocketEvents.newUser(socketContext.socket, (data) => {
-      console.log(data);
       socketContext.setUsers(data.users);
     });
-    SocketEvents.updateRestaurants(socketContext.socket, (data) => {
-      console.log(data);
-      if (data) {
-        setCardData(data);
-      }
-    });
+    SocketEvents.updateRestaurants(
+        socketContext.socket,
+        (data) => {
+          if (data) {
+            setCardData(data);
+          }
+        },
+    );
     SocketEvents.countdown(socketContext.socket, (count) => {
-      console.log(`${count} second countdown`);
       socketContext.setCountdown(count);
       startCountdown();
     });
@@ -58,11 +58,11 @@ const Lobby = (props) => {
 
   NumOfCusines.length == 0 ? NumOfCusines.push('Thai') : null;
   NumOfCusines.length > 0
-    ? (NumOfCusines.push(', ' + 'Burger'),
-      NumOfCusines.push(', ' + 'European'),
-      NumOfCusines.push(', ' + 'Mediterranean'),
-      NumOfCusines.push(', ' + 'Chinese'))
-    : null;
+    ?(NumOfCusines.push(', ' + 'Burger'),
+    NumOfCusines.push(', ' + 'European'),
+    NumOfCusines.push(', ' + 'Mediterranean'),
+    NumOfCusines.push(', ' + 'Chinese'))
+    :null;
 
   let NumOfUsers = 0;
   NumOfUsers = users.length;
@@ -75,9 +75,9 @@ const Lobby = (props) => {
     for (let i = 0; i < NumOfUsers; i++) {
       const FoodID = Food.concat(i.toString());
       peopleArray.push(
-        <div className={FoodID} id='FoodIcon' key={i.toString()}>
-          <text className='FoodIconText'>{users[i]}</text>
-        </div>
+          <div className={FoodID} id='FoodIcon' key={i.toString()}>
+            <text className='FoodIconText'>{users[i]}</text>
+          </div>,
       );
     }
     return peopleArray;
@@ -115,8 +115,10 @@ const Lobby = (props) => {
         <Help trigger={ShareButtonPopup} setTrigger={setSharePopup}>
           <div className='MakeTextCentre'>
             <h2> Share the group code:</h2>
-            <h1>{socketContext.code}</h1>
-            <a href={'https://yumble.xyz'}>https://yumble.xyz</a>
+            <h1><b>{socketContext.code}</b></h1> 
+            <a href={'https://yumble.xyz'}>
+            https://yumble.xyz
+            </a>
           </div>
         </Help>
         <button className='SmallBtn' id='BackButton' onClick={() => goBack()}>
