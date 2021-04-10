@@ -28,7 +28,7 @@
 }
 
 .hide {
-  display: none;
+  visibility: hidden;
 }
 
 #YesButton {

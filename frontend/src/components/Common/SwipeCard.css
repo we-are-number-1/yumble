@@ -27,7 +27,7 @@
     color: #fff;
     position: absolute;
     text-align: center;
-    display: none;
+    visibility: hidden;
     letter-spacing: .06em;
     padding: 0.5em 5em 0.4em 5em;
     text-shadow: 0 0 0.75em #444;
@@ -39,12 +39,12 @@
 }
 
 #CardOverlayText-Keen{
-  display: block;
+  visibility: visible;
   background-color: green;
 }
 
 #CardOverlayText-Nope{
-  display: block;
+  visibility: visible;
   background-color: #A00;
 }
 
