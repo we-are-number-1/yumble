@@ -46,7 +46,6 @@ export async function getRestaurantCards(restaurants, coords) {
       };
       cards.push(card);
     } catch (error) {
-      console.log(restaurants[i]);
       console.log(error);
     }
   }
@@ -66,7 +65,6 @@ async function getMenu(v, lat, long, name) {
           let response = await axios(config);
           return JSON.stringify(response.data.response.menu);
       } catch (error) {
-          console.log(`Couldn't find ${name}'s menu on Foursquare`);
       }
 
   } else {

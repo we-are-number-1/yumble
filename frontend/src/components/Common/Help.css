@@ -12,10 +12,10 @@
 
 .Help-inner {
   position: relative;
-  padding: 2.5vw;
+  padding: 1rem;
   width: 100%;
-  max-width: 640px;
+  max-width: 35rem;
   background-color: #fff;
-  border-radius: 30px;
+  border-radius: 2rem;
   border-color: black;
 }

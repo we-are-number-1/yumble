@@ -5,7 +5,6 @@ import './SwipeCard.css';
  * @return {void}
  */
 function cardClicked() {
-  console.log('Card clicked');
 }
 
 /**
