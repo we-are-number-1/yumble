@@ -26,7 +26,8 @@ function Map({restaurantLocations}) {
 
   // I think google's API is doing something here where i need to override with !important, 
   // the previous group had it fixed at 600x400px but I removed that to make dynamically scaling at least.
-  return <div id='map' style={{width: '100%!important', height: '100%!important'}} />;
+  // I dont know why but making the height 100%!important makes it disappear again.
+  return <div id='map' style={{width: '100%!important', height: '400px'}} />;
 }
 
 export default Map;
