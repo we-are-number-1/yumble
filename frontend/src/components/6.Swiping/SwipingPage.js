@@ -21,7 +21,7 @@ function SwipingPage(props) {
   const [MapPopup, setMapPopup] = useState(false);
   const CardData = props.location.state[0];
   const [CardPass, setCardPass] = useState(null);
-  const [decided, setDecided] = useState(false);
+  const [vote, setVote] = useState(undefined);
   const [time, setTime] = useState(socketContext.countdown);
   const [Data, setData] = useState(CardData[0]);
   const [redirect, setRedirect] = useState(false);
@@ -56,7 +56,8 @@ function SwipingPage(props) {
    * @return {void}
    */
   function clickedYes() {
-    if (!decided) {
+    if (vote === undefined) {
+      document.getElementsByClassName("CardOverlayText")[0].id = "CardOverlayText-Keen"
       console.log(Data);
       console.log(socketContext.code);
       SocketEvents.vote(socketContext.socket, socketContext.code, {
@@ -69,7 +70,7 @@ function SwipingPage(props) {
         images: Data.images,
       });
       console.log('clicked yes');
-      setDecided(true);
+      setVote(true);
     }
   }
 
@@ -77,9 +78,10 @@ function SwipingPage(props) {
    *
    */
   function clickedNo() {
-    if (!decided) {
+    if (vote === undefined) {
+      document.getElementsByClassName("CardOverlayText")[0].id = "CardOverlayText-Nope"
       console.log('clicked no');
-      setDecided(true);
+      setVote(false);
     }
   }
 
@@ -90,7 +92,10 @@ function SwipingPage(props) {
   function getNewCard(timer) {
     setTime(socketContext.countdown);
     try {
-      setDecided(false);
+      setVote(undefined);
+      // Remove the keen/nope styling 
+      document.getElementsByClassName("CardOverlayText")[0].id = ""
+
       CardData.shift();
       if (CardData[0] !== undefined) {
         setData(CardData[0]);
@@ -98,6 +103,10 @@ function SwipingPage(props) {
     } catch (error) {}
   }
 
+  let voteString = ""
+  if (vote !== undefined){
+    voteString = vote ? "Keen" : "Nope"
+  }
   return (
     <>
       <h1 className='Title'> yumble</h1>
@@ -119,6 +128,7 @@ function SwipingPage(props) {
               </button>
             </Col>
             <Col lg={6} xs={{ span: 12, order: 1 }} md={{ span: 8, order: 2 }}>
+              <div className="CardOverlayText">Voted: {vote === undefined ? "" : voteString}!</div>
               <SwipeCard data={Data}></SwipeCard>
             </Col>
             <Col

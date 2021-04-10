@@ -20,24 +20,32 @@
   border-radius: 30px;
 }
 
-.sold_out {
+.CardOverlayText {
     top: 2em;
-    left: -4em;
+    left: -5em;
+    width: em;
     color: #fff;
-    display: block;
     position: absolute;
     text-align: center;
-    text-decoration: none;
+    display: none;
     letter-spacing: .06em;
-    background-color: #A00;
     padding: 0.5em 5em 0.4em 5em;
     text-shadow: 0 0 0.75em #444;
     box-shadow: 0 0 0.5em rgba(0,0,0,0.5);
-    font: bold 16px/1.2em Arial, Sans-Serif;
+    font: bold 1em Arial, Sans-Serif;
     -webkit-text-shadow: 0 0 0.75em #444;
     -webkit-box-shadow: 0 0 0.5em rgba(0,0,0,0.5);
     -webkit-transform: rotate(-45deg) scale(0.75,1);
-    z-index:10;
+}
+
+#CardOverlayText-Keen{
+  display: block;
+  background-color: green;
+}
+
+#CardOverlayText-Nope{
+  display: block;
+  background-color: #A00;
 }
 
 .no-overflow{
