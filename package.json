@@ -5,7 +5,7 @@
   "main": "",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "cd backend && npm install --only=dev && npm install && npm run build && cd ../frontend && npm install --only=dev && npm install && npm run build && cp -R build ../backend/dist/build && cd ..",
+    "build": "cd backend && npm ci && npm run build && cd ../frontend && npm ci && npm run build && cp -R build ../backend/dist/build && cd ..",
     "start": "cd backend && npm start",
     "start-frontend": "cd frontend && npm start",
     "install-full": "cd backend && npm ci && cd ../frontend && npm ci"
