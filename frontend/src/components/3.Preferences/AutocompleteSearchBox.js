@@ -5,10 +5,6 @@ import './AutocompleteSearchBox.css';
 
 const AutocompleteSearchBox = ({setLocation, sendCoordinates}) => {
   const [address, setAddress] = useState('');
-  // const [coordinates, setCoordinates] = useState({lat: null, lng: null});
-
-  // console.log(coordinates);
-
   const handleSelect = async (value) => {
     setAddress(value);
     // setCoordinates(latLng);

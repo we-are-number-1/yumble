@@ -47,7 +47,6 @@ function SwipingPage(props) {
   }, [time]);
 
   const goNextPge = () => {
-    console.log('Game has Ended');
     setRedirect(true);
   };
 
@@ -57,18 +56,8 @@ function SwipingPage(props) {
    */
   function clickedYes() {
     if (!decided) {
-      console.log(Data);
-      console.log(socketContext.code);
-      SocketEvents.vote(socketContext.socket, socketContext.code, {
-        name: Data.name,
-        location: Data.location,
-        coords: Data.coords,
-        cuisine: Data.cuisine,
-        price: Data.price,
-        rating: Data.rating,
-        images: Data.images,
-      });
-      console.log('clicked yes');
+      SocketEvents.vote(socketContext.socket,
+          socketContext.code, {name: Data.name, location: Data.location});
       setDecided(true);
     }
   }
@@ -78,7 +67,6 @@ function SwipingPage(props) {
    */
   function clickedNo() {
     if (!decided) {
-      console.log('clicked no');
       setDecided(true);
     }
   }
