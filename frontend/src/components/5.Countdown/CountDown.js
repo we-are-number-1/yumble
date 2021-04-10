@@ -18,18 +18,21 @@ const CountDown = (props) => {
    */
   function cb(data) {
     setRedirect(true);
-    socketContext.setCountdown(data.nextRoundTime);
+    socketContext.setCountdown(data.nextRoundTime/1000);
   };
 
   useEffect(() => {
     document.title = 'Go!';
     SocketEvents.nextRound(socketContext.socket, cb);
-    console.log(socketContext.countdown);
-    console.log(props.location.state);
   }, []);
 
   useEffect(() => {
-    seconds >= 0 ? setTimeout(() => setSeconds(seconds - 1), 1000) : null;
+    let t = null;
+    if (seconds >= 0) {
+      t = setTimeout(() => setSeconds(seconds - 1), 1000);
+    }
+
+    return () => clearTimeout(t);
   }, [seconds]);
 
 

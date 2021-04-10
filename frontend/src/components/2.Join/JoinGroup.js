@@ -25,8 +25,6 @@ function GroupCode() {
 
   // TODO needs to be used
   // just to 'use' the variable for now
-  console.log(name);
-
   return (
     <>
       <h1 className='Title'>yumble</h1>

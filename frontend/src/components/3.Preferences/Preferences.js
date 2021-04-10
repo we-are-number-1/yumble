@@ -2,7 +2,6 @@ import {Link, Redirect} from 'react-router-dom';
 import React, {useState, useEffect, useContext} from 'react';
 import Help from '../Common/Help';
 import '../Common/Help.css';
-// import {getNearbyRestaurants} from '../Common/LocationHelper';
 import AutocompleteSearchBox from './AutocompleteSearchBox';
 import style from './Preferences.module.css';
 import {SocketContext} from '../../sockets/SocketContext';
@@ -52,7 +51,6 @@ function Preferences() {
    *
    */
   async function handleSearch() {
-    // console.log(Coordinates);
     const data = await getNearbyRestaurants(
         Coordinates, Distance, 'european');
     setCardData(data);
@@ -66,8 +64,6 @@ function Preferences() {
 
 
   const postPreference = () => {
-    console.log(`room code ${code}`);
-    console.log(cardData);
     socketContext.setCode(code);
     socketContext.setHost(true);
     SocketEvents.setRestaurants(socketContext.socket, code, cardData);
@@ -89,7 +85,6 @@ function Preferences() {
     axios
         .patch('../sessions/'+code, give)
         .then((res) => {
-          console.log(res.data);
         })
         .catch(function(error) {
           console.log(error);

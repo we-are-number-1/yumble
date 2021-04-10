@@ -62,9 +62,9 @@
   outline: none;
   font-family: Comic Sans MS;
   font-size: 2em;
-  border-radius: 30px;
+  border-radius: 1.5rem;
   border-color: black;
-  border-width: 5px;
+  border-width: 0.1rem;
   cursor: pointer;
   position: absolute;
   bottom: 0;

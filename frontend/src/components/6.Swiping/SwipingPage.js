@@ -32,21 +32,21 @@ function SwipingPage(props) {
     SocketEvents.endGame(socketContext.socket, goNextPge);
     SocketEvents.nextRound(socketContext.socket, getNewCard);
     setCardPass(props.location.state[0].slice());
-    setTime(socketContext.countdown);
   }, []);
 
-  useEffect(async () => {
-    setTimeout(() => {
-      if (time < 1) {
-        setTime(socketContext.countdown / 1000);
-      } else {
+  useEffect(() => {
+    const t = setTimeout(() => {
+      if (time > 0) {
         setTime(time - 1);
       }
     }, 1000);
+
+    return () => {
+      clearTimeout(t);
+    };
   }, [time]);
 
   const goNextPge = () => {
-    console.log('Game has Ended');
     setRedirect(true);
   };
 
@@ -56,18 +56,8 @@ function SwipingPage(props) {
    */
   function clickedYes() {
     if (!decided) {
-      console.log(Data);
-      console.log(socketContext.code);
-      SocketEvents.vote(socketContext.socket, socketContext.code, {
-        name: Data.name,
-        location: Data.location,
-        coords: Data.coords,
-        cuisine: Data.cuisine,
-        price: Data.price,
-        rating: Data.rating,
-        images: Data.images,
-      });
-      console.log('clicked yes');
+      SocketEvents.vote(socketContext.socket,
+          socketContext.code, {name: Data.name, location: Data.location});
       setDecided(true);
     }
   }
@@ -77,7 +67,6 @@ function SwipingPage(props) {
    */
   function clickedNo() {
     if (!decided) {
-      console.log('clicked no');
       setDecided(true);
     }
   }
@@ -87,7 +76,7 @@ function SwipingPage(props) {
    * @return {void}
    */
   function getNewCard(timer) {
-    setTime(socketContext.countdown / 1000);
+    setTime(socketContext.countdown);
     try {
       setDecided(false);
       CardData.shift();
