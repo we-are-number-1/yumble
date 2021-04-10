@@ -4,14 +4,14 @@ import '../Common/Help.css';
 import MapModal from '../Common/MapModal';
 import Icon from '../Common/MapsPinpoint';
 import DataVisual from './DataVisual';
-import Result from './Result';
+import Result from './ResultPopup';
 import SwipeCard from '../Common/SwipeCard';
 import axios from 'axios';
 import './ResultPage.css';
 import {SocketContext} from '../../sockets/SocketContext';
 import {Container, Row, Col} from 'react-bootstrap';
-
-
+import Card from 'react-bootstrap/Card';
+import Button from 'react-bootstrap/Button';
 
 // Dummy data, should be retrieved by sockets
 const name = 'Lonestar';
@@ -116,17 +116,21 @@ function ResultPage() {
   return (
     <>
       <h1 className='Title'>yumble</h1>
-      <h1 className='ResultTitle'>Top Choice</h1>
-      <Container style={{ marginTop: '2em', maxHeight:'100%' }} >
+      <Container style={{ marginTop: '4em', maxHeight:'100%' }} >
       <div className='MakeCentre'>
-
         
-          <div className='MainContainer' style={{
+          <Card id='Card-field' style={{
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  
                 }}> 
+
+            <Card.Header as="h5" id='Card-Header' className="text-center" style={{ width:'100%', }}> Top Choice</Card.Header>    
+            <Card.Body style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}>
             <Row lg={12} style={{                   
                   display: 'flex',
                   alignItems: 'center',
@@ -139,10 +143,7 @@ function ResultPage() {
                   justifyContent: 'center',
                   maxHeight: '50%',
                   marginTop: '1em',
-                }}
-                xs={{span: 12, order: 1}}
-                md={{span: 12, order: 1}}
-              >
+                }}>
                 <SwipeCard data={data}/>
               </Col>
               <Col
@@ -151,11 +152,8 @@ function ResultPage() {
                   alignItems: 'center',
                   justifyContent: 'center',
                 }}
-                lg={6}
-                xs={{span: 12, order: 2}}
-                md={{span: 12, order: 2}}>
+                lg={6}>
 
-                
                 <button
                   onClick={() => setResultPopup(true)}
                   className='BigBtn'
@@ -171,26 +169,27 @@ function ResultPage() {
                 
               </Col>
             </Row>
-          </div>
+            </Card.Body>
+          </Card>
         
-        <button
+        <Button
           onClick={() => setMapPopup(true)}
           className='BigBtn'
           id='GoogleMaps_btn'
-          style={{margin:'0'}}
+          style={{marginTop:'0.3em'}}
         >
           View on Google Maps
           <Icon />
-        </button>
+        </Button>
         <MapModal trigger={MapPopup} setTrigger={setMapPopup}
           restaurantLocation={{lat: -36.8523, lng: 174.7691}} />
       </div>
       </Container>
-      <button
+      <Button
         onClick={() => setButtonPopup(true)}
         className='SmallBtn'
         id='HelpButton'
-      >help?</button>
+      >help?</Button>
       <Help trigger={ButtonPopup} setTrigger={setButtonPopup}>
         <p>You are all set! Click on [View on Google Maps]
           to see where you and your friends are going.</p>

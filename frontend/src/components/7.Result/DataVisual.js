@@ -8,7 +8,7 @@ import {Pie} from 'react-chartjs-2';
 function DataVisual(props) {
   return (
     <div className='PieChart'>
-      <Pie data={props.data} />
+      <Pie data={props.data}/>
     </div>
   );
 }

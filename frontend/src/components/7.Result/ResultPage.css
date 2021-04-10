@@ -1,6 +1,6 @@
 .ResultTitle {
   color: white;
-  font-family: Comic Sans MS;
+  font-family:monospace;
   display: flex;
   flex-direction: column;
   align-items: center;
