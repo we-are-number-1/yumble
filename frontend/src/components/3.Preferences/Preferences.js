@@ -8,6 +8,7 @@ import {SocketContext} from '../../sockets/SocketContext';
 import * as SocketEvents from '../../sockets';
 import {getNearbyRestaurants} from '../Common/LocationHelper';
 import axios from 'axios';
+import Button from 'react-bootstrap/esm/Button';
 
 /**
  *
@@ -161,18 +162,19 @@ function Preferences() {
             </div>
           </div>
           <Link to='/'>
-            <button className='SmallBtn' id='BackButton'>
+            <Button variant='danger' size='lg' id='BackButton'>
               Back
-            </button>
+            </Button>
           </Link>
 
-          <button
+          <Button
             onClick={() => setButtonPopup(true)}
-            className='SmallBtn'
+            variant='info'
+            size='lg'
             id='HelpButton'
           >
-            help?
-          </button>
+            Help
+          </Button>
           <Help trigger={ButtonPopup} setTrigger={setButtonPopup}>
             <p>
               If you are visiting this page, you are likely here because you are
