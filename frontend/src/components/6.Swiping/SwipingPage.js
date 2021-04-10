@@ -57,7 +57,7 @@ function SwipingPage(props) {
    */
   function clickedYes() {
     if (vote === undefined) {
-      document.getElementsByClassName("CardOverlayText")[0].id = "CardOverlayText-Keen"
+      voteChanged(true)
       console.log(Data);
       console.log(socketContext.code);
       SocketEvents.vote(socketContext.socket, socketContext.code, {
@@ -70,7 +70,6 @@ function SwipingPage(props) {
         images: Data.images,
       });
       console.log('clicked yes');
-      setVote(true);
     }
   }
 
@@ -79,9 +78,8 @@ function SwipingPage(props) {
    */
   function clickedNo() {
     if (vote === undefined) {
-      document.getElementsByClassName("CardOverlayText")[0].id = "CardOverlayText-Nope"
+      voteChanged(false)
       console.log('clicked no');
-      setVote(false);
     }
   }
 
@@ -92,15 +90,42 @@ function SwipingPage(props) {
   function getNewCard(timer) {
     setTime(socketContext.countdown);
     try {
-      setVote(undefined);
-      // Remove the keen/nope styling 
-      document.getElementsByClassName("CardOverlayText")[0].id = ""
-
+      voteChanged(undefined)
       CardData.shift();
       if (CardData[0] !== undefined) {
         setData(CardData[0]);
       }
     } catch (error) {}
+  }
+
+  /**
+   * Function to change on screen UI based on the vote.
+   * @param {*} vote new vote
+   * @return {void}
+   */
+  function voteChanged(vote){
+    if (vote === undefined){
+      // Remove the keen/nope styling 
+      document.getElementsByClassName("CardOverlayText")[0].id = ""
+      setVote(undefined)
+      const buttons = document.getElementsByClassName("YesOrNoButton")
+      for (const button of buttons){
+        button.classList.remove("hide")
+      }
+      return
+    } 
+    
+    if (vote === false){
+      setVote(false);
+      document.getElementsByClassName("CardOverlayText")[0].id = "CardOverlayText-Nope"
+    } else if (vote === true){
+      setVote(true);
+      document.getElementsByClassName("CardOverlayText")[0].id = "CardOverlayText-Keen"
+    }
+    const buttons = document.getElementsByClassName("YesOrNoButton")
+    for (const button of buttons){
+      button.classList.add("hide")
+    }
   }
 
   let voteString = ""
