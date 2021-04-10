@@ -13,7 +13,6 @@ function cardClicked() {
 * @return {*}
 **/
 function SwipeCard(props) {
-  console.log(props)
   const data = props.data;
   const name = data.name;
   const images = data.images;
@@ -21,7 +20,6 @@ function SwipeCard(props) {
   const cuisine = data.cuisine;
   const price = data.price;
   const rating = data.rating.toFixed(1);
-
 
   return (
     <div className="SwipeCard" onClick = {cardClicked}>

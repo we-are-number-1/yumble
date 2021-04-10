@@ -20,18 +20,9 @@ import {
  * @return {*}
  */
 function App() {
-  const data = {
-    name: "5",
-    images: "5",
-    location: "5",
-    cuisine: "5",
-    price: "5",
-    rating: 5
-
-  }
   return (
     <MemoryRouter>
-      <div className='BackGroundImage no-overflow'>
+      <div className='BackGroundImage'>
         <Switch>
           <Route path='/' exact component={StartPage} />
           <Route path='/JoinGroup' component={JoinGroup} />
