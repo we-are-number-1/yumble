@@ -21,7 +21,7 @@ function Preferences() {
   // TODO should be set to 'default' price range
   const [Price, setPrice] = useState('1');
   const [Distance, setDistance] = useState('5000');
-  const [Location, setLocation] = useState('');
+  const [Location, setLocation] = useState('Auckland, New Zealand');
   const [Cuisines] = useState([]);
   const [Coordinates, setCoordinates] = useState({lat: null, lng: null});
   const [redirect, setRedirect] = useState(false);

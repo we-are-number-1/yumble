@@ -24,6 +24,7 @@ function SwipeCard(props) {
 
   return (
     <div className="SwipeCard" onClick = {cardClicked}>
+      <a className="sold_out" href="https://abc.com/">Sold out</a>
       <div className="CardImage">
         <img className="CardImage" src={images} ></img>
       </div>
