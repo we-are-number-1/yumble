@@ -48,7 +48,7 @@
 }
 
 .ActionableSwipeCard {
-  z-index: 90;
+  z-index: 6;
   position: relative;
 }
 
