@@ -16,74 +16,91 @@ Array [
   <div
     className="MakeCentre"
   >
-    <button
-      className="YesOrNoButton"
-      id="YesButton"
-      onClick={[Function]}
-    >
-      Keen!
-    </button>
-    <button
-      className="YesOrNoButton"
-      id="NoButton"
-      onClick={[Function]}
-    >
-      Nope!
-    </button>
     <div
-      className="SwipeCard"
-      onClick={[Function]}
+      className="container"
+      style={
+        Object {
+          "marginTop": "2em",
+        }
+      }
     >
       <div
-        className="CardImage"
+        className="justify-content-md-center row row-cols-lg-12"
       >
-        <img
-          className="CardImage"
-          src="https://c.files.bbci.co.uk/050B/production/_103119210_lazytown2.jpg"
-        />
-      </div>
-      <div>
-        <p
-          className="PlaceDetails"
-          id="name"
+        <div
+          className="btnColumn col-md-2 col-6 order-md-1 order-2"
         >
-           
-          Lonestar
-           
-        </p>
+          <button
+            className="YesOrNoButton"
+            id="NoButton"
+            onClick={[Function]}
+          >
+            Nope!
+          </button>
+        </div>
+        <div
+          className="col-lg-6 col-md-8 col-12 order-md-2 order-1"
+        >
+          <div
+            className="SwipeCard"
+            onClick={[Function]}
+          >
+            <div
+              className="CardImage"
+            >
+              <img
+                className="CardImage"
+                src="https://c.files.bbci.co.uk/050B/production/_103119210_lazytown2.jpg"
+              />
+            </div>
+            <div>
+              <p
+                className="PlaceDetails"
+                id="name"
+              >
+                 
+                Lonestar
+                 
+              </p>
+            </div>
+            <p
+              className="PlaceDetails"
+              id="location"
+            >
+               
+              Botany
+               
+            </p>
+            <p
+              className="PlaceDetails"
+              id="price"
+            >
+               
+              $$$
+               
+            </p>
+            <p
+              className="PlaceDetails"
+              id="rating"
+            >
+               
+              4.0
+               Rating
+            </p>
+          </div>
+        </div>
+        <div
+          className="btnColumn col-md-2 col-6 order-md-3 order-3"
+        >
+          <button
+            className="YesOrNoButton align-items-center"
+            id="YesButton"
+            onClick={[Function]}
+          >
+            Keen!
+          </button>
+        </div>
       </div>
-      <p
-        className="PlaceDetails"
-        id="location"
-      >
-         
-        Botany
-         
-      </p>
-      <p
-        className="PlaceDetails"
-        id="price"
-      >
-         
-        $$$
-         
-      </p>
-      <p
-        className="PlaceDetails"
-        id="cuisine"
-      >
-         
-        European
-         
-      </p>
-      <p
-        className="PlaceDetails"
-        id="rating"
-      >
-         
-        4.0
-         Rating
-      </p>
     </div>
     <button
       className="BigBtn"
