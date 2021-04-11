@@ -44,6 +44,8 @@ function Preferences() {
     axios.post('sessions', response).then((response) => {
       // ensure you only do it once
       setCode(response.data.truncCode);
+      // Host room once session has been created
+      SocketEvents.hostRoom(socketContext.socket, response.data.truncCode);
     });
   }, []);
 

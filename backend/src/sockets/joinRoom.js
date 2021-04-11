@@ -14,9 +14,6 @@ export function joinRoom(socket, io) {
     }
     io.to(socket.id).emit('invalid_code', false);
 
-    if (!game.session.hostSocket) {
-      game.session.hostSocket = socket;
-    }
     game.session.addUser(socket, name);
     socket.join(sessionId);
     const users = Array.from(game.session.users.values()).map((e) => e.name);

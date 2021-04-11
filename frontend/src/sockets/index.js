@@ -9,3 +9,4 @@ export {updateRestaurants} from './updateRestaurants';
 export {invalidCode} from './invalidCode';
 export {leaveRoom} from './leaveRoom';
 export {vote} from './vote';
+export {hostRoom} from './hostRoom';
