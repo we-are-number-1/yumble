@@ -71,6 +71,9 @@ test('leave room integration test', (done) => {
   const mock = jest.fn();
   mock.mockImplementation(() => {
     // TODO: check whether user has been removed properly!
+  });
+  socket.on('new_user', ({users}) => {
+    // TODO: check that the array is empty!
     done();
   });
 
