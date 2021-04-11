@@ -144,7 +144,7 @@ function ResultPage() {
                   maxHeight: '50%',
                   marginTop: '1em',
                 }}>
-                <SwipeCard data={data}/>
+                <SwipeCard class="text-primary" data={data}/>
               </Col>
               <Col
                 style={{
@@ -153,17 +153,16 @@ function ResultPage() {
                   justifyContent: 'center',
                 }}
                 lg={6}>
-
-                <button
+                <Button
                   onClick={() => setResultPopup(true)}
                   className='BigBtn'
                   id='Resultbutton'
                   style={{fontSize:'2em', marginTop:'0.1em', marginBottom:'0.1em'}}
                   >
                   See results
-                </button>
+                </Button>
                 <Result trigger={ResultPopup} setTrigger={setResultPopup}>
-                  {chart&&<DataVisual className='DataVisual' data={pie}/>}
+                  {chart&& <DataVisual className='DataVisual' data={pie}/>}
                 </Result>
 
                 
