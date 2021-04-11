@@ -1,6 +1,7 @@
 import games from '../domain/Games';
 /**
- * Handles event when hosts a room. should set the host socket property in the room
+ * Handles event when hosts a room. should set the host socket property in
+ * the room
  * @param {*} socket
  * @param {*} io
  */
