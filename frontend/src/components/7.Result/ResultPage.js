@@ -224,7 +224,7 @@ function ResultPage(props) {
                       <MapModal
                         trigger={MapPopup}
                         setTrigger={setMapPopup}
-                        restaurantLocation={{ lat: -36.8523, lng: 174.7691 }}
+                        restaurantLocation={data.coords}
                       />
                     </Col>
                   </Row>
@@ -233,47 +233,21 @@ function ResultPage(props) {
             ) : (
               <>
                 <Card.Header
-                  as="h5"
-                  id="Card-Header"
-                  className="text-center"
-                  style={{ width: "100%" }}
+                  as='h5'
+                  id='Card-Header'
+                  className='text-center'
+                  style={{ width: '100%' }}
                 >
-                  No Results Decided!
+                  No Result Decided!
                 </Card.Header>
-                <Card.Body
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                  }}
-                >
-                  <Row>
-                    <Col
-                      style={{
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                      }}
-                      lg={12}
-                    >
-                      <h2 className="ResultTitle"> Want to try again? </h2>
-                    </Col>
-                    <Col
-                      style={{
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                      }}
-                      lg={12}
-                    >
-                      <Button
-                        className="ButtonReset"
-                        onClick={() => window.location.reload()}
-                      >
-                        CONFIRM{" "}
-                      </Button>
-                    </Col>
-                  </Row>
+                <Card.Body className='text-center'>
+                  <p>Your group was not keen on any restaurants.</p>
+                  <Button
+                    variant='danger'
+                    onClick={() => window.location.reload()}
+                  >
+                    Try Again{' '}
+                  </Button>
                 </Card.Body>
               </>
             )}
