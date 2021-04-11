@@ -50,7 +50,7 @@ function Preferences() {
    *
    */
   async function handleSearch() {
-    const data = await getNearbyRestaurants(Coordinates, Distance);
+    const data = await getNearbyRestaurants(Coordinates, Distance, Price);
     setCardData(data);
   }
 
