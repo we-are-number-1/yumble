@@ -18,6 +18,7 @@ import './ResultPage.css';
 
 import DataVisual from './DataVisual';
 import Result from './ResultPopup';
+
 // Dummy data, should be retrieved by sockets 
 const name = 'Lonestar';
 const location = 'Botany';
