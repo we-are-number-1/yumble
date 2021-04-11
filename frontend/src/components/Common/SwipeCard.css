@@ -21,21 +21,21 @@
 }
 
 .CardOverlayText {
-    top: 2em;
-    left: -5em;
-    width: em;
-    color: #fff;
-    position: absolute;
-    text-align: center;
-    visibility: hidden;
-    letter-spacing: .06em;
-    padding: 0.5em 5em 0.4em 5em;
-    text-shadow: 0 0 0.75em #444;
-    box-shadow: 0 0 0.5em rgba(0,0,0,0.5);
-    font: bold 1em monospace, Arial, Sans-Serif;
-    -webkit-text-shadow: 0 0 0.75em #444;
-    -webkit-box-shadow: 0 0 0.5em rgba(0,0,0,0.5);
-    -webkit-transform: rotate(-45deg) scale(0.75,1);
+  top: 2em;
+  left: -5em;
+  width: em;
+  color: #fff;
+  position: absolute;
+  text-align: center;
+  visibility: hidden;
+  letter-spacing: .06em;
+  padding: 0.5em 5em 0.4em 5em;
+  text-shadow: 0 0 0.75em #444;
+  box-shadow: 0 0 0.5em rgba(0,0,0,0.5);
+  font: bold 1em monospace, Arial, Sans-Serif;
+  -webkit-text-shadow: 0 0 0.75em #444;
+  -webkit-box-shadow: 0 0 0.5em rgba(0,0,0,0.5);
+  -webkit-transform: rotate(-45deg) scale(0.75,1);
 }
 
 .CardOverlayText-Keen{
