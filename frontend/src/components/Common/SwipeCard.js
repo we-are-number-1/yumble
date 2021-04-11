@@ -19,7 +19,7 @@ function SwipeCard(props) {
   const location = data.location;
   const cuisine = data.cuisine;
   const price = data.price;
-  const rating = data.rating.toFixed(1);
+  const rating = data.rating?.toFixed(1);
 
   return (
     <div className="SwipeCard" onClick = {cardClicked}>
@@ -32,7 +32,7 @@ function SwipeCard(props) {
       <p className='PlaceDetails' id= 'location'> {location} </p>
       <p className='PlaceDetails' id = 'price'> {price} </p>
       <p className='PlaceDetails' id = 'cuisine'> {cuisine} </p>
-      <p className='PlaceDetails' id = 'rating'> {rating} Rating</p>
+      <p className='PlaceDetails' id = 'rating'> {rating === undefined ? "Unknown" : rating} Rating</p>
     </div>
   );
 }
