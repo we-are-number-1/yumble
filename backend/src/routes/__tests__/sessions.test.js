@@ -39,7 +39,6 @@ beforeEach(async () => {
     preferences: {
       location: 'Auckland',
       distance: 10,
-      cuisines: ['Thai', 'Japanese', 'Chinese'],
       price: 5,
       timer: 20,
       coordinates: {
@@ -80,7 +79,6 @@ describe('PATCH', () => {
       preferences: {
         location: 'Sydney',
         distance: 10,
-        cuisines: ['Thai', 'Japanese', 'Chinese'],
         price: 20,
         timer: 600,
         coordinates: {
@@ -98,7 +96,6 @@ describe('PATCH', () => {
             lat: 34.6424325,
             lng: 10.2343462,
           },
-          cuisine: 'Thai',
           price: '$$',
           rating: 3.5,
           images: '',
@@ -111,7 +108,6 @@ describe('PATCH', () => {
             lat: 34.123456,
             lng: 10.789101,
           },
-          cuisine: 'Japanese',
           price: '$$',
           rating: 3.5,
           images: '',
@@ -124,7 +120,6 @@ describe('PATCH', () => {
             lat: 34.6424325,
             lng: 10.2343462,
           },
-          cuisine: 'Chinese',
           price: '$$$$',
           rating: 4.3,
           images: '',
@@ -146,7 +141,6 @@ describe('PATCH', () => {
     expect(returnTask.results[0].numberOfVotes).toBe(5);
     expect(returnTask.results[1].name).toBe('Japanese Restaurant');
     expect(returnTask.results[1].coords.lat).toBe(34.123456);
-    expect(returnTask.results[1].cuisine).toBe('Japanese');
     expect(returnTask.results[2].price).toBe('$$$$');
     expect(returnTask.results[2].rating).toBe(4.3);
   });
@@ -202,7 +196,6 @@ describe('PATCH GET fail', () => {
       preferences: {
         location: 'Sydney',
         distance: 10,
-        cuisines: ['Thai', 'Japanese', 'Chinese'],
         price: 20,
         timer: 600,
         coordinates: {
@@ -249,7 +242,6 @@ describe('GET', () => {
       preferences: {
         location: 'Sydney',
         distance: 10,
-        cuisines: ['Thai', 'Japanese', 'Chinese'],
         price: 20,
         timer: 600,
         coordinates: {

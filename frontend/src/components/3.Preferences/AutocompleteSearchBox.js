@@ -5,23 +5,17 @@ import './AutocompleteSearchBox.css';
 
 const AutocompleteSearchBox = ({setLocation, sendCoordinates}) => {
   const [address, setAddress] = useState('');
+
   const handleSelect = async (value) => {
     setAddress(value);
-    // setCoordinates(latLng);
     setLocation(value);
-    // sendCoordinates(latLng);
     const result = await getLocationCoordinates(value);
     sendCoordinates(result);
   };
-
-  const google = window.google;
-
-  // Default the search location around New Zealand
   const searchOptions = {
     location: new google.maps.LatLng(-36.8, 174.8),
     radius: 2000,
   };
-
   return (
     <div>
       <PlacesAutocomplete

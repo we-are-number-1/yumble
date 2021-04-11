@@ -16,10 +16,12 @@ function GroupCode() {
   const socketContext = useContext(SocketContext);
   const [name, setName] = useState('Alex');
   const [invalidCode, setInvalidCode] = useState(true);
+  const [skip, setSkip] = useState(false);
   const [ButtonPopup, setButtonPopup] = useState(false);
 
   useEffect(() => {
     document.title = 'Enter group code';
+    SocketEvents.skipToResults(socketContext.socket, setSkip);
     SocketEvents.invalidCode(socketContext.socket, setInvalidCode);
   }, []);
 
@@ -66,6 +68,7 @@ function GroupCode() {
         </Card>
         {!invalidCode && <Redirect
           to={`/Lobby/${socketContext.code}`} />}
+          {skip && <Redirect to={'/Result'} />}
       </div>
       <Link to='/'>
         <Button variant='danger' size='lg' id='BackButton'>

@@ -22,7 +22,6 @@ function Preferences() {
   const [Price, setPrice] = useState('1');
   const [Distance, setDistance] = useState('5000');
   const [Location, setLocation] = useState('');
-  const [Cuisines] = useState([]);
   const [Coordinates, setCoordinates] = useState({lat: null, lng: null});
   const [redirect, setRedirect] = useState(false);
   const [cardData, setCardData] = useState(null);
@@ -53,8 +52,7 @@ function Preferences() {
    *
    */
   async function handleSearch() {
-    const data = await getNearbyRestaurants(
-        Coordinates, Distance, 'european');
+    const data = await getNearbyRestaurants(Coordinates, Distance);
     setCardData(data);
   }
 
@@ -76,7 +74,6 @@ function Preferences() {
     const newPref = {
       location: Location,
       distance: Number(Distance),
-      cuisines: Cuisines,
       price: Number(Price),
       timer: Timer,
       coordinates: Coordinates,
