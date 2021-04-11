@@ -83,6 +83,8 @@ test('join room that does not exist', (done) => {
 
 test('join room that is full', (done) => {
   const session = new SocketSession('1234', '1234', {roundInterval: 3});
+
+  // Session has 10 users - the maximum capacity
   session.addUser({id: '1000'}, '0');
   session.addUser({id: '1001'}, '1');
   session.addUser({id: '1002'}, '2');
