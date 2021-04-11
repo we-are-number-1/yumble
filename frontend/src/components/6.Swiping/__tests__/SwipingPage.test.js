@@ -2,9 +2,25 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import SwipingPage from '../SwipingPage';
 import {SocketContextProvider} from '../../../sockets/SocketContext';
+import TinderCard from 'react-tinder-card';
 
 jest.mock('./../../../sockets/SocketContext');
 jest.mock('./../../../sockets');
+
+/**
+ * 
+ * @param {*} element 
+ * @return {object}
+ */
+function createNodeMock(element) {
+  if (element.type === 'div') {
+    return {
+      focus() {},
+      addEventListener() {},
+    };
+  }
+  return null;
+}
 
 test('Swiping page', () => {
   const Data =[{
@@ -19,11 +35,17 @@ test('Swiping page', () => {
 
   const location={Location};
   location.state = [Data];
+  const options = {createNodeMock};
   const tree = renderer.create(
-      <SocketContextProvider>
-        <SwipingPage
-          location = {location}/>
-      </SocketContextProvider>,
+    <TinderCard>
+      hi
+    </TinderCard>
+      // <SocketContextProvider>
+      //   <SwipingPage
+      //     location = {location}/>
+      // </SocketContextProvider>,
+    ,
+    options
   ).toJSON();
   expect(tree).toMatchSnapshot();
 });

@@ -2,7 +2,7 @@
 
 exports[`Swiping Card snapshot testing 1`] = `
 <div
-  className="SwipeCard"
+  className="SwipeCard "
   onClick={[Function]}
 >
   <div

@@ -15,7 +15,7 @@ Array [
       className="MainContainer"
     >
       <div
-        className="SwipeCard"
+        className="SwipeCard "
         onClick={[Function]}
       >
         <div
