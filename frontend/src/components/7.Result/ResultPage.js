@@ -1,19 +1,24 @@
 import React, {useState, useEffect, useContext} from 'react';
 import Help from '../Common/Help';
 import '../Common/Help.css';
-import MapModal from '../Common/MapModal';
+
 import Icon from '../Common/MapsPinpoint';
-import DataVisual from './DataVisual';
-import Result from './ResultPopup';
-import SwipeCard from '../Common/SwipeCard';
+
+
 import axios from 'axios';
-import './ResultPage.css';
+
 import {SocketContext} from '../../sockets/SocketContext';
 import {Container, Row, Col} from 'react-bootstrap';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
+import SwipeCard from '../Common/SwipeCard';
 
-// Dummy data, should be retrieved by sockets
+import MapModal from '../Common/MapModal';
+import './ResultPage.css';
+
+import DataVisual from './DataVisual';
+import Result from './ResultPopup';
+// Dummy data, should be retrieved by sockets 
 const name = 'Lonestar';
 const location = 'Botany';
 const cuisine = 'European';
@@ -161,8 +166,12 @@ function ResultPage() {
                   >
                   See results
                 </Button>
+
+
                 <Result trigger={ResultPopup} setTrigger={setResultPopup}>
+
                   {chart&& <DataVisual className='DataVisual' data={pie}/>}
+                  <hr/>
                 </Result>
 
                 
@@ -186,7 +195,6 @@ function ResultPage() {
       </Container>
       <Button
         onClick={() => setButtonPopup(true)}
-        className='SmallBtn'
         id='HelpButton'
       >help?</Button>
       <Help trigger={ButtonPopup} setTrigger={setButtonPopup}>

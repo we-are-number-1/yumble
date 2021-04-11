@@ -14,7 +14,7 @@ import Button from 'react-bootstrap/Button';
       <div className='Help-inner'>
         <Alert variant='info'>
           <Alert.Heading className="text-center"> Voting Choice Breakdown </Alert.Heading>
-          <p>{props.children}</p>
+          {props.children}
           <br></br>
           <Button
             variant='outline-danger'
