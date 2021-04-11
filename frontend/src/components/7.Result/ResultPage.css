@@ -1,18 +1,20 @@
 .ResultTitle {
-  -webkit-text-stroke: 4px black;
   color: white;
-  font-family: Comic Sans MS;
-  margin: 1vw 1vw 0vw;
-  font-size: 50pt;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  margin-top: 0.5vw;
 }
 
 .MainContainer {
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: center;
-  width: 75vw;
-  height: 100vh;
+
+  height: 100%;
   border: 4px solid #000000;
   background-color: #f4cb9b;
   border-radius: 30px;
@@ -20,55 +22,14 @@
 }
 
 .PieChart {
-  width: 40vw;
-  height: 60vh;
+  width:100%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .DataVisual {
-  width: 100vw;
-  height: 50vh;
+  width: 100%;
+  height: 100%;
 }
 
-.ButtonReset {
-  background: #F63D52;
-  background-image: -webkit-linear-gradient(top, #F63D52, #9D1ED0);
-  background-image: -moz-linear-gradient(top, #F63D52, #9D1ED0);
-  background-image: -ms-linear-gradient(top, #F63D52, #9D1ED0);
-  background-image: -o-linear-gradient(top, #F63D52, #9D1ED0);
-  background-image: -webkit-gradient(to bottom, #F63D52, #9D1ED0);
-  -webkit-border-radius: 20px;
-  -moz-border-radius: 20px;
-  border-radius: 20px;
-  color: #FFFFFF;
-  font-family: Brush Script MT;
-  font-size: 40px;
-  font-weight: 400;
-  padding: 23px;
-  -webkit-box-shadow: 1px 1px 20px 0 #000000;
-  -moz-box-shadow: 1px 1px 20px 0 #000000;
-  box-shadow: 1px 1px 20px 0 #000000;
-  text-shadow: 1px 1px 20px #000000;
-  border: solid #337FED 1px;
-  text-decoration: none;
-  display: inline-block;
-  cursor: pointer;
-  text-align: center;
-  margin: 5%;
-}
-
-.ButtonReset:hover {
-  border: solid #337FED 1px;
-  background: #1E62D0;
-  background-image: -webkit-linear-gradient(top, #1E62D0, #3D94F6);
-  background-image: -moz-linear-gradient(top, #1E62D0, #3D94F6);
-  background-image: -ms-linear-gradient(top, #1E62D0, #3D94F6);
-  background-image: -o-linear-gradient(top, #1E62D0, #3D94F6);
-  background-image: -webkit-gradient(to bottom, #1E62D0, #3D94F6);
-  -webkit-border-radius: 20px;
-  -moz-border-radius: 20px;
-  border-radius: 20px;
-  text-decoration: none;
-}

@@ -21,10 +21,6 @@ const restaurantSchema = mongoose.Schema({
       lng: 0.0,
     }
   },
-  cuisine: {
-    type: String,
-    default: '',
-  },
   price: {
     type: String,
     default: '$',

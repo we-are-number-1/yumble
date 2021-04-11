@@ -53,14 +53,6 @@ Array [
         </p>
         <p
           className="PlaceDetails"
-          id="cuisine"
-        >
-           
-          European
-           
-        </p>
-        <p
-          className="PlaceDetails"
           id="rating"
         >
            
