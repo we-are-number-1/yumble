@@ -21,7 +21,6 @@ export function disconnect(socket, io, cb) {
       if (game.session.removeUser(socket)) {
         // Recalculate users as have been changed
         users = Array.from(game.session.users.values()).map((e) => e.name);
-        console.log(users);
         io.to(game.session.sessionId).emit('new_user', {users: users});
       }
       // Remove the game if the game hasnt started and no one is in the lobby
