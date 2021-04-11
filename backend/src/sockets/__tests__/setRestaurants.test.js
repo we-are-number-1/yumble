@@ -51,7 +51,7 @@ beforeEach((done) => {
   });
 });
 
-test('set restaurants test', (done) => {
+test('set_restaurants  integration test', (done) => {
   const session = new SocketSession('1234', null, [{}, {}]);
   games.newGame(null, session, []);
 

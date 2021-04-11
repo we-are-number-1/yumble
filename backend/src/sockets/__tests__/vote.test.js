@@ -53,7 +53,7 @@ beforeEach((done) => {
   });
 });
 
-test('vote test', (done) => {
+test('vote integration test', (done) => {
   games.newGame(null, new SocketSession('123', '1234', null), null);
 
   const mock = jest.fn();
