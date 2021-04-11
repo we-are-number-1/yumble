@@ -13,7 +13,7 @@ function connect() {
         if (err) {
           throw err;
         } else {
-          console.log(`Successfully connected to MongoDB Atlas.`);
+          console.log('Successfully connected to MongoDB Atlas.');
         }
       },
   );
@@ -47,12 +47,12 @@ async function configureSessionIndexes() {
  * @return {boolean}
  */
 async function collectionHasIndex(schema, indexName) {
-  const indices = await schema.collection.getIndexes();
+  const indexes = await schema.collection.getIndexes();
   let hasIndex = false;
 
   // getIndexes() returns an object, which contains keys of each index,
-  // the value being a double nested array
-  Object.values(indices).forEach((index) => {
+  // the values being [ [indexName, mode] ]
+  Object.values(indexes).forEach((index) => {
     if (index[0][0] === indexName) {
       hasIndex = true;
     }
@@ -61,4 +61,4 @@ async function collectionHasIndex(schema, indexName) {
   return hasIndex;
 }
 
-export {connect, configureSessionIndexes};
+export {connect, configureSessionIndexes, collectionHasIndex};
