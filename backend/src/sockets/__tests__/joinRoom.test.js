@@ -11,8 +11,6 @@ let httpServer;
 let httpServerAddr;
 let ioServer;
 
-// jest.mock('../../domain/Games');
-
 /**
  * Setup WS & HTTP servers
  */
