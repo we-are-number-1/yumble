@@ -12,9 +12,8 @@ test('Swiping page', () => {
     coords: 'lat: -36.9685858, lng: 174.8595453',
     images: 'https://c.files.bbci.co.uk/050B/production/_103119210_lazytown2.jpg',
     location: 'Botany',
-    cuisine: 'European',
     price: '$$$',
-    rating: '4.0',
+    rating: 4.0,
   }];
 
   const location={Location};

@@ -11,10 +11,10 @@ const Lobby = (props) => {
   const [ShareButtonPopup, setSharePopup] = useState(false);
   const [helpButtonPopup, setHelpButtonPopup] = useState(false);
   const [users, setUsers] = useState(
-    socketContext.users ? socketContext.users : []);
+    socketContext.users ? socketContext.users : [],
+  );
   const [redirect, setRedirect] = useState(false);
   const [cardData, setCardData] = useState(props.location.state);
-
 
   useEffect(() => {
     setUsers(socketContext.users ? socketContext.users : []);
@@ -23,25 +23,21 @@ const Lobby = (props) => {
   useEffect(() => {
     document.title = 'Waiting Room';
     SocketEvents.newUser(socketContext.socket, (data) => {
-      console.log(data);
       socketContext.setUsers(data.users);
     });
     SocketEvents.updateRestaurants(
         socketContext.socket,
         (data) => {
-          console.log(data);
           if (data) {
             setCardData(data);
           }
         },
     );
     SocketEvents.countdown(socketContext.socket, (count) => {
-      console.log(`${count} second countdown`);
       socketContext.setCountdown(count);
       startCountdown();
     });
   }, []);
-
 
   /**
    *
@@ -56,18 +52,6 @@ const Lobby = (props) => {
     SocketEvents.leaveRoom(socketContext.socket);
     history.goBack();
   };
-
-  // Dummy data for Cuisines as this has not been linked to backend yet.
-  const NumOfCusines = [];
-
-  NumOfCusines.length == 0 ? NumOfCusines.push('Thai') : null;
-  NumOfCusines.length > 0 ?
-
-      (NumOfCusines.push(', ' + 'Burger'),
-      NumOfCusines.push(', ' + 'European'),
-      NumOfCusines.push(', ' + 'Mediterranean'),
-      NumOfCusines.push(', ' + 'Chinese')) : null;
-
 
   let NumOfUsers = 0;
   NumOfUsers = users.length;
@@ -88,12 +72,10 @@ const Lobby = (props) => {
     return peopleArray;
   };
 
-
   return (
     <>
       <h1 className='Title'>yumble</h1>
       <div className='MakeCentre'>
-        <div className='CusineTitle'>Cusines: {NumOfCusines}</div>
         <div className={'LobbyBox'}>
           <div>
             <div className='Inline_Block'>Group code: {socketContext.code}</div>
@@ -102,28 +84,33 @@ const Lobby = (props) => {
           </div>
           <div id='container'>{peopleList()}</div>
         </div>
-        {socketContext.host && <button className='GoButton'
-          onClick={
-            () => SocketEvents.start(socketContext.socket, socketContext.code)
-          }>
-          Go
-        </button>}
-        {redirect && <Redirect to={{pathname: '/CountDown', state: cardData}}/>}
+        {socketContext.host && (
+          <button
+            className='GoButton'
+            onClick={() =>
+              SocketEvents.start(socketContext.socket, socketContext.code)
+            }
+          >
+            Go
+          </button>
+        )}
+        {redirect && (
+          <Redirect to={{ pathname: '/CountDown', state: cardData }} />
+        )}
         <button onClick={() => setSharePopup(true)} className='ShareButton'>
           Share
         </button>
         <Help trigger={ShareButtonPopup} setTrigger={setSharePopup}>
           <div className='MakeTextCentre'>
             <h2> Share the group code:</h2>
-            <h1>{socketContext.code}</h1>
+            <h1><b>{socketContext.code}</b></h1> 
             <a href={'https://yumble.xyz'}>
             https://yumble.xyz
             </a>
           </div>
         </Help>
-        <button className='SmallBtn' id='BackButton'
-          onClick={() => goBack()}>
-            Back
+        <button className='SmallBtn' id='BackButton' onClick={() => goBack()}>
+          Back
         </button>
         <button
           onClick={() => setHelpButtonPopup(true)}

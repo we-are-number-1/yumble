@@ -1,7 +1,7 @@
-import React, {useEffect, useState, useContext} from 'react';
-import {Redirect} from 'react-router-dom';
+import React, { useEffect, useState, useContext } from 'react';
+import { Redirect } from 'react-router-dom';
 
-import {SocketContext} from './../../sockets/SocketContext';
+import { SocketContext } from './../../sockets/SocketContext';
 import * as SocketEvents from './../../sockets';
 import Help from '../Common/Help';
 import '../Common/Help.css';
@@ -9,6 +9,7 @@ import MapModal from '../Common/MapModal';
 import Icon from '../Common/MapsPinpoint';
 import '../6.Swiping/SwipingPage.css';
 import SwipeCard from '../Common/SwipeCard';
+import { Container, Row, Col } from 'react-bootstrap';
 
 /**
  * @param  {*} props
@@ -20,7 +21,7 @@ function SwipingPage(props) {
   const [MapPopup, setMapPopup] = useState(false);
   const CardData = props.location.state[0];
   const [CardPass, setCardPass] = useState(null);
-  const [decided, setDecided] = useState(false);
+  const [vote, setVote] = useState(undefined);
   const [time, setTime] = useState(socketContext.countdown);
   const [Data, setData] = useState(CardData[0]);
   const [redirect, setRedirect] = useState(false);
@@ -31,88 +32,111 @@ function SwipingPage(props) {
     SocketEvents.endGame(socketContext.socket, goNextPge);
     SocketEvents.nextRound(socketContext.socket, getNewCard);
     setCardPass(props.location.state[0].slice());
-    setTime(socketContext.countdown);
   }, []);
 
-  useEffect(async () => {
-    setTimeout(() => {
-      if (time < 1) {
-        setTime(socketContext.countdown/1000);
-      } else {
+  useEffect(() => {
+    const t = setTimeout(() => {
+      if (time > 0) {
         setTime(time - 1);
       }
     }, 1000);
+
+    return () => {
+      clearTimeout(t);
+    };
   }, [time]);
 
-
   const goNextPge = () => {
-    console.log('Game has Ended');
     setRedirect(true);
   };
 
   /**
- * @param {number} index
- * @return {void}
- */
+   * @param {number} index
+   * @return {void}
+   */
   function clickedYes() {
-    if (!decided) {
-      console.log(Data);
-      console.log(socketContext.code);
-      SocketEvents.vote(socketContext.socket,
-          socketContext.code, {name: Data.name, location: Data.location});
-      console.log('clicked yes');
-      setDecided(true);
+    if (vote === undefined) {
+      SocketEvents.vote(socketContext.socket, socketContext.code, {
+        name: Data.name,
+        location: Data.location,
+        coords: Data.coords,
+        price: Data.price,
+        rating: Data.rating,
+        images: Data.images,
+      });
+      setVote(true)
     }
   }
 
-
   /**
-  *
-  */
+   *
+   */
   function clickedNo() {
-    if (!decided) {
-      console.log('clicked no');
-      setDecided(true);
+    if (vote === undefined) {
+      setVote(false)
     }
   }
 
   /**
- * @param {*} timer new restaurant details
- * @return {void}
- */
+   * @param {*} timer new restaurant details
+   * @return {void}
+   */
   function getNewCard(timer) {
-    setTime(socketContext.countdown/1000);
+    setTime(socketContext.countdown);
     try {
-      setDecided(false);
+      setVote(undefined)
       CardData.shift();
       if (CardData[0] !== undefined) {
         setData(CardData[0]);
       }
-    } catch (error) {
-    }
-  };
-
+    } catch (error) {}
+  }
+  let voteString = ""
+  let overlayStyling = ""
+  if (vote !== undefined){
+    voteString = vote ? "Keen" : "Nope"
+    overlayStyling = vote ? "CardOverlayText-Keen" : "CardOverlayText-Nope"
+  }
+  const buttonHideStyling = vote === undefined ? "" : "hide"
   return (
     <>
       <h1 className='Title'> yumble</h1>
       <h1 className='TimeCounter'> Remaining time: {time}s</h1>
       <div className='MakeCentre'>
-        <button
-          className='YesOrNoButton'
-          id='YesButton'
-          onClick={clickedYes}
-        >
-          Keen!
-        </button>
-        <button
-          className='YesOrNoButton'
-          id='NoButton'
-          onClick={clickedNo}
-        >
-          Nope!
-        </button>
-
-        <SwipeCard data={Data} ></SwipeCard>
+        <Container style={{ marginTop: '2em' }}>
+          <Row lg={12} className='justify-content-md-center'>
+            <Col
+              xs={{ span: 6, order: 2 }}
+              md={{ span: 2, order: 1 }}
+              className='btnColumn'
+            >
+              <button
+                className={'YesOrNoButton ' + buttonHideStyling}
+                id='NoButton'
+                onClick={clickedNo}
+              >
+                Nope!
+              </button>
+            </Col>
+            <Col lg={6} xs={{ span: 12, order: 1 }} md={{ span: 8, order: 2 }}>
+              <div className={"CardOverlayText " + overlayStyling}>Voted: {vote === undefined ? "" : voteString}!</div>
+              <SwipeCard data={Data}></SwipeCard>
+            </Col>
+            <Col
+              xs={{ span: 6, order: 3 }}
+              md={{ span: 2, order: 3 }}
+              className='btnColumn'
+            >
+              <button
+                className={"YesOrNoButton align-items-center " + buttonHideStyling}
+                id='YesButton'
+                onClick={clickedYes}
+              >
+                Keen!
+              </button>
+            </Col>
+          </Row>
+        </Container>
 
         <button
           onClick={() => setMapPopup(true)}
@@ -122,8 +146,11 @@ function SwipingPage(props) {
           View on Google Maps
           <Icon />
         </button>
-        <MapModal trigger={MapPopup} setTrigger={setMapPopup}
-          restaurantLocation={Data.coords} />
+        <MapModal
+          trigger={MapPopup}
+          setTrigger={setMapPopup}
+          restaurantLocation={Data.coords}
+        />
       </div>
       <button
         onClick={() => setButtonPopup(true)}
@@ -136,15 +163,13 @@ function SwipingPage(props) {
         <p>
           - Click Keen! if you are keen to potentially visit this restaurant
           otherwise click Nope!.
-          <br></br>
-          - View this restaurant on the map by clicking the green button
-          below the card.
+          <br></br>- View this restaurant on the map by clicking the green
+          button below the card.
         </p>
       </Help>
-      {redirect && <
-        Redirect to={{pathname: '/Result', state: CardPass}} />}
+      {redirect && <Redirect to={{ pathname: '/Result', state: CardPass }} />}
     </>
   );
-};
+}
 
 export default SwipingPage;

@@ -1,11 +1,18 @@
 import games from '../domain/Games';
+import Session from '../mongo/models/Session';
+
 /**
  * Handles event when user joins a room. Adds to corresponding roomid.
  * @param {*} socket
  * @param {*} io
  */
 export function joinRoom(socket, io) {
-  socket.on('join_room', ({sessionId, name}) => {
+  socket.on('join_room', async ({sessionId, name}) => {
+
+    const finishedSession = await findSession(sessionId)
+    if (finishedSession && finishedSession.isFinished) {
+      io.to(socket.id).emit('skip_to_results', true)
+    } else {
     const game = games.getGame(sessionId);
     if (!game || game.session.users.size >= 10) {
       io.to(socket.id).emit('invalid_code', true);
@@ -27,5 +34,15 @@ export function joinRoom(socket, io) {
       console.log(`restaurants sent to ${name}`);
       io.to(sessionId).emit('update_restaurants', game.session.restaurants);
     }
+  }
   });
+}
+
+const findSession = async(sessionId) => {
+  try {
+    const finishedSession = await Session.findOne({truncCode: sessionId});
+    return finishedSession
+  } catch (error) {
+    console.log(error);
+  }
 }

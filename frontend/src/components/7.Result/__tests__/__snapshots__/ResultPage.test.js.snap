@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ResultPage snapshot testing 1`] = `
+exports[`ResultPage snapshot testing when there is result 1`] = `
 Array [
   <div
     className="MakeCentre"
@@ -49,14 +49,6 @@ Array [
         >
            
           $$$
-           
-        </p>
-        <p
-          className="PlaceDetails"
-          id="cuisine"
-        >
-           
-          European
            
         </p>
         <p

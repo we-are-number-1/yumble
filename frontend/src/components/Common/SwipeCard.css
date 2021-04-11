@@ -1,45 +1,77 @@
 /* Swiping page cards */
-.SwipeCard{
-    outline: none;
-    border: 5px solid #000000;
-    background-color: white;
-    cursor: pointer;
-    height: 35vw;
-    width: 20vw;
-    font-family: Comic Sans MS;
-    border-radius: 30px;
-    padding: 1.5vw;
-    padding-bottom: 0.5vw;
-    margin-top: 1vw;
-    margin-bottom: 0.5vw;
-  }
-  
-  .CardImage{
-    border: 1px solid #000000;
-    height: 18vw; 
-    width: 20vw; 
-    border-radius: 30px;
-  }
+.SwipeCard {
+  outline: none;
+  border: 5px solid #000000;
+  background-color: white;
+  cursor: pointer;
+  height: 100%;
+  width: 100%;
+  font-family: Comic Sans MS;
+  border-radius: 30px;
+  padding: 1.5vw;
+  padding-bottom: 0.5vw;
+  margin-bottom: 0.5vw;
+}
 
-  .PlaceDetails{
-    margin: 1vw;
-  }
-  
-  #name{
-    font-size: 2.0vw;
-    font-weight: bold;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    pointer-events:none;
-  }
-  
-  #location, #price, #cuisine{
-    font-size: 1.5vw;
-    font-weight: lighter;
-  }
-  
-  #rating {
-    font-size: 1.5vw;
-    text-align: end;
-  }
+.CardImage {
+  height: 30vh;
+  width: 30vh;
+  margin: auto;
+  border-radius: 30px;
+}
+
+.CardOverlayText {
+  top: 2em;
+  left: -5em;
+  width: em;
+  color: #fff;
+  position: absolute;
+  text-align: center;
+  visibility: hidden;
+  letter-spacing: .06em;
+  padding: 0.5em 5em 0.4em 5em;
+  text-shadow: 0 0 0.75em #444;
+  box-shadow: 0 0 0.5em rgba(0,0,0,0.5);
+  font: bold 1em monospace, Arial, Sans-Serif;
+  -webkit-text-shadow: 0 0 0.75em #444;
+  -webkit-box-shadow: 0 0 0.5em rgba(0,0,0,0.5);
+  -webkit-transform: rotate(-45deg) scale(0.75,1);
+}
+
+.CardOverlayText-Keen{
+  visibility: visible;
+  background-color: green;
+}
+
+.CardOverlayText-Nope{
+  visibility: visible;
+  background-color: #A00;
+}
+
+.no-overflow{
+  overflow: hidden;
+}
+
+.PlaceDetails {
+  margin: 1vw;
+}
+
+#name {
+  font-size: 2em;
+  font-weight: bold;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  pointer-events: none;
+}
+
+#location,
+#price {
+  font-size: 1.5em;
+  font-weight: lighter;
+}
+
+#rating {
+  font-size: 1.5em;
+  text-align: end;
+}
