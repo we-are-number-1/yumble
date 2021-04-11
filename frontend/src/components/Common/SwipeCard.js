@@ -18,7 +18,7 @@ function SwipeCard(props) {
   const images = data.images;
   const location = data.location;
   const price = data.price;
-  const rating = data.rating.toFixed(1);
+  const rating = data.rating?.toFixed(1);
 
   return (
     <div className="SwipeCard" onClick = {cardClicked}>
