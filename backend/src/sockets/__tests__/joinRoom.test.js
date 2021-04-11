@@ -53,7 +53,7 @@ beforeEach((done) => {
   games.activeGames = new Map();
 });
 
-test('join room successfully test', (done) => {
+test('join room successfully, join_room integration test', (done) => {
   games.newGame(null, new SocketSession('1234', '1234',
       {roundInterval: 3}), null);
 
@@ -68,7 +68,7 @@ test('join room successfully test', (done) => {
   socket.emit('join_room', {sessionId: '1234', name: 'bob'});
 });
 
-test('join room that does not exist', (done) => {
+test('join room that does not exist, join_room integration test', (done) => {
   socket.on('invalid_code', (isInvalid) => {
     expect(isInvalid).toBe(true);
     done();
@@ -81,7 +81,7 @@ test('join room that does not exist', (done) => {
   socket.emit('join_room', {sessionId: '1234', name: 'bob'});
 });
 
-test('join room that is full', (done) => {
+test('join room that is full, join_room integration test', (done) => {
   const session = new SocketSession('1234', '1234', {roundInterval: 3});
 
   // Session has 10 users - the maximum capacity
