@@ -94,13 +94,6 @@ function Preferences() {
     SocketEvents.joinRoom(socketContext.socket,
         code, 'Host');
     setRedirect(true);
-    // {redirect && <Redirect to={
-    //   {
-    //     pathname: `/Lobby/${code}`,
-    //     state: cardData,
-    //   }
-    // }
-    // />}
   };
 
   return (
