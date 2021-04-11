@@ -34,14 +34,16 @@ export async function getNearbyRestaurants(coordinates,
   };
   const service = new google.maps.places.PlacesService(dummyMap);
 
-  service.nearbySearch(request, async (results, status) => {
-    if (status === google.maps.places.PlacesServiceStatus.OK) {
-      cards = await getRestaurantCards(results,
-          parseLatAndLng(results));
-    }
-  },
-  );
-  return cards;
+  const cardsPromise = new Promise((resolve, reject) =>
+    service.nearbySearch(request, async (results, status) => {
+      if (status === google.maps.places.PlacesServiceStatus.OK) {
+        cards = await getRestaurantCards(results,
+            parseLatAndLng(results));
+        resolve(cards);
+      }
+    },
+    ));
+  return cardsPromise;
 }
 
 /**
