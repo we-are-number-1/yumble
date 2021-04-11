@@ -33,7 +33,7 @@
     max-height: 50px;
     margin: 0.5vw;
     border: 1.2px solid #000000;
-    border-radius: 20px;
+    border-radius: 0.5rem;
     font-size: 1em;
     right: 1.1vw;
 }
