@@ -64,7 +64,6 @@ export class SocketSession {
   async syncDb() {
     try {
       const session = await Session.findOne({truncCode: this.sessionId});
-      console.log(session)
       const restaurants = [];
       this.votes.forEach((value, key, map) => {
         restaurants.push(
@@ -77,7 +76,6 @@ export class SocketSession {
             images: value.images},
         );
       });
-      console.log(restaurants);
       session.results = restaurants;
       session.isFinished = true;
       session.save();

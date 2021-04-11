@@ -1,19 +1,9 @@
-// import getAPIKey from './getAPIKey';
-
 /* eslint-disable */
-
-let clientCreds;
-let clientID;
-let clientSecret;
 
 let dollar = "$";
 
 export async function getRestaurantCards(restaurants, coords) {
   var cards = [];
-
-  // clientCreds = await getAPIKey(1);
-  // clientID = clientCreds[0];
-  // clientSecret = clientCreds[1];
 
   for (let i = 0; i < restaurants.length; i++) {
     var price;
@@ -44,7 +34,6 @@ export async function getRestaurantCards(restaurants, coords) {
       console.log(error);
     }
   }
-  console.log(cards)
   return cards;
 }
 
