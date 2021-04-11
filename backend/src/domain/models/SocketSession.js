@@ -51,7 +51,6 @@ export class SocketSession {
           {votes: 1, 
           location: restaurant.location,
           coords: restaurant.coords,
-          cuisine: restaurant.cuisine,
           price: restaurant.price,
           rating: restaurant.rating,
           images: restaurant.images},
@@ -72,13 +71,11 @@ export class SocketSession {
             location: value.location, 
             numberOfVotes: value.votes,
             coords: value.coords,
-            cuisine: value.cuisine,
             price: value.price,
             rating: value.rating,
             images: value.images},
         );
       });
-      console.log(restaurants);
       session.results = restaurants;
       session.isFinished = true;
       session.save();

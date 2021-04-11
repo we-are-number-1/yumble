@@ -21,8 +21,8 @@ function SwipingPage(props) {
   const [MapPopup, setMapPopup] = useState(false);
   const CardData = props.location.state[0];
   const [CardPass, setCardPass] = useState(null);
-  const [decided, setDecided] = useState(false);
   const [time, setTime] = useState(socketContext.timer);
+  const [vote, setVote] = useState(undefined);
   const [Data, setData] = useState(CardData[0]);
   const [redirect, setRedirect] = useState(false);
 
@@ -55,10 +55,16 @@ function SwipingPage(props) {
    * @return {void}
    */
   function clickedYes() {
-    if (!decided) {
-      SocketEvents.vote(socketContext.socket,
-          socketContext.code, {name: Data.name, location: Data.location});
-      setDecided(true);
+    if (vote === undefined) {
+      SocketEvents.vote(socketContext.socket, socketContext.code, {
+        name: Data.name,
+        location: Data.location,
+        coords: Data.coords,
+        price: Data.price,
+        rating: Data.rating,
+        images: Data.images,
+      });
+      setVote(true)
     }
   }
 
@@ -66,8 +72,8 @@ function SwipingPage(props) {
    *
    */
   function clickedNo() {
-    if (!decided) {
-      setDecided(true);
+    if (vote === undefined) {
+      setVote(false)
     }
   }
 
@@ -78,14 +84,20 @@ function SwipingPage(props) {
   function getNewCard() {
     setTime(socketContext.timer);
     try {
-      setDecided(false);
+      setVote(undefined)
       CardData.shift();
       if (CardData[0] !== undefined) {
         setData(CardData[0]);
       }
     } catch (error) {}
   }
-
+  let voteString = ""
+  let overlayStyling = ""
+  if (vote !== undefined){
+    voteString = vote ? "Keen" : "Nope"
+    overlayStyling = vote ? "CardOverlayText-Keen" : "CardOverlayText-Nope"
+  }
+  const buttonHideStyling = vote === undefined ? "" : "hide"
   return (
     <>
       <h1 className='Title'> yumble</h1>
@@ -99,7 +111,7 @@ function SwipingPage(props) {
               className='btnColumn'
             >
               <button
-                className='YesOrNoButton'
+                className={'YesOrNoButton ' + buttonHideStyling}
                 id='NoButton'
                 onClick={clickedNo}
               >
@@ -107,6 +119,7 @@ function SwipingPage(props) {
               </button>
             </Col>
             <Col lg={6} xs={{ span: 12, order: 1 }} md={{ span: 8, order: 2 }}>
+              <div className={"CardOverlayText " + overlayStyling}>Voted: {vote === undefined ? "" : voteString}!</div>
               <SwipeCard data={Data}></SwipeCard>
             </Col>
             <Col
@@ -115,7 +128,7 @@ function SwipingPage(props) {
               className='btnColumn'
             >
               <button
-                className={`YesOrNoButton align-items-center`}
+                className={"YesOrNoButton align-items-center " + buttonHideStyling}
                 id='YesButton'
                 onClick={clickedYes}
               >
