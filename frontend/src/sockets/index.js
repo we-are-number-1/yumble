@@ -7,5 +7,6 @@ export {countdown} from './countdown';
 export {setRestaurants} from './setRestaurants';
 export {updateRestaurants} from './updateRestaurants';
 export {invalidCode} from './invalidCode';
+export {skipToResults} from './SkipToResults';
 export {leaveRoom} from './leaveRoom';
 export {vote} from './vote';
