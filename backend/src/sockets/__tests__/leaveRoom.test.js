@@ -65,16 +65,16 @@ test('leave room test', (done) => {
 test('leave room integration test', (done) => {
   const session = new SocketSession('123', '1234', {roundInterval: 3}, null);
   session.addUser(socketServer, 'sky');
-  socketServer.join('123');
   games.newGame(null, session, null);
 
   const mock = jest.fn();
   mock.mockImplementation(() => {
-    // TODO: check whether user has been removed properly!
-  });
-  socket.on('new_user', ({users}) => {
-    // TODO: check that the array is empty!
+    expect(games.getGame('123').session.users.size).toBe(0);
     done();
+  });
+
+  socket.on('new_user', ({users}) => {
+    expect(users).toEqual({users: []});
   });
 
   SocketEvent.leaveRoom(socketServer, ioServer, mock);
