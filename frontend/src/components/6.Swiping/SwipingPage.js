@@ -60,7 +60,6 @@ function SwipingPage(props) {
         name: Data.name,
         location: Data.location,
         coords: Data.coords,
-        cuisine: Data.cuisine,
         price: Data.price,
         rating: Data.rating,
         images: Data.images,

@@ -10,10 +10,6 @@ export const preferenceSchema = mongoose.Schema({
     type: Number,
     default: 0,
   },
-  cuisines: {
-    type: [String],
-    default: [],
-  },
   price: {
     type: Number,
     default: 0,

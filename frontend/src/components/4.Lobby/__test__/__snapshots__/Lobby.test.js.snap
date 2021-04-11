@@ -11,16 +11,6 @@ Array [
     className="MakeCentre"
   >
     <div
-      className="CusineTitle"
-    >
-      Cusines: 
-      Thai
-      , Burger
-      , European
-      , Mediterranean
-      , Chinese
-    </div>
-    <div
       className="LobbyBox"
     >
       <div>
