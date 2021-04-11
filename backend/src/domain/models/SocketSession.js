@@ -48,13 +48,13 @@ export class SocketSession {
     } else {
       this.votes.set(
           restaurant.name,
-          {votes: 1, 
-          location: restaurant.location,
-          coords: restaurant.coords,
-          cuisine: restaurant.cuisine,
-          price: restaurant.price,
-          rating: restaurant.rating,
-          images: restaurant.images},
+          {votes: 1,
+            location: restaurant.location,
+            coords: restaurant.coords,
+            cuisine: restaurant.cuisine,
+            price: restaurant.price,
+            rating: restaurant.rating,
+            images: restaurant.images},
       );
     }
   }
@@ -68,14 +68,14 @@ export class SocketSession {
       const restaurants = [];
       this.votes.forEach((value, key, map) => {
         restaurants.push(
-            {name: key, 
-            location: value.location, 
-            numberOfVotes: value.votes,
-            coords: value.coords,
-            cuisine: value.cuisine,
-            price: value.price,
-            rating: value.rating,
-            images: value.images},
+            {name: key,
+              location: value.location,
+              numberOfVotes: value.votes,
+              coords: value.coords,
+              cuisine: value.cuisine,
+              price: value.price,
+              rating: value.rating,
+              images: value.images},
         );
       });
       console.log(restaurants);

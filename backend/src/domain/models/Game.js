@@ -89,6 +89,6 @@ export class Game {
     this.io.to(this.session.sessionId).emit('end_game');
     // Remove game from active games list
     Games.removeGame(this.session.sessionId);
-    console.log("removed game:", this.session.sessionId);
+    console.log('removed game:', this.session.sessionId);
   }
 }

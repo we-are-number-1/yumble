@@ -1,4 +1,4 @@
-import games from "../domain/Games";
+import games from '../domain/Games';
 /**
  * Socket event for when a user disconnects.
  * @param {*} socket
@@ -6,7 +6,7 @@ import games from "../domain/Games";
  * @param {*} cb callback function
  */
 export function leaveRoom(socket, io, cb = null) {
-  socket.on("leave_room", () => {
+  socket.on('leave_room', () => {
     const activeGames = games.getGames();
 
     activeGames.forEach((game) => {
@@ -20,18 +20,18 @@ export function leaveRoom(socket, io, cb = null) {
         // Recalculate users as have been changed
         users = Array.from(game.session.users.values()).map((e) => e.name);
         console.log(users);
-        io.to(game.session.sessionId).emit("new_user", { users: users });
+        io.to(game.session.sessionId).emit('new_user', {users: users});
       }
       // Remove the game if the game hasnt started and no one is in the lobby
       // To prevent a memory leak
       if (!game.session.hostSocket && users.length == 0 && !game.gameActive) {
         games.removeGame(game.session.sessionId);
-        console.log("removed game:", game.session.sessionId);
+        console.log('removed game:', game.session.sessionId);
       }
     });
-    console.log("user left room with id:", socket.id);
+    console.log('user left room with id:', socket.id);
     if (cb) {
-      console.log("done is called");
+      console.log('done is called');
       cb(socket.id);
     }
   });

@@ -101,7 +101,7 @@ describe('PATCH', () => {
           cuisine: 'Thai',
           price: '$$',
           rating: 3.5,
-          images: ''
+          images: '',
         },
         {
           name: 'Japanese Restaurant',
@@ -114,7 +114,7 @@ describe('PATCH', () => {
           cuisine: 'Japanese',
           price: '$$',
           rating: 3.5,
-          images: ''
+          images: '',
         },
         {
           name: 'Chinese Restaurant',
@@ -127,7 +127,7 @@ describe('PATCH', () => {
           cuisine: 'Chinese',
           price: '$$$$',
           rating: 4.3,
-          images: ''
+          images: '',
         },
       ],
     };
