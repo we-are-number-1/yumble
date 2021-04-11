@@ -41,14 +41,6 @@ exports[`Swiping Card snapshot testing 1`] = `
   </p>
   <p
     className="PlaceDetails"
-    id="cuisine"
-  >
-     
-    European
-     
-  </p>
-  <p
-    className="PlaceDetails"
     id="rating"
   >
      

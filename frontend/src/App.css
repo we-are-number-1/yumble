@@ -43,13 +43,13 @@
 .Title {
   position: absolute;
   color: white;
-  font-family: Comic Sans MS;
+  font-family:monospace;
   margin: 1vw;
-  font-size: 3.5vw;
+  font-size: 2rem;
 }
 
 .BackGroundImage {
-  background-image: url('BackgroundImage.webp');
+  background-image: url('./backgroundImg.jpeg');
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -61,10 +61,10 @@
 .SmallBtn {
   outline: none;
   font-family: Comic Sans MS;
-  font-size: 2vw;
-  border-radius: 30px;
+  font-size: 2em;
+  border-radius: 1.5rem;
   border-color: black;
-  border-width: 5px;
+  border-width: 0.1rem;
   cursor: pointer;
   position: absolute;
   bottom: 0;
@@ -90,7 +90,19 @@
 }
 
 #HelpButton {
-  padding: 0.5vw 1vw 0.5vw 1vw;
+  padding: 1rem;
+  position: absolute;
+  bottom: 0;
+  align-self: flex-end;
+  right: 0;
+  margin: 1vw;
+}
+
+#Help-start {
+  top: 30%;
+  width: 80%;
+  height: 45%;
+  margin: 0 auto;
 }
 
 #CloseButton {
@@ -98,13 +110,12 @@
 }
 
 #BackButton {
-  background-color: rgb(236, 69, 69);
-  padding: 0.5vw 2vw 0.5vw 2vw;
+  padding: 1rem 2rem;
+  position: absolute;
+  bottom: 0;
+  align-self: flex-start;
   left: 0;
-}
-
-#BackButton:hover {
-  background: white;
+  margin: 1vw;
 }
 
 .MakeCentre {
@@ -124,33 +135,26 @@
 /* StartPage */
 .StartTitle {
   color: white;
-  font-family: Comic Sans MS;
-  font-size: 8vw;
+  font-size: 6rem;
+  font-family:monospace;
   margin: 0;
 }
 
 .BigBtn {
   cursor: pointer;
-  outline: none;
-  font-family: Comic Sans MS;
-  font-size: 3vw;
-  border-radius: 30px;
-  border-color: black;
-  border-width: 5px;
-}
-
-.BigBtn:hover {
-  background: silver;
+  font-size: 1rem;
 }
 
 #CreateGroup_btn {
-  padding: 1vw 3vw 1vw 3vw;
-  margin-bottom: 1vw;
+  padding: 2rem 4rem;
+  margin-bottom: 1rem;
   margin-top: 2vw;
 }
 
 #JoinGroup_btn {
-  padding: 1vw 4.7vw 1vw 4.7vw;
+  padding: 2rem 4rem;
+  margin-bottom: 1vw;
+  margin-top: 2vw;
 }
 
 #GoogleMaps_btn {
@@ -161,6 +165,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  margin-top: 1em;
 }
 
 #GoogleMaps_btn:hover {
@@ -170,15 +175,22 @@
 .GoButton {
   cursor: pointer;
   outline: none;
-  font-family: Comic Sans MS;
   font-size: 2vw;
   border-radius: 30px;
   border-color: black;
   border-width: 3px;
-  padding: 0vw 3vw 0vw 3vw;
+  padding: .5rem 9.2rem !important;
   background-color: rgb(35, 164, 224);
 }
 
 .GoButton:hover {
   background: cyan;
+}
+#Card-field {
+  background-color: #6f7279;
+  color: white;
+}
+#Card-Header {
+  background-color: #414246;
+  color: white;
 }

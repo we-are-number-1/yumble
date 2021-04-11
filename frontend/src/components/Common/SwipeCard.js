@@ -5,7 +5,6 @@ import './SwipeCard.css';
  * @return {void}
  */
 function cardClicked() {
-  console.log('Card clicked');
 }
 
 /**
@@ -18,9 +17,8 @@ function SwipeCard(props) {
   const name = data.name;
   const images = data.images;
   const location = data.location;
-  const cuisine = data.cuisine;
   const price = data.price;
-  const rating = data.rating;
+  const rating = data.rating?.toFixed(1);
 
   return (
     <div className="SwipeCard" onClick = {cardClicked}>
@@ -32,7 +30,6 @@ function SwipeCard(props) {
       </div>
       <p className='PlaceDetails' id= 'location'> {location} </p>
       <p className='PlaceDetails' id = 'price'> {price} </p>
-      <p className='PlaceDetails' id = 'cuisine'> {cuisine} </p>
       <p className='PlaceDetails' id = 'rating'> {rating} Rating</p>
     </div>
   );
