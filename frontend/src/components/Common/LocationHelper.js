@@ -1,7 +1,6 @@
 import {geocodeByAddress, getLatLng} from 'react-places-autocomplete';
 import {getRestaurantCards} from './getRestaurantCards';
 
-
 /**
  * @param  {String} value the string address value
  */
@@ -10,7 +9,6 @@ export async function getLocationCoordinates(value) {
   return await getLatLng(results[0]);
 }
 
-const google = window.google;
 let cards = null;
 /**
  * @param  {Object} coordinates Object with lat and lng values
