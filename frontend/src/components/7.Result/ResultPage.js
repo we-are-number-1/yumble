@@ -29,7 +29,7 @@ const rating = "4.0";
  * @return {*}
  * TODO: remove hard-coded location for the winning restaurant coordinates
  */
-function ResultPage() {
+function ResultPage(props) {
   // const socketContext = useContext(SocketContext);
   const [ButtonPopup, setButtonPopup] = useState(false);
   const [MapPopup, setMapPopup] = useState(false);
@@ -48,22 +48,23 @@ function ResultPage() {
   const [hasResult, setHasResult] = useState(props.hasResult);
 
   useEffect(() => {
-    document.title = 'Time to go eat!';
+    document.title = "Time to go eat!";
     axios
-        .get('sessions/'+ socketContext.code)
-        .then((res) => {
-          setHasResult(false);
-          setCardList(res.data.results.sort(
-              function(a, b) {
-                return b.numberOfVotes - a.numberOfVotes;
-              }));
-        })
-        .catch(function(error) {
-          console.log(error);
-        });
+      .get("sessions/" + socketContext.code)
+      .then((res) => {
+        setHasResult(false);
+        setCardList(
+          res.data.results.sort(function (a, b) {
+            return b.numberOfVotes - a.numberOfVotes;
+          })
+        );
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   }, []);
 
-  useEffect(()=>{
+  useEffect(() => {
     if (cardList && cardList.length > 0) {
       setHasResult(true);
       const card = cardList[0];
@@ -180,7 +181,7 @@ function ResultPage() {
                         alignItems: "center",
                         justifyContent: "center",
                       }}
-                      lg={6}
+                      lg={12}
                     >
                       <Button
                         onClick={() => setResultPopup(true)}
@@ -202,22 +203,32 @@ function ResultPage() {
                         <hr />
                       </Result>
                     </Col>
+
+                    <Col
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                      }}
+                      lg={12}
+                    >
+                      <Button
+                        onClick={() => setMapPopup(true)}
+                        className="BigBtn"
+                        id="GoogleMaps_btn"
+                        style={{ marginTop: "0.15em", marginBottom: "0.15em" }}
+                      >
+                        View on Google Maps
+                        <Icon />
+                      </Button>
+                      <MapModal
+                        trigger={MapPopup}
+                        setTrigger={setMapPopup}
+                        restaurantLocation={{ lat: -36.8523, lng: 174.7691 }}
+                      />
+                    </Col>
                   </Row>
                 </Card.Body>
-                <Button
-                  onClick={() => setMapPopup(true)}
-                  className="BigBtn"
-                  id="GoogleMaps_btn"
-                  style={{ marginTop: "0.3em" }}
-                >
-                  View on Google Maps
-                  <Icon />
-                </Button>
-                <MapModal
-                  trigger={MapPopup}
-                  setTrigger={setMapPopup}
-                  restaurantLocation={{ lat: -36.8523, lng: 174.7691 }}
-                />
               </>
             ) : (
               <>
@@ -229,14 +240,40 @@ function ResultPage() {
                 >
                   No Results Decided!
                 </Card.Header>
-                <Card.Body>
-                  <h2 className="ResultTitle"> Wanna try another place ? </h2>
-                  <button
-                    className="ButtonReset"
-                    onClick={() => window.location.reload()}
-                  >
-                    Try Again :){" "}
-                  </button>
+                <Card.Body
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
+                >
+                  <Row>
+                    <Col
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                      }}
+                      lg={12}
+                    >
+                      <h2 className="ResultTitle"> Want to try again? </h2>
+                    </Col>
+                    <Col
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                      }}
+                      lg={12}
+                    >
+                      <Button
+                        className="ButtonReset"
+                        onClick={() => window.location.reload()}
+                      >
+                        CONFIRM{" "}
+                      </Button>
+                    </Col>
+                  </Row>
                 </Card.Body>
               </>
             )}
