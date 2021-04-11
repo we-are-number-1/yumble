@@ -38,12 +38,12 @@
     -webkit-transform: rotate(-45deg) scale(0.75,1);
 }
 
-#CardOverlayText-Keen{
+.CardOverlayText-Keen{
   visibility: visible;
   background-color: green;
 }
 
-#CardOverlayText-Nope{
+.CardOverlayText-Nope{
   visibility: visible;
   background-color: #A00;
 }
