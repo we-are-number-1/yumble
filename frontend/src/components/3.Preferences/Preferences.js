@@ -66,6 +66,7 @@ function Preferences() {
   const postPreference = () => {
     socketContext.setCode(code);
     socketContext.setHost(true);
+    socketContext.setTimer(Timer);
     SocketEvents.setRestaurants(socketContext.socket, code, cardData);
 
     const newPref = {
