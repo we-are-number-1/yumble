@@ -21,8 +21,8 @@ function SwipingPage(props) {
   const [MapPopup, setMapPopup] = useState(false);
   const CardData = props.location.state[0];
   const [CardPass, setCardPass] = useState(null);
+  const [time, setTime] = useState(socketContext.timer);
   const [vote, setVote] = useState(undefined);
-  const [time, setTime] = useState(socketContext.countdown);
   const [Data, setData] = useState(CardData[0]);
   const [redirect, setRedirect] = useState(false);
 
@@ -81,8 +81,8 @@ function SwipingPage(props) {
    * @param {*} timer new restaurant details
    * @return {void}
    */
-  function getNewCard(timer) {
-    setTime(socketContext.countdown);
+  function getNewCard() {
+    setTime(socketContext.timer);
     try {
       setVote(undefined)
       CardData.shift();
