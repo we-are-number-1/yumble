@@ -39,25 +39,33 @@ function ResultPage() {
   const [pie, setPie] = useState(null);
   const [chart, setChart] = useState(false);
   const socketContext = useContext(SocketContext);
+  // use this attribute to decide what component to render
+  // null -> nothing
+  // false -> no result decided
+  // true -> result with pie chart
+  // default is null because no props is passed in
+  // need to have props due to the testing purpose
+  const [hasResult, setHasResult] = useState(props.hasResult);
 
   useEffect(() => {
-    document.title = "Time to go eat!";
+    document.title = 'Time to go eat!';
     axios
-      .get("sessions/" + socketContext.code)
-      .then((res) => {
-        setCardList(
-          res.data.results.sort(function (a, b) {
-            return b.numberOfVotes - a.numberOfVotes;
-          })
-        );
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+        .get('sessions/'+ socketContext.code)
+        .then((res) => {
+          setHasResult(false);
+          setCardList(res.data.results.sort(
+              function(a, b) {
+                return b.numberOfVotes - a.numberOfVotes;
+              }));
+        })
+        .catch(function(error) {
+          console.log(error);
+        });
   }, []);
 
-  useEffect(() => {
-    if (cardList) {
+  useEffect(()=>{
+    if (cardList && cardList.length > 0) {
+      setHasResult(true);
       const card = cardList[0];
       setData({
         name: card.name,
@@ -67,13 +75,10 @@ function ResultPage() {
         images: card.images,
         coords: card.coords,
       });
-
-      console.log(cardList);
       const pieChart = {};
       pieChart.labels = [];
       const votes = [];
       for (let i = 0; i < cardList.length; i++) {
-        console.log(i);
         if (cardList[i].name && i < 6) {
           pieChart.labels.push(cardList[i].name);
           votes.push(cardList[i].numberOfVotes);
