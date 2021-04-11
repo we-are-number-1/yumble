@@ -22,7 +22,7 @@ import Result from "./ResultPopup";
 const name = "Lonestar";
 const location = "Botany";
 const price = "$$$";
-const rating = "4.0";
+const rating = 4.0;
 
 /**
  * @param {*} props

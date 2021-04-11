@@ -36,14 +36,10 @@ test('Swiping page', () => {
   location.state = [Data];
   const options = {createNodeMock};
   const tree = renderer.create(
-    <TinderCard>
-      hi
-    </TinderCard>
-      // <SocketContextProvider>
-      //   <SwipingPage
-      //     location = {location}/>
-      // </SocketContextProvider>,
-    ,
+      <SocketContextProvider>
+        <SwipingPage
+          location = {location}/>
+      </SocketContextProvider>,
     options
   ).toJSON();
   expect(tree).toMatchSnapshot();
