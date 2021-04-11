@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useEffect, useState, useContext, useRef } from 'react';
 import { Redirect } from 'react-router-dom';
 
 import { SocketContext } from './../../sockets/SocketContext';
@@ -10,6 +10,7 @@ import Icon from '../Common/MapsPinpoint';
 import '../6.Swiping/SwipingPage.css';
 import SwipeCard from '../Common/SwipeCard';
 import { Container, Row, Col } from 'react-bootstrap';
+import TinderCard from 'react-tinder-card'
 
 /**
  * @param  {*} props
@@ -22,9 +23,11 @@ function SwipingPage(props) {
   const CardData = props.location.state[0];
   const [CardPass, setCardPass] = useState(null);
   const [vote, setVote] = useState(undefined);
+  const [showVoteButtons, setShowVoteButtons] = useState(true);
   const [time, setTime] = useState(socketContext.countdown);
   const [Data, setData] = useState(CardData[0]);
   const [redirect, setRedirect] = useState(false);
+  const swiperRef = useRef()
 
   useEffect(() => {
     document.title = 'Yes or No?';
@@ -51,30 +54,60 @@ function SwipingPage(props) {
   };
 
   /**
-   * @param {number} index
-   * @return {void}
+   * Swipes card right when clicking yes
    */
   function clickedYes() {
-    if (vote === undefined) {
-      SocketEvents.vote(socketContext.socket, socketContext.code, {
-        name: Data.name,
-        location: Data.location,
-        coords: Data.coords,
-        cuisine: Data.cuisine,
-        price: Data.price,
-        rating: Data.rating,
-        images: Data.images,
-      });
-      setVote(true)
+    if(swiperRef.current) {
+      swiperRef.current.swipe('right');
     }
   }
 
   /**
-   *
+   * Swipes card left when clicking no
    */
   function clickedNo() {
-    if (vote === undefined) {
-      setVote(false)
+    if(swiperRef.current) {
+      swiperRef.current.swipe('left');
+    }
+  }
+  
+  /**
+   * This is required as handleCardLeftScreen is called much later than 
+   * when the swipe event is raised. 
+   * @param {*} direction 
+   */
+  function handleSwipe() {
+    // hide vote buttons when swiped
+    setShowVoteButtons(false);
+  }
+
+  /**
+   * Handle a swipe of a card to a specific direction.
+   * If left, then vote is set to false
+   * If right, then vote is set to right and send to server.
+   * If already voted, then do nothing
+   * @param {*} direction 
+   */
+  function handleCardLeftScreen(direction) {
+    if(vote !== undefined) {
+      return;
+    }
+
+    switch(direction) {
+      case 'left':
+        setVote(false);
+        break;
+      case 'right':
+        SocketEvents.vote(socketContext.socket, socketContext.code, {
+          name: Data.name,
+          location: Data.location,
+          coords: Data.coords,
+          cuisine: Data.cuisine,
+          price: Data.price,
+          rating: Data.rating,
+          images: Data.images,
+        });
+        setVote(true);
     }
   }
 
@@ -86,19 +119,21 @@ function SwipingPage(props) {
     setTime(socketContext.countdown);
     try {
       setVote(undefined)
+      setShowVoteButtons(true)
       CardData.shift();
       if (CardData[0] !== undefined) {
         setData(CardData[0]);
       }
     } catch (error) {}
   }
+
   let voteString = ""
   let overlayStyling = ""
   if (vote !== undefined){
     voteString = vote ? "Keen" : "Nope"
     overlayStyling = vote ? "CardOverlayText-Keen" : "CardOverlayText-Nope"
   }
-  const buttonHideStyling = vote === undefined ? "" : "hide"
+  const buttonHideStyling = showVoteButtons ? "" : "hide";
   return (
     <>
       <h1 className='Title'> yumble</h1>
@@ -121,7 +156,13 @@ function SwipingPage(props) {
             </Col>
             <Col lg={6} xs={{ span: 12, order: 1 }} md={{ span: 8, order: 2 }}>
               <div className={"CardOverlayText " + overlayStyling}>Voted: {vote === undefined ? "" : voteString}!</div>
-              <SwipeCard data={Data}></SwipeCard>
+              {
+                vote === undefined ? (
+                  <TinderCard className="ActionableSwipeCard" ref={swiperRef} onSwipe={handleSwipe} onCardLeftScreen={handleCardLeftScreen} preventSwipe={['top', 'bottom']}>
+                    <SwipeCard data={Data} />
+                  </TinderCard>
+                ) : <SwipeCard vote ={vote} data={Data} />
+              }
             </Col>
             <Col
               xs={{ span: 6, order: 3 }}

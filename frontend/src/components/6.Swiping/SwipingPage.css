@@ -46,3 +46,9 @@
 #NoButton:hover {
   background-color: #d66354;
 }
+
+.ActionableSwipeCard {
+  z-index: 90;
+  position: relative;
+}
+
