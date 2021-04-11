@@ -58,7 +58,7 @@ test('socket disconnect test', (done) => {
   socket.close();
 });
 
-test('disconnect integration test', (done) => {
+test('test if disconnect then remove user ', (done) => {
   const session = new SocketSession('123', '1234', {roundInterval: 3}, null);
   session.addUser(socket, 'sky');
   games.newGame(null, session, null);

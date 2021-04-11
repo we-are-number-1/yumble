@@ -62,7 +62,7 @@ test('leave room test', (done) => {
   socket.emit('leave_room');
 });
 
-test('leave room integration test', (done) => {
+test('test if remove user work correctly if leave room', (done) => {
   const session = new SocketSession('123', '1234', {roundInterval: 3}, null);
   session.addUser(socketServer, 'sky');
   games.newGame(null, session, null);
