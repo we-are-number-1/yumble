@@ -1,12 +1,12 @@
-import {Link, Redirect} from 'react-router-dom';
-import React, {useState, useEffect, useContext} from 'react';
+import { Link, Redirect } from 'react-router-dom';
+import React, { useState, useEffect, useContext } from 'react';
 import Help from '../Common/Help';
 import '../Common/Help.css';
 import AutocompleteSearchBox from './AutocompleteSearchBox';
 import style from './Preferences.module.css';
-import {SocketContext} from '../../sockets/SocketContext';
+import { SocketContext } from '../../sockets/SocketContext';
 import * as SocketEvents from '../../sockets';
-import {getNearbyRestaurants} from '../Common/LocationHelper';
+import { getNearbyRestaurants } from '../Common/LocationHelper';
 import axios from 'axios';
 import Button from 'react-bootstrap/esm/Button';
 
@@ -27,7 +27,7 @@ function Preferences() {
   const [Price, setPrice] = useState('1');
   const [Distance, setDistance] = useState('5000');
   const [Location, setLocation] = useState('');
-  const [Coordinates, setCoordinates] = useState({lat: null, lng: null});
+  const [Coordinates, setCoordinates] = useState({ lat: null, lng: null });
   const [redirect, setRedirect] = useState(false);
   const [cardData, setCardData] = useState(null);
 
@@ -62,7 +62,7 @@ function Preferences() {
     setCardData(data);
   }
 
-  useEffect(()=>{
+  useEffect(() => {
     if (cardData) {
       postPreference();
     }
@@ -95,15 +95,13 @@ function Preferences() {
     };
 
     axios
-        .patch('../sessions/'+code, give)
-        .then((res) => {
-        })
-        .catch(function(error) {
-          console.log(error);
-        });
+      .patch('../sessions/' + code, give)
+      .then((res) => {})
+      .catch(function (error) {
+        console.log(error);
+      });
 
-    SocketEvents.joinRoom(socketContext.socket,
-        code, 'Host');
+    SocketEvents.joinRoom(socketContext.socket, code, 'Host');
     setRedirect(true);
   };
 
@@ -121,7 +119,8 @@ function Preferences() {
           </div>
           <div>
             <div className={style.RangeAndTimerText}>Range</div>
-            <input className={style.Slider}
+            <input
+              className={style.Slider}
               onChange={(e) => {
                 setDistance(e.target.value);
               }}
@@ -132,11 +131,13 @@ function Preferences() {
               defaultValue={Distance}
             />
             <div className={style.SliderText}>
-              Distance: {Distance/1000} KM</div>
+              Distance: {Distance / 1000} KM
+            </div>
           </div>
           <div>
             <div className={style.RangeAndTimerText}>Timer</div>
-            <input className={style.Slider}
+            <input
+              className={style.Slider}
               onChange={(e) => {
                 setTimer(e.target.value);
               }}
@@ -146,30 +147,32 @@ function Preferences() {
               step='5'
               defaultValue={Timer}
             />
-            <div className={style.SliderText}>Time:{' '}
-              {Timer} Seconds</div>
+            <div className={style.SliderText}>Time: {Timer} Seconds</div>
           </div>
-          {/* <div>Cusinies</div> */}
-          {/* If you want to add a cusinie option in the preference list */}
           <div className={style.priceText}>
             Price
             <div>
-              <select className={style.pricePicker}
+              <select
+                className={style.pricePicker}
                 onChange={(e) => {
                   setPrice(e.target.value);
                 }}
               >
                 <option value='1'>$</option>
-                <option value='2'>$  $</option>
-                <option value='3'>$  $  $</option>
-                <option value='4'>$  $  $  $</option>
+                <option value='2'>$ $</option>
+                <option value='3'>$ $ $</option>
+                <option value='4'>$ $ $ $</option>
               </select>
             </div>
           </div>
           <Link to='/'>
-            <Button variant='danger' size='lg' id='BackButton'
-              onClick={() => goBack()}>
-                Back
+            <Button
+              variant='danger'
+              size='lg'
+              id='BackButton'
+              onClick={() => goBack()}
+            >
+              Back
             </Button>
           </Link>
 
@@ -183,30 +186,35 @@ function Preferences() {
           </Button>
           <Help trigger={ButtonPopup} setTrigger={setButtonPopup}>
             <p>
-              If you are visiting this page, you are likely here because you are
-              searching for a random sentence. Sometimes a random word just is
-              not enough, and that is where the random sentence generator comes
-              into play. By inputting the desired number, you can make a list of
-              as many random sentences as you want or need. Producing random
-              sentences can be helpful in a number of different ways.
+              Use this page to select a location, as well as a range from that
+              location to find restaurants from.<br></br>
+              Changing the timer duration will change how long you get to make a
+              decision on each restaurant.<br></br>
+              Use the price dropdown to set an upper price limit on the
+              restaurants that will be shown.<br></br>
+              Once you are happy with your preferences, click the Go button.
             </p>
           </Help>
-          {redirect && <Redirect to={
-            {
-              pathname: `/Lobby/${code}`,
-              state: cardData,
-            }
-          }
-          />}
+          {redirect && (
+            <Redirect
+              to={{
+                pathname: `/Lobby/${code}`,
+                state: cardData,
+              }}
+            />
+          )}
           {/* need to check if an address is provided */}
           <button
-            disabled={Coordinates.lat == null && Coordinates.lng == null}
+            disabled={
+              !Location || Coordinates.lat === null || Coordinates.lng === null
+            }
             onClick={() => handleSearch()}
-            className={style.GoPrefButton}>
-              Go
+            className={style.GoPrefButton}
+          >
+            Go
           </button>
         </div>
-        <div id="dummyMap" style={{visibility: 'hidden'}}></div>
+        <div id='dummyMap' style={{ visibility: 'hidden' }}></div>
       </div>
     </>
   );
