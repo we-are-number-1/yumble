@@ -1,196 +1,204 @@
 .App {
-  text-align: center;
+    text-align: center;
 }
 
 .App-logo {
-  height: 40vmin;
-  pointer-events: none;
+    height: 40vmin;
+    pointer-events: none;
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+    .App-logo {
+        animation: App-logo-spin infinite 20s linear;
+    }
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+    background-color: #282c34;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
 }
 
 .App-link {
-  color: #61dafb;
+    color: #61dafb;
 }
 
 @keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 /* need to refactor below */
 
 /* Common */
 .Title {
-  position: absolute;
-  color: white;
-  font-family:monospace;
-  margin: 1vw;
-  font-size: 2rem;
+    position: absolute;
+    color: white;
+    font-family: monospace;
+    margin: 1vw;
+    font-size: 2rem;
 }
 
 .BackGroundImage {
-  background-image: url('./backgroundImg.jpeg');
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  width: 100vw;
-  height: 100vh;
-  position: absolute;
+    background-image: url('./backgroundImg.jpeg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    overflow: hidden;
 }
 
 .SmallBtn {
-  outline: none;
-  font-family: Comic Sans MS;
-  font-size: 2em;
-  border-radius: 1.5rem;
-  border-color: black;
-  border-width: 0.1rem;
-  cursor: pointer;
-  position: absolute;
-  bottom: 0;
-  align-self: flex-end;
-  right: 0;
-  margin: 1vw;
+    outline: none;
+    font-family: Comic Sans MS;
+    font-size: 2em;
+    border-radius: 1.5rem;
+    border-color: black;
+    border-width: 0.1rem;
+    cursor: pointer;
+    position: absolute;
+    bottom: 0;
+    align-self: flex-end;
+    right: 0;
+    margin: 1vw;
 }
 
 .SmallBtn:hover {
-  background: silver;
+    background: silver;
 }
 
 #copy {
-  cursor: pointer;
-  outline: none;
-  font-family: Comic Sans MS;
-  font-size: 2vw;
-  border-radius: 30px;
-  border-color: black;
-  border-width: 5px;
-  padding: 0vw 3vw 0vw 3vw;
-  background-color: rgb(35, 164, 224);
+    cursor: pointer;
+    outline: none;
+    font-family: Comic Sans MS;
+    font-size: 2vw;
+    border-radius: 30px;
+    border-color: black;
+    border-width: 5px;
+    padding: 0vw 3vw 0vw 3vw;
+    background-color: rgb(35, 164, 224);
 }
 
 #HelpButton {
-  padding: 1rem;
-  position: absolute;
-  bottom: 0;
-  align-self: flex-end;
-  right: 0;
-  margin: 1vw;
+    padding: 1rem;
+    position: absolute;
+    bottom: 0;
+    align-self: flex-end;
+    right: 0;
+    margin: 1vw;
+    height: 3.5em;
+    width: 6em;
 }
 
 #Help-start {
-  top: 30%;
-  width: 80%;
-  height: 45%;
-  margin: 0 auto;
+    top: 30%;
+    width: 80%;
+    height: 45%;
+    margin: 0 auto;
 }
 
 #CloseButton {
-  font-size: 1vw;
+    font-size: 1vw;
 }
 
 #BackButton {
-  padding: 1rem 2rem;
-  position: absolute;
-  bottom: 0;
-  align-self: flex-start;
-  left: 0;
-  margin: 1vw;
+    padding: 1rem 2rem;
+    position: absolute;
+    bottom: 0;
+    align-self: flex-start;
+    left: 0;
+    margin: 1vw;
+    height: 3.5em;
+    width: 6em;
+
 }
 
 .MakeCentre {
-  height: 80vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 #ExtraHeight {
-  height: 95vh;
+    height: 95vh;
 }
 
 /* Unique */
 
 /* StartPage */
 .StartTitle {
-  color: white;
-  font-size: 6rem;
-  font-family:monospace;
-  margin: 0;
+    color: white;
+    font-size: 6rem;
+    font-family: monospace;
+    margin: 0;
 }
 
 .BigBtn {
-  cursor: pointer;
-  font-size: 1rem;
+    cursor: pointer;
+    font-size: 1rem;
 }
 
 #CreateGroup_btn {
-  padding: 2rem 4rem;
-  margin-bottom: 1rem;
-  margin-top: 2vw;
+    padding: 2rem 4rem;
+    margin-bottom: 1rem;
+    margin-top: 2vw;
 }
 
 #JoinGroup_btn {
-  padding: 2rem 4rem;
-  margin-bottom: 1vw;
-  margin-top: 2vw;
+    padding: 2rem 4rem;
+    margin-bottom: 1vw;
+    margin-top: 2vw;
 }
 
 #GoogleMaps_btn {
-  background-color: #59d47c;
-  width: 350px;
-  font-size: 18pt;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  margin-top: 1em;
+    background-color: #59d47c;
+    width: 350px;
+    font-size: 18pt;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1em;
 }
 
 #GoogleMaps_btn:hover {
-  background: #c7ffd7;
+    background: #c7ffd7;
 }
 
 .GoButton {
-  cursor: pointer;
-  outline: none;
-  font-size: 2vw;
-  border-radius: 30px;
-  border-color: black;
-  border-width: 3px;
-  padding: .5rem 9.2rem !important;
-  background-color: rgb(35, 164, 224);
+    cursor: pointer;
+    outline: none;
+    font-size: 2vw;
+    border-radius: 30px;
+    border-color: black;
+    border-width: 3px;
+    padding: .5rem 9.2rem !important;
+    background-color: rgb(35, 164, 224);
 }
 
 .GoButton:hover {
-  background: cyan;
+    background: cyan;
 }
+
 #Card-field {
-  background-color: #6f7279;
-  color: white;
+    background-color: #6f7279;
+    color: white;
 }
+
 #Card-Header {
-  background-color: #414246;
-  color: white;
+    background-color: #414246;
+    color: white;
 }

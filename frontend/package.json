@@ -10,7 +10,6 @@
     "axios": "^0.21.1",
     "bootstrap": "^4.6.0",
     "chart.js": "^2.9.4",
-    "eslint": "^7.21.0",
     "eslint-config-google": "^0.14.0",
     "eslint-config-prettier": "^8.1.0",
     "eslint-plugin-react": "^7.22.0",
@@ -23,6 +22,7 @@
     "react-places-autocomplete": "^7.3.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "^4.0.3",
+    "react-tinder-card": "^1.4.0",
     "socket.io-client": "^3.1.2",
     "styled-components": "^5.2.1",
     "web-vitals": "^1.1.0"
@@ -57,6 +57,8 @@
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.5",
     "@testing-library/user-event": "^12.8.3",
+    "eslint": "^7.24.0",
+    "prettier": "2.2.1",
     "react-test-renderer": "^17.0.1",
     "socket.io": "^4.0.0"
   },

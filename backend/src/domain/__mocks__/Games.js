@@ -20,6 +20,7 @@ export class Games {
     return {
       session: {
         users: new Map(),
+        votes: new Map(),
         sessionId: sessionId,
         addUser: function( socket, name) {},
         addVote: jest.fn(),

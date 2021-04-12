@@ -12,9 +12,7 @@ let httpServerAddr;
 let ioServer;
 let socketServer;
 
-jest.mock('../../domain/Games');
 jest.mock('../../domain/models/Game');
-jest.mock('../../domain/models/SocketSession');
 
 /**
  * Setup WS & HTTP servers
@@ -55,13 +53,18 @@ beforeEach((done) => {
   });
 });
 
-test('vote test', (done) => {
-  games.newGame(null, new SocketSession(null, '1234', null), null);
+test('vote integration test', (done) => {
+  games.newGame(null, new SocketSession('123', '1234', null), null);
+
   const mock = jest.fn();
   mock.mockImplementation(() => {
+    expect(games.getGame('123').session.votes.get('restaurantName'))
+        .toEqual({votes: 1, location: 'auckland'});
     done();
   });
+
   SocketEvent.vote(socketServer, mock);
-  socket.emit('vote');
+
+  socket.emit('vote', '123', {name: 'restaurantName', location: 'auckland'});
 });
 

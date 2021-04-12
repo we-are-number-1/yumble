@@ -9,13 +9,26 @@ exports[`Location Helper snapshot testing with on/off trigger on 1`] = `
   <div
     className="Help-inner"
   >
-    <button
-      className="SmallBtn"
-      id="CloseButton"
-      onClick={[Function]}
+    <div
+      className="fade alert alert-info show"
+      role="alert"
     >
-      close
-    </button>
+      <div
+        className="alert-heading h4"
+      >
+        We are here to Help!
+      </div>
+      <p />
+      <button
+        className="btn btn-outline-danger"
+        disabled={false}
+        onClick={[Function]}
+        type="button"
+      >
+        close!
+      </button>
+      <hr />
+    </div>
   </div>
 </div>
 `;

@@ -1,3 +1,4 @@
+import Games from '../Games';
 
 /**
  * Main game controller for the application.
@@ -16,7 +17,7 @@ export class Game {
     this.roundInterval = session.preferences.roundInterval;
     this.round = 0;
     this.countdown = 4;
-    this.gameActive = true;
+    this.gameActive = false;
   }
 
   /**
@@ -25,6 +26,7 @@ export class Game {
    * 0 represents the start of the game (calling nextRound)
    */
   async startCountdown() {
+    this.gameActive = true;
     // Let all users in game start countdown
     this.io.to(this.session.sessionId).emit(
         'countdown', {
@@ -60,7 +62,7 @@ export class Game {
     }
 
 
-    for (let i=0; i < this.swipeDeck.length; i++) {
+    for (let i=1; i < this.swipeDeck.length; i++) {
       // Notifies users of round change
       this.io.to(this.session.sessionId).emit(
           'next_round',
@@ -85,5 +87,8 @@ export class Game {
     this.session.syncDb();
     await this.sleep(200);
     this.io.to(this.session.sessionId).emit('end_game');
+    // Remove game from active games list
+    Games.removeGame(this.session.sessionId);
+    console.log('removed game:', this.session.sessionId);
   }
 }
