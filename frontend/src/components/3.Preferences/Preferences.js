@@ -43,6 +43,8 @@ function Preferences() {
     axios.post('sessions', response).then((response) => {
       // ensure you only do it once
       setCode(response.data.truncCode);
+      // Host room once session has been created
+      SocketEvents.hostRoom(socketContext.socket, response.data.truncCode);
     });
   }, []);
 
@@ -60,6 +62,9 @@ function Preferences() {
     }
   }, [cardData]);
 
+  const goBack = () => {
+    SocketEvents.leaveRoom(socketContext.socket);
+  };
 
   const postPreference = () => {
     socketContext.setCode(code);
@@ -153,8 +158,9 @@ function Preferences() {
             </div>
           </div>
           <Link to='/'>
-            <Button variant='danger' size='lg' id='BackButton'>
-              Back
+            <Button variant='danger' size='lg' id='BackButton'
+              onClick={() => goBack()}>
+                Back
             </Button>
           </Link>
 
