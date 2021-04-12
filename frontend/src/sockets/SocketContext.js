@@ -14,6 +14,7 @@ function SocketContextProvider({children}) {
   const [preferences, setPreferences] = useState(null);
   const [code, setCode] = useState(null);
   const [host, setHost] = useState(false);
+  const [timer, setTimer] = useState(null);
 
   useEffect(() =>{
     setSocket(io());
@@ -32,6 +33,8 @@ function SocketContextProvider({children}) {
     setCode,
     host,
     setHost,
+    timer,
+    setTimer
   };
 
   return (

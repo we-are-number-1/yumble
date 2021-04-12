@@ -76,6 +76,7 @@ function ResultPage(props) {
         images: card.images,
         coords: card.coords,
       });
+
       const pieChart = {};
       pieChart.labels = [];
       const votes = [];

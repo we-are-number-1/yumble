@@ -1,7 +1,6 @@
 import {geocodeByAddress, getLatLng} from 'react-places-autocomplete';
 import {getRestaurantCards} from './getRestaurantCards';
 
-
 /**
  * @param  {String} value the string address value
  */
@@ -10,14 +9,15 @@ export async function getLocationCoordinates(value) {
   return await getLatLng(results[0]);
 }
 
-const google = window.google;
 let cards = null;
 /**
  * @param  {Object} coordinates Object with lat and lng values
  * @param  {number} radius The radius around the defined coordinates
+ * @param  {number} maxPriceLevel is the max value of the research result
  */
 export async function getNearbyRestaurants(coordinates,
-    radius) {
+    radius,
+    maxPriceLevel) {
   const pyrmont = new google.maps.LatLng(-33.8665433, 151.1956316);
   const dummyMap = new google.maps.Map(document.getElementById('dummyMap'), {
     center: pyrmont,
@@ -28,6 +28,7 @@ export async function getNearbyRestaurants(coordinates,
     location: {lat: coordinates.lat, lng: coordinates.lng},
     radius: radius,
     type: ['restaurant'], // Default value
+    maxPriceLevel: maxPriceLevel,
   };
   const service = new google.maps.places.PlacesService(dummyMap);
 

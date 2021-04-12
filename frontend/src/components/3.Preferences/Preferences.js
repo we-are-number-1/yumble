@@ -50,7 +50,7 @@ function Preferences() {
    *
    */
   async function handleSearch() {
-    const data = await getNearbyRestaurants(Coordinates, Distance);
+    const data = await getNearbyRestaurants(Coordinates, Distance, Price);
     setCardData(data);
   }
 
@@ -64,6 +64,7 @@ function Preferences() {
   const postPreference = () => {
     socketContext.setCode(code);
     socketContext.setHost(true);
+    socketContext.setTimer(Timer);
     SocketEvents.setRestaurants(socketContext.socket, code, cardData);
 
     const newPref = {
@@ -90,13 +91,6 @@ function Preferences() {
     SocketEvents.joinRoom(socketContext.socket,
         code, 'Host');
     setRedirect(true);
-    // {redirect && <Redirect to={
-    //   {
-    //     pathname: `/Lobby/${code}`,
-    //     state: cardData,
-    //   }
-    // }
-    // />}
   };
 
   return (
