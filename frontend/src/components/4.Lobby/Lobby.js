@@ -25,7 +25,7 @@ const Lobby = (props) => {
   const [cardData, setCardData] = useState(props.location.state);
 
   useEffect(() => {
-    setUsers(socketContext.users ? socketContext.users : []);
+    setUsers(socketContext.users ? socketContext.users : []); 
   }, [socketContext]);
 
   useEffect(() => {
