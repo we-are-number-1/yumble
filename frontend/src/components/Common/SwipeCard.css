@@ -36,6 +36,7 @@
   -webkit-text-shadow: 0 0 0.75em #444;
   -webkit-box-shadow: 0 0 0.5em rgba(0,0,0,0.5);
   -webkit-transform: rotate(-45deg) scale(0.75,1);
+  z-index: 5;
 }
 
 .CardOverlayText-Keen{
@@ -74,4 +75,21 @@
 #rating {
   font-size: 1.5em;
   text-align: end;
+}
+
+
+.Voted {
+  animation: animateIn 0.5s;
+}
+
+@keyframes animateIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }

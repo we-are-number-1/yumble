@@ -60,7 +60,7 @@ export class Game {
     }
 
 
-    for (let i=0; i < this.swipeDeck.length; i++) {
+    for (let i=1; i < this.swipeDeck.length; i++) {
       // Notifies users of round change
       this.io.to(this.session.sessionId).emit(
           'next_round',
