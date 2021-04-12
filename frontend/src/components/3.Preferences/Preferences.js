@@ -11,8 +11,13 @@ import axios from 'axios';
 import Button from 'react-bootstrap/esm/Button';
 
 /**
- *
+ * @param  {*}
  * @return {*}
+ * 
+ * Screen for host to set game preferences including: 
+ * - Range of restaurants in Kilometres
+ * - Time of each round of the game
+ * - Maximum price of restaurants from $ to $$$$
  */
 function Preferences() {
   const socketContext = useContext(SocketContext);
@@ -49,7 +54,8 @@ function Preferences() {
   }, []);
 
   /**
-   *
+   * Wait for database to return nearby Restaurants
+   * and create cards out of the Restaurants for the game.
    */
   async function handleSearch() {
     const data = await getNearbyRestaurants(Coordinates, Distance, Price);
@@ -62,6 +68,9 @@ function Preferences() {
     }
   }, [cardData]);
 
+  /**
+   * Leave room button, returns user to the landing page.
+   */
   const goBack = () => {
     SocketEvents.leaveRoom(socketContext.socket);
   };

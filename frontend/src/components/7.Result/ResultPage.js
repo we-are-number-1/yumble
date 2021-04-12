@@ -28,6 +28,14 @@ const rating = 4.0;
  * @param {*} props
  * @return {*}
  * TODO: remove hard-coded location for the winning restaurant coordinates
+ * 
+ * This is the result screen. The users in the game be shown the most voted restaurant
+ * that has won the game. Users can choose to see the vote breakdown, that is shown on a popup
+ * and represented as a pie chart.
+ * 
+ * If 0 restaurants were selected then another screen informing the user 
+ * to try again will be shown.
+ * 
  */
 function ResultPage(props) {
   // const socketContext = useContext(SocketContext);
@@ -64,6 +72,9 @@ function ResultPage(props) {
       });
   }, []);
 
+  // Creating the pie chart from the vote data.
+  // Each selected restaurant is shown as a legend and the overal voting 
+  // distribution is shown.
   useEffect(() => {
     if (cardList && cardList.length > 0) {
       setHasResult(true);
@@ -122,6 +133,9 @@ function ResultPage(props) {
     }
   }, [pie]);
 
+  // Will only show the winning restaurant if at least 1 restaurant was selected.
+  // If 0 restaurants were selected then another screen
+  // informing the user to try again will be shown.
   return (
     <>
       <h1 className="Title">yumble</h1>

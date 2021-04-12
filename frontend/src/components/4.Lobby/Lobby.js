@@ -6,6 +6,14 @@ import * as SocketEvents from '../../sockets';
 import '../Common/Help.css';
 import './Lobby.css';
 
+/**
+ * @param  {*} props
+ * @return {*}
+ * 
+ * The lobby screen of all players who have joined a specific game.
+ * Each player will be shown, and a player can see all other players waiting
+ * in the game room. Each player has an avatar.
+ */
 const Lobby = (props) => {
   const socketContext = useContext(SocketContext);
   const [ShareButtonPopup, setSharePopup] = useState(false);
@@ -40,7 +48,7 @@ const Lobby = (props) => {
   }, []);
 
   /**
-   *
+   * Move to the countdown screen to start the game.
    */
   function startCountdown() {
     // go to next page
@@ -48,6 +56,10 @@ const Lobby = (props) => {
   }
 
   const history = useHistory();
+
+  /**
+   * Return to the previous page
+   */
   const goBack = () => {
     SocketEvents.leaveRoom(socketContext.socket);
     history.goBack();
@@ -56,6 +68,7 @@ const Lobby = (props) => {
   let NumOfUsers = 0;
   NumOfUsers = users.length;
 
+  // generate the player lobby and give each player a avatar.
   const peopleList = () => {
     const peopleArray = [];
     const Food = 'Food';
@@ -71,6 +84,7 @@ const Lobby = (props) => {
     }
     return peopleArray;
   };
+
 
   return (
     <>
