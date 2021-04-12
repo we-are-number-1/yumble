@@ -52,7 +52,7 @@ beforeEach((done) => {
   });
 });
 
-test('start test', (done) => {
+test('start integration test', (done) => {
   games.newGame(null, {sessionId: '1234'}, null);
   const mock = jest.fn();
   mock.mockImplementation(() => {
@@ -61,4 +61,5 @@ test('start test', (done) => {
   SocketEvent.start(socketServer, mock);
   socket.emit('start', {sessionId: '1234'});
 });
+
 

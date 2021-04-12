@@ -12,8 +12,6 @@ let httpServerAddr;
 let ioServer;
 let socketServer;
 
-jest.mock('../../domain/Games');
-
 /**
  * Setup WS & HTTP servers
  */
@@ -53,14 +51,18 @@ beforeEach((done) => {
   });
 });
 
-test('set restaurants test', (done) => {
+test('set_restaurants  integration test', (done) => {
   const session = new SocketSession('1234', null, [{}, {}]);
-  games.newGame(null, session, {});
+  games.newGame(null, session, []);
+
   const mock = jest.fn();
   mock.mockImplementation(() => {
+    expect(games.getGame('1234').session.restaurants).toEqual([{}, {}]);
+    expect(games.getGame('1234').swipeDeck.length).toEqual(0);
     done();
   });
   SocketEvent.setRestaurants(socketServer, mock);
+
   socket.emit('set_restaurants', {sessionId: '1234', restaurants: [{}, {}]});
 });
 
