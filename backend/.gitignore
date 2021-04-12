@@ -1,8 +1,3 @@
 node_modules/
 .env
-<<<<<<< HEAD
-.env.example
 dist/
-=======
-dist/
->>>>>>> cf1995ca28f6c90fd0ee0889294ee3a623f5a779
