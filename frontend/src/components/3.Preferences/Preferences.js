@@ -134,8 +134,6 @@ function Preferences() {
             />
             <div className={style.SliderText}>Time: {Timer} Seconds</div>
           </div>
-          {/* <div>Cusinies</div> */}
-          {/* If you want to add a cusinie option in the preference list */}
           <div className={style.priceText}>
             Price
             <div>
@@ -168,12 +166,13 @@ function Preferences() {
           </Button>
           <Help trigger={ButtonPopup} setTrigger={setButtonPopup}>
             <p>
-              If you are visiting this page, you are likely here because you are
-              searching for a random sentence. Sometimes a random word just is
-              not enough, and that is where the random sentence generator comes
-              into play. By inputting the desired number, you can make a list of
-              as many random sentences as you want or need. Producing random
-              sentences can be helpful in a number of different ways.
+              Use this page to select a location, as well as a range from that
+              location to find restaurants from.<br></br>
+              Changing the timer duration will change how long you get to make a
+              decision on each restaurant.<br></br>
+              Use the price dropdown to set an upper price limit on the
+              restaurants that will be shown.<br></br>
+              Once you are happy with your preferences, click the Go button.
             </p>
           </Help>
           {redirect && (
