@@ -2,15 +2,14 @@ import express from 'express';
 import http from 'http';
 import path from 'path';
 import socketio from 'socket.io';
-import mongoose from 'mongoose';
 import games from './domain/Games';
 import {SocketSession} from './domain/models/SocketSession';
 import * as SocketEvents from './sockets';
+import * as mongo from './mongo/index';
 
 // Routes
 import sessionsRouteAPI from './routes/sessions';
 import keysRouteAPI from './routes/keys';
-
 
 const app = express();
 const server = http.createServer(app);
@@ -24,18 +23,9 @@ app.use(express.json());
 app.use('/sessions', sessionsRouteAPI);
 app.use('/api/keys', keysRouteAPI);
 
-const mongoUri = process.env.ATLAS_URI;
-mongoose.connect(
-    mongoUri,
-    {useNewUrlParser: true, useUnifiedTopology: true},
-    (err) => {
-      if (err) {
-        throw err;
-      } else {
-        console.log(`Successfully connected to MongoDB Atlas.`);
-      }
-    },
-);
+// MongoDB Setup
+mongo.connect();
+mongo.configureSessionIndexes();
 
 const PORT = process.env.PORT || 3001;
 
@@ -69,6 +59,7 @@ io.on('connection', (socket) => {
   SocketEvents.leaveRoom(socket, io, () => {});
   SocketEvents.setRestaurants(socket);
   SocketEvents.vote(socket);
+  SocketEvents.hostRoom(socket, io);
 });
 
 server.listen(PORT, () => {
