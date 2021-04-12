@@ -6,15 +6,23 @@ import './AutocompleteSearchBox.css';
 const AutocompleteSearchBox = ({ setLocation, sendCoordinates }) => {
   const [address, setAddress] = useState('');
 
+  const handleSetAddress = (value) => {
+    console.log('changed');
+    if (value) {
+      setAddress(value);
+    } else {
+      setAddress('');
+    }
+    // Reset coords every input to reset Go button
+    sendCoordinates({ lat: null, lng: null });
+  };
+
   const handleSelect = async (value) => {
-    console.log('Changing stuff: ', value);
     setAddress(value);
     setLocation(value);
-    if (value) {
-      console.log('there is stuff');
-      const result = await getLocationCoordinates(value);
-      sendCoordinates(result);
-    }
+    const result = await getLocationCoordinates(value);
+    console.log(result);
+    sendCoordinates(result);
   };
   const searchOptions = {
     location: new google.maps.LatLng(-36.8, 174.8),
@@ -24,7 +32,7 @@ const AutocompleteSearchBox = ({ setLocation, sendCoordinates }) => {
     <div>
       <PlacesAutocomplete
         value={address}
-        onChange={handleSelect}
+        onChange={handleSetAddress}
         onSelect={handleSelect}
         searchOptions={searchOptions}
       >

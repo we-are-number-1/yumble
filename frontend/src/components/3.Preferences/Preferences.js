@@ -196,7 +196,9 @@ function Preferences() {
           )}
           {/* need to check if an address is provided */}
           <button
-            disabled={!Location}
+            disabled={
+              !Location || Coordinates.lat === null || Coordinates.lng === null
+            }
             onClick={() => handleSearch()}
             className={style.GoPrefButton}
           >
