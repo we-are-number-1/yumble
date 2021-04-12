@@ -24,14 +24,19 @@ function SwipingPage(props) {
   const [CardPass, setCardPass] = useState(null);
   const [vote, setVote] = useState(undefined);
   const [showVoteButtons, setShowVoteButtons] = useState(true);
+  
   const [time, setTime] = useState(socketContext.countdown);
   const [Data, setData] = useState(CardData[0]);
   const [redirect, setRedirect] = useState(false);
   const swiperRef = useRef()
+  const newCard = useRef()
 
   useEffect(() => {
     document.title = 'Yes or No?';
-    setData(CardData.shift());
+    const card = CardData.shift();
+    newCard.current = card;
+
+    setData(card);
     SocketEvents.endGame(socketContext.socket, goNextPge);
     SocketEvents.nextRound(socketContext.socket, getNewCard);
     setCardPass(props.location.state[0].slice());
@@ -76,9 +81,30 @@ function SwipingPage(props) {
    * when the swipe event is raised. 
    * @param {*} direction 
    */
-  function handleSwipe() {
+  function handleSwipe(direction) {
     // hide vote buttons when swiped
-    setShowVoteButtons(false);
+    if(vote !== undefined) {
+      return;
+    }
+
+    switch(direction) {
+      case 'left':
+        setShowVoteButtons(false);
+        break;
+      case 'right':
+        SocketEvents.vote(socketContext.socket, socketContext.code, {
+          name: Data.name,
+          location: Data.location,
+          coords: Data.coords,
+          price: Data.price,
+          rating: Data.rating,
+          images: Data.images,
+        });
+
+        setShowVoteButtons(false);
+
+        break;
+    }
   }
 
   /**
@@ -89,7 +115,8 @@ function SwipingPage(props) {
    * @param {*} direction 
    */
   function handleCardLeftScreen(direction) {
-    if(vote !== undefined) {
+    // If we recieve a new card during the time that card is still being swiped then we ignore the previous swipe
+    if(newCard.current !== Data) {
       return;
     }
 
@@ -98,15 +125,6 @@ function SwipingPage(props) {
         setVote(false);
         break;
       case 'right':
-        SocketEvents.vote(socketContext.socket, socketContext.code, {
-          name: Data.name,
-          location: Data.location,
-          coords: Data.coords,
-          cuisine: Data.cuisine,
-          price: Data.price,
-          rating: Data.rating,
-          images: Data.images,
-        });
         setVote(true);
     }
   }
@@ -116,11 +134,14 @@ function SwipingPage(props) {
    * @return {void}
    */
   function getNewCard(timer) {
+
     setTime(socketContext.countdown);
     try {
       setVote(undefined)
       setShowVoteButtons(true)
       CardData.shift();
+      newCard.current = CardData[0];
+
       if (CardData[0] !== undefined) {
         setData(CardData[0]);
       }
@@ -158,10 +179,10 @@ function SwipingPage(props) {
               <div className={"CardOverlayText " + overlayStyling}>Voted: {vote === undefined ? "" : voteString}!</div>
               {
                 vote === undefined ? (
-                  <TinderCard className="ActionableSwipeCard" ref={swiperRef} onSwipe={handleSwipe} onCardLeftScreen={handleCardLeftScreen} preventSwipe={['top', 'bottom']}>
+                  <TinderCard className="ActionableSwipeCard" key={Data.name} ref={swiperRef} onSwipe={handleSwipe} onCardLeftScreen={handleCardLeftScreen} preventSwipe={['up', 'down']}>
                     <SwipeCard data={Data} />
                   </TinderCard>
-                ) : <SwipeCard vote ={vote} data={Data} />
+                ) : <SwipeCard vote={vote} data={Data} />
               }
             </Col>
             <Col

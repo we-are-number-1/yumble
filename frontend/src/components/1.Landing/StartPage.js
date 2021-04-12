@@ -21,7 +21,7 @@ function StartPage() {
         <div className='MakeCentre'>
           <h1 className='StartTitle'>
             yumble
-            <small className='text-muted' style={{'font-size': '2rem'}}>
+            <small className='text-muted' style={{'fontSize': '2rem'}}>
               2.0
             </small>
           </h1>

@@ -81,6 +81,7 @@
 .Voted {
   animation: animateIn 0.5s;
 }
+
 @keyframes animateIn {
   from {
     opacity: 0;
@@ -90,6 +91,5 @@
   to {
     opacity: 1;
     transform: scale(1);
-
   }
 }

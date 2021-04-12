@@ -16,7 +16,7 @@ Array [
           className="text-muted"
           style={
             Object {
-              "font-size": "2rem",
+              "fontSize": "2rem",
             }
           }
         >

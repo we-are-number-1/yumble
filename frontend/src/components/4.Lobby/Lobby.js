@@ -65,7 +65,7 @@ const Lobby = (props) => {
       const FoodID = Food.concat(i.toString());
       peopleArray.push(
           <div className={FoodID} id='FoodIcon' key={i.toString()}>
-            <text className='FoodIconText'>{users[i]}</text>
+            <div className='FoodIconText'>{users[i]}</div>
           </div>,
       );
     }
