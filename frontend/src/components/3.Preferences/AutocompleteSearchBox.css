@@ -1,22 +1,46 @@
 .SearchBox {
-    outline: none;
-    width: 100%;
-    height: 5vh;
-    border-radius: 0.5rem;
-    border: 3px solid #000000;
-    font-size: 1.2em;
-    margin-bottom: 1vw;
-    margin-top: 0vw;
-    position: relative;
-    right: 0.5vw;
-    background-color: #202020;
+  outline: none;
+  width: 100%;
+  height: 5vh;
+  border-radius: 0.5rem;
+  border: 3px solid #000000;
+  font-size: 1.2em;
+  margin-bottom: 1vw;
+  margin-top: 0vw;
+  position: relative;
+  right: 0.5vw;
+  background-color: #202020;
+  padding-left: 0.4em;
 }
 
 ::placeholder {
-    color: #A9A9A9;
+  color: #a9a9a9;
 }
 
-input, select, textarea {
-    color: white;
+input,
+select,
+textarea {
+  color: white;
 }
 
+.Suggestions {
+  border: 3px solid #000000;
+  border-radius: 0.5rem;
+  position: absolute;
+  z-index: 5;
+  width: 100%;
+  right: 0px;
+  left: -0.5vw;
+}
+
+.SuggestionItem {
+  padding: 0.5em 0 0.5em 0;
+  background-color: #202020;
+  color: #a9a9a9;
+  padding-left: 0.4em;
+}
+
+.ActiveSuggestion {
+  background-color: #a9a9a9;
+  color: #000000;
+}

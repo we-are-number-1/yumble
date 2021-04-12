@@ -13,6 +13,7 @@ function Help(props) {
       <div className='Help-inner'>
         <Alert variant='info'>
           <Alert.Heading>We are here to Help!</Alert.Heading>
+          <hr />
           <p>{props.children}</p>
           <Button
             variant='outline-danger'
@@ -20,7 +21,6 @@ function Help(props) {
           >
             close!
           </Button>
-          <hr />
         </Alert>
       </div>
     </div>
