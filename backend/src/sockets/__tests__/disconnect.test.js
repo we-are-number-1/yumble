@@ -1,6 +1,8 @@
 const io = require('socket.io-client');
 const http = require('http');
 const ioBack = require('socket.io');
+import games from '../../domain/Games';
+import {SocketSession} from '../../domain/models/SocketSession';
 
 import * as SocketEvent from '../index';
 
@@ -52,6 +54,24 @@ test('socket disconnect test', (done) => {
   mock.mockImplementation(() => {
     done();
   });
+  SocketEvent.disconnect(socket, ioServer, mock);
+  socket.close();
+});
+
+test('test if disconnect then remove user ', (done) => {
+  const session = new SocketSession('123', '1234', {roundInterval: 3}, null);
+  session.addUser(socket, 'sky');
+  games.newGame(null, session, null);
+
+  const mock = jest.fn();
+  mock.mockImplementation(() => {
+    done();
+  });
+
+  socket.on('new_user', ({users}) => {
+    expect(users).toEqual({users: []});
+  });
+
   SocketEvent.disconnect(socket, ioServer, mock);
   socket.close();
 });

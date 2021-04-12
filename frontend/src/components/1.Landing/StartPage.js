@@ -1,10 +1,12 @@
+import {Loader} from '@googlemaps/js-api-loader';
 import React, {useState, useEffect} from 'react';
 import {Link} from 'react-router-dom';
-import Button from 'react-bootstrap/Button';
-
-import Container from 'react-bootstrap/Container';
-import '../Common/Help.css';
+import getAPIKey from '../Common/getAPIKey';
 import Help from '../Common/Help';
+import '../Common/Help.css';
+import Button from 'react-bootstrap/Button';
+import Container from 'react-bootstrap/Container';
+
 /**
  *
  * @return {*}
@@ -13,7 +15,18 @@ function StartPage() {
   useEffect(() => {
     document.title = 'Yumble: Find places to eat, fast';
   }, []);
-
+  let apiKey;
+  // Get API key from API instead of writing here for security reasons.
+  getAPIKey(0).then((value) => {
+    apiKey = value;
+    const loader = new Loader({
+      apiKey: apiKey,
+      version: 'weekly',
+      libraries: ['places'],
+    });
+    loader.load().then(() => {
+    });
+  });
   const [ButtonPopup, setButtonPopup] = useState(false);
   return (
     <>
@@ -21,7 +34,7 @@ function StartPage() {
         <div className='MakeCentre'>
           <h1 className='StartTitle'>
             yumble
-            <small className='text-muted' style={{'font-size': '2rem'}}>
+            <small className='text-muted' style={{'fontSize': '2rem'}}>
               2.0
             </small>
           </h1>

@@ -3,42 +3,62 @@
 exports[`Start Page snapshot testing 1`] = `
 Array [
   <div
-    className="MakeCentre"
+    className="container"
   >
-    <h1
-      className="StartTitle"
+    <div
+      className="MakeCentre"
     >
-      yumble
-    </h1>
-    <a
-      href="/Preferences"
-      onClick={[Function]}
-    >
-      <button
-        className="BigBtn"
-        id="CreateGroup_btn"
+      <h1
+        className="StartTitle"
       >
-        Create group
-      </button>
-    </a>
-    <a
-      href="/JoinGroup"
-      onClick={[Function]}
-    >
-      <button
-        className="BigBtn"
-        id="JoinGroup_btn"
+        yumble
+        <small
+          className="text-muted"
+          style={
+            Object {
+              "fontSize": "2rem",
+            }
+          }
+        >
+          2.0
+        </small>
+      </h1>
+      <a
+        href="/Preferences"
+        onClick={[Function]}
       >
-        Join group
-      </button>
-    </a>
+        <button
+          className="BigBtn btn btn-warning btn-lg"
+          disabled={false}
+          id="CreateGroup_btn"
+          type="button"
+        >
+          Create group
+        </button>
+      </a>
+      <a
+        href="/JoinGroup"
+        onClick={[Function]}
+      >
+        <button
+          className="BigBtn btn btn-success btn-lg"
+          disabled={false}
+          id="JoinGroup_btn"
+          type="button"
+        >
+          Join group
+        </button>
+      </a>
+    </div>
   </div>,
   <button
-    className="SmallBtn"
+    className="btn btn-info btn-lg"
+    disabled={false}
     id="HelpButton"
     onClick={[Function]}
+    type="button"
   >
-    help?
+    Help
   </button>,
   "",
 ]

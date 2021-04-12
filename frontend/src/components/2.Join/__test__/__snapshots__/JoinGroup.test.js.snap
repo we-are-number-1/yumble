@@ -11,46 +11,59 @@ Array [
     className="MakeCentre"
   >
     <div
-      className="GroupCode_Box"
+      className="card"
+      id="Card-field"
     >
-      <div
-        className="AddMargin"
+      <h5
+        className="card-header"
+        id="Card-Header"
       >
-        Enter group code
-      </div>
-      <div>
-        <input
-          className="JoinGroup"
-          fontSize={3}
-          onChange={[Function]}
-          placeholder=" P6aPE"
-          type="text"
-        />
-      </div>
+        Join Game
+      </h5>
       <div
-        className="Username_Box"
+        className="card-body"
       >
         <div
-          className="AddMargin"
+          className="card-title h5"
         >
-            Enter Name
+          Enter Group Name
         </div>
-        <div>
+        <p
+          className="card-text"
+        >
           <input
             className="JoinGroup"
             fontSize={3}
             onChange={[Function]}
-            placeholder=" Alex"
+            placeholder=" P6aPE"
             type="text"
           />
+        </p>
+        <div
+          className="card-title h5"
+        >
+          Enter Your Name
         </div>
+        <p
+          className="card-text"
+        >
+          <input
+            className="JoinGroup"
+            fontSize={3}
+            onChange={[Function]}
+            placeholder="Alex"
+            type="text"
+          />
+        </p>
+        <button
+          className="GoButton btn btn-success"
+          disabled={false}
+          onClick={[Function]}
+          type="button"
+        >
+          Go
+        </button>
       </div>
-      <button
-        className="GoButton"
-        onClick={[Function]}
-      >
-        Go
-      </button>
     </div>
   </div>,
   <a
@@ -58,18 +71,22 @@ Array [
     onClick={[Function]}
   >
     <button
-      className="SmallBtn"
+      className="btn btn-danger btn-lg"
+      disabled={false}
       id="BackButton"
+      type="button"
     >
       Back
     </button>
   </a>,
   <button
-    className="SmallBtn"
+    className="btn btn-info btn-lg"
+    disabled={false}
     id="HelpButton"
     onClick={[Function]}
+    type="button"
   >
-    help?
+    Help
   </button>,
   "",
 ]

@@ -57,7 +57,7 @@ beforeEach((done) => {
 });
 
 
-test('test gam sequence', async (done) => {
+test('test game sequence', async (done) => {
   socket.on('end_game', () => {
     done();
   });

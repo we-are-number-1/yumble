@@ -1,6 +1,8 @@
 const io = require('socket.io-client');
 const http = require('http');
 const ioBack = require('socket.io');
+import games from '../../domain/Games';
+import {SocketSession} from '../../domain/models/SocketSession';
 
 import * as SocketEvent from '../index';
 
@@ -10,7 +12,7 @@ let httpServerAddr;
 let ioServer;
 let socketServer;
 
-jest.mock('../../domain/Games');
+// jest.mock('../../domain/Games');
 
 /**
  * Setup WS & HTTP servers
@@ -56,6 +58,25 @@ test('leave room test', (done) => {
   mock.mockImplementation(() => {
     done();
   });
+  SocketEvent.leaveRoom(socketServer, ioServer, mock);
+  socket.emit('leave_room');
+});
+
+test('test if remove user work correctly if leave room', (done) => {
+  const session = new SocketSession('123', '1234', {roundInterval: 3}, null);
+  session.addUser(socketServer, 'sky');
+  games.newGame(null, session, null);
+
+  const mock = jest.fn();
+  mock.mockImplementation(() => {
+    expect(games.getGame('123').session.users.size).toBe(0);
+    done();
+  });
+
+  socket.on('new_user', ({users}) => {
+    expect(users).toEqual({users: []});
+  });
+
   SocketEvent.leaveRoom(socketServer, ioServer, mock);
   socket.emit('leave_room');
 });

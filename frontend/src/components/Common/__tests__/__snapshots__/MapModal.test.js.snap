@@ -10,21 +10,35 @@ exports[`MapModal snapshot testing with/without defining the trigger 2`] = `
     className="Help-inner"
   >
     <div
-      id="map"
-      style={
-        Object {
-          "height": "400px",
-          "width": "600px",
-        }
-      }
-    />
-    <button
-      className="SmallBtn"
-      id="CloseButton"
-      onClick={[Function]}
+      className="fade overflow-hidden alert alert-info show"
+      role="alert"
     >
-      close
-    </button>
+      <div
+        className="text-center alert-heading h4"
+      >
+        Restaurant Location
+      </div>
+      <p>
+        <div
+          id="map"
+          style={
+            Object {
+              "height": "400px",
+              "width": "100%!important",
+            }
+          }
+        />
+      </p>
+      <button
+        className="btn btn-outline-danger"
+        disabled={false}
+        onClick={[Function]}
+        type="button"
+      >
+        close!
+      </button>
+      <hr />
+    </div>
   </div>
 </div>
 `;
