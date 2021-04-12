@@ -1,16 +1,20 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import PlacesAutocomplete from 'react-places-autocomplete';
-import {getLocationCoordinates} from '../Common/LocationHelper';
+import { getLocationCoordinates } from '../Common/LocationHelper';
 import './AutocompleteSearchBox.css';
 
-const AutocompleteSearchBox = ({setLocation, sendCoordinates}) => {
+const AutocompleteSearchBox = ({ setLocation, sendCoordinates }) => {
   const [address, setAddress] = useState('');
 
   const handleSelect = async (value) => {
+    console.log('Changing stuff: ', value);
     setAddress(value);
     setLocation(value);
-    const result = await getLocationCoordinates(value);
-    sendCoordinates(result);
+    if (value) {
+      console.log('there is stuff');
+      const result = await getLocationCoordinates(value);
+      sendCoordinates(result);
+    }
   };
   const searchOptions = {
     location: new google.maps.LatLng(-36.8, 174.8),
@@ -20,27 +24,27 @@ const AutocompleteSearchBox = ({setLocation, sendCoordinates}) => {
     <div>
       <PlacesAutocomplete
         value={address}
-        onChange={setAddress}
+        onChange={handleSelect}
         onSelect={handleSelect}
         searchOptions={searchOptions}
       >
-        {({getInputProps, suggestions, getSuggestionItemProps}) => (
-          <div>
+        {({ getInputProps, suggestions, getSuggestionItemProps }) => (
+          <div style={{ position: 'relative' }}>
             <input
               className={'SearchBox'}
-              {...getInputProps({placeholder:
-                ' Grafton, Auckland, New Zealand'})}
+              {...getInputProps({
+                placeholder: 'Grafton, Auckland, New Zealand',
+              })}
             />
-            <div>
+            <div className={suggestions.length > 0 ? 'Suggestions' : ''}>
               {suggestions.map((suggestion, index) => {
-                const style = {
-                  backgroundColor: suggestion.active ? '#41b6e6' : '#fff',
-                };
+                const classes = suggestion.active ? 'ActiveSuggestion' : '';
 
                 return (
                   <div
-                    {...getSuggestionItemProps(suggestion, {style})}
+                    {...getSuggestionItemProps(suggestion)}
                     key={index}
+                    className={`SuggestionItem ${classes}`}
                   >
                     {suggestion.description}
                   </div>
