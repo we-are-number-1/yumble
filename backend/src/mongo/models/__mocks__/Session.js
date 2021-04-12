@@ -4,7 +4,7 @@
  */
 class MockSession {
   /**
-    *
+    * Mock findOne of the {Session} mongo schema
     * @param {*} code
     * @return {*}
     */
