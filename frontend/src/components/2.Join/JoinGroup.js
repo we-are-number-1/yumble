@@ -41,13 +41,13 @@ function GroupCode() {
             Join Game
           </Card.Header>
           <Card.Body>
-            <Card.Title>Enter Group Name</Card.Title>
+            <Card.Title>Enter Lobby Code</Card.Title>
             <Card.Text>
               <UserInput
                 input
                 type='text'
                 inputType='joinGroup'
-                placeholder=' P6aPE'
+                placeholder='P6aPE'
                 fontSize={3}
                 onChange={(e) => socketContext.setCode(e.target.value)}
               ></UserInput>
