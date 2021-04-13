@@ -8,24 +8,28 @@ import Button from 'react-bootstrap/Button';
  *
  * @param {*} props
  * @return {*}
- * 
- * Popup for showing the map Component that represents the 
+ *
+ * Popup for showing the map Component that represents the
  * location of a specific Restaurant
- */ 
+ */
 function MapModal(props) {
   return props.trigger ? (
     <div className='Help'>
       <div className='Help-inner'>
-        <Alert variant='info' className="overflow-hidden">
-          <Alert.Heading className="text-center">Restaurant Location</Alert.Heading>
-          <p><Map restaurantLocations={props.restaurantLocation} /></p>
+        <Alert className='AlertContent'>
+          <Alert.Heading className='text-center'>
+            Restaurant Location
+          </Alert.Heading>
+          <hr />
+          <p>
+            <Map restaurantLocations={props.restaurantLocation} />
+          </p>
           <Button
             variant='outline-danger'
             onClick={() => props.setTrigger(false)}
           >
             close!
           </Button>
-          <hr />
         </Alert>
       </div>
     </div>

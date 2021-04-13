@@ -6,17 +6,20 @@ import Button from 'react-bootstrap/Button';
 /**
  * @param {*} props
  * @return {*}
- * 
- * Popup for showing the pie chart Component that represents the 
+ *
+ * Popup for showing the pie chart Component that represents the
  * data of all votes in a game
- * 
+ *
  */
- function Result(props) {
+function Result(props) {
   return props.trigger ? (
     <div className='Help'>
       <div className='Help-inner'>
-        <Alert variant='info'>
-          <Alert.Heading className="text-center"> Voting Choice Breakdown </Alert.Heading>
+        <Alert className='AlertContent'>
+          <Alert.Heading className='text-center'>
+            Voting Choice Breakdown
+          </Alert.Heading>
+          <hr />
           {props.children}
           <br></br>
           <Button
@@ -25,7 +28,6 @@ import Button from 'react-bootstrap/Button';
           >
             close!
           </Button>
-
         </Alert>
       </div>
     </div>
