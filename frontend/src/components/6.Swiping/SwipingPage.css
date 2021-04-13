@@ -1,6 +1,5 @@
 .TimeCounter {
   color: white;
-  font-family: Comic Sans MS;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -51,4 +50,3 @@
   z-index: 6;
   position: relative;
 }
-
