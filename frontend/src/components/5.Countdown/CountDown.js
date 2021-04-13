@@ -1,18 +1,17 @@
-import {Redirect} from 'react-router-dom';
-import React, {useState, useEffect, useContext} from 'react';
+import { Redirect } from 'react-router-dom';
+import React, { useState, useEffect, useContext } from 'react';
 import Help from '../Common/Help';
-import {SocketContext} from './../../sockets/SocketContext';
+import { SocketContext } from './../../sockets/SocketContext';
 import * as SocketEvents from './../../sockets';
 import '../Common/Help.css';
 
-
 /**
-  * @param  {*} props
-  * @return {*}
-  * 
-  * Intermission screen to countdown before the game begins.
-  * Counts down from 5.
-  */
+ * @param  {*} props
+ * @return {*}
+ *
+ * Intermission screen to countdown before the game begins.
+ * Counts down from 5.
+ */
 const CountDown = (props) => {
   const socketContext = useContext(SocketContext);
   const [ButtonPopup, setButtonPopup] = useState(false);
@@ -20,10 +19,14 @@ const CountDown = (props) => {
   const [data] = useState(props.location.state);
   const [redirect, setRedirect] = useState(false);
 
+  /**
+   * @param  {*} data
+   *
+   */
   function cb(data) {
     setRedirect(true);
-    socketContext.setCountdown(data.nextRoundTime/1000);
-  };
+    socketContext.setCountdown(data.nextRoundTime / 1000);
+  }
 
   useEffect(() => {
     document.title = 'Go!';
@@ -38,7 +41,6 @@ const CountDown = (props) => {
 
     return () => clearTimeout(t);
   }, [seconds]);
-
 
   return (
     <>
@@ -60,15 +62,12 @@ const CountDown = (props) => {
         help?
       </button>
       <Help trigger={ButtonPopup} setTrigger={setButtonPopup}>
-        <p className='MakeTextCentre'>
-          Please wait for the timer!
-        </p>
+        <p className='MakeTextCentre'>Please wait for the timer!</p>
       </Help>
-      {redirect ?
-        <Redirect to={{pathname: '/Swiping',
-          state: [data]}}
-        /> : null}
-      <div id="dummyMap" style={{visibility: 'hidden'}}></div>
+      {redirect ? (
+        <Redirect to={{ pathname: '/Swiping', state: [data] }} />
+      ) : null}
+      <div id='dummyMap' style={{ visibility: 'hidden' }}></div>
     </>
   );
 };
