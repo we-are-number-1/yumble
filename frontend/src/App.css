@@ -49,7 +49,8 @@
 }
 
 .BackGroundImage {
-  background-image: url('./backgroundImg.jpeg');
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url('./backgroundImg.jpeg');
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -161,7 +162,6 @@
 }
 
 #GoogleMaps_btn {
-  background-color: #59d47c;
   width: 350px;
   font-size: 18pt;
   display: flex;
@@ -169,10 +169,6 @@
   align-items: center;
   justify-content: center;
   margin-top: 1em;
-}
-
-#GoogleMaps_btn:hover {
-  background: #c7ffd7;
 }
 
 .GoButton {
