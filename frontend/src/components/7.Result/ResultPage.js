@@ -73,7 +73,7 @@ function ResultPage(props) {
   }, []);
 
   // Creating the pie chart from the vote data.
-  // Each selected restaurant is shown as a legend and the overal voting 
+  // Each selected restaurant is shown as a legend and the overall voting 
   // distribution is shown.
   useEffect(() => {
     if (cardList && cardList.length > 0) {

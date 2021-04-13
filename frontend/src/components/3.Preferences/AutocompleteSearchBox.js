@@ -50,7 +50,7 @@ const AutocompleteSearchBox = ({ setLocation, sendCoordinates }) => {
             <input
               className={'SearchBox'}
               {...getInputProps({
-                placeholder:' Street, City, Country',
+                placeholder:'Street, City, Country',
               })}
             />
             <div className={suggestions.length > 0 ? 'Suggestions' : ''}>
