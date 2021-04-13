@@ -8,6 +8,9 @@ import Button from 'react-bootstrap/Button';
  *
  * @param {*} props
  * @return {*}
+ * 
+ * Popup for showing the map Component that represents the 
+ * location of a specific Restaurant
  */ 
 function MapModal(props) {
   return props.trigger ? (

@@ -5,6 +5,14 @@ import {SocketContext} from './../../sockets/SocketContext';
 import * as SocketEvents from './../../sockets';
 import '../Common/Help.css';
 
+
+/**
+  * @param  {*} props
+  * @return {*}
+  * 
+  * Intermission screen to countdown before the game begins.
+  * Counts down from 5.
+  */
 const CountDown = (props) => {
   const socketContext = useContext(SocketContext);
   const [ButtonPopup, setButtonPopup] = useState(false);
@@ -12,10 +20,6 @@ const CountDown = (props) => {
   const [data] = useState(props.location.state);
   const [redirect, setRedirect] = useState(false);
 
-  /**
-   *
-   * @param {*} data
-   */
   function cb(data) {
     setRedirect(true);
     socketContext.setCountdown(data.nextRoundTime/1000);

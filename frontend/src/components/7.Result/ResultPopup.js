@@ -4,9 +4,12 @@ import Alert from 'react-bootstrap/Alert';
 import Button from 'react-bootstrap/Button';
 
 /**
- *
  * @param {*} props
  * @return {*}
+ * 
+ * Popup for showing the pie chart Component that represents the 
+ * data of all votes in a game
+ * 
  */
  function Result(props) {
   return props.trigger ? (

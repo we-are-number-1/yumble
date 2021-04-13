@@ -9,8 +9,12 @@ import '../Common/Help.css';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 /**
- *
+ * @param  {*}
  * @return {*}
+ * 
+ * Sreen for when a host user creates a new group.
+ * This screen displays the group code that should be shared to others 
+ * to join the specific game.
  */
 function GroupCode() {
   const socketContext = useContext(SocketContext);
@@ -27,6 +31,7 @@ function GroupCode() {
 
   // TODO needs to be used
   // just to 'use' the variable for now
+  // Includes the text areas to enter a group code, and input a name to play.
   return (
     <>
       <h1 className='Title'>yumble</h1>

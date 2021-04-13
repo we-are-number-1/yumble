@@ -6,6 +6,10 @@ import '../Common/Help.css';
  *
  * @param {*} param0
  * @return {*}
+ * 
+ * googles API map, that shows a map for a specific location.
+ * This will be used to show the location of a restaurant.
+ * 
  */
 function Map({restaurantLocations}) {
   const [map, setMap] = useState(null);

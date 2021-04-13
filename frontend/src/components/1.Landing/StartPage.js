@@ -8,15 +8,20 @@ import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 
 /**
- *
+ * @param  {*}
  * @return {*}
+ * 
+ * The landing page of Yumble. The user will be presented the option to create a
+ * new game as a host, or join an existing game.
+ * 
  */
 function StartPage() {
   useEffect(() => {
     document.title = 'Yumble: Find places to eat, fast';
   }, []);
   let apiKey;
-  // Get API key from API instead of writing here for security reasons.
+  // Get API key from API instead of writing within the code
+  // for security.
   getAPIKey(0).then((value) => {
     apiKey = value;
     const loader = new Loader({
@@ -27,6 +32,9 @@ function StartPage() {
     loader.load().then(() => {
     });
   });
+
+  // The start screen contains the Yumble title, the create group button 
+  // and the join group button components.
   const [ButtonPopup, setButtonPopup] = useState(false);
   return (
     <>
@@ -60,7 +68,7 @@ function StartPage() {
           </Link>
         </div>
       </Container>
-
+      
       <Button
         onClick={() => setButtonPopup(true)}
         variant='info'

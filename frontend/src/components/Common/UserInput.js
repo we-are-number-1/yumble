@@ -4,6 +4,10 @@ import './UserInput.css';
 /**
  * @param {*} props
  * @return {*}
+ * 
+ * This is the component to take user inputs.
+ * Acts as a textfield for users to inputs such as Name and Group Name.
+ * 
  */
 function UserInput(props) {
   let classname;

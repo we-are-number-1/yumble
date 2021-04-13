@@ -3,6 +3,10 @@ import {getRestaurantCards} from './getRestaurantCards';
 
 /**
  * @param  {String} value the string address value
+ * 
+ * This file is s helper file to get all Restaurant that will be used
+ * for the game. 
+ * The Restaurants near a location will be grabbed using Google's maps
  */
 export async function getLocationCoordinates(value) {
   const results = await geocodeByAddress(value);
