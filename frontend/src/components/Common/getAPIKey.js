@@ -3,6 +3,8 @@ import axios from 'axios';
 /**
  * @param {number} platform is 0 for google and 1 for forsquare
  * @return {number} returns either just a key or an array
+ * 
+ * File is used to get the google API key from the database for Yumble.
  */
 async function getAPIKey(platform) {
   if (platform === 0) {

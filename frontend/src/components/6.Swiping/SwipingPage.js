@@ -15,6 +15,13 @@ import TinderCard from 'react-tinder-card'
 /**
  * @param  {*} props
  * @return {*}
+ * 
+ * This is the game screen. The users in the game will vote for restaurants presented to them
+ * By pressing the keen or not keen buttons.
+ * Each restaurant is shown based on a timer configured in the preferences screen.
+ * 
+ * The game ends when the list of restaurants is finished.
+ * 
  */
 function SwipingPage(props) {
   const socketContext = useContext(SocketContext);

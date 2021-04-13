@@ -8,10 +8,15 @@ function cardClicked() {
 }
 
 /**
-*
-* @param {*} props
-* @return {*}
-**/
+ *
+ * @param {*} props
+ * @return {*}
+ * 
+ * This is the component used within the game.
+ * It is a visual presentation of the restaurant and its information.
+ * The user will use this component to determine their opinion on the restaurant.
+ * The Swipe card includes: an image, name, location, price ,rating
+ **/
 function SwipeCard(props) {
   const data = props.data;
   const name = data.name;

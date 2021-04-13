@@ -4,6 +4,10 @@ import {Pie} from 'react-chartjs-2';
 /**
  * @param {*} props
  * @return {*}
+ * 
+ * Component for representing the data of all votes in a game
+ * Presented as a pie chart.
+ * 
  */
 function DataVisual(props) {
   return (

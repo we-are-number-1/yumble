@@ -6,6 +6,10 @@ import Button from 'react-bootstrap/Button';
  *
  * @param {*} props
  * @return {*}
+ * 
+ * This is the help popup that is global across the Yumble application
+ * The popup will present useful guidance to the user.
+ * The help message is changed depending on which screen the help button is clicked from.
  */
 function Help(props) {
   return props.trigger ? (

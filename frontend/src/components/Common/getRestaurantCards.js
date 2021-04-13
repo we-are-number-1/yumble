@@ -2,6 +2,16 @@
 
 let dollar = "$";
 
+/**
+ * @param {String} restaurants
+ * @param {String} coords 
+ * @return {*} cards 
+ * 
+ * This creates the cards that will be used for the game.
+ * Each restaurant and its location will be used to generate a card that includes:
+ * name, location, price, image, rating, co-ordinates
+ * 
+ */
 export async function getRestaurantCards(restaurants, coords) {
   var cards = [];
 
