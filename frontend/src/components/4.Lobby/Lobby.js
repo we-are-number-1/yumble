@@ -77,7 +77,7 @@ const Lobby = (props) => {
     // Pushing users data into lobby dynamically
     for (let i = 0; i < NumOfUsers; i++) {
       peopleArray.push(
-        <Card className='cardMain'>
+        <Card key={i} className='cardMain'>
           <Card.Img
             variant='top'
             src={`avatars/${i}.png`}
