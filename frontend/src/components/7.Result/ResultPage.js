@@ -38,7 +38,6 @@ const rating = 4.0;
  *
  */
 function ResultPage(props) {
-  // const socketContext = useContext(SocketContext);
   const [ButtonPopup, setButtonPopup] = useState(false);
   const [MapPopup, setMapPopup] = useState(false);
   const [ResultPopup, setResultPopup] = useState(false);
