@@ -2,10 +2,10 @@
 .LobbyBox {
   outline: none;
   border: 0.25rem solid #000000;
-  background-color: white;
+  background-color: #404040;
   height: auto;
   width: 75vw;
-  border-radius: 2.2rem;
+  border-radius: 0.25em;
   font-size: 2vw;
   margin-bottom: 1vw;
   padding: 1rem;
@@ -27,24 +27,16 @@
 .ShareButton {
   cursor: pointer;
   outline: none;
-  font-size: 2vw;
-  border-radius: 2rem;
-  border-color: black;
-  border-width: 0.3rem;
-  padding: 0vw 1.5vw 0vw 1.5vw;
-  background-color: yellow;
+  font-size: 1.25rem !important;
+  padding: 1rem 2rem !important;
   position: absolute;
   top: 0;
   right: 0;
-  margin: 2vw;
-}
-
-.ShareButton:hover {
-  background: white;
+  margin: 1vw;
 }
 
 .FoodIconText {
-  font-size: 2.5vw;
+  font-size: 0.5em;
   display: block;
   position: relative;
   top: 5.7vw;
@@ -56,6 +48,8 @@
 
 .Inline_Block {
   display: inline-block;
+  color: white;
+  font-size: 2rem;
 }
 
 .MakeTextCentre {
@@ -71,16 +65,19 @@
 #container {
   width: 100%;
   text-align: center;
+  max-height: 55vh;
+  overflow: auto;
 }
 #container > div {
   width: calc(100% / 10);
+  min-width: 200px;
+  max-height: 500px;
   display: inline-block;
   vertical-align: top;
-  border: 1px solid black;
-  border-width: 0.15vw;
+  border: none;
   text-align: center;
   margin: 2.8%;
-  padding: 1.5vw;
+  padding: 0;
 }
 
 #FoodIcon {
@@ -88,33 +85,15 @@
   background-size: cover;
 }
 
-.Food0 {
-  background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxoYX3yYvMaw2juMh5k-pQdZxi3iqi3Z_FZvvkkC0riaG9x0I2&s');
+.cardImage {
+  max-height: 10vw;
+  min-height: 100px;
+  width: auto !important;
+  height: auto;
+  object-fit: cover;
 }
-.Food1 {
-  background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYs1mLqODqg2dVakwOfQP3ekQxMUgNpjt5BMuOGXC3WgPbsDit&s');
-}
-.Food2 {
-  background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSA8oOJICNTY5QwNpHakzDoCWf2pDYFeyGzTZ-ZVjXo70hNtjU&s');
-}
-.Food3 {
-  background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSEo8nBiDhQGhptSb2hhbWhKrawgLvpPX0q3DubgXgIX6NWqvw&s');
-}
-.Food4 {
-  background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwGzp3IpAdCzRuIOL7_kKZmlxgd-9AdpkYDOqFzJ7NSfaf6pYx&s');
-}
-.Food5 {
-  background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLSzQuKxwpH3K1wA5_OSZrkMJgYgXzDXaUzGSOHzyBQcapee8&s');
-}
-.Food6 {
-  background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQlhMYQDLeaxAlB0NtpM6FNGrJP-tsWHPvkn9DxLC2wAsTV6Sk&s');
-}
-.Food7 {
-  background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqHcWePcAGjIQSJS-0fa5dyMd-i2XwgtL0fZO_JrrJn_ePvAg&s');
-}
-.Food8 {
-  background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcREocbdf5t5MKIcglNisJaynTKmfZ0wJNUNxmJFJ1PT0kI95UT0&s');
-}
-.Food9 {
-  background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSY5ltOFSPRyOab_JHIWnhqmBjI3ORCmfWMfM8wittlLrg_MBI&s');
+
+.cardMain {
+  color: white !important;
+  background-color: transparent !important;
 }
