@@ -7,7 +7,6 @@ const AutocompleteSearchBox = ({ setLocation, sendCoordinates }) => {
   const [address, setAddress] = useState('');
 
   const handleSetAddress = (value) => {
-    console.log('changed');
     if (value) {
       setAddress(value);
     } else {
@@ -21,7 +20,6 @@ const AutocompleteSearchBox = ({ setLocation, sendCoordinates }) => {
     setAddress(value);
     setLocation(value);
     const result = await getLocationCoordinates(value);
-    console.log(result);
     sendCoordinates(result);
   };
   const searchOptions = {
