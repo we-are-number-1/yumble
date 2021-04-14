@@ -1,19 +1,19 @@
-import {Link, Redirect} from 'react-router-dom';
-import React, {useState, useEffect, useContext} from 'react';
+import { Link, Redirect } from 'react-router-dom';
+import React, { useState, useEffect, useContext } from 'react';
 import Help from '../Common/Help';
 import UserInput from '../Common/UserInput';
 import '../2.Join/JoinGroup.css';
 import * as SocketEvents from './../../sockets';
-import {SocketContext} from './../../sockets/SocketContext';
+import { SocketContext } from './../../sockets/SocketContext';
 import '../Common/Help.css';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 /**
- * @param  {*}
+ *
  * @return {*}
- * 
- * Sreen for when a host user creates a new group.
- * This screen displays the group code that should be shared to others 
+ *
+ * Screen for when a host user creates a new group.
+ * This screen displays the group code that should be shared to others
  * to join the specific game.
  */
 function GroupCode() {
@@ -37,15 +37,17 @@ function GroupCode() {
       <h1 className='Title'>yumble</h1>
       <div className='MakeCentre'>
         <Card id='Card-field'>
-          <Card.Header as="h5" id='Card-Header'>Join Game</Card.Header>
+          <Card.Header as='h5' id='Card-Header'>
+            Join Game
+          </Card.Header>
           <Card.Body>
-            <Card.Title>Enter Group Name</Card.Title>
+            <Card.Title>Enter Lobby Code</Card.Title>
             <Card.Text>
               <UserInput
                 input
                 type='text'
                 inputType='joinGroup'
-                placeholder=' P6aPE'
+                placeholder='P6aPE'
                 fontSize={3}
                 onChange={(e) => socketContext.setCode(e.target.value)}
               ></UserInput>
@@ -63,17 +65,22 @@ function GroupCode() {
               ></UserInput>
             </Card.Text>
             <Button
-              onClick={() => SocketEvents.joinRoom(socketContext.socket,
-                  socketContext.code, name)}
+              onClick={() =>
+                SocketEvents.joinRoom(
+                  socketContext.socket,
+                  socketContext.code,
+                  name
+                )
+              }
               className='GoButton'
-              variant='success'>
-                  Go
+              variant='success'
+            >
+              Go
             </Button>
           </Card.Body>
         </Card>
-        {!invalidCode && <Redirect
-          to={`/Lobby/${socketContext.code}`} />}
-          {skip && <Redirect to={'/Result'} />}
+        {!invalidCode && <Redirect to={`/Lobby/${socketContext.code}`} />}
+        {skip && <Redirect to={'/Result'} />}
       </div>
       <Link to='/'>
         <Button variant='danger' size='lg' id='BackButton'>
@@ -84,14 +91,14 @@ function GroupCode() {
         onClick={() => setButtonPopup(true)}
         variant='info'
         size='lg'
-        id='HelpButton'>
+        id='HelpButton'
+      >
         Help
       </Button>
       <Help trigger={ButtonPopup} setTrigger={setButtonPopup}>
         <p>
-          Copy the <mark>group code</mark> from the person who created the
-          lobby and paste it
-          down here.
+          Copy the <mark>group code</mark> from the person who created the lobby
+          and paste it down here.
         </p>
       </Help>
     </>

@@ -1,44 +1,43 @@
-import React, { useState, useEffect, useContext } from "react";
-import Help from "../Common/Help";
-import "../Common/Help.css";
+import React, { useState, useEffect, useContext } from 'react';
+import Help from '../Common/Help';
+import '../Common/Help.css';
 
-import Icon from "../Common/MapsPinpoint";
+import Icon from '../Common/MapsPinpoint';
 
-import axios from "axios";
+import axios from 'axios';
 
-import { SocketContext } from "../../sockets/SocketContext";
-import { Container, Row, Col } from "react-bootstrap";
-import Card from "react-bootstrap/Card";
-import Button from "react-bootstrap/Button";
-import SwipeCard from "../Common/SwipeCard";
+import { SocketContext } from '../../sockets/SocketContext';
+import { Container, Row, Col } from 'react-bootstrap';
+import Card from 'react-bootstrap/Card';
+import Button from 'react-bootstrap/Button';
+import SwipeCard from '../Common/SwipeCard';
 
-import MapModal from "../Common/MapModal";
-import "./ResultPage.css";
+import MapModal from '../Common/MapModal';
+import './ResultPage.css';
 
-import DataVisual from "./DataVisual";
-import Result from "./ResultPopup";
+import DataVisual from './DataVisual';
+import Result from './ResultPopup';
 
 // Dummy data, should be retrieved by sockets
-const name = "Lonestar";
-const location = "Botany";
-const price = "$$$";
+const name = 'Lonestar';
+const location = 'Botany';
+const price = '$$$';
 const rating = 4.0;
 
 /**
  * @param {*} props
  * @return {*}
  * TODO: remove hard-coded location for the winning restaurant coordinates
- * 
+ *
  * This is the result screen. The users in the game be shown the most voted restaurant
  * that has won the game. Users can choose to see the vote breakdown, that is shown on a popup
  * and represented as a pie chart.
- * 
- * If 0 restaurants were selected then another screen informing the user 
+ *
+ * If 0 restaurants were selected then another screen informing the user
  * to try again will be shown.
- * 
+ *
  */
 function ResultPage(props) {
-  // const socketContext = useContext(SocketContext);
   const [ButtonPopup, setButtonPopup] = useState(false);
   const [MapPopup, setMapPopup] = useState(false);
   const [ResultPopup, setResultPopup] = useState(false);
@@ -56,9 +55,9 @@ function ResultPage(props) {
   const [hasResult, setHasResult] = useState(props.hasResult);
 
   useEffect(() => {
-    document.title = "Time to go eat!";
+    document.title = 'Time to go eat!';
     axios
-      .get("sessions/" + socketContext.code)
+      .get('sessions/' + socketContext.code)
       .then((res) => {
         setHasResult(false);
         setCardList(
@@ -73,7 +72,7 @@ function ResultPage(props) {
   }, []);
 
   // Creating the pie chart from the vote data.
-  // Each selected restaurant is shown as a legend and the overall voting 
+  // Each selected restaurant is shown as a legend and the overall voting
   // distribution is shown.
   useEffect(() => {
     if (cardList && cardList.length > 0) {
@@ -102,23 +101,24 @@ function ResultPage(props) {
 
       pieChart.datasets = [
         {
-          label: "# of Votes",
+          label: '# of Votes',
           data: votes,
+          defaultFontColor: '#fff',
           borderColor: [
-            "rgba(255, 99, 132, 0.2)",
-            "rgba(54, 162, 235, 0.2)",
-            "rgba(255, 206, 86, 0.2)",
-            "rgba(75, 192, 192, 0.2)",
-            "rgba(153, 102, 255, 0.2)",
-            "rgba(255, 159, 64, 0.2)",
+            'rgba(255, 99, 132, 0.2)',
+            'rgba(54, 162, 235, 0.2)',
+            'rgba(255, 206, 86, 0.2)',
+            'rgba(75, 192, 192, 0.2)',
+            'rgba(153, 102, 255, 0.2)',
+            'rgba(255, 159, 64, 0.2)',
           ],
           backgroundColor: [
-            "rgba(255, 99, 132, 1)",
-            "rgba(54, 162, 235, 1)",
-            "rgba(255, 206, 86, 1)",
-            "rgba(75, 192, 192, 1)",
-            "rgba(153, 102, 255, 1)",
-            "rgba(255, 159, 64, 1)",
+            'rgba(255, 99, 132, 1)',
+            'rgba(54, 162, 235, 1)',
+            'rgba(255, 206, 86, 1)',
+            'rgba(75, 192, 192, 1)',
+            'rgba(153, 102, 255, 1)',
+            'rgba(255, 159, 64, 1)',
           ],
           borderWidth: 1,
         },
@@ -138,15 +138,15 @@ function ResultPage(props) {
   // informing the user to try again will be shown.
   return (
     <>
-      <h1 className="Title">yumble</h1>
-      <Container style={{ marginTop: "4em", maxHeight: "100%" }}>
-        <div className="MakeCentre">
+      <h1 className='Title'>yumble</h1>
+      <Container style={{ marginTop: '4em', maxHeight: '100%' }}>
+        <div className='MakeCentre'>
           <Card
-            id="Card-field"
+            id='Card-field'
             style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
             }}
           >
             {hasResult === undefined ? (
@@ -154,84 +154,85 @@ function ResultPage(props) {
             ) : hasResult === true ? (
               <>
                 <Card.Header
-                  as="h5"
-                  id="Card-Header"
-                  className="text-center"
-                  style={{ width: "100%" }}
+                  as='h2'
+                  id='Card-Header'
+                  className='text-center'
+                  style={{ width: '100%' }}
                 >
-                  {" "}
+                  {' '}
                   Top Choice
                 </Card.Header>
                 <Card.Body
                   style={{
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
                   }}
                 >
                   <Row
                     lg={12}
                     style={{
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      maxWidth: "95%",
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      maxWidth: '95%',
                     }}
-                    className="justify-content-md-center"
+                    className='justify-content-md-center'
                   >
                     <Col
                       style={{
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        maxHeight: "50%",
-                        marginTop: "1em",
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        maxHeight: '50%',
+                        marginTop: '1em',
                       }}
                     >
-                      <SwipeCard class="text-primary" data={data} />
+                      <SwipeCard class='text-primary' data={data} />
                     </Col>
                     <Col
                       style={{
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
                       }}
                       lg={12}
                     >
                       <Button
                         onClick={() => setResultPopup(true)}
-                        className="BigBtn"
-                        id="Resultbutton"
+                        className='BigBtn'
+                        id='Resultbutton'
                         style={{
-                          fontSize: "2em",
-                          marginTop: "0.1em",
-                          marginBottom: "0.1em",
+                          fontSize: '2em',
+                          marginTop: '0.1em',
+                          marginBottom: '0.1em',
                         }}
+                        variant='success'
                       >
                         See results
                       </Button>
 
                       <Result trigger={ResultPopup} setTrigger={setResultPopup}>
                         {chart && (
-                          <DataVisual className="DataVisual" data={pie} />
+                          <DataVisual className='DataVisual' data={pie} />
                         )}
-                        <hr />
                       </Result>
                     </Col>
 
                     <Col
                       style={{
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
                       }}
                       lg={12}
                     >
                       <Button
                         onClick={() => setMapPopup(true)}
-                        className="BigBtn"
-                        id="GoogleMaps_btn"
-                        style={{ marginTop: "0.15em", marginBottom: "0.15em" }}
+                        className='BigBtn'
+                        id='GoogleMaps_btn'
+                        style={{ marginTop: '0.15em', marginBottom: '0.15em' }}
+                        variant='warning'
                       >
                         View on Google Maps
                         <Icon />
@@ -269,8 +270,13 @@ function ResultPage(props) {
           </Card>
         </div>
       </Container>
-      <Button onClick={() => setButtonPopup(true)} id="HelpButton">
-        help?
+      <Button
+        onClick={() => setButtonPopup(true)}
+        variant='info'
+        size='lg'
+        id='HelpButton'
+      >
+        Help
       </Button>
       <Help trigger={ButtonPopup} setTrigger={setButtonPopup}>
         <p>

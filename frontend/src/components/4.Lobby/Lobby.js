@@ -1,15 +1,17 @@
-import {useHistory, Redirect} from 'react-router-dom';
-import React, {useState, useEffect, useContext} from 'react';
+import { useHistory, Redirect, Link } from 'react-router-dom';
+import React, { useState, useEffect, useContext } from 'react';
 import Help from '../Common/Help';
-import {SocketContext} from '../../sockets/SocketContext';
+import { SocketContext } from '../../sockets/SocketContext';
 import * as SocketEvents from '../../sockets';
 import '../Common/Help.css';
 import './Lobby.css';
+import Card from 'react-bootstrap/Card';
+import Button from 'react-bootstrap/esm/Button';
 
 /**
  * @param  {*} props
  * @return {*}
- * 
+ *
  * The lobby screen of all players who have joined a specific game.
  * Each player will be shown, and a player can see all other players waiting
  * in the game room. Each player has an avatar.
@@ -17,15 +19,15 @@ import './Lobby.css';
 const Lobby = (props) => {
   const socketContext = useContext(SocketContext);
   const [ShareButtonPopup, setSharePopup] = useState(false);
-  const [helpButtonPopup, setHelpButtonPopup] = useState(false);
+  const [ButtonPopup, setButtonPopup] = useState(false);
   const [users, setUsers] = useState(
-    socketContext.users ? socketContext.users : [],
+    socketContext.users ? socketContext.users : []
   );
   const [redirect, setRedirect] = useState(false);
   const [cardData, setCardData] = useState(props.location.state);
 
   useEffect(() => {
-    setUsers(socketContext.users ? socketContext.users : []); 
+    setUsers(socketContext.users ? socketContext.users : []);
   }, [socketContext]);
 
   useEffect(() => {
@@ -33,14 +35,11 @@ const Lobby = (props) => {
     SocketEvents.newUser(socketContext.socket, (data) => {
       socketContext.setUsers(data.users);
     });
-    SocketEvents.updateRestaurants(
-        socketContext.socket,
-        (data) => {
-          if (data) {
-            setCardData(data);
-          }
-        },
-    );
+    SocketEvents.updateRestaurants(socketContext.socket, (data) => {
+      if (data) {
+        setCardData(data);
+      }
+    });
     SocketEvents.countdown(socketContext.socket, (count) => {
       socketContext.setCountdown(count);
       startCountdown();
@@ -74,25 +73,29 @@ const Lobby = (props) => {
   // generate the player lobby and give each player a avatar.
   const peopleList = () => {
     const peopleArray = [];
-    const Food = 'Food';
 
     // Pushing users data into lobby dynamically
     for (let i = 0; i < NumOfUsers; i++) {
-      const FoodID = Food.concat(i.toString());
       peopleArray.push(
-          <div className={FoodID} id='FoodIcon' key={i.toString()}>
-            <div className='FoodIconText'>{users[i]}</div>
-          </div>,
+        <Card className='cardMain'>
+          <Card.Img
+            variant='top'
+            src={`avatars/${i}.png`}
+            className='cardImage'
+          />
+          <Card.Body>
+            <Card.Title>{users[i]}</Card.Title>
+          </Card.Body>
+        </Card>
       );
     }
     return peopleArray;
   };
 
-
   return (
     <>
       <h1 className='Title'>yumble</h1>
-      <div className='MakeCentre'>
+      <div className='MakeCentre' style={{ height: '100vh' }}>
         <div className={'LobbyBox'}>
           <div>
             <div className='Inline_Block'>Group code: {socketContext.code}</div>
@@ -114,30 +117,45 @@ const Lobby = (props) => {
         {redirect && (
           <Redirect to={{ pathname: '/CountDown', state: cardData }} />
         )}
-        <button onClick={() => setSharePopup(true)} className='ShareButton'>
+        <Button
+          variant='success'
+          onClick={() => setSharePopup(true)}
+          className='ShareButton'
+        >
           Share
-        </button>
-        <Help trigger={ShareButtonPopup} setTrigger={setSharePopup}>
+        </Button>
+        <Help
+          trigger={ShareButtonPopup}
+          setTrigger={setSharePopup}
+          isShare={true}
+        >
           <div className='MakeTextCentre'>
-            <h2> Share the group code:</h2>
-            <h1><b>{socketContext.code}</b></h1> 
-            <a href={'https://yumble.xyz'}>
-            https://yumble.xyz
-            </a>
+            <h1>
+              <b>{socketContext.code}</b>
+            </h1>
+            <a href={'https://yumble.xyz'}>https://yumble.xyz</a>
           </div>
         </Help>
-        <button className='SmallBtn' id='BackButton' onClick={() => goBack()}>
-          Back
-        </button>
-        <button
-          onClick={() => setHelpButtonPopup(true)}
-          className='SmallBtn'
+        <Link to='/'>
+          <Button
+            variant='danger'
+            size='lg'
+            id='BackButton'
+            onClick={() => goBack()}
+          >
+            Back
+          </Button>
+        </Link>
+        <Button
+          onClick={() => setButtonPopup(true)}
+          variant='info'
+          size='lg'
           id='HelpButton'
         >
-          help?
-        </button>
+          Help
+        </Button>
 
-        <Help trigger={helpButtonPopup} setTrigger={setHelpButtonPopup}>
+        <Help trigger={ButtonPopup} setTrigger={setButtonPopup}>
           <p className='MakeTextCentre'>
             This is the lobby room, please wait a moment for the lobby to be
             filled.

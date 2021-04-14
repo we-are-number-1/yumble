@@ -4,14 +4,13 @@ import './SwipeCard.css';
 /**
  * @return {void}
  */
-function cardClicked() {
-}
+function cardClicked() {}
 
 /**
  *
  * @param {*} props
  * @return {*}
- * 
+ *
  * This is the component used within the game.
  * It is a visual presentation of the restaurant and its information.
  * The user will use this component to determine their opinion on the restaurant.
@@ -28,16 +27,28 @@ function SwipeCard(props) {
 
   const voteStyle = vote === undefined ? '' : 'Voted';
   return (
-    <div className={`SwipeCard ${voteStyle}`} onClick = {cardClicked}>
-      <div className="CardImage">
-        <img className="CardImage" src={images} ></img>
+    <div className={`SwipeCard ${voteStyle}`} onClick={cardClicked}>
+      <div className='CardImage'>
+        <img className='CardImage' src={images}></img>
       </div>
       <div>
-        <p className='PlaceDetails' id = 'name'> {name} </p>
+        <p className='PlaceDetails' id='name'>
+          {' '}
+          {name}{' '}
+        </p>
       </div>
-      <p className='PlaceDetails' id= 'location'> {location} </p>
-      <p className='PlaceDetails' id = 'price'> {price} </p>
-      <p className='PlaceDetails' id = 'rating'> {rating} Rating</p>
+      <p className='PlaceDetails' id='location'>
+        {' '}
+        {location}{' '}
+      </p>
+      <p className='PlaceDetails' id='price'>
+        {' '}
+        {price}{' '}
+      </p>
+      <p className='PlaceDetails' id='rating'>
+        {' '}
+        {rating} Rating
+      </p>
     </div>
   );
 }
