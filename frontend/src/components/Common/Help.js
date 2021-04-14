@@ -16,7 +16,9 @@ function Help(props) {
     <div className='Help'>
       <div className='Help-inner'>
         <Alert className='AlertContent'>
-          <Alert.Heading>We are here to Help!</Alert.Heading>
+          <Alert.Heading>
+            {props.isShare ? 'Share the group code' : 'We are here to Help!'}
+          </Alert.Heading>
           <hr />
           <p>{props.children}</p>
           <Button

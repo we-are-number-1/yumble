@@ -92,7 +92,7 @@ const Lobby = (props) => {
   return (
     <>
       <h1 className='Title'>yumble</h1>
-      <div className='MakeCentre'>
+      <div className='MakeCentre' style={{ height: '100vh' }}>
         <div className={'LobbyBox'}>
           <div>
             <div className='Inline_Block'>Group code: {socketContext.code}</div>
@@ -121,9 +121,12 @@ const Lobby = (props) => {
         >
           Share
         </Button>
-        <Help trigger={ShareButtonPopup} setTrigger={setSharePopup}>
+        <Help
+          trigger={ShareButtonPopup}
+          setTrigger={setSharePopup}
+          isShare={true}
+        >
           <div className='MakeTextCentre'>
-            <h2> Share the group code:</h2>
             <h1>
               <b>{socketContext.code}</b>
             </h1>
