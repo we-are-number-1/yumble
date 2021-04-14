@@ -4,6 +4,7 @@ import Help from '../Common/Help';
 import { SocketContext } from './../../sockets/SocketContext';
 import * as SocketEvents from './../../sockets';
 import '../Common/Help.css';
+import Button from 'react-bootstrap/esm/Button';
 
 /**
  * @param  {*} props
@@ -54,13 +55,14 @@ const CountDown = (props) => {
           )}
         </div>
       </div>
-      <button
+      <Button
         onClick={() => setButtonPopup(true)}
-        className='SmallBtn'
+        variant='info'
+        size='lg'
         id='HelpButton'
       >
-        help?
-      </button>
+        Help
+      </Button>
       <Help trigger={ButtonPopup} setTrigger={setButtonPopup}>
         <p className='MakeTextCentre'>Please wait for the timer!</p>
       </Help>
