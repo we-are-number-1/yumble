@@ -44,6 +44,9 @@ const Lobby = (props) => {
       socketContext.setCountdown(count);
       startCountdown();
     });
+    SocketEvents.nextRound(socketContext.socket, (data) => {
+      socketContext.setTimer(data.nextRoundTime/1000);
+    })
   }, []);
 
   /**
@@ -74,7 +77,7 @@ const Lobby = (props) => {
     // Pushing users data into lobby dynamically
     for (let i = 0; i < NumOfUsers; i++) {
       peopleArray.push(
-        <Card className='cardMain'>
+        <Card key={i} className='cardMain'>
           <Card.Img
             variant='top'
             src={`avatars/${i}.png`}
