@@ -2,22 +2,28 @@
 .SwipeCard {
   outline: none;
   border: 5px solid #000000;
-  background-color: white;
+  background-color: #404040;
+  color: white;
+  max-width: 550px;
   cursor: pointer;
   height: 100%;
   width: 100%;
-  font-family: Comic Sans MS;
-  border-radius: 30px;
+  border-radius: 1rem;
   padding: 1.5vw;
   padding-bottom: 0.5vw;
   margin-bottom: 0.5vw;
+  user-select: none;
 }
 
 .CardImage {
+  margin: auto;
   height: 30vh;
   width: 30vh;
-  margin: auto;
-  border-radius: 30px;
+  border-radius: 1rem;
+}
+
+.CardImage img {
+  border: 3px solid #000000;
 }
 
 .CardOverlayText {
@@ -28,28 +34,28 @@
   position: absolute;
   text-align: center;
   visibility: hidden;
-  letter-spacing: .06em;
+  letter-spacing: 0.06em;
   padding: 0.5em 5em 0.4em 5em;
   text-shadow: 0 0 0.75em #444;
-  box-shadow: 0 0 0.5em rgba(0,0,0,0.5);
+  box-shadow: 0 0 0.5em rgba(0, 0, 0, 0.5);
   font: bold 1em monospace, Arial, Sans-Serif;
   -webkit-text-shadow: 0 0 0.75em #444;
-  -webkit-box-shadow: 0 0 0.5em rgba(0,0,0,0.5);
-  -webkit-transform: rotate(-45deg) scale(0.75,1);
+  -webkit-box-shadow: 0 0 0.5em rgba(0, 0, 0, 0.5);
+  -webkit-transform: rotate(-45deg) scale(0.75, 1);
   z-index: 5;
 }
 
-.CardOverlayText-Keen{
+.CardOverlayText-Keen {
   visibility: visible;
   background-color: green;
 }
 
-.CardOverlayText-Nope{
+.CardOverlayText-Nope {
   visibility: visible;
-  background-color: #A00;
+  background-color: #a00;
 }
 
-.no-overflow{
+.no-overflow {
   overflow: hidden;
 }
 
@@ -76,7 +82,6 @@
   font-size: 1.5em;
   text-align: end;
 }
-
 
 .Voted {
   animation: animateIn 0.5s;

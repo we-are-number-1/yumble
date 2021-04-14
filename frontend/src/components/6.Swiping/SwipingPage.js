@@ -1,27 +1,28 @@
 import React, { useEffect, useState, useContext, useRef } from 'react';
 import { Redirect } from 'react-router-dom';
 
-import { SocketContext } from './../../sockets/SocketContext';
-import * as SocketEvents from './../../sockets';
+import { SocketContext } from '../../sockets/SocketContext';
+import * as SocketEvents from '../../sockets';
 import Help from '../Common/Help';
 import '../Common/Help.css';
 import MapModal from '../Common/MapModal';
 import Icon from '../Common/MapsPinpoint';
-import '../6.Swiping/SwipingPage.css';
+import './SwipingPage.css';
 import SwipeCard from '../Common/SwipeCard';
 import { Container, Row, Col } from 'react-bootstrap';
-import TinderCard from 'react-tinder-card'
+import TinderCard from 'react-tinder-card';
+import Button from 'react-bootstrap/esm/Button';
 
 /**
  * @param  {*} props
  * @return {*}
- * 
+ *
  * This is the game screen. The users in the game will vote for restaurants presented to them
  * By pressing the keen or not keen buttons.
  * Each restaurant is shown based on a timer configured in the preferences screen.
- * 
+ *
  * The game ends when the list of restaurants is finished.
- * 
+ *
  */
 function SwipingPage(props) {
   const socketContext = useContext(SocketContext);
@@ -34,8 +35,8 @@ function SwipingPage(props) {
   const [showVoteButtons, setShowVoteButtons] = useState(true);
   const [Data, setData] = useState(CardData[0]);
   const [redirect, setRedirect] = useState(false);
-  const swiperRef = useRef()
-  const newCard = useRef()
+  const swiperRef = useRef();
+  const newCard = useRef();
 
   useEffect(() => {
     document.title = 'Yes or No?';
@@ -68,7 +69,7 @@ function SwipingPage(props) {
    * Swipes card right when clicking yes
    */
   function clickedYes() {
-    if(swiperRef.current) {
+    if (swiperRef.current) {
       swiperRef.current.swipe('right');
     }
   }
@@ -77,23 +78,23 @@ function SwipingPage(props) {
    * Swipes card left when clicking no
    */
   function clickedNo() {
-    if(swiperRef.current) {
+    if (swiperRef.current) {
       swiperRef.current.swipe('left');
     }
   }
-  
+
   /**
-   * This is required as handleCardLeftScreen is called much later than 
-   * when the swipe event is raised. 
-   * @param {*} direction 
+   * This is required as handleCardLeftScreen is called much later than
+   * when the swipe event is raised.
+   * @param {*} direction
    */
   function handleSwipe(direction) {
     // hide vote buttons when swiped
-    if(vote !== undefined) {
+    if (vote !== undefined) {
       return;
     }
 
-    switch(direction) {
+    switch (direction) {
       case 'left':
         setShowVoteButtons(false);
         break;
@@ -118,15 +119,15 @@ function SwipingPage(props) {
    * If left, then vote is set to false
    * If right, then vote is set to right and send to server.
    * If already voted, then do nothing
-   * @param {*} direction 
+   * @param {*} direction
    */
   function handleCardLeftScreen(direction) {
     // If we recieve a new card during the time that card is still being swiped then we ignore the previous swipe
-    if(newCard.current !== Data) {
+    if (newCard.current !== Data) {
       return;
     }
 
-    switch(direction) {
+    switch (direction) {
       case 'left':
         setVote(false);
         break;
@@ -142,8 +143,8 @@ function SwipingPage(props) {
   function getNewCard() {
     setTime(socketContext.timer);
     try {
-      setVote(undefined)
-      setShowVoteButtons(true)
+      setVote(undefined);
+      setShowVoteButtons(true);
       CardData.shift();
       newCard.current = CardData[0];
 
@@ -153,13 +154,13 @@ function SwipingPage(props) {
     } catch (error) {}
   }
 
-  let voteString = ""
-  let overlayStyling = ""
-  if (vote !== undefined){
-    voteString = vote ? "Keen" : "Nope"
-    overlayStyling = vote ? "CardOverlayText-Keen" : "CardOverlayText-Nope"
+  let voteString = '';
+  let overlayStyling = '';
+  if (vote !== undefined) {
+    voteString = vote ? 'Keen' : 'Nope';
+    overlayStyling = vote ? 'CardOverlayText-Keen' : 'CardOverlayText-Nope';
   }
-  const buttonHideStyling = showVoteButtons ? "" : "hide";
+  const buttonHideStyling = showVoteButtons ? '' : 'hide';
   return (
     <>
       <h1 className='Title'> yumble</h1>
@@ -181,14 +182,23 @@ function SwipingPage(props) {
               </button>
             </Col>
             <Col lg={6} xs={{ span: 12, order: 1 }} md={{ span: 8, order: 2 }}>
-              <div className={"CardOverlayText " + overlayStyling}>Voted: {vote === undefined ? "" : voteString}!</div>
-              {
-                vote === undefined ? (
-                  <TinderCard className="ActionableSwipeCard" key={Data.name} ref={swiperRef} onSwipe={handleSwipe} onCardLeftScreen={handleCardLeftScreen} preventSwipe={['up', 'down']}>
-                    <SwipeCard data={Data} />
-                  </TinderCard>
-                ) : <SwipeCard vote={vote} data={Data} />
-              }
+              <div className={'CardOverlayText ' + overlayStyling}>
+                Voted: {vote === undefined ? '' : voteString}!
+              </div>
+              {vote === undefined ? (
+                <TinderCard
+                  className='ActionableSwipeCard'
+                  key={Data.name}
+                  ref={swiperRef}
+                  onSwipe={handleSwipe}
+                  onCardLeftScreen={handleCardLeftScreen}
+                  preventSwipe={['up', 'down']}
+                >
+                  <SwipeCard data={Data} />
+                </TinderCard>
+              ) : (
+                <SwipeCard vote={vote} data={Data} />
+              )}
             </Col>
             <Col
               xs={{ span: 6, order: 3 }}
@@ -196,7 +206,9 @@ function SwipingPage(props) {
               className='btnColumn'
             >
               <button
-                className={"YesOrNoButton align-items-center " + buttonHideStyling}
+                className={
+                  'YesOrNoButton align-items-center ' + buttonHideStyling
+                }
                 id='YesButton'
                 onClick={clickedYes}
               >
@@ -206,27 +218,29 @@ function SwipingPage(props) {
           </Row>
         </Container>
 
-        <button
+        <Button
           onClick={() => setMapPopup(true)}
           className='BigBtn'
+          variant='warning'
           id='GoogleMaps_btn'
         >
           View on Google Maps
           <Icon />
-        </button>
+        </Button>
         <MapModal
           trigger={MapPopup}
           setTrigger={setMapPopup}
           restaurantLocation={Data.coords}
         />
       </div>
-      <button
+      <Button
         onClick={() => setButtonPopup(true)}
-        className='SmallBtn'
+        variant='info'
+        size='lg'
         id='HelpButton'
       >
-        help?
-      </button>
+        Help
+      </Button>
       <Help trigger={ButtonPopup} setTrigger={setButtonPopup}>
         <p>
           - Click Keen! if you are keen to potentially visit this restaurant

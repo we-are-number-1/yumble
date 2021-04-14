@@ -11,10 +11,10 @@ import axios from 'axios';
 import Button from 'react-bootstrap/esm/Button';
 
 /**
- * @param  {*}
+ *
  * @return {*}
- * 
- * Screen for host to set game preferences including: 
+ *
+ * Screen for host to set game preferences including:
  * - Range of restaurants in Kilometres
  * - Time of each round of the game
  * - Maximum price of restaurants from $ to $$$$

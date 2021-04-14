@@ -1,6 +1,6 @@
-import {Loader} from '@googlemaps/js-api-loader';
-import React, {useState, useEffect} from 'react';
-import {Link} from 'react-router-dom';
+import { Loader } from '@googlemaps/js-api-loader';
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import getAPIKey from '../Common/getAPIKey';
 import Help from '../Common/Help';
 import '../Common/Help.css';
@@ -8,12 +8,12 @@ import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 
 /**
- * @param  {*}
+ *
  * @return {*}
- * 
+ *
  * The landing page of Yumble. The user will be presented the option to create a
  * new game as a host, or join an existing game.
- * 
+ *
  */
 function StartPage() {
   useEffect(() => {
@@ -29,11 +29,10 @@ function StartPage() {
       version: 'weekly',
       libraries: ['places'],
     });
-    loader.load().then(() => {
-    });
+    loader.load().then(() => {});
   });
 
-  // The start screen contains the Yumble title, the create group button 
+  // The start screen contains the Yumble title, the create group button
   // and the join group button components.
   const [ButtonPopup, setButtonPopup] = useState(false);
   return (
@@ -42,7 +41,7 @@ function StartPage() {
         <div className='MakeCentre'>
           <h1 className='StartTitle'>
             yumble
-            <small className='text-muted' style={{'fontSize': '2rem'}}>
+            <small className='text-muted' style={{ fontSize: '2rem' }}>
               2.0
             </small>
           </h1>
@@ -68,7 +67,7 @@ function StartPage() {
           </Link>
         </div>
       </Container>
-      
+
       <Button
         onClick={() => setButtonPopup(true)}
         variant='info'

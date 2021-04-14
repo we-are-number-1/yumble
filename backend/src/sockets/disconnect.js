@@ -10,9 +10,7 @@ export function disconnect(socket, io, cb) {
     const activeGames = games.getGames();
 
     activeGames.forEach((game) => {
-      const users = Array.from(game.session.users.values()).map(
-          (e) => e.name,
-      );
+      let users = Array.from(game.session.users.values()).map((e) => e.name);
       // Indicate host has left
       if (game.session.hostSocket && socket.id === game.session.hostSocket.id) {
         game.session.hostSocket = null;
@@ -21,7 +19,7 @@ export function disconnect(socket, io, cb) {
       if (game.session.removeUser(socket)) {
         // Recalculate users as have been changed
         users = Array.from(game.session.users.values()).map((e) => e.name);
-        io.to(game.session.sessionId).emit('new_user', {users: users});
+        io.to(game.session.sessionId).emit('new_user', { users: users });
       }
       // Remove the game if the game hasnt started and no one is in the lobby
       // To prevent a memory leak

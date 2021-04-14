@@ -1,4 +1,3 @@
-
 .Help {
   position: fixed;
   top: 0;
@@ -19,4 +18,22 @@
   max-width: 640px;
   border-radius: 30px;
   border-color: black;
+}
+
+.AlertContent {
+  background-color: #404040;
+  border: 4px solid #000 !important;
+  border-radius: 0.25rem !important;
+}
+
+.AlertContent p {
+  color: azure;
+}
+
+.alert-heading {
+  color: azure !important;
+}
+
+.AlertContent hr {
+  border-color: azure;
 }
