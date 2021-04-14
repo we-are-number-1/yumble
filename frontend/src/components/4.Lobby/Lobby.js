@@ -37,6 +37,9 @@ const Lobby = (props) => {
       socketContext.setCountdown(count);
       startCountdown();
     });
+    SocketEvents.nextRound(socketContext.socket, (data) => {
+      socketContext.setTimer(data.nextRoundTime/1000);
+    })
   }, []);
 
   /**
