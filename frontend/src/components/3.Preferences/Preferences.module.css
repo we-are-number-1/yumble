@@ -60,6 +60,13 @@
   color: burlywood;
 }
 
+.ErrorMessage {
+  text-align: center;
+  margin-bottom: 1vw;
+  font-size: 1em;
+  color:orangered;
+}
+
 .GoPrefButton {
   cursor: pointer;
   outline: none;
@@ -68,7 +75,7 @@
   border-width: 3px;
   padding: 0vw 28.8vw;
   background-color: #ff9900;
-  margin-top: 5vh;
+  margin-top: 2vh;
   border-radius: 0.5rem;
   text-align: center;
   position: relative;

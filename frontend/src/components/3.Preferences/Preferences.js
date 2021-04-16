@@ -118,10 +118,11 @@ function Preferences() {
       <div className='MakeCentre'>
         <div className={style.MakePreference}>
           <h1 className={style.LocationTitle}>Location</h1>
-          <div onChange={() => setShowErrorMessage(false)}>
+          <div>
             <AutocompleteSearchBox
               setLocation={setLocation}
               sendCoordinates={setCoordinates}
+              setShowErrorMessage={setShowErrorMessage}
             />
           </div>
           <div>
@@ -174,9 +175,10 @@ function Preferences() {
               </select>
             </div>
           </div>
-          { showErrorMessage ? <p className={style.SliderText} style={{ marginTop:'3em', visibility: 'visible | hidden'}} >There are no available restaurants, please try again.</p>: null }
-
-
+          <p className={style.ErrorMessage} style={{marginTop: '1em', visibility: showErrorMessage ? 'visible' : 'hidden'}}>
+            Please widen your search.
+          </p>
+                
           <Link to='/'>
             <Button
               variant='danger'

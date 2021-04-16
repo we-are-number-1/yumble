@@ -11,10 +11,11 @@ import './AutocompleteSearchBox.css';
  * The user will begin typing an area, and a dropdown will appear 
  * showing the most applicable locations based on google maps search.
  */
-const AutocompleteSearchBox = ({ setLocation, sendCoordinates }) => {
+const AutocompleteSearchBox = ({ setLocation, sendCoordinates, setShowErrorMessage }) => {
   const [address, setAddress] = useState('');
 
   const handleSetAddress = (value) => {
+    setShowErrorMessage(false);
     if (value) {
       setAddress(value);
     } else {
