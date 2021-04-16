@@ -30,6 +30,7 @@ function Preferences() {
   const [Coordinates, setCoordinates] = useState({ lat: null, lng: null });
   const [redirect, setRedirect] = useState(false);
   const [cardData, setCardData] = useState(null);
+  const [showErrorMessage, setShowErrorMessage] = useState(false);
 
   // default post syntax
   const [response] = useState({
@@ -59,7 +60,13 @@ function Preferences() {
    */
   async function handleSearch() {
     const data = await getNearbyRestaurants(Coordinates, Distance, Price);
-    setCardData(data);
+    if (data === 'ZERO_RESULTS'){
+      // the case that no Restaurant results are returned
+      setShowErrorMessage(true);
+    } else {
+      setShowErrorMessage(false);
+      setCardData(data);
+    }
   }
 
   useEffect(() => {
@@ -111,7 +118,7 @@ function Preferences() {
       <div className='MakeCentre'>
         <div className={style.MakePreference}>
           <h1 className={style.LocationTitle}>Location</h1>
-          <div>
+          <div onChange={() => setShowErrorMessage(false)}>
             <AutocompleteSearchBox
               setLocation={setLocation}
               sendCoordinates={setCoordinates}
@@ -122,6 +129,7 @@ function Preferences() {
             <input
               className={style.Slider}
               onChange={(e) => {
+                setShowErrorMessage(false);
                 setDistance(e.target.value);
               }}
               type='range'
@@ -139,6 +147,7 @@ function Preferences() {
             <input
               className={style.Slider}
               onChange={(e) => {
+                setShowErrorMessage(false);
                 setTimer(e.target.value);
               }}
               type='range'
@@ -165,6 +174,9 @@ function Preferences() {
               </select>
             </div>
           </div>
+          { showErrorMessage ? <p className={style.SliderText} style={{ marginTop:'3em', visibility: 'visible | hidden'}} >There are no available restaurants, please try again.</p>: null }
+
+
           <Link to='/'>
             <Button
               variant='danger'

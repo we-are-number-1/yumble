@@ -6,7 +6,7 @@ import {getRestaurantCards} from './getRestaurantCards';
  * 
  * This file is s helper file to get all Restaurant that will be used
  * for the game. 
- * The Restaurants near a location will be grabbed using Google's maps
+ * The Restaurants near a location will be grabbed using Google's maps.
  */
 export async function getLocationCoordinates(value) {
   const results = await geocodeByAddress(value);
@@ -42,6 +42,9 @@ export async function getNearbyRestaurants(coordinates,
         cards = await getRestaurantCards(results,
             parseLatAndLng(results));
         resolve(cards);
+      } else {
+        // Solves the case that no Restaurants get returned
+        resolve(status);  
       }
     },
     ));
