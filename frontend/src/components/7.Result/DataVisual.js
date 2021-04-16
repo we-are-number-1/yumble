@@ -10,9 +10,18 @@ import {Pie} from 'react-chartjs-2';
  * 
  */
 function DataVisual(props) {
+  // Modify the options prop to change the chart legend's font colour
+  const chartOptions = {
+    legend: {
+      display: true,
+      labels: {
+        fontColor: 'rgb(255, 255, 255)',
+      },
+    },
+  };
   return (
     <div className='PieChart'>
-      <Pie data={props.data}/>
+      <Pie data={props.data} options={chartOptions} />
     </div>
   );
 }
