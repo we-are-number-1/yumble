@@ -176,14 +176,14 @@
   outline: none;
   font-size: 2rem;
   border-radius: 0.5rem;
-  border-color: black;
-  border-width: 3px;
+  border-color: black !important;
+  border-width: 3px !important;
   padding: 0.5rem 9.2rem !important;
-  background-color: #ff9900;
+  background-color: #ff9900 !important;
 }
 
 .GoButton:hover {
-  background: #ffcc00;
+  background: #ffcc00 !important;
 }
 
 #Card-field {
