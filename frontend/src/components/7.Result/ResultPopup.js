@@ -13,20 +13,15 @@ import Button from 'react-bootstrap/Button';
  */
 function Result(props) {
   return props.trigger ? (
-    <div className='Help'>
-      <div className='Help-inner'>
-        <Alert className='AlertContent'>
-          <Alert.Heading className='text-center'>
-            Voting Choice Breakdown
-          </Alert.Heading>
+    <div className="Help">
+      <div className="Help-inner">
+        <Alert className="AlertContent">
+          <Alert.Heading className="text-center">Voting Choice Breakdown</Alert.Heading>
           <hr />
           {props.children}
           <br></br>
-          <Button
-            variant='outline-danger'
-            onClick={() => props.setTrigger(false)}
-          >
-            close!
+          <Button variant="outline-danger" onClick={() => props.setTrigger(false)}>
+            Close
           </Button>
         </Alert>
       </div>

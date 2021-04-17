@@ -14,21 +14,16 @@ import Button from 'react-bootstrap/Button';
  */
 function MapModal(props) {
   return props.trigger ? (
-    <div className='Help'>
-      <div className='Help-inner'>
-        <Alert className='AlertContent'>
-          <Alert.Heading className='text-center'>
-            Restaurant Location
-          </Alert.Heading>
+    <div className="Help">
+      <div className="Help-inner">
+        <Alert className="AlertContent">
+          <Alert.Heading className="text-center">Restaurant Location</Alert.Heading>
           <hr />
           <p>
             <Map restaurantLocations={props.restaurantLocation} />
           </p>
-          <Button
-            variant='outline-danger'
-            onClick={() => props.setTrigger(false)}
-          >
-            close!
+          <Button variant="outline-danger" style={{ marginTop: '1em' }} onClick={() => props.setTrigger(false)}>
+            Close
           </Button>
         </Alert>
       </div>
