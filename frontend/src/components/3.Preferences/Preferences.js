@@ -114,8 +114,8 @@ function Preferences() {
 
   return (
     <>
-      <h1 className='Title'>yumble</h1>
-      <div className='MakeCentre'>
+      <h1 className="Title">yumble</h1>
+      <div className="MakeCentre">
         <div className={style.MakePreference}>
           <h1 className={style.LocationTitle}>Location</h1>
           <div>
@@ -133,15 +133,13 @@ function Preferences() {
                 setShowErrorMessage(false);
                 setDistance(e.target.value);
               }}
-              type='range'
-              min='1000'
-              max='20000'
-              step='1000'
+              type="range"
+              min="1000"
+              max="20000"
+              step="1000"
               defaultValue={Distance}
             />
-            <div className={style.SliderText}>
-              Distance: {Distance / 1000} KM
-            </div>
+            <div className={style.SliderText}>Distance: {Distance / 1000} KM</div>
           </div>
           <div>
             <div className={style.RangeAndTimerText}>Timer</div>
@@ -151,16 +149,16 @@ function Preferences() {
                 setShowErrorMessage(false);
                 setTimer(e.target.value);
               }}
-              type='range'
-              min='5'
-              max='60'
-              step='5'
+              type="range"
+              min="5"
+              max="60"
+              step="5"
               defaultValue={Timer}
             />
             <div className={style.SliderText}>Time: {Timer} Seconds</div>
           </div>
           <div className={style.priceText}>
-            Price
+            Max Price
             <div>
               <select
                 className={style.pricePicker}
@@ -169,10 +167,10 @@ function Preferences() {
                   setPrice(e.target.value);                 
                 }}
               >
-                <option value='1'>$</option>
-                <option value='2'>$ $</option>
-                <option value='3'>$ $ $</option>
-                <option value='4'>$ $ $ $</option>
+                <option value="1">$</option>
+                <option value="2">$ $</option>
+                <option value="3">$ $ $</option>
+                <option value="4">$ $ $ $</option>
               </select>
             </div>
           </div>
@@ -192,22 +190,15 @@ function Preferences() {
             </Button>
           </Link>
 
-          <Button
-            onClick={() => setButtonPopup(true)}
-            variant='info'
-            size='lg'
-            id='HelpButton'
-          >
+          <Button onClick={() => setButtonPopup(true)} variant="info" size="lg" id="HelpButton">
             Help
           </Button>
           <Help trigger={ButtonPopup} setTrigger={setButtonPopup}>
             <p>
-              Use this page to select a location, as well as a range from that
-              location to find restaurants from.<br></br>
-              Changing the timer duration will change how long you get to make a
-              decision on each restaurant.<br></br>
-              Use the price dropdown to set an upper price limit on the
-              restaurants that will be shown.<br></br>
+              Use this page to select a location, as well as a range from that location to find restaurants from.
+              <br></br>
+              Changing the timer duration will change how long you get to make a decision on each restaurant.<br></br>
+              Use the price dropdown to set an upper price limit on the restaurants that will be shown.<br></br>
               Once you are happy with your preferences, click the Go button.
             </p>
           </Help>
@@ -221,18 +212,17 @@ function Preferences() {
           )}
           {/* need to check if an address is provided */}
           <button
-            disabled={
-              !Location || Coordinates.lat === null || Coordinates.lng === null
-            }
+            disabled={!Location || Coordinates.lat === null || Coordinates.lng === null}
             onClick={() => handleSearch()}
             className={style.GoPrefButton}
           >
             Go
           </button>
         </div>
-        <div id='dummyMap' style={{ visibility: 'hidden' }}></div>
+        <div id="dummyMap" style={{ visibility: 'hidden' }}></div>
       </div>
     </>
   );
 }
+
 export default Preferences;

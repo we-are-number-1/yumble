@@ -6,9 +6,9 @@ import './AutocompleteSearchBox.css';
 /**
  * @param  {*} {setLocation, sendCoordinates}
  * @return {*}
- * 
+ *
  * This is the component for the restaurant location search box.
- * The user will begin typing an area, and a dropdown will appear 
+ * The user will begin typing an area, and a dropdown will appear
  * showing the most applicable locations based on google maps search.
  */
 const AutocompleteSearchBox = ({ setLocation, sendCoordinates, setShowErrorMessage }) => {
@@ -49,7 +49,7 @@ const AutocompleteSearchBox = ({ setLocation, sendCoordinates, setShowErrorMessa
             <input
               className={'SearchBox'}
               {...getInputProps({
-                placeholder:'Street, City, Country',
+                placeholder: 'Street, City, Country',
               })}
             />
             <div className={suggestions.length > 0 ? 'Suggestions' : ''}>
@@ -57,11 +57,7 @@ const AutocompleteSearchBox = ({ setLocation, sendCoordinates, setShowErrorMessa
                 const classes = suggestion.active ? 'ActiveSuggestion' : '';
 
                 return (
-                  <div
-                    {...getSuggestionItemProps(suggestion)}
-                    key={index}
-                    className={`SuggestionItem ${classes}`}
-                  >
+                  <div {...getSuggestionItemProps(suggestion)} key={index} className={`SuggestionItem ${classes}`}>
                     {suggestion.description}
                   </div>
                 );
