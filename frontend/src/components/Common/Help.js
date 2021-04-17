@@ -13,13 +13,17 @@ import Button from 'react-bootstrap/Button';
  */
 function Help(props) {
   return props.trigger ? (
-    <div className="Help">
-      <div className="Help-inner">
-        <Alert className="AlertContent">
-          <Alert.Heading>{props.isShare ? 'Share the group code' : 'We are here to Help!'}</Alert.Heading>
+    <div className='Help'>
+      <div className='Help-inner'>
+        <Alert className='AlertContent'>
+          <Alert.Heading>
+            {props.isShare ? 'Share the group code' : 'We are here to Help!'}
+          </Alert.Heading>
           <hr />
           <p>{props.children}</p>
-          <Button variant="outline-danger" onClick={() => props.setTrigger(false)}>
+          <Button
+            variant='outline-danger'
+            onClick={() => props.setTrigger(false)}>
             Close
           </Button>
         </Alert>

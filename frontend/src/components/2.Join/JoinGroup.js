@@ -34,10 +34,10 @@ function GroupCode() {
   // Includes the text areas to enter a group code, and input a name to play.
   return (
     <>
-      <h1 className="Title">yumble</h1>
-      <div className="MakeCentre">
-        <Card id="Card-field">
-          <Card.Header as="h5" id="Card-Header">
+      <h1 className='Title'>yumble</h1>
+      <div className='MakeCentre'>
+        <Card id='Card-field'>
+          <Card.Header as='h5' id='Card-Header'>
             Join Game
           </Card.Header>
           <Card.Body>
@@ -45,9 +45,9 @@ function GroupCode() {
             <Card.Text>
               <UserInput
                 input
-                type="text"
-                inputType="joinGroup"
-                placeholder="P6aPE"
+                type='text'
+                inputType='joinGroup'
+                placeholder='P6aPE'
                 fontSize={3}
                 onChange={(e) => socketContext.setCode(e.target.value)}
               ></UserInput>
@@ -56,9 +56,9 @@ function GroupCode() {
             <Card.Text>
               <UserInput
                 input
-                type="text"
-                inputType="joinGroup" // what is inputType
-                placeholder="Alex"
+                type='text'
+                inputType='joinGroup' // what is inputType
+                placeholder='Alex'
                 fontSize={3}
                 // on change currently doesnt work
                 onChange={(e) => setName(e.target.value)}
@@ -66,7 +66,7 @@ function GroupCode() {
             </Card.Text>
             <Button
               onClick={() => SocketEvents.joinRoom(socketContext.socket, socketContext.code, name)}
-              className="GoButton"
+              className='GoButton'
             >
               Go
             </Button>
@@ -75,15 +75,17 @@ function GroupCode() {
         {!invalidCode && <Redirect to={`/Lobby/${socketContext.code}`} />}
         {skip && <Redirect to={'' + '/Result'} />}
       </div>
-      <Link to="/">
-        <Button variant="danger" size="lg" id="BackButton">
+      <Link to='/'>
+        <Button variant='danger' size='lg' id='BackButton'>
           Back
         </Button>
       </Link>
-      <Button onClick={() => setButtonPopup(true)} variant="info" size="lg" id="HelpButton">
+      <Button
+        onClick={() => setButtonPopup(true)} variant='info' size='lg' id='HelpButton'>
         Help
       </Button>
-      <Help trigger={ButtonPopup} setTrigger={setButtonPopup}>
+      <Help
+        trigger={ButtonPopup} setTrigger={setButtonPopup}>
         <p>
           Copy the <mark>group code</mark> from the person who created the lobby and paste it down here.
         </p>

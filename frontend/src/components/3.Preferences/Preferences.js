@@ -114,8 +114,8 @@ function Preferences() {
 
   return (
     <>
-      <h1 className="Title">yumble</h1>
-      <div className="MakeCentre">
+      <h1 className='Title'>yumble</h1>
+      <div className='MakeCentre'>
         <div className={style.MakePreference}>
           <h1 className={style.LocationTitle}>Location</h1>
           <div>
@@ -126,36 +126,52 @@ function Preferences() {
             />
           </div>
           <div>
-            <div className={style.RangeAndTimerText}>Range</div>
+            <div
+              className={style.RangeAndTimerText}
+            >
+              Range
+            </div>
             <input
               className={style.Slider}
               onChange={(e) => {
                 setShowErrorMessage(false);
                 setDistance(e.target.value);
               }}
-              type="range"
-              min="1000"
-              max="20000"
-              step="1000"
+              type='range'
+              min='1000'
+              max='20000'
+              step='1000'
               defaultValue={Distance}
             />
-            <div className={style.SliderText}>Distance: {Distance / 1000} KM</div>
+            <div
+              className={style.SliderText}
+            >
+              Distance: {Distance / 1000} KM
+            </div>
           </div>
           <div>
-            <div className={style.RangeAndTimerText}>Timer</div>
+            <div
+              className={style.RangeAndTimerText}
+            >
+              Timer
+            </div>
             <input
               className={style.Slider}
               onChange={(e) => {
                 setShowErrorMessage(false);
                 setTimer(e.target.value);
               }}
-              type="range"
-              min="5"
-              max="60"
-              step="5"
+              type='range'
+              min='5'
+              max='60'
+              step='5'
               defaultValue={Timer}
             />
-            <div className={style.SliderText}>Time: {Timer} Seconds</div>
+            <div
+              className={style.SliderText}
+            >
+              Time: {Timer} Seconds
+            </div>
           </div>
           <div className={style.priceText}>
             Max Price
@@ -167,10 +183,10 @@ function Preferences() {
                   setPrice(e.target.value);                 
                 }}
               >
-                <option value="1">$</option>
-                <option value="2">$ $</option>
-                <option value="3">$ $ $</option>
-                <option value="4">$ $ $ $</option>
+                <option value='1'>$</option>
+                <option value='2'>$ $</option>
+                <option value='3'>$ $ $</option>
+                <option value='4'>$ $ $ $</option>
               </select>
             </div>
           </div>
@@ -190,7 +206,11 @@ function Preferences() {
             </Button>
           </Link>
 
-          <Button onClick={() => setButtonPopup(true)} variant="info" size="lg" id="HelpButton">
+          <Button
+            onClick={() => setButtonPopup(true)}
+            variant='info'
+            size='lg'
+            id='HelpButton'>
             Help
           </Button>
           <Help trigger={ButtonPopup} setTrigger={setButtonPopup}>
@@ -219,7 +239,7 @@ function Preferences() {
             Go
           </button>
         </div>
-        <div id="dummyMap" style={{ visibility: 'hidden' }}></div>
+        <div id='dummyMap' style={{ visibility: 'hidden' }}></div>
       </div>
     </>
   );
