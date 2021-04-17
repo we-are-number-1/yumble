@@ -73,7 +73,7 @@ function GroupCode() {
           </Card.Body>
         </Card>
         {!invalidCode && <Redirect to={`/Lobby/${socketContext.code}`} />}
-        {skip && <Redirect to={'' + '/Result'} />}
+        {skip && <Redirect to={'/Result'} />}
       </div>
       <Link to='/'>
         <Button variant='danger' size='lg' id='BackButton'>
@@ -81,11 +81,15 @@ function GroupCode() {
         </Button>
       </Link>
       <Button
-        onClick={() => setButtonPopup(true)} variant='info' size='lg' id='HelpButton'>
+        onClick={() => setButtonPopup(true)}
+        variant='info'
+        size='lg'
+        id='HelpButton'>
         Help
       </Button>
       <Help
-        trigger={ButtonPopup} setTrigger={setButtonPopup}>
+        trigger={ButtonPopup}
+        setTrigger={setButtonPopup}>
         <p>
           Copy the <mark>group code</mark> from the person who created the lobby and paste it down here.
         </p>
