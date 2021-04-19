@@ -165,7 +165,8 @@ function Preferences() {
               <select
                 className={style.pricePicker}
                 onChange={(e) => {
-                  setPrice(e.target.value);
+                  setShowErrorMessage(false);
+                  setPrice(e.target.value);                 
                 }}
               >
                 <option value='1'>$</option>
