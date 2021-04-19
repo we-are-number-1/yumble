@@ -176,7 +176,8 @@ function Preferences() {
               </select>
             </div>
           </div>
-          <p className={style.ErrorMessage} style={{marginTop: '1em', visibility: showErrorMessage ? 'visible' : 'hidden'}}>
+          <p className={style.ErrorMessage} 
+          style={{marginTop: '1em', visibility: showErrorMessage ? 'visible' : 'hidden'}}>
             Please widen your search.
           </p>
                 
