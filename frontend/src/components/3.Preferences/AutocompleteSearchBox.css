@@ -26,16 +26,16 @@ textarea {
 .Suggestions {
   border: 3px solid #000000;
   border-radius: 0.5rem;
+  background-color: #202020;
   position: absolute;
   z-index: 5;
   width: 100%;
-  right: 0px;
   left: -0.5vw;
+  overflow: hidden;
 }
 
 .SuggestionItem {
   padding: 0.5em 0 0.5em 0;
-  background-color: #202020;
   color: #a9a9a9;
   padding-left: 0.4em;
 }
