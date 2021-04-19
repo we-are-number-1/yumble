@@ -60,15 +60,7 @@ function ResultPage(props) {
    * @return {string} A string that represents a HSL colour value
    */
   const randomColour = () => {
-    return (
-      'hsl(' +
-      360 * Math.random() +
-      ',' +
-      (60 + 30 * Math.random()) +
-      '%,' +
-      60 +
-      '%)'
-    );
+    return 'hsl(' + 360 * Math.random() + ',' + 100 + '%,' + 60 + '%)';
   };
 
   useEffect(() => {
