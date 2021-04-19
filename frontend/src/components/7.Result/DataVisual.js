@@ -21,7 +21,7 @@ function DataVisual(props) {
   };
   return (
     <div className='PieChart'>
-      <Pie data={props.data} options={chartOptions} />
+      <Pie data={props.data} options={chartOptions} height={250}/>
     </div>
   );
 }
