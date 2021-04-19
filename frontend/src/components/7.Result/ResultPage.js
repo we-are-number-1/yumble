@@ -56,14 +56,19 @@ function ResultPage(props) {
   const pieColours = [];
 
   /**
-   * This function generates a random RGB value
-   * @return {string} A string that represents an RGB colour value
+   * This function generates a random HSL value
+   * @return {string} A string that represents a HSL colour value
    */
   const randomColour = () => {
-    const r = Math.floor(Math.random() * 255);
-    const g = Math.floor(Math.random() * 255);
-    const b = Math.floor(Math.random() * 255);
-    return 'rgb(' + r + ',' + g + ',' + b + ')';
+    return (
+      'hsl(' +
+      360 * Math.random() +
+      ',' +
+      (60 + 30 * Math.random()) +
+      '%,' +
+      80 +
+      '%)'
+    );
   };
 
   useEffect(() => {
@@ -118,8 +123,9 @@ function ResultPage(props) {
           label: '# of Votes',
           data: votes,
           defaultFontColor: '#fff',
-          borderColor: pieColours,
+          borderColor: '#000',
           backgroundColor: pieColours,
+          hoverBackgroundColor: pieColours,
           borderWidth: 1,
         },
       ];
