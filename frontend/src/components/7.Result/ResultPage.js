@@ -27,7 +27,6 @@ const rating = 4.0;
 /**
  * @param {*} props
  * @return {*}
- * TODO: remove hard-coded location for the winning restaurant coordinates
  *
  * This is the result screen. The users in the game be shown the most voted restaurant
  * that has won the game. Users can choose to see the vote breakdown, that is shown on a popup
@@ -54,12 +53,23 @@ function ResultPage(props) {
   // need to have props due to the testing purpose
   const [hasResult, setHasResult] = useState(props.hasResult);
 
+  const pieColours = [];
+
+  /**
+   * This function generates a random HSL value
+   * @return {string} A string that represents a HSL colour value
+   */
+  const randomColour = () => {
+    return 'hsl(' + 360 * Math.random() + ',' + 100 + '%,' + 60 + '%)';
+  };
+
   useEffect(() => {
     document.title = 'Time to go eat!';
     axios
       .get('sessions/' + socketContext.code)
       .then((res) => {
         setHasResult(false);
+        // Sort Restaurants by number of Keen votes
         setCardList(
           res.data.results.sort(function (a, b) {
             return b.numberOfVotes - a.numberOfVotes;
@@ -71,7 +81,7 @@ function ResultPage(props) {
       });
   }, []);
 
-  // Creating the pie chart from the vote data.
+  // Creating the Top Choice Card and pie chart from the vote data.
   // Each selected restaurant is shown as a legend and the overall voting
   // distribution is shown.
   useEffect(() => {
@@ -91,9 +101,10 @@ function ResultPage(props) {
       pieChart.labels = [];
       const votes = [];
       for (let i = 0; i < cardList.length; i++) {
-        if (cardList[i].name && i < 6) {
+        if (cardList[i].name) {
           pieChart.labels.push(cardList[i].name);
           votes.push(cardList[i].numberOfVotes);
+          pieColours.push(randomColour());
         } else {
           break;
         }
@@ -104,22 +115,9 @@ function ResultPage(props) {
           label: '# of Votes',
           data: votes,
           defaultFontColor: '#fff',
-          borderColor: [
-            'rgba(255, 99, 132, 0.2)',
-            'rgba(54, 162, 235, 0.2)',
-            'rgba(255, 206, 86, 0.2)',
-            'rgba(75, 192, 192, 0.2)',
-            'rgba(153, 102, 255, 0.2)',
-            'rgba(255, 159, 64, 0.2)',
-          ],
-          backgroundColor: [
-            'rgba(255, 99, 132, 1)',
-            'rgba(54, 162, 235, 1)',
-            'rgba(255, 206, 86, 1)',
-            'rgba(75, 192, 192, 1)',
-            'rgba(153, 102, 255, 1)',
-            'rgba(255, 159, 64, 1)',
-          ],
+          borderColor: '#000',
+          backgroundColor: pieColours,
+          hoverBackgroundColor: pieColours,
           borderWidth: 1,
         },
       ];
