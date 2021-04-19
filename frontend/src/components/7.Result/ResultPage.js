@@ -66,7 +66,7 @@ function ResultPage(props) {
       ',' +
       (60 + 30 * Math.random()) +
       '%,' +
-      80 +
+      60 +
       '%)'
     );
   };
