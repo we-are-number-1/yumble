@@ -90,13 +90,7 @@ function ResultPage(props) {
   useEffect(() => {
     if (cardList && cardList.length > 0) {
       setHasResult(true);
-      // Get all restaurants that have the most keens
-      const topRestaurants = cardList.filter(
-        (card) => card.numberOfVotes === cardList[0].numberOfVotes
-      );
-      // Select a top restaurant randomly
-      const card =
-        topRestaurants[Math.floor(Math.random() * topRestaurants.length)];
+      const card = cardList[0];
       setData({
         name: card.name,
         location: card.location,
