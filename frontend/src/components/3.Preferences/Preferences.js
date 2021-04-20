@@ -30,6 +30,7 @@ function Preferences() {
   const [Coordinates, setCoordinates] = useState({ lat: null, lng: null });
   const [redirect, setRedirect] = useState(false);
   const [cardData, setCardData] = useState(null);
+  const [showErrorMessage, setShowErrorMessage] = useState(false);
 
   // default post syntax
   const [response] = useState({
@@ -59,7 +60,13 @@ function Preferences() {
    */
   async function handleSearch() {
     const data = await getNearbyRestaurants(Coordinates, Distance, Price);
-    setCardData(data);
+    if (data === 'ZERO_RESULTS'){
+      // the case that no Restaurant results are returned
+      setShowErrorMessage(true);
+    } else {
+      setShowErrorMessage(false);
+      setCardData(data);
+    }
   }
 
   useEffect(() => {
@@ -115,6 +122,7 @@ function Preferences() {
             <AutocompleteSearchBox
               setLocation={setLocation}
               sendCoordinates={setCoordinates}
+              setShowErrorMessage={setShowErrorMessage}
             />
           </div>
           <div>
@@ -122,6 +130,7 @@ function Preferences() {
             <input
               className={style.Slider}
               onChange={(e) => {
+                setShowErrorMessage(false);
                 setDistance(e.target.value);
               }}
               type='range'
@@ -139,6 +148,7 @@ function Preferences() {
             <input
               className={style.Slider}
               onChange={(e) => {
+                setShowErrorMessage(false);
                 setTimer(e.target.value);
               }}
               type='range'
@@ -155,7 +165,8 @@ function Preferences() {
               <select
                 className={style.pricePicker}
                 onChange={(e) => {
-                  setPrice(e.target.value);
+                  setShowErrorMessage(false);
+                  setPrice(e.target.value);                 
                 }}
               >
                 <option value='1'>$</option>
@@ -165,6 +176,11 @@ function Preferences() {
               </select>
             </div>
           </div>
+          <p className={style.ErrorMessage} 
+          style={{marginTop: '1em', visibility: showErrorMessage ? 'visible' : 'hidden'}}>
+            Please widen your search.
+          </p>
+                
           <Link to='/'>
             <Button
               variant='danger'
