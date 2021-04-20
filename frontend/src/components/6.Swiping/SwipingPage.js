@@ -40,7 +40,7 @@ function SwipingPage(props) {
 
   useEffect(() => {
     document.title = 'Yes or No?';
-    const card = CardData.shift();
+    const card = CardData[0];
     newCard.current = card;
 
     setData(card);
@@ -147,6 +147,8 @@ function SwipingPage(props) {
       setShowVoteButtons(true);
       CardData.shift();
       newCard.current = CardData[0];
+
+      console.log(CardData)
 
       if (CardData[0] !== undefined) {
         setData(CardData[0]);
