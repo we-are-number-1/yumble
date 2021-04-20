@@ -34,9 +34,14 @@ exports[`MapModal snapshot testing with/without defining the trigger 2`] = `
         className="btn btn-outline-danger"
         disabled={false}
         onClick={[Function]}
+        style={
+          Object {
+            "marginTop": "1em",
+          }
+        }
         type="button"
       >
-        close!
+        Close
       </button>
     </div>
   </div>

@@ -56,7 +56,7 @@ Array [
           />
         </p>
         <button
-          className="GoButton btn btn-success"
+          className="GoButton btn btn-primary"
           disabled={false}
           onClick={[Function]}
           type="button"

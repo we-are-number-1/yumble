@@ -45,6 +45,7 @@ exports[`DataVisual snapshot testing 1`] = `
         ],
       }
     }
+    height={250}
     options={
       Object {
         "legend": Object {
