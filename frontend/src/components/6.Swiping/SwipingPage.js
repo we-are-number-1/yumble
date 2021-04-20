@@ -148,8 +148,6 @@ function SwipingPage(props) {
       CardData.shift();
       newCard.current = CardData[0];
 
-      console.log(CardData)
-
       if (CardData[0] !== undefined) {
         setData(CardData[0]);
       }
