@@ -49,8 +49,7 @@
 }
 
 .BackGroundImage {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url('./backgroundImg.jpeg'); /*Image credits: https://unsplash.com/*/
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('./backgroundImg.jpeg'); /*Image credits: https://unsplash.com/*/
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;

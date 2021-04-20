@@ -60,7 +60,7 @@ function Preferences() {
    */
   async function handleSearch() {
     const data = await getNearbyRestaurants(Coordinates, Distance, Price);
-    if (data === 'ZERO_RESULTS'){
+    if (data === 'ZERO_RESULTS') {
       // the case that no Restaurant results are returned
       setShowErrorMessage(true);
     } else {
@@ -126,11 +126,7 @@ function Preferences() {
             />
           </div>
           <div>
-            <div
-              className={style.RangeAndTimerText}
-            >
-              Range
-            </div>
+            <div className={style.RangeAndTimerText}>Range</div>
             <input
               className={style.Slider}
               onChange={(e) => {
@@ -143,18 +139,10 @@ function Preferences() {
               step='1000'
               defaultValue={Distance}
             />
-            <div
-              className={style.SliderText}
-            >
-              Distance: {Distance / 1000} KM
-            </div>
+            <div className={style.SliderText}>Distance: {Distance / 1000} KM</div>
           </div>
           <div>
-            <div
-              className={style.RangeAndTimerText}
-            >
-              Timer
-            </div>
+            <div className={style.RangeAndTimerText}>Timer</div>
             <input
               className={style.Slider}
               onChange={(e) => {
@@ -167,11 +155,7 @@ function Preferences() {
               step='5'
               defaultValue={Timer}
             />
-            <div
-              className={style.SliderText}
-            >
-              Time: {Timer} Seconds
-            </div>
+            <div className={style.SliderText}>Time: {Timer} Seconds</div>
           </div>
           <div className={style.priceText}>
             Max Price
@@ -180,7 +164,7 @@ function Preferences() {
                 className={style.pricePicker}
                 onChange={(e) => {
                   setShowErrorMessage(false);
-                  setPrice(e.target.value);                 
+                  setPrice(e.target.value);
                 }}
               >
                 <option value='1'>$</option>
@@ -190,27 +174,20 @@ function Preferences() {
               </select>
             </div>
           </div>
-          <p className={style.ErrorMessage} 
-          style={{marginTop: '1em', visibility: showErrorMessage ? 'visible' : 'hidden'}}>
+          <p
+            className={style.ErrorMessage}
+            style={{ marginTop: '1em', visibility: showErrorMessage ? 'visible' : 'hidden' }}
+          >
             Please widen your search.
           </p>
-                
+
           <Link to='/'>
-            <Button
-              variant='danger'
-              size='lg'
-              id='BackButton'
-              onClick={() => goBack()}
-            >
+            <Button variant='danger' size='lg' id='BackButton' onClick={() => goBack()}>
               Back
             </Button>
           </Link>
 
-          <Button
-            onClick={() => setButtonPopup(true)}
-            variant='info'
-            size='lg'
-            id='HelpButton'>
+          <Button onClick={() => setButtonPopup(true)} variant='info' size='lg' id='HelpButton'>
             Help
           </Button>
           <Help trigger={ButtonPopup} setTrigger={setButtonPopup}>
