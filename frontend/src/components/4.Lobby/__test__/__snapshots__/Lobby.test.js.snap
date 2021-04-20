@@ -9,6 +9,11 @@ Array [
   </h1>,
   <div
     className="MakeCentre"
+    style={
+      Object {
+        "height": "100vh",
+      }
+    }
   >
     <div
       className="LobbyBox"
@@ -34,25 +39,36 @@ Array [
       />
     </div>
     <button
-      className="ShareButton"
+      className="ShareButton btn btn-success"
+      disabled={false}
       onClick={[Function]}
+      type="button"
     >
       Share
     </button>
     
-    <button
-      className="SmallBtn"
-      id="BackButton"
+    <a
+      href="/"
       onClick={[Function]}
     >
-      Back
-    </button>
+      <button
+        className="btn btn-danger btn-lg"
+        disabled={false}
+        id="BackButton"
+        onClick={[Function]}
+        type="button"
+      >
+        Back
+      </button>
+    </a>
     <button
-      className="SmallBtn"
+      className="btn btn-info btn-lg"
+      disabled={false}
       id="HelpButton"
       onClick={[Function]}
+      type="button"
     >
-      help?
+      Help
     </button>
     
   </div>,

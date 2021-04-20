@@ -11,7 +11,7 @@ import './SwipingPage.css';
 import SwipeCard from '../Common/SwipeCard';
 import { Container, Row, Col } from 'react-bootstrap';
 import TinderCard from 'react-tinder-card';
-import Button from 'react-bootstrap/esm/Button';
+import Button from 'react-bootstrap/Button';
 
 /**
  * @param  {*} props
