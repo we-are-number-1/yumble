@@ -17,11 +17,13 @@ Array [
     </div>
   </div>,
   <button
-    className="SmallBtn"
+    className="btn btn-info btn-lg"
+    disabled={false}
     id="HelpButton"
     onClick={[Function]}
+    type="button"
   >
-    help?
+    Help
   </button>,
   "",
   <div
