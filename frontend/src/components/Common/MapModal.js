@@ -17,9 +17,7 @@ function MapModal(props) {
     <div className='Help'>
       <div className='Help-inner'>
         <Alert className='AlertContent'>
-          <Alert.Heading className='text-center'>
-            Restaurant Location
-          </Alert.Heading>
+          <Alert.Heading className='text-center'>Restaurant Location</Alert.Heading>
           <hr />
           <p>
             <Map restaurantLocations={props.restaurantLocation} />
@@ -27,7 +25,8 @@ function MapModal(props) {
           <Button
             variant='outline-danger'
             style={{ marginTop: '1em' }}
-            onClick={() => props.setTrigger(false)}>
+            onClick={() => props.setTrigger(false)}
+          >
             Close
           </Button>
         </Alert>

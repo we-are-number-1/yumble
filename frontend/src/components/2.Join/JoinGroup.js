@@ -76,7 +76,11 @@ function GroupCode() {
         {skip && <Redirect to={'/Result'} />}
       </div>
       <Link to='/'>
-        <Button variant='danger' size='lg' id='BackButton'>
+        <Button
+          variant='danger'
+          size='lg'
+          id='BackButton'
+        >
           Back
         </Button>
       </Link>
@@ -84,12 +88,14 @@ function GroupCode() {
         onClick={() => setButtonPopup(true)}
         variant='info'
         size='lg'
-        id='HelpButton'>
+        id='HelpButton'
+      >
         Help
       </Button>
       <Help
         trigger={ButtonPopup}
-        setTrigger={setButtonPopup}>
+        setTrigger={setButtonPopup}
+      >
         <p>
           Copy the <mark>group code</mark> from the person who created the lobby and paste it down here.
         </p>

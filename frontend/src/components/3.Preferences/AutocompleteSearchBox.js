@@ -60,7 +60,8 @@ const AutocompleteSearchBox = ({ setLocation, sendCoordinates, setShowErrorMessa
                   <div
                     {...getSuggestionItemProps(suggestion)}
                     key={index}
-                    className={`SuggestionItem ${classes}`}>
+                    className={`SuggestionItem ${classes}`}
+                  >
                     {suggestion.description}
                   </div>
                 );
