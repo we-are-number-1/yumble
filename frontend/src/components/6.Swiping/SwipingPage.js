@@ -40,7 +40,7 @@ function SwipingPage(props) {
 
   useEffect(() => {
     document.title = 'Yes or No?';
-    const card = CardData.shift();
+    const card = CardData[0];
     newCard.current = card;
 
     setData(card);

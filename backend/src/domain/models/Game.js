@@ -55,20 +55,13 @@ export class Game {
    * of the session
    */
   async nextRound() {
-    this.round++;
-    if (this.round === this.swipeDeck.length) {
-      this.endGame();
-      return;
-    }
-
-
-    for (let i=1; i < this.swipeDeck.length; i++) {
+    for (let i=1; i <= this.swipeDeck.length; i++) {
       // Notifies users of round change
       this.io.to(this.session.sessionId).emit(
           'next_round',
           {
             nextRoundTime: this.roundInterval,
-            currentRound: this.round,
+            currentRound: i,
           },
       );
       console.log(i * this.roundInterval);
