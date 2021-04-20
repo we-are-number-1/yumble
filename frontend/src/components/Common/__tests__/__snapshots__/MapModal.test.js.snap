@@ -10,7 +10,7 @@ exports[`MapModal snapshot testing with/without defining the trigger 2`] = `
     className="Help-inner"
   >
     <div
-      className="fade overflow-hidden alert alert-info show"
+      className="fade AlertContent alert show"
       role="alert"
     >
       <div
@@ -18,6 +18,7 @@ exports[`MapModal snapshot testing with/without defining the trigger 2`] = `
       >
         Restaurant Location
       </div>
+      <hr />
       <p>
         <div
           id="map"
@@ -37,7 +38,6 @@ exports[`MapModal snapshot testing with/without defining the trigger 2`] = `
       >
         close!
       </button>
-      <hr />
     </div>
   </div>
 </div>

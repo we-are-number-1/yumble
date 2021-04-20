@@ -30,7 +30,7 @@ Array [
           }
         }
       >
-        <h5
+        <h2
           className="text-center card-header"
           id="Card-Header"
           style={
@@ -41,7 +41,7 @@ Array [
         >
            
           Top Choice
-        </h5>
+        </h2>
         <div
           className="card-body"
           style={
@@ -133,7 +133,7 @@ Array [
               }
             >
               <button
-                className="BigBtn btn btn-primary"
+                className="BigBtn btn btn-success"
                 disabled={false}
                 id="Resultbutton"
                 onClick={[Function]}
@@ -161,7 +161,7 @@ Array [
               }
             >
               <button
-                className="BigBtn btn btn-primary"
+                className="BigBtn btn btn-warning"
                 disabled={false}
                 id="GoogleMaps_btn"
                 onClick={[Function]}
@@ -181,7 +181,11 @@ Array [
                   xmlns="http://www.w3.org/2000/svg"
                 >
                   <path
-                    d="M256 0C161.896 0 85.333 76.563 85.333 170.667c0 28.25 7.063 56.26 20.49 81.104L246.667 506.5c1.875 3.396 5.448 5.5 9.333 5.5s7.458-2.104 9.333-5.5l140.896-254.813c13.375-24.76 20.438-52.771 20.438-81.021C426.667 76.563 350.104 0 256 0zm0 256c-47.052 0-85.333-38.281-85.333-85.333S208.948 85.334 256 85.334s85.333 38.281 85.333 85.333S303.052 256 256 256z"
+                    d="M256 0C161.896 0 85.333 76.563 85.333 170.667c0 28.25 7.063 56.26 20.49 
+ 81.104L246.667 506.5c1.875 3.396 5.448 5.5 9.333 5.5s7.458-2.104 
+ 9.333-5.5l140.896-254.813c13.375-24.76 20.438-52.771 20.438-81.021C426.667
+ 76.563 350.104 0 256 0zm0 256c-47.052 0-85.333-38.281-85.333-85.333S208.948 
+ 85.334 256 85.334s85.333 38.281 85.333 85.333S303.052 256 256 256z"
                     fill="#ff6056"
                     height="100%"
                     width="100%"
@@ -196,13 +200,13 @@ Array [
     </div>
   </div>,
   <button
-    className="btn btn-primary"
+    className="btn btn-info btn-lg"
     disabled={false}
     id="HelpButton"
     onClick={[Function]}
     type="button"
   >
-    help?
+    Help
   </button>,
   "",
 ]
