@@ -182,12 +182,22 @@ function Preferences() {
           </p>
 
           <Link to='/'>
-            <Button variant='danger' size='lg' id='BackButton' onClick={() => goBack()}>
+            <Button
+              variant='danger'
+              size='lg'
+              id='BackButton'
+              onClick={() => goBack()}
+            >
               Back
             </Button>
           </Link>
 
-          <Button onClick={() => setButtonPopup(true)} variant='info' size='lg' id='HelpButton'>
+          <Button
+            onClick={() => setButtonPopup(true)}
+            variant='info'
+            size='lg'
+            id='HelpButton'
+          >
             Help
           </Button>
           <Help trigger={ButtonPopup} setTrigger={setButtonPopup}>

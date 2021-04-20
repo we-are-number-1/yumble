@@ -20,7 +20,10 @@ function Result(props) {
           <hr />
           {props.children}
           <br></br>
-          <Button variant='outline-danger' onClick={() => props.setTrigger(false)}>
+          <Button
+            variant='outline-danger'
+            onClick={() => props.setTrigger(false)}
+          >
             Close
           </Button>
         </Alert>

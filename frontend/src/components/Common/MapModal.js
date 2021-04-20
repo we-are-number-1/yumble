@@ -22,7 +22,11 @@ function MapModal(props) {
           <p>
             <Map restaurantLocations={props.restaurantLocation} />
           </p>
-          <Button variant='outline-danger' style={{ marginTop: '1em' }} onClick={() => props.setTrigger(false)}>
+          <Button
+            variant='outline-danger'
+            style={{ marginTop: '1em' }}
+            onClick={() => props.setTrigger(false)}
+          >
             Close
           </Button>
         </Alert>

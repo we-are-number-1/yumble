@@ -57,7 +57,11 @@ const AutocompleteSearchBox = ({ setLocation, sendCoordinates, setShowErrorMessa
                 const classes = suggestion.active ? 'ActiveSuggestion' : '';
 
                 return (
-                  <div {...getSuggestionItemProps(suggestion)} key={index} className={`SuggestionItem ${classes}`}>
+                  <div
+                    {...getSuggestionItemProps(suggestion)}
+                    key={index}
+                    className={`SuggestionItem ${classes}`}
+                  >
                     {suggestion.description}
                   </div>
                 );
