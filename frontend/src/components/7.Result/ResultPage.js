@@ -210,6 +210,20 @@ function ResultPage(props) {
                         See results
                       </Button>
 
+                      <Button
+                        variant='info'
+                        className='BigBtn'
+                        style={{
+                          fontSize: '2em',
+                          marginTop: '0.1em',
+                          marginLeft: '0.3em',
+                          marginBottom: '0.1em',
+                        }}
+                        onClick={() => window.location.reload()}
+                      >
+                        Restart{' '}
+                      </Button>
+
                       <Result trigger={ResultPopup} setTrigger={setResultPopup}>
                         {chart && (
                           <DataVisual className='DataVisual' data={pie} />
