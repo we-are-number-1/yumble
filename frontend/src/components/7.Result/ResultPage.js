@@ -70,11 +70,16 @@ function ResultPage(props) {
       .then((res) => {
         setHasResult(false);
         // Sort Restaurants by number of Keen votes
-        setCardList(
-          res.data.results.sort(function (a, b) {
-            return b.numberOfVotes - a.numberOfVotes;
-          })
-        );
+        setCardList(res.data.results);
+        const card = res.data.topChoice;
+        setData({
+          name: card.name,
+          location: card.location,
+          price: card.price,
+          rating: card.rating,
+          images: card.images,
+          coords: card.coords,
+        });
       })
       .catch(function (error) {
         console.log(error);
@@ -87,15 +92,6 @@ function ResultPage(props) {
   useEffect(() => {
     if (cardList && cardList.length > 0) {
       setHasResult(true);
-      const card = cardList[0];
-      setData({
-        name: card.name,
-        location: card.location,
-        price: card.price,
-        rating: card.rating,
-        images: card.images,
-        coords: card.coords,
-      });
 
       const pieChart = {};
       pieChart.labels = [];

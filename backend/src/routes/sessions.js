@@ -1,8 +1,8 @@
 import express from 'express';
 import Session from '../mongo/models/Session';
 import games from '../domain/Games';
-import {SocketSession} from '../domain/models/SocketSession';
-import {io} from '../index';
+import { SocketSession } from '../domain/models/SocketSession';
+import { io } from '../index';
 
 const router = express.Router();
 
@@ -17,39 +17,29 @@ router.post('/', async (req, res) => {
   let mongoId;
   let code;
 
-
   try {
     const newSession = await session.save();
     mongoId = newSession._id;
     const mongoIdString = newSession._id.toString();
     code = mongoIdString.substr(mongoIdString.length - 5);
   } catch (error) {
-    res.status(500).json({message: error.message});
+    res.status(500).json({ message: error.message });
   }
 
   try {
-    await Session.updateOne(
-        {_id: mongoId},
-        {$set: {truncCode: code}},
-    );
+    await Session.updateOne({ _id: mongoId }, { $set: { truncCode: code } });
 
-    res.status(201).json({sessionId: mongoId, truncCode: code});
+    res.status(201).json({ sessionId: mongoId, truncCode: code });
   } catch (error) {
-    res.status(500).json({message: error.message});
+    res.status(500).json({ message: error.message });
   }
 
   console.log(`game created with code: ${code}`);
-  const sessionRoom = new SocketSession(
-      code,
-      null,
-      {'roundInterval': 5000});
+  const sessionRoom = new SocketSession(code, null, { roundInterval: 5000 });
 
-  games.newGame(
-      io,
-      sessionRoom,
-      {
-        length: 1,
-      });
+  games.newGame(io, sessionRoom, {
+    length: 1,
+  });
 });
 
 // GET /sessions/:id – Get the session object with the provided id
@@ -65,18 +55,21 @@ router.patch('/:id', getSession, async (req, res) => {
   if (req.body.preferences != null) {
     res.session.preferences = req.body.preferences;
     console.log(req.body.preferences.timer * 1000);
-    games.getGame(req.params.id)
-        .roundInterval = req.body.preferences.timer * 1000;
+    games.getGame(req.params.id).roundInterval =
+      req.body.preferences.timer * 1000;
   }
   if (req.body.results != null) {
     res.session.results = req.body.results;
+  }
+  if (req.body.topchoice != null) {
+    res.session.topChoice = req.body.results;
   }
 
   try {
     const updatedSession = await res.session.save();
     res.status(200).json(updatedSession);
   } catch (error) {
-    res.status(400).json({message: error.message});
+    res.status(400).json({ message: error.message });
   }
 });
 
@@ -90,14 +83,33 @@ router.patch('/:id', getSession, async (req, res) => {
 async function getSession(req, res, next) {
   let session;
   try {
-    session = await Session.findOne({truncCode: req.params.id});
+    session = await Session.findOne({ truncCode: req.params.id });
     if (session == null) {
       return res
-          .status(404)
-          .json({message: 'Could not find session with that id'});
+        .status(404)
+        .json({ message: 'Could not find session with that id' });
     }
   } catch (error) {
-    return res.status(500).json({message: error.message});
+    return res.status(500).json({ message: error.message });
+  }
+  // First time getting session i.e. no Top Choice Set
+  if (!session.topChoice) {
+    const sortedRestaurants = session.results.sort(
+      (a, b) => b.numberOfVotes - a.numberOfVotes
+    );
+    // Get all restaurants that have highest number of keens
+    const topRestaurants = sortedRestaurants.filter(
+      (restaurant) =>
+        restaurant.numberOfVotes === sortedRestaurants[0].numberOfVotes
+    );
+    // Save sorted results list
+    session.results = sortedRestaurants;
+    // Set topChoice to random Top Restaurant
+    session.topChoice =
+      topRestaurants[Math.floor(Math.random() * topRestaurants.length)];
+
+    // Persist new Session data to database
+    session.save();
   }
 
   res.session = session;
