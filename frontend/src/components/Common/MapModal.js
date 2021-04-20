@@ -26,9 +26,9 @@ function MapModal(props) {
           </p>
           <Button
             variant='outline-danger'
-            onClick={() => props.setTrigger(false)}
-          >
-            close!
+            style={{ marginTop: '1em' }}
+            onClick={() => props.setTrigger(false)}>
+            Close
           </Button>
         </Alert>
       </div>

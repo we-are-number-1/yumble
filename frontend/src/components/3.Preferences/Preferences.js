@@ -126,7 +126,11 @@ function Preferences() {
             />
           </div>
           <div>
-            <div className={style.RangeAndTimerText}>Range</div>
+            <div
+              className={style.RangeAndTimerText}
+            >
+              Range
+            </div>
             <input
               className={style.Slider}
               onChange={(e) => {
@@ -139,12 +143,18 @@ function Preferences() {
               step='1000'
               defaultValue={Distance}
             />
-            <div className={style.SliderText}>
+            <div
+              className={style.SliderText}
+            >
               Distance: {Distance / 1000} KM
             </div>
           </div>
           <div>
-            <div className={style.RangeAndTimerText}>Timer</div>
+            <div
+              className={style.RangeAndTimerText}
+            >
+              Timer
+            </div>
             <input
               className={style.Slider}
               onChange={(e) => {
@@ -157,10 +167,14 @@ function Preferences() {
               step='5'
               defaultValue={Timer}
             />
-            <div className={style.SliderText}>Time: {Timer} Seconds</div>
+            <div
+              className={style.SliderText}
+            >
+              Time: {Timer} Seconds
+            </div>
           </div>
           <div className={style.priceText}>
-            Price
+            Max Price
             <div>
               <select
                 className={style.pricePicker}
@@ -196,18 +210,15 @@ function Preferences() {
             onClick={() => setButtonPopup(true)}
             variant='info'
             size='lg'
-            id='HelpButton'
-          >
+            id='HelpButton'>
             Help
           </Button>
           <Help trigger={ButtonPopup} setTrigger={setButtonPopup}>
             <p>
-              Use this page to select a location, as well as a range from that
-              location to find restaurants from.<br></br>
-              Changing the timer duration will change how long you get to make a
-              decision on each restaurant.<br></br>
-              Use the price dropdown to set an upper price limit on the
-              restaurants that will be shown.<br></br>
+              Use this page to select a location, as well as a range from that location to find restaurants from.
+              <br></br>
+              Changing the timer duration will change how long you get to make a decision on each restaurant.<br></br>
+              Use the price dropdown to set an upper price limit on the restaurants that will be shown.<br></br>
               Once you are happy with your preferences, click the Go button.
             </p>
           </Help>
@@ -221,9 +232,7 @@ function Preferences() {
           )}
           {/* need to check if an address is provided */}
           <button
-            disabled={
-              !Location || Coordinates.lat === null || Coordinates.lng === null
-            }
+            disabled={!Location || Coordinates.lat === null || Coordinates.lng === null}
             onClick={() => handleSearch()}
             className={style.GoPrefButton}
           >
@@ -235,4 +244,5 @@ function Preferences() {
     </>
   );
 }
+
 export default Preferences;

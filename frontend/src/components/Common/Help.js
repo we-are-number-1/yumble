@@ -23,9 +23,8 @@ function Help(props) {
           <p>{props.children}</p>
           <Button
             variant='outline-danger'
-            onClick={() => props.setTrigger(false)}
-          >
-            close!
+            onClick={() => props.setTrigger(false)}>
+            Close
           </Button>
         </Alert>
       </div>

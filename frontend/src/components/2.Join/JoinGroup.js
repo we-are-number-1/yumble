@@ -65,15 +65,8 @@ function GroupCode() {
               ></UserInput>
             </Card.Text>
             <Button
-              onClick={() =>
-                SocketEvents.joinRoom(
-                  socketContext.socket,
-                  socketContext.code,
-                  name
-                )
-              }
+              onClick={() => SocketEvents.joinRoom(socketContext.socket, socketContext.code, name)}
               className='GoButton'
-              variant='success'
             >
               Go
             </Button>
@@ -91,14 +84,14 @@ function GroupCode() {
         onClick={() => setButtonPopup(true)}
         variant='info'
         size='lg'
-        id='HelpButton'
-      >
+        id='HelpButton'>
         Help
       </Button>
-      <Help trigger={ButtonPopup} setTrigger={setButtonPopup}>
+      <Help
+        trigger={ButtonPopup}
+        setTrigger={setButtonPopup}>
         <p>
-          Copy the <mark>group code</mark> from the person who created the lobby
-          and paste it down here.
+          Copy the <mark>group code</mark> from the person who created the lobby and paste it down here.
         </p>
       </Help>
     </>
