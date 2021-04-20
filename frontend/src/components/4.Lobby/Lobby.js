@@ -6,7 +6,7 @@ import * as SocketEvents from '../../sockets';
 import '../Common/Help.css';
 import './Lobby.css';
 import Card from 'react-bootstrap/Card';
-import Button from 'react-bootstrap/esm/Button';
+import Button from 'react-bootstrap/Button';
 
 /**
  * @param  {*} props
@@ -45,8 +45,8 @@ const Lobby = (props) => {
       startCountdown();
     });
     SocketEvents.nextRound(socketContext.socket, (data) => {
-      socketContext.setTimer(data.nextRoundTime/1000);
-    })
+      socketContext.setTimer(data.nextRoundTime / 1000);
+    });
   }, []);
 
   /**

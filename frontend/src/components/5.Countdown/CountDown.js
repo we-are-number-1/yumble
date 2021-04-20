@@ -4,7 +4,7 @@ import Help from '../Common/Help';
 import { SocketContext } from './../../sockets/SocketContext';
 import * as SocketEvents from './../../sockets';
 import '../Common/Help.css';
-import Button from 'react-bootstrap/esm/Button';
+import Button from 'react-bootstrap/Button';
 
 /**
  * @param  {*} props
